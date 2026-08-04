@@ -1,0 +1,626 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>行业日报 · AI / 电商 / 箱包</title>
+<style>
+  :root {
+    --bg: #fafaf8;
+    --sidebar-bg: #1a1f17;
+    --sidebar-text: #b8bfb0;
+    --sidebar-hover: #242a20;
+    --sidebar-active: #4a7c2e;
+    --card-bg: #ffffff;
+    --text: #1a1a1a;
+    --text-secondary: #6b7280;
+    --text-muted: #9ca3af;
+    --border: #e0e3dc;
+    --border-light: #e9ece5;
+    --accent: #2d5016;
+    --accent-light: #3a6b1e;
+    --tag-bg: #eaf0e4;
+    --tag-text: #3a6b1e;
+    --shadow: 0 1px 3px rgba(0,0,0,0.04), 0 1px 2px rgba(0,0,0,0.03);
+    --radius: 8px;
+    --sidebar-width: 280px;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    display: flex;
+    min-height: 100vh;
+  }
+
+  /* ===== SIDEBAR ===== */
+  .sidebar {
+    width: var(--sidebar-width);
+    min-width: var(--sidebar-width);
+    background: var(--sidebar-bg);
+    color: var(--sidebar-text);
+    display: flex;
+    flex-direction: column;
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    z-index: 10;
+    overflow: hidden;
+  }
+
+  .sidebar-header {
+    padding: 24px 20px 16px;
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+  }
+
+  .sidebar-header h1 {
+    font-size: 18px;
+    font-weight: 700;
+    color: #fff;
+    letter-spacing: 0.5px;
+  }
+
+  .sidebar-header .subtitle {
+    font-size: 11px;
+    color: var(--sidebar-text);
+    margin-top: 4px;
+  }
+
+  .sidebar-tags {
+    display: flex;
+    gap: 6px;
+    margin-top: 12px;
+  }
+
+  .sidebar-tag {
+    font-size: 10px;
+    padding: 3px 8px;
+    border-radius: 10px;
+    color: #d4e0c8;
+    font-weight: 500;
+    background: rgba(255,255,255,0.08);
+  }
+
+  .sidebar-nav {
+    flex: 1;
+    overflow-y: auto;
+    padding: 8px 0;
+  }
+
+  .sidebar-nav::-webkit-scrollbar {
+    width: 4px;
+  }
+  .sidebar-nav::-webkit-scrollbar-thumb {
+    background: rgba(255,255,255,0.12);
+    border-radius: 2px;
+  }
+
+  .year-group {
+    margin-bottom: 4px;
+  }
+
+  .year-toggle {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 10px 20px;
+    cursor: pointer;
+    font-size: 13px;
+    font-weight: 700;
+    color: #e0e0e8;
+    user-select: none;
+    transition: background 0.15s;
+  }
+  .year-toggle:hover {
+    background: var(--sidebar-hover);
+  }
+  .year-toggle .arrow {
+    font-size: 10px;
+    transition: transform 0.2s;
+    display: inline-block;
+  }
+  .year-toggle.collapsed .arrow {
+    transform: rotate(-90deg);
+  }
+
+  .month-list { overflow: hidden; }
+
+  .month-group {
+    margin-bottom: 2px;
+  }
+
+  .month-toggle {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 7px 20px 7px 36px;
+    cursor: pointer;
+    font-size: 12px;
+    font-weight: 600;
+    color: #b0b0c0;
+    user-select: none;
+    transition: background 0.15s;
+  }
+  .month-toggle:hover {
+    background: var(--sidebar-hover);
+  }
+  .month-toggle .arrow {
+    font-size: 10px;
+    transition: transform 0.2s;
+    display: inline-block;
+  }
+  .month-toggle.collapsed .arrow {
+    transform: rotate(-90deg);
+  }
+  .month-toggle .count {
+    font-size: 10px;
+    color: #777;
+    margin-left: auto;
+  }
+
+  .date-list {
+    overflow: hidden;
+  }
+
+  .date-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 7px 20px 7px 54px;
+    cursor: pointer;
+    font-size: 12px;
+    color: #9a9ab0;
+    transition: all 0.15s;
+    border-left: 3px solid transparent;
+  }
+  .date-item:hover {
+    background: var(--sidebar-hover);
+    color: #ddd;
+  }
+  .date-item.active {
+    color: #fff;
+    background: rgba(74,124,46,0.2);
+    border-left-color: var(--sidebar-active);
+  }
+  .date-item .dot {
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    background: #666;
+    flex-shrink: 0;
+  }
+  .date-item.active .dot {
+    background: var(--sidebar-active);
+  }
+  .date-item.today .dot {
+    background: #4caf50;
+  }
+
+  .sidebar-footer {
+    padding: 12px 20px;
+    font-size: 10px;
+    color: #6b7a60;
+    border-top: 1px solid rgba(255,255,255,0.06);
+    text-align: center;
+  }
+
+  /* ===== MAIN ===== */
+  .main {
+    flex: 1;
+    margin-left: var(--sidebar-width);
+    padding: 32px 36px;
+    min-height: 100vh;
+  }
+
+  .welcome-section {
+    text-align: center;
+    padding: 80px 20px;
+    color: var(--text-secondary);
+  }
+  .welcome-section .icon {
+    font-size: 48px;
+    margin-bottom: 16px;
+  }
+  .welcome-section h2 {
+    font-size: 22px;
+    color: var(--text);
+    margin-bottom: 8px;
+  }
+  .welcome-section p {
+    font-size: 14px;
+  }
+
+  .report-header {
+    margin-bottom: 28px;
+  }
+  .report-header .date-badge {
+    display: inline-block;
+    font-size: 12px;
+    color: var(--text-secondary);
+    background: #f0f0f0;
+    padding: 4px 12px;
+    border-radius: 12px;
+  }
+  .report-header h2 {
+    font-size: 26px;
+    font-weight: 800;
+    margin: 8px 0 4px;
+    color: var(--text);
+  }
+  .report-header .report-subtitle {
+    font-size: 13px;
+    color: var(--text-secondary);
+  }
+
+  /* ===== SECTION CARDS ===== */
+  .sections {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+  }
+
+  .section-card {
+    background: var(--card-bg);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    overflow: hidden;
+  }
+
+  .section-card-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 16px 24px;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .section-card-header .badge {
+    width: 32px;
+    height: 32px;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 16px;
+    color: #fff;
+    flex-shrink: 0;
+    background: var(--accent);
+  }
+
+  .section-card-header h3 {
+    font-size: 16px;
+    font-weight: 700;
+  }
+  .section-card-header .section-count {
+    font-size: 11px;
+    color: var(--text-secondary);
+    margin-left: auto;
+  }
+
+  .section-card-body {
+    padding: 0;
+  }
+
+  .news-item {
+    padding: 16px 24px;
+    border-bottom: 1px solid var(--border);
+    transition: background 0.15s;
+    cursor: default;
+  }
+  .news-item:last-child {
+    border-bottom: none;
+  }
+  .news-item:hover {
+    background: #fafafa;
+  }
+
+  .news-item-title {
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--text);
+    margin-bottom: 4px;
+    line-height: 1.4;
+  }
+
+  .news-item-meta {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 11px;
+    color: var(--text-secondary);
+    margin-bottom: 6px;
+  }
+  .news-item-meta .source-tag {
+    padding: 2px 6px;
+    border-radius: 4px;
+    font-size: 10px;
+    font-weight: 500;
+    background: var(--tag-bg);
+    color: var(--tag-text);
+  }
+
+  .news-item-summary {
+    font-size: 13px;
+    line-height: 1.7;
+    color: #555;
+  }
+
+  .news-item-summary a {
+    color: var(--accent);
+    text-decoration: none;
+  }
+  .news-item-summary a:hover {
+    text-decoration: underline;
+  }
+
+  /* ===== LOADING ===== */
+  .loading {
+    text-align: center;
+    padding: 60px;
+    color: var(--text-secondary);
+    font-size: 14px;
+  }
+  .loading .spinner {
+    width: 32px;
+    height: 32px;
+    border: 3px solid var(--border);
+    border-top-color: var(--accent);
+    border-radius: 50%;
+    animation: spin 0.8s linear infinite;
+    margin: 0 auto 12px;
+  }
+  @keyframes spin {
+    to { transform: rotate(360deg); }
+  }
+
+  /* ===== RESPONSIVE ===== */
+  @media (max-width: 768px) {
+    .sidebar {
+      width: 100%;
+      min-width: unset;
+      position: relative;
+      height: auto;
+      max-height: 40vh;
+    }
+    .main {
+      margin-left: 0;
+      padding: 20px;
+    }
+    body {
+      flex-direction: column;
+    }
+    .report-header h2 {
+      font-size: 20px;
+    }
+  }
+
+  /* ===== EMPTY STATE ===== */
+  .empty-state {
+    text-align: center;
+    padding: 60px 20px;
+  }
+  .empty-state .empty-icon {
+    font-size: 48px;
+    margin-bottom: 12px;
+  }
+  .empty-state h3 {
+    font-size: 16px;
+    color: var(--text);
+    margin-bottom: 6px;
+  }
+  .empty-state p {
+    font-size: 13px;
+    color: var(--text-secondary);
+  }
+
+  /* print */
+  @media print {
+    .sidebar { display: none; }
+    .main { margin-left: 0; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ===== SIDEBAR ===== -->
+<aside class="sidebar">
+  <div class="sidebar-header">
+    <h1>📰 行业日报</h1>
+    <div class="subtitle">AI · 电商 · 箱包</div>
+    <div class="sidebar-tags">
+      <span class="sidebar-tag ai">AI</span>
+      <span class="sidebar-tag ecom">电商</span>
+      <span class="sidebar-tag bag">箱包</span>
+    </div>
+  </div>
+  <nav class="sidebar-nav" id="sidebarNav">
+    <div class="loading" style="padding:30px;color:#666;">
+      <div class="spinner"></div>
+      加载归档...
+    </div>
+  </nav>
+  <div class="sidebar-footer">
+    每日 11:30 自动更新 · WorkBuddy
+  </div>
+</aside>
+
+<!-- ===== MAIN CONTENT ===== -->
+<main class="main" id="mainContent">
+  <div class="loading">
+    <div class="spinner"></div>
+    正在加载日报数据...
+  </div>
+</main>
+
+<script>
+// ===== MANIFEST & REPORT LOADER =====
+const MANIFEST_URL = 'manifest.json';
+const SIDEBAR_ID = 'sidebarNav';
+const MAIN_ID = 'mainContent';
+
+let manifest = [];
+let currentDate = null;
+
+// 月份中文名
+const MONTH_NAMES = ['1月','2月','3月','4月','5月','6月','7月','8月','9月','10月','11月','12月'];
+const WEEKDAY_NAMES = ['周日','周一','周二','周三','周四','周五','周六'];
+
+function getTodayStr() {
+  const d = new Date();
+  return `${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}-${String(d.getDate()).padStart(2,'0')}`;
+}
+
+async function init() {
+  try {
+    const resp = await fetch(MANIFEST_URL);
+    if (!resp.ok) throw new Error('Manifest not found');
+    manifest = await resp.json();
+  } catch (e) {
+    manifest = [];
+  }
+
+  buildSidebar();
+
+  // 默认加载最新一期
+  if (manifest.length > 0) {
+    loadReport(manifest[manifest.length - 1]);
+  } else {
+    showEmpty();
+  }
+}
+
+function buildSidebar() {
+  const nav = document.getElementById(SIDEBAR_ID);
+  if (manifest.length === 0) {
+    nav.innerHTML = '<div class="empty-state" style="padding:40px 16px;color:#666;"><div class="empty-icon">📭</div><p style="font-size:11px;">暂无日报归档</p></div>';
+    return;
+  }
+
+  // 按年月分组
+  const grouped = {};
+  manifest.forEach(entry => {
+    const [y, m, d] = entry.date.split('-');
+    if (!grouped[y]) grouped[y] = {};
+    if (!grouped[y][m]) grouped[y][m] = [];
+    grouped[y][m].push({ ...entry, day: d });
+  });
+
+  const years = Object.keys(grouped).sort((a,b) => b - a); // 最新在前
+
+  let html = '';
+  const today = getTodayStr();
+
+  years.forEach(year => {
+    const months = Object.keys(grouped[year]).sort((a,b) => b - a);
+    const totalInYear = months.reduce((sum, m) => sum + grouped[year][m].length, 0);
+
+    html += `<div class="year-group">`;
+    html += `<div class="year-toggle" data-year="${year}" onclick="toggleYear(this)">
+      <span class="arrow">▼</span> ${year} 年 <span style="font-size:10px;color:#666;margin-left:6px;">${totalInYear}期</span>
+    </div>`;
+    html += `<div class="month-list" id="year-${year}">`;
+
+    months.forEach(month => {
+      const entries = grouped[year][month];
+      html += `<div class="month-group">`;
+      html += `<div class="month-toggle" data-ym="${year}-${month}" onclick="toggleMonth(this)">
+        <span class="arrow">▼</span> ${MONTH_NAMES[parseInt(month)-1]}
+        <span class="count">${entries.length}期</span>
+      </div>`;
+      html += `<div class="date-list" id="month-${year}-${month}">`;
+
+      entries.sort((a,b) => b.day - a.day).forEach(entry => {
+        const d = new Date(entry.date);
+        const wd = WEEKDAY_NAMES[d.getDay()];
+        const isToday = entry.date === today ? ' today' : '';
+        const isActive = currentDate && entry.date === currentDate ? ' active' : '';
+        html += `<div class="date-item${isToday}${isActive}" data-date="${entry.date}" onclick="onDateClick('${entry.date}', this)">
+          <span class="dot"></span> ${entry.day}日 <span style="font-size:10px;opacity:0.6;">${wd}</span>
+        </div>`;
+      });
+
+      html += `</div></div>`;
+    });
+
+    html += `</div></div>`;
+  });
+
+  nav.innerHTML = html;
+}
+
+function toggleYear(el) {
+  el.classList.toggle('collapsed');
+  const year = el.dataset.year;
+  const list = document.getElementById(`year-${year}`);
+  list.style.display = el.classList.contains('collapsed') ? 'none' : 'block';
+}
+
+function toggleMonth(el) {
+  el.classList.toggle('collapsed');
+  const ym = el.dataset.ym;
+  const [y, m] = ym.split('-');
+  const list = document.getElementById(`month-${y}-${m}`);
+  list.style.display = el.classList.contains('collapsed') ? 'none' : 'block';
+}
+
+function onDateClick(dateStr, el) {
+  // 高亮
+  document.querySelectorAll('.date-item').forEach(item => item.classList.remove('active'));
+  if (el) el.classList.add('active');
+
+  const entry = manifest.find(e => e.date === dateStr);
+  if (entry) {
+    currentDate = dateStr;
+    loadReport(entry);
+  }
+}
+
+async function loadReport(entry) {
+  currentDate = entry.date;
+  const main = document.getElementById(MAIN_ID);
+  main.innerHTML = '<div class="loading"><div class="spinner"></div>正在加载日报...</div>';
+
+  try {
+    const resp = await fetch(entry.path);
+    if (!resp.ok) throw new Error('Report not found');
+    const html = await resp.text();
+
+    // 提取 <body> 内容（去掉完整 HTML 壳）
+    const bodyMatch = html.match(/<body[^>]*>([\s\S]*)<\/body>/i);
+    const content = bodyMatch ? bodyMatch[1] : html;
+    main.innerHTML = content;
+
+    // 更新侧边栏高亮
+    document.querySelectorAll('.date-item').forEach(item => {
+      item.classList.remove('active');
+      if (item.dataset.date === entry.date) item.classList.add('active');
+    });
+  } catch (e) {
+    main.innerHTML = `<div class="empty-state">
+      <div class="empty-icon">⚠️</div>
+      <h3>加载失败</h3>
+      <p>无法加载 ${entry.date} 的日报，文件可能不存在。</p>
+    </div>`;
+  }
+}
+
+function showEmpty() {
+  const main = document.getElementById(MAIN_ID);
+  main.innerHTML = `<div class="welcome-section">
+    <div class="icon">📰</div>
+    <h2>行业日报系统已就绪</h2>
+    <p>暂无日报数据。每天上午 11:30 会自动生成当日行业日报，<br>覆盖 AI、电商、箱包三大板块。</p>
+    <p style="margin-top:16px;font-size:12px;color:#999;">首份日报生成后，刷新页面即可查看。</p>
+  </div>`;
+}
+
+// 启动
+init();
+</script>
+
+</body>
+</html>
