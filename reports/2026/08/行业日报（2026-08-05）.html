@@ -46,7 +46,76 @@
     text-align: center;
     font-size: 13px;
     color: var(--text-muted);
+    margin-bottom: 10px;
+  }
+
+  .top-anchor-nav {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    justify-content: center;
     margin-bottom: 28px;
+  }
+
+  .top-anchor-chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 10px 20px;
+    border-radius: 24px;
+    background: #fff;
+    border: 1.5px solid var(--accent);
+    color: var(--accent);
+    font-size: 13px;
+    font-weight: 600;
+    transition: all 0.18s;
+    cursor: pointer;
+    white-space: nowrap;
+    text-decoration: none;
+  }
+
+  .top-anchor-chip:hover {
+    background: var(--accent);
+    color: #fff;
+    text-decoration: none;
+  }
+
+  .top-anchor-chip.primary {
+    background: var(--accent);
+    color: #fff;
+    font-weight: 700;
+  }
+
+  .top-anchor-chip .count {
+    font-weight: 700;
+    font-size: 14px;
+  }
+
+  .subsection-anchor-nav {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin: 10px 0 16px;
+  }
+
+  .subsection-anchor-chip {
+    display: inline-flex;
+    align-items: center;
+    padding: 6px 14px;
+    border-radius: 14px;
+    background: var(--tag-bg);
+    color: var(--tag-text);
+    font-size: 12px;
+    font-weight: 600;
+    transition: all 0.18s;
+    white-space: nowrap;
+    text-decoration: none;
+  }
+
+  .subsection-anchor-chip:hover {
+    background: var(--accent);
+    color: #fff;
+    text-decoration: none;
   }
 
   .report-intro {
@@ -198,18 +267,29 @@
 <h1 class="report-main-title">行业日报（2026-08-05）</h1>
 <div class="report-meta">2026年8月5日 · 星期三 · 数据来源：AI HOT / WebSearch / 公开报道</div>
 
+<div class="top-anchor-nav">
+  <span class="top-anchor-chip primary">当日总条数 <span class="count">22</span></span>
+  <a class="top-anchor-chip" href="#section-bags">箱包 <span class="count">4</span></a>
+  <a class="top-anchor-chip" href="#section-ec">电商 <span class="count">6</span></a>
+  <a class="top-anchor-chip" href="#section-ai">AI <span class="count">12</span></a>
+</div>
+
 <div class="report-intro">
   本期日报覆盖过去24小时（8月4日10:00至8月5日10:00）的行业动态。箱包领域，TUMI、Longchamp 等品牌密集发布2026秋冬新品，Marc Jacobs 在日本开设艺术家快闪店；电商板块，亚马逊市值突破3万亿美元，TikTok Shop 英国直播销售额同比增55%，Temu 加快欧洲本土仓布局；AI 赛道尤为活跃，月之暗面启动500亿美元 Pre-IPO 融资，DeepSeek 拟再募500亿元，中国大模型"八周五连发"引发全球关注。
 </div>
 
 <!-- ===== 箱包动态 ===== -->
-<section class="section">
+<section class="section" id="section-bags">
   <h2 class="section-title"><span class="section-icon" style="background:#2d5016;">BG</span>箱包动态</h2>
+  <div class="subsection-anchor-nav">
+    <a class="subsection-anchor-chip" href="#sub-bags-brand">品牌与产品</a>
+    <a class="subsection-anchor-chip" href="#sub-bags-trend">消费趋势与旅行需求</a>
+  </div>
   <div class="section-summary">
     过去24小时内，箱包行业迎来多个品牌2026秋冬新品发布潮。TUMI 推出面向年轻一代的 AXIS 系列，Longchamp 以全粒面牛皮打造 Le Cadence 日常奢华包款，Marc Jacobs 则在东京/大阪以艺术家快闪店形式推出限定手绘包袋。
   </div>
 
-  <div class="subsection">
+  <div class="subsection" id="sub-bags-brand">
     <div class="subsection-title">品牌与产品</div>
     <ul class="news-list">
       <li>
@@ -230,7 +310,7 @@
     </ul>
   </div>
 
-  <div class="subsection">
+  <div class="subsection" id="sub-bags-trend">
     <div class="subsection-title">消费趋势与旅行需求</div>
     <ul class="news-list">
       <li>
@@ -243,13 +323,19 @@
 </section>
 
 <!-- ===== 电商动态 ===== -->
-<section class="section">
+<section class="section" id="section-ec">
   <h2 class="section-title"><span class="section-icon" style="background:#2d5016;">EC</span>电商动态</h2>
+  <div class="subsection-anchor-nav">
+    <a class="subsection-anchor-chip" href="#sub-ec-platform">平台与零售</a>
+    <a class="subsection-anchor-chip" href="#sub-ec-crossborder">跨境与出海</a>
+    <a class="subsection-anchor-chip" href="#sub-ec-logistics">支付、物流与供应链</a>
+    <a class="subsection-anchor-chip" href="#sub-ec-policy">政策与监管</a>
+  </div>
   <div class="section-summary">
     电商板块多项数据发布：亚马逊市值首次突破3万亿美元，Wayfair Q2美国市场创近五年最快增长；TikTok Shop 英国站入驻商家超30万，直播销售额同比增55%；Temu 加快欧洲本土仓建设；欧盟3欧元小包税实施满月，低价直邮模式面临结构性冲击。同时，俄罗斯拟对跨境电商征收增值税，新加坡物流科技企业 MG Ship 推出AI供应链平台。
   </div>
 
-  <div class="subsection">
+  <div class="subsection" id="sub-ec-platform">
     <div class="subsection-title">平台与零售</div>
     <ul class="news-list">
       <li>
@@ -270,7 +356,7 @@
     </ul>
   </div>
 
-  <div class="subsection">
+  <div class="subsection" id="sub-ec-crossborder">
     <div class="subsection-title">跨境与出海</div>
     <ul class="news-list">
       <li>
@@ -291,7 +377,7 @@
     </ul>
   </div>
 
-  <div class="subsection">
+  <div class="subsection" id="sub-ec-logistics">
     <div class="subsection-title">支付、物流与供应链</div>
     <ul class="news-list">
       <li>
@@ -302,7 +388,7 @@
     </ul>
   </div>
 
-  <div class="subsection">
+  <div class="subsection" id="sub-ec-policy">
     <div class="subsection-title">政策与监管</div>
     <ul class="news-list">
       <li>
@@ -315,13 +401,20 @@
 </section>
 
 <!-- ===== AI动态 ===== -->
-<section class="section">
+<section class="section" id="section-ai">
   <h2 class="section-title"><span class="section-icon" style="background:#2d5016;">AI</span>AI 动态</h2>
+  <div class="subsection-anchor-nav">
+    <a class="subsection-anchor-chip" href="#sub-ai-model">模型与技术更新</a>
+    <a class="subsection-anchor-chip" href="#sub-ai-product">产品与平台</a>
+    <a class="subsection-anchor-chip" href="#sub-ai-capital">产业与资本</a>
+    <a class="subsection-anchor-chip" href="#sub-ai-policy">政策与治理</a>
+    <a class="subsection-anchor-chip" href="#sub-ai-research">研究与观点</a>
+  </div>
   <div class="section-summary">
     过去24小时AI领域消息极为密集。中国大模型"八周五连发"引发彭博社等国际媒体深度关注——字节 SeedRealtime 全双工大模型上线豆包，腾讯混元 Hy ASR 3.0 发布。资本层面，月之暗面500亿美元 Pre-IPO 开闸，DeepSeek 拟重启500亿元二轮融资，Anthropic 与初创云公司 Volta 签署100亿美元算力协议。合规方面，工信部发布首部 L3/L4 自动驾驶国标，MiniMax H3 开源时明确排除美国地区。
   </div>
 
-  <div class="subsection">
+  <div class="subsection" id="sub-ai-model">
     <div class="subsection-title">模型与技术更新</div>
     <ul class="news-list">
       <li>
@@ -342,7 +435,7 @@
     </ul>
   </div>
 
-  <div class="subsection">
+  <div class="subsection" id="sub-ai-product">
     <div class="subsection-title">产品与平台</div>
     <ul class="news-list">
       <li>
@@ -363,7 +456,7 @@
     </ul>
   </div>
 
-  <div class="subsection">
+  <div class="subsection" id="sub-ai-capital">
     <div class="subsection-title">产业与资本</div>
     <ul class="news-list">
       <li>
@@ -384,7 +477,7 @@
     </ul>
   </div>
 
-  <div class="subsection">
+  <div class="subsection" id="sub-ai-policy">
     <div class="subsection-title">政策与治理</div>
     <ul class="news-list">
       <li>
@@ -400,7 +493,7 @@
     </ul>
   </div>
 
-  <div class="subsection">
+  <div class="subsection" id="sub-ai-research">
     <div class="subsection-title">研究与观点</div>
     <ul class="news-list">
       <li>

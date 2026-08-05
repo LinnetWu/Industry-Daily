@@ -19,7 +19,15 @@
     --accent-bg: #eaf0e4;
     --tag-bg: #eaf0e4;
     --tag-text: #3a6b1e;
+    --nav-card-bg: #f5f3ed;
+    --nav-card-border: #ebe8df;
+    --nav-chip-bg: #ffffff;
+    --nav-dot-total: #6b5b3e;
+    --nav-dot-bags: #2d5016;
+    --nav-dot-ec: #4a7c23;
+    --nav-dot-ai: #8fa85c;
     --shadow: 0 1px 3px rgba(0,0,0,0.06), 0 6px 18px rgba(0,0,0,0.04);
+    --shadow-card: 0 2px 8px rgba(0,0,0,0.05), 0 12px 28px rgba(0,0,0,0.04);
     --radius: 8px;
     --radius-lg: 12px;
     --sidebar-width: 280px;
@@ -307,80 +315,150 @@
     letter-spacing: 0.3px;
   }
 
-  /* Top anchor navigation */
+  /* Top anchor navigation — AI HOT Briefing style */
   .top-anchor-nav {
     display: flex;
     flex-wrap: wrap;
-    gap: 10px;
-    justify-content: center;
-    margin-bottom: 28px;
+    gap: 14px;
+    justify-content: flex-start;
+    align-items: stretch;
+    margin: 16px 0 40px;
     min-height: 0;
+    background: var(--nav-card-bg);
+    border: 1px solid var(--nav-card-border);
+    border-radius: 18px;
+    padding: 22px 24px;
+    box-shadow: var(--shadow-card);
   }
 
   .top-anchor-chip {
     display: inline-flex;
     align-items: center;
-    gap: 6px;
-    padding: 7px 14px;
-    border-radius: 20px;
-    background: var(--surface);
-    border: 1px solid var(--border);
-    color: var(--text-secondary);
-    font-size: 12px;
-    font-weight: 500;
-    transition: all 0.15s;
+    gap: 12px;
+    padding: 14px 18px;
+    border-radius: 14px;
+    background: var(--nav-chip-bg);
+    border: 1px solid var(--nav-card-border);
+    color: var(--text);
+    transition: all 0.2s;
     cursor: pointer;
     white-space: nowrap;
+    text-decoration: none;
+    box-shadow: 0 1px 2px rgba(0,0,0,0.04);
   }
 
   .top-anchor-chip:hover {
-    background: var(--accent-bg);
-    color: var(--accent);
+    background: var(--nav-chip-bg);
     border-color: var(--accent);
     text-decoration: none;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(45,80,22,0.12);
   }
 
-  .top-anchor-chip.primary {
-    background: var(--accent);
-    color: #fff;
-    border-color: var(--accent);
-    font-weight: 600;
+  .top-anchor-chip .dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 3px;
+    flex-shrink: 0;
+    background: var(--nav-dot-total);
+  }
+
+  .top-anchor-chip .dot.bags { background: var(--nav-dot-bags); }
+  .top-anchor-chip .dot.ec { background: var(--nav-dot-ec); }
+  .top-anchor-chip .dot.ai { background: var(--nav-dot-ai); }
+
+  .top-anchor-chip .chip-body {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    line-height: 1.2;
+    gap: 3px;
   }
 
   .top-anchor-chip .count {
+    font-size: 22px;
+    font-weight: 800;
+    color: var(--text);
+    letter-spacing: -0.5px;
+  }
+
+  .top-anchor-chip .label {
+    font-size: 12px;
+    font-weight: 500;
+    color: var(--text-secondary);
+  }
+
+  .top-anchor-chip.primary {
+    background: var(--nav-chip-bg);
+    border-color: var(--nav-card-border);
+  }
+
+  .top-anchor-chip.primary .count {
+    font-size: 26px;
+    font-weight: 800;
+  }
+
+  .top-anchor-chip.primary .label {
+    font-size: 12px;
     font-weight: 600;
+    color: var(--text-secondary);
   }
 
   /* Subsection anchor navigation inside each section */
   .subsection-anchor-nav {
     display: flex;
     flex-wrap: wrap;
-    gap: 8px;
-    margin: 4px 0 18px 38px;
+    gap: 10px;
+    margin: 14px 0 22px;
   }
 
   .subsection-anchor-chip {
     display: inline-flex;
     align-items: center;
-    padding: 4px 10px;
-    border-radius: 12px;
-    background: var(--surface-2);
-    border: 1px solid transparent;
+    gap: 8px;
+    padding: 9px 14px;
+    border-radius: 10px;
+    background: var(--surface);
+    border: 1px solid var(--border);
     color: var(--text-secondary);
-    font-size: 11px;
-    font-weight: 500;
-    transition: all 0.15s;
+    font-size: 13px;
+    font-weight: 600;
+    transition: all 0.2s;
     white-space: nowrap;
-    max-width: 180px;
+    max-width: 240px;
     overflow: hidden;
     text-overflow: ellipsis;
+    text-decoration: none;
+    box-shadow: 0 1px 2px rgba(0,0,0,0.03);
   }
 
   .subsection-anchor-chip:hover {
     background: var(--accent-bg);
-    color: var(--accent);
     border-color: var(--accent);
+    color: var(--accent);
     text-decoration: none;
+    transform: translateY(-1px);
+    box-shadow: 0 3px 8px rgba(45,80,22,0.10);
+  }
+
+  .subsection-anchor-chip .icon {
+    font-size: 15px;
+    opacity: 0.85;
+    flex-shrink: 0;
+  }
+
+  .subsection-anchor-chip .label {
+    color: inherit;
+  }
+
+  .subsection-anchor-chip .count {
+    margin-left: 2px;
+    font-weight: 700;
+    color: var(--text);
+    background: var(--nav-card-bg);
+    padding: 1px 7px;
+    border-radius: 8px;
+    font-size: 11px;
   }
 
   .divider {
@@ -936,6 +1014,26 @@ function sectionDisplayName(key) {
   return '其他';
 }
 
+function getSubsectionIcon(title) {
+  const t = title.toLowerCase();
+  if (t.includes('财报') || t.includes('业绩') || t.includes('融资') || t.includes('收购')) return '📊';
+  if (t.includes('品牌') || t.includes('产品')) return '👜';
+  if (t.includes('渠道') || t.includes('零售') || t.includes('dtc') || t.includes('快闪')) return '🏪';
+  if (t.includes('制造') || t.includes('供应链') || t.includes('工厂') || t.includes('材料')) return '🏭';
+  if (t.includes('消费') || t.includes('旅行') || t.includes('户外') || t.includes('趋势')) return '📈';
+  if (t.includes('平台') || t.includes('零售')) return '🛒';
+  if (t.includes('跨境') || t.includes('出海') || t.includes('海外')) return '🌐';
+  if (t.includes('营销') || t.includes('内容') || t.includes('直播') || t.includes('短视频')) return '📢';
+  if (t.includes('支付') || t.includes('物流') || t.includes('仓储') || t.includes('配送')) return '🚚';
+  if (t.includes('政策') || t.includes('监管') || t.includes('合规')) return '📋';
+  if (t.includes('模型') || t.includes('技术') || t.includes('开源') || t.includes('推理')) return '🧠';
+  if (t.includes('产品') || t.includes('平台') || t.includes('api') || t.includes('开发者')) return '💻';
+  if (t.includes('产业') || t.includes('资本') || t.includes('算力') || t.includes('合作')) return '💰';
+  if (t.includes('治理') || t.includes('安全') || t.includes('标准') || t.includes('法律')) return '🛡️';
+  if (t.includes('研究') || t.includes('论文') || t.includes('观点') || t.includes('报告')) return '📄';
+  return '•';
+}
+
 function buildReportAnchors() {
   const main = document.getElementById('reportContent');
   const topNav = document.getElementById('topAnchorNav');
@@ -962,7 +1060,7 @@ function buildReportAnchors() {
     const count = lis.length;
     totalCount += count;
 
-    // 给 subsection 加 id 并收集分类导航
+    // 给 subsection 加 id 并收集分类导航（带图标与条目数）
     const subsections = section.querySelectorAll('.subsection');
     const subNavItems = [];
     subsections.forEach((sub, subIdx) => {
@@ -970,32 +1068,31 @@ function buildReportAnchors() {
       if (!subTitleEl) return;
       const subTitle = subTitleEl.textContent.trim();
       sub.id = 'sub-' + key + '-' + sIdx + '-' + subIdx;
-      subNavItems.push({ id: sub.id, title: subTitle });
+      const subCount = sub.querySelectorAll('.news-list li').length;
+      subNavItems.push({ id: sub.id, title: subTitle, count: subCount, icon: getSubsectionIcon(subTitle) });
     });
 
-    // 在该板块标题后插入分类锚点导航
+    // 在该板块标题后插入/替换分类锚点导航，统一使用查看器样式（图标 + 标签 + 计数）
     if (subNavItems.length > 0 && titleEl) {
-      // 先移除旧的（切换日期时）
       const existing = titleEl.parentElement.querySelector('.subsection-anchor-nav');
       if (existing) existing.remove();
-
       const subNavHtml =
         '<div class="subsection-anchor-nav">' +
         subNavItems.map(item =>
-          `<a class="subsection-anchor-chip" href="#${item.id}" onclick="scrollToAnchor('${item.id}'); return false;" title="${item.title}">${item.title}</a>`
+          `<a class="subsection-anchor-chip" href="#${item.id}" onclick="scrollToAnchor('${item.id}'); return false;" title="${item.title}"><span class="icon">${item.icon}</span><span class="label">${item.title}</span><span class="count">${item.count}</span></a>`
         ).join('') +
         '</div>';
       titleEl.insertAdjacentHTML('afterend', subNavHtml);
     }
 
-    sectionData.push({ id: section.id, title: shortTitle, count });
+    sectionData.push({ id: section.id, title: shortTitle, count, key });
   });
 
-  // 生成顶部板块导航
+  // 生成顶部板块导航（AI HOT Briefing 风格：色块点 + 大数字 + 小标签）
   const topNavHtml =
-    '<span class="top-anchor-chip primary">当日总条数 <span class="count">' + totalCount + '</span></span>' +
+    '<span class="top-anchor-chip primary"><span class="dot"></span><span class="chip-body"><span class="count">' + totalCount + '</span><span class="label">当日总条数</span></span></span>' +
     sectionData.map(s =>
-      `<a class="top-anchor-chip" href="#${s.id}" onclick="scrollToAnchor('${s.id}'); return false;">${s.title} <span class="count">${s.count}</span></a>`
+      `<a class="top-anchor-chip" href="#${s.id}" onclick="scrollToAnchor('${s.id}'); return false;"><span class="dot ${s.key}"></span><span class="chip-body"><span class="count">${s.count}</span><span class="label">${s.title}</span></span></a>`
     ).join('');
 
   topNav.innerHTML = topNavHtml;
