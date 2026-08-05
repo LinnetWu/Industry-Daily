@@ -249,7 +249,7 @@
     max-width: 920px;
   }
 
-  .report-meta {
+  .viewer-meta {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -262,12 +262,12 @@
     font-weight: 500;
   }
 
-  .report-meta .sep {
+  .viewer-meta .sep {
     color: var(--text-muted);
     opacity: 0.5;
   }
 
-  .report-title {
+  .viewer-title {
     text-align: center;
     font-size: 44px;
     font-weight: 800;
@@ -277,7 +277,7 @@
     line-height: 1.2;
   }
 
-  .report-subtitle {
+  .viewer-subtitle {
     text-align: center;
     font-size: 13px;
     color: var(--text-secondary);
@@ -450,6 +450,191 @@
     .sidebar, .nav-row { display: none; }
     .main { margin-left: 0; max-width: none; padding: 20px; }
   }
+
+  /* ===== REPORT CONTENT STYLES (scoped to preserve single-report visuals) ===== */
+  .report-content * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  .report-content {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif;
+    color: var(--text);
+    line-height: 1.7;
+    padding: 0 !important;
+    background: transparent !important;
+  }
+
+  .report-content .report-container {
+    max-width: 880px;
+    margin: 0 auto;
+  }
+
+  .report-content .report-main-title {
+    font-size: 28px;
+    font-weight: 800;
+    color: var(--accent);
+    margin-bottom: 6px;
+    letter-spacing: 0.3px;
+  }
+
+  .report-content .report-meta {
+    display: flex;
+    gap: 12px;
+    font-size: 12px;
+    color: var(--text-secondary);
+    margin-bottom: 24px;
+    padding-bottom: 16px;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .report-content .report-meta .dot {
+    color: var(--text-muted);
+  }
+
+  .report-content .report-intro {
+    background: var(--surface);
+    border-left: 3px solid var(--accent);
+    padding: 16px 20px;
+    border-radius: 0 var(--radius) var(--radius) 0;
+    font-size: 14px;
+    color: var(--text);
+    margin-bottom: 36px;
+    line-height: 1.8;
+  }
+
+  .report-content .section {
+    margin-bottom: 40px;
+  }
+
+  .report-content .section-title {
+    font-size: 22px;
+    font-weight: 700;
+    color: var(--accent);
+    margin-bottom: 8px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .report-content .section-title .section-icon {
+    width: 28px;
+    height: 28px;
+    border-radius: 6px;
+    background: var(--accent);
+    color: #fff;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 13px;
+    font-weight: 700;
+  }
+
+  .report-content .section-summary {
+    font-size: 14px;
+    color: var(--text-secondary);
+    line-height: 1.8;
+    margin-bottom: 20px;
+    padding: 0 4px;
+  }
+
+  .report-content .subsection {
+    margin-bottom: 28px;
+  }
+
+  .report-content .subsection-title {
+    font-size: 15px;
+    font-weight: 700;
+    color: var(--text);
+    margin-bottom: 12px;
+    padding-left: 12px;
+    border-left: 3px solid var(--accent);
+  }
+
+  .report-content .news-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  .report-content .news-list li {
+    background: #ffffff;
+    border: 1px solid var(--border-light);
+    border-radius: var(--radius);
+    padding: 16px 20px;
+    margin-bottom: 10px;
+    transition: box-shadow 0.15s;
+  }
+
+  .report-content .news-list li:hover {
+    box-shadow: var(--shadow);
+  }
+
+  .report-content .news-item-head {
+    display: flex;
+    align-items: baseline;
+    gap: 8px;
+    margin-bottom: 6px;
+  }
+
+  .report-content .news-item-head .bullet {
+    color: var(--accent);
+    font-weight: 700;
+    flex-shrink: 0;
+  }
+
+  .report-content .news-item-head .news-title {
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--text);
+    line-height: 1.5;
+  }
+
+  .report-content .news-body {
+    font-size: 13px;
+    color: #555;
+    line-height: 1.7;
+    margin-bottom: 8px;
+  }
+
+  .report-content .news-source {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 11px;
+    color: var(--text-muted);
+  }
+
+  .report-content .news-source .source-tag {
+    padding: 2px 8px;
+    border-radius: 4px;
+    background: var(--tag-bg);
+    color: var(--tag-text);
+    font-weight: 500;
+    font-size: 10px;
+  }
+
+  .report-content .news-source a {
+    color: var(--accent);
+    text-decoration: none;
+  }
+
+  .report-content .news-source a:hover {
+    text-decoration: underline;
+  }
+
+  .report-content .report-footer {
+    margin-top: 40px;
+    padding-top: 20px;
+    border-top: 1px solid var(--border);
+    font-size: 11px;
+    color: var(--text-muted);
+    text-align: center;
+    line-height: 1.8;
+  }
+
+  @media (max-width: 600px) {
+    .report-content .report-main-title { font-size: 22px; }
+    .report-content .section-title { font-size: 18px; }
+    .report-content .news-list li { padding: 14px 16px; }
+  }
 </style>
 </head>
 <body>
@@ -482,15 +667,15 @@
 
 <!-- ===== MAIN CONTENT ===== -->
 <main class="main">
-  <div class="report-meta">
+  <div class="viewer-meta">
     <span>VOL.<span id="metaDate">--</span></span>
     <span class="sep">·</span>
     <span><span id="metaCount">--</span> 条</span>
     <span class="sep">·</span>
     <span>行业日报</span>
   </div>
-  <h1 class="report-title">行业日报</h1>
-  <div class="report-subtitle" id="reportSubtitle">-- · -- · DAILY · 每日十时</div>
+  <h1 class="viewer-title">行业日报</h1>
+  <div class="viewer-subtitle" id="reportSubtitle">-- · -- · DAILY · 每日十时</div>
   <div class="divider"></div>
   <div class="report-content" id="reportContent">
     <div class="loading">
