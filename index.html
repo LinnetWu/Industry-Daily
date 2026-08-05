@@ -303,8 +303,84 @@
     text-align: center;
     font-size: 13px;
     color: var(--text-secondary);
-    margin-bottom: 32px;
+    margin-bottom: 20px;
     letter-spacing: 0.3px;
+  }
+
+  /* Top anchor navigation */
+  .top-anchor-nav {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    justify-content: center;
+    margin-bottom: 28px;
+    min-height: 0;
+  }
+
+  .top-anchor-chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 7px 14px;
+    border-radius: 20px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    color: var(--text-secondary);
+    font-size: 12px;
+    font-weight: 500;
+    transition: all 0.15s;
+    cursor: pointer;
+    white-space: nowrap;
+  }
+
+  .top-anchor-chip:hover {
+    background: var(--accent-bg);
+    color: var(--accent);
+    border-color: var(--accent);
+    text-decoration: none;
+  }
+
+  .top-anchor-chip.primary {
+    background: var(--accent);
+    color: #fff;
+    border-color: var(--accent);
+    font-weight: 600;
+  }
+
+  .top-anchor-chip .count {
+    font-weight: 600;
+  }
+
+  /* Subsection anchor navigation inside each section */
+  .subsection-anchor-nav {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin: 4px 0 18px 38px;
+  }
+
+  .subsection-anchor-chip {
+    display: inline-flex;
+    align-items: center;
+    padding: 4px 10px;
+    border-radius: 12px;
+    background: var(--surface-2);
+    border: 1px solid transparent;
+    color: var(--text-secondary);
+    font-size: 11px;
+    font-weight: 500;
+    transition: all 0.15s;
+    white-space: nowrap;
+    max-width: 180px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .subsection-anchor-chip:hover {
+    background: var(--accent-bg);
+    color: var(--accent);
+    border-color: var(--accent);
+    text-decoration: none;
   }
 
   .divider {
@@ -698,6 +774,7 @@
   </div>
   <h1 class="viewer-title">行业日报</h1>
   <div class="viewer-subtitle" id="reportSubtitle">-- · -- · DAILY · 每日十时</div>
+  <div class="top-anchor-nav" id="topAnchorNav" style="display:none;"></div>
   <div class="divider"></div>
   <div class="report-content" id="reportContent">
     <div class="loading">
@@ -832,6 +909,99 @@ function expandAllMonths() {
   });
 }
 
+function scrollToAnchor(id) {
+  const el = document.getElementById(id);
+  if (!el) return;
+  const headerOffset = 24;
+  const y = el.getBoundingClientRect().top + window.pageYOffset - headerOffset;
+  window.scrollTo({ top: y, behavior: 'smooth' });
+}
+
+function detectSectionKey(section) {
+  const titleEl = section.querySelector('.section-title');
+  if (!titleEl) return null;
+  const iconEl = titleEl.querySelector('.section-icon');
+  const iconText = iconEl ? iconEl.textContent.trim() : '';
+  const titleText = titleEl.textContent.trim();
+  if (iconText === 'BG' || titleText.includes('箱包')) return 'bags';
+  if (iconText === 'EC' || titleText.includes('电商')) return 'ec';
+  if (iconText === 'AI' || titleText.includes('AI')) return 'ai';
+  return 'section';
+}
+
+function sectionDisplayName(key) {
+  if (key === 'bags') return '箱包';
+  if (key === 'ec') return '电商';
+  if (key === 'ai') return 'AI';
+  return '其他';
+}
+
+function buildReportAnchors() {
+  const main = document.getElementById('reportContent');
+  const topNav = document.getElementById('topAnchorNav');
+  const sections = main.querySelectorAll('.section');
+
+  if (sections.length === 0) {
+    topNav.style.display = 'none';
+    topNav.innerHTML = '';
+    return;
+  }
+
+  let totalCount = 0;
+  const sectionData = [];
+
+  sections.forEach((section, sIdx) => {
+    const key = detectSectionKey(section) || ('sec-' + sIdx);
+    section.id = 'section-' + key + '-' + sIdx;
+
+    const titleEl = section.querySelector('.section-title');
+    const titleText = titleEl ? titleEl.textContent.trim() : '板块' + (sIdx + 1);
+    const shortTitle = titleText.replace(/^\s*(AI|EC|BG)\s*/, '').replace(/动态$/, '').trim() || sectionDisplayName(key);
+
+    const lis = section.querySelectorAll('.news-list li');
+    const count = lis.length;
+    totalCount += count;
+
+    // 给 subsection 加 id 并收集分类导航
+    const subsections = section.querySelectorAll('.subsection');
+    const subNavItems = [];
+    subsections.forEach((sub, subIdx) => {
+      const subTitleEl = sub.querySelector('.subsection-title');
+      if (!subTitleEl) return;
+      const subTitle = subTitleEl.textContent.trim();
+      sub.id = 'sub-' + key + '-' + sIdx + '-' + subIdx;
+      subNavItems.push({ id: sub.id, title: subTitle });
+    });
+
+    // 在该板块标题后插入分类锚点导航
+    if (subNavItems.length > 0 && titleEl) {
+      // 先移除旧的（切换日期时）
+      const existing = titleEl.parentElement.querySelector('.subsection-anchor-nav');
+      if (existing) existing.remove();
+
+      const subNavHtml =
+        '<div class="subsection-anchor-nav">' +
+        subNavItems.map(item =>
+          `<a class="subsection-anchor-chip" href="#${item.id}" onclick="scrollToAnchor('${item.id}'); return false;" title="${item.title}">${item.title}</a>`
+        ).join('') +
+        '</div>';
+      titleEl.insertAdjacentHTML('afterend', subNavHtml);
+    }
+
+    sectionData.push({ id: section.id, title: shortTitle, count });
+  });
+
+  // 生成顶部板块导航
+  const topNavHtml =
+    '<span class="top-anchor-chip primary">当日总条数 <span class="count">' + totalCount + '</span></span>' +
+    sectionData.map(s =>
+      `<a class="top-anchor-chip" href="#${s.id}" onclick="scrollToAnchor('${s.id}'); return false;">${s.title} <span class="count">${s.count}</span></a>`
+    ).join('');
+
+  topNav.innerHTML = topNavHtml;
+  topNav.style.display = 'flex';
+}
+
 async function onDateClick(dateStr, el) {
   document.querySelectorAll('.date-item').forEach(i => i.classList.remove('active'));
   if (el) el.classList.add('active');
@@ -848,6 +1018,7 @@ async function loadReport(entry) {
     `${cnDateSimple(entry.date)} · ${weekdayOf(entry.date)} · DAILY · 每日十时`;
 
   const main = document.getElementById('reportContent');
+  document.getElementById('topAnchorNav').style.display = 'none';
   main.innerHTML =
     '<div class="loading">' +
     '<div class="spinner"></div>正在加载 ' + entry.date + ' 日报...</div>';
@@ -870,6 +1041,9 @@ async function loadReport(entry) {
     document.getElementById('metaCount').textContent = liCount;
 
     main.innerHTML = content;
+
+    // 构建板块 / 分类锚点导航
+    buildReportAnchors();
 
     // 上下篇导航
     const sorted = [...manifest].sort((a, b) => a.date.localeCompare(b.date));
@@ -898,6 +1072,7 @@ async function loadReport(entry) {
     window.scrollTo({ top: 0, behavior: 'smooth' });
 
   } catch (e) {
+    document.getElementById('topAnchorNav').style.display = 'none';
     main.innerHTML =
       '<div class="error-block">' +
       '<div class="icon">⚠️</div>' +
@@ -911,6 +1086,8 @@ function showWelcome() {
   document.getElementById('metaDate').textContent = '--';
   document.getElementById('metaCount').textContent = '--';
   document.getElementById('reportSubtitle').textContent = '尚无数据 · -- · DAILY · 每日十时';
+  document.getElementById('topAnchorNav').style.display = 'none';
+  document.getElementById('topAnchorNav').innerHTML = '';
   document.getElementById('reportContent').innerHTML =
     '<div class="welcome">' +
     '<div class="icon">📰</div>' +
@@ -923,6 +1100,8 @@ function showPlaceholder(tabName, hint) {
   document.getElementById('metaDate').textContent = '--';
   document.getElementById('metaCount').textContent = '--';
   document.getElementById('reportSubtitle').textContent = '-- · -- · -- · WorkBuddy';
+  document.getElementById('topAnchorNav').style.display = 'none';
+  document.getElementById('topAnchorNav').innerHTML = '';
   document.getElementById('reportContent').innerHTML =
     '<div class="placeholder">' +
     '<div class="icon">📊</div>' +
