@@ -121,7 +121,7 @@
   .archive {
     flex: 1;
     overflow-y: auto;
-    padding: 8px 0 16px;
+    padding: 12px 0 16px;
   }
 
   .archive::-webkit-scrollbar { width: 4px; }
@@ -144,8 +144,10 @@
   .month-toggle {
     display: flex;
     align-items: center;
-    gap: 6px;
-    padding: 9px 20px;
+    gap: 2px;
+    padding: 10px 16px;
+    margin: 0 4px;
+    border-radius: 6px;
     cursor: pointer;
     font-size: 13px;
     font-weight: 600;
@@ -157,16 +159,17 @@
   .month-toggle:hover { background: var(--surface-2); }
 
   .month-toggle .arrow {
-    font-size: 9px;
+    font-size: 10px;
     color: var(--text-secondary);
     transition: transform 0.2s;
     display: inline-block;
-    width: 10px;
+    width: 14px;
     text-align: center;
+    margin-right: 4px;
   }
 
-  .month-toggle.collapsed .arrow {
-    transform: rotate(-90deg);
+  .month-toggle:not(.collapsed) .arrow {
+    transform: rotate(90deg);
   }
 
   .month-toggle .count {
@@ -229,6 +232,25 @@
     text-align: center;
     color: var(--text-muted);
     font-size: 12px;
+  }
+
+  .archive-all {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: 6px 14px 0;
+    padding: 10px 14px;
+    border-radius: 6px;
+    font-size: 12.5px;
+    font-weight: 500;
+    color: var(--text-secondary);
+    transition: background 0.15s, color 0.15s;
+  }
+
+  .archive-all:hover {
+    background: var(--surface-2);
+    color: var(--text);
+    text-decoration: none;
   }
 
   .sidebar-footer {
@@ -735,7 +757,6 @@ function buildSidebar() {
 
   if (manifest.length === 0) {
     archive.innerHTML =
-      '<div class="archive-title">归档</div>' +
       '<div class="archive-empty">暂无日报归档</div>';
     return;
   }
@@ -751,21 +772,21 @@ function buildSidebar() {
 
   const years = Object.keys(grouped).sort((a, b) => b.localeCompare(a));
 
-  let html = '<div class="archive-title">归档 · 共 ' + manifest.length + ' 期</div>';
+  let html = '';
 
-  years.forEach((year, yIdx) => {
+  years.forEach((year) => {
     const months = Object.keys(grouped[year]).sort((a, b) => b.localeCompare(a));
-    months.forEach((month, mIdx) => {
+    months.forEach((month) => {
       const entries = grouped[year][month];
-      // 默认展开最新一期所在的月（最顶上的月份）
-      const isLatestMonth = (yIdx === 0 && mIdx === 0);
+      // 参考 AIHOT 样式：默认全部折叠
+      const isExpanded = false;
 
       html += `<div class="month-group">`;
-      html += `<div class="month-toggle${isLatestMonth ? '' : ' collapsed'}" data-ym="${year}-${month}" onclick="toggleMonth(this)">`;
-      html += `<span class="arrow">▼</span> ${MONTH_CN[parseInt(month)-1]}`;
+      html += `<div class="month-toggle${isExpanded ? '' : ' collapsed'}" data-ym="${year}-${month}" onclick="toggleMonth(this)">`;
+      html += `<span class="arrow">&gt;</span> ${year}年${parseInt(month)}月`;
       html += `<span class="count">${entries.length}</span>`;
       html += `</div>`;
-      html += `<div class="date-list" id="month-${year}-${month}" style="${isLatestMonth ? '' : 'display:none;'}">`;
+      html += `<div class="date-list" id="month-${year}-${month}" style="${isExpanded ? '' : 'display:none;'}">`;
 
       entries
         .slice()
@@ -788,6 +809,8 @@ function buildSidebar() {
     });
   });
 
+  html += `<a class="archive-all" href="#" onclick="expandAllMonths(); return false;">全部日报 &gt;</a>`;
+
   archive.innerHTML = html;
 }
 
@@ -797,6 +820,16 @@ function toggleMonth(el) {
   const [y, m] = ym.split('-');
   const list = document.getElementById(`month-${y}-${m}`);
   if (list) list.style.display = el.classList.contains('collapsed') ? 'none' : 'block';
+}
+
+function expandAllMonths() {
+  document.querySelectorAll('.month-toggle.collapsed').forEach(el => {
+    el.classList.remove('collapsed');
+    const ym = el.dataset.ym;
+    const [y, m] = ym.split('-');
+    const list = document.getElementById(`month-${y}-${m}`);
+    if (list) list.style.display = 'block';
+  });
 }
 
 async function onDateClick(dateStr, el) {
