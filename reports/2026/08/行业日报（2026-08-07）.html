@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>行业日报（2026-08-07）</title>
+<style>
+  :root {
+    --bg: #fafaf8;
+    --text: #1a1a1a;
+    --text-secondary: #6b7280;
+    --text-muted: #9ca3af;
+    --border: #e0e3dc;
+    --accent: #2d5016;
+    --surface: #f4f6f1;
+    --tag-bg: #eaf0e4;
+    --tag-text: #3a6b1e;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.7;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .report-container {
+    max-width: 780px;
+    margin: 0 auto;
+    padding: 48px 24px 64px;
+  }
+
+  .report-main-title {
+    font-size: 28px;
+    font-weight: 800;
+    color: var(--accent);
+    text-align: center;
+    margin-bottom: 8px;
+    letter-spacing: 0.5px;
+  }
+
+  .report-meta {
+    text-align: center;
+    font-size: 13px;
+    color: var(--text-muted);
+    margin-bottom: 10px;
+  }
+
+  .top-anchor-nav {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    justify-content: center;
+    margin-bottom: 28px;
+  }
+
+  .top-anchor-chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 10px 20px;
+    border-radius: 24px;
+    background: #fff;
+    border: 1.5px solid var(--accent);
+    color: var(--accent);
+    font-size: 13px;
+    font-weight: 600;
+    transition: all 0.18s;
+    cursor: pointer;
+    white-space: nowrap;
+    text-decoration: none;
+  }
+
+  .top-anchor-chip:hover {
+    background: var(--accent);
+    color: #fff;
+    text-decoration: none;
+  }
+
+  .top-anchor-chip.primary {
+    background: var(--accent);
+    color: #fff;
+    font-weight: 700;
+  }
+
+  .top-anchor-chip .count {
+    font-weight: 700;
+    font-size: 14px;
+  }
+
+  .subsection-anchor-nav {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin: 10px 0 16px;
+  }
+
+  .subsection-anchor-chip {
+    display: inline-flex;
+    align-items: center;
+    padding: 6px 14px;
+    border-radius: 14px;
+    background: var(--tag-bg);
+    color: var(--tag-text);
+    font-size: 12px;
+    font-weight: 600;
+    transition: all 0.18s;
+    white-space: nowrap;
+    text-decoration: none;
+  }
+
+  .subsection-anchor-chip:hover {
+    background: var(--accent);
+    color: #fff;
+    text-decoration: none;
+  }
+
+  .report-intro {
+    background: var(--surface);
+    border-radius: 10px;
+    padding: 20px 24px;
+    margin-bottom: 36px;
+    font-size: 14.5px;
+    color: var(--text-secondary);
+    line-height: 1.8;
+    border: 1px solid var(--border);
+  }
+
+  .section {
+    margin-bottom: 40px;
+  }
+
+  .section-title {
+    font-size: 21px;
+    font-weight: 700;
+    color: var(--accent);
+    margin-bottom: 10px;
+    padding-bottom: 10px;
+    border-bottom: 2px solid var(--border);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .section-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 34px;
+    height: 34px;
+    border-radius: 8px;
+    font-size: 12px;
+    font-weight: 700;
+    color: #fff;
+    flex-shrink: 0;
+  }
+
+  .section-summary {
+    font-size: 14px;
+    color: var(--text-secondary);
+    margin-bottom: 20px;
+    padding-left: 4px;
+    line-height: 1.7;
+  }
+
+  .subsection {
+    margin-bottom: 22px;
+  }
+
+  .subsection-title {
+    font-size: 15px;
+    font-weight: 700;
+    color: var(--accent);
+    margin-bottom: 10px;
+    padding-bottom: 5px;
+    border-bottom: 1px dotted var(--border);
+  }
+
+  .news-list {
+    list-style: none;
+    padding: 0;
+  }
+
+  .news-list li {
+    margin-bottom: 14px;
+    padding: 12px 14px;
+    background: #fff;
+    border-radius: 8px;
+    border: 1px solid var(--border);
+  }
+
+  .news-item-head {
+    display: flex;
+    align-items: flex-start;
+    gap: 8px;
+    margin-bottom: 6px;
+  }
+
+  .bullet {
+    color: var(--accent);
+    font-size: 14px;
+    flex-shrink: 0;
+    margin-top: 1px;
+  }
+
+  .news-title {
+    font-size: 14.5px;
+    font-weight: 600;
+    color: var(--text);
+    line-height: 1.5;
+  }
+
+  .news-body {
+    font-size: 13.5px;
+    color: var(--text-secondary);
+    line-height: 1.7;
+    margin-bottom: 8px;
+    padding-left: 22px;
+  }
+
+  .news-source {
+    font-size: 12px;
+    padding-left: 22px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex-wrap: wrap;
+  }
+
+  .source-tag {
+    display: inline-block;
+    background: var(--tag-bg);
+    color: var(--tag-text);
+    font-size: 11px;
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-weight: 500;
+  }
+
+  .news-source a {
+    color: var(--accent);
+    text-decoration: none;
+    font-size: 12px;
+  }
+
+  .news-source a:hover {
+    text-decoration: underline;
+  }
+
+  .report-footer {
+    margin-top: 48px;
+    padding-top: 20px;
+    border-top: 1px solid var(--border);
+    font-size: 12px;
+    color: var(--text-muted);
+    text-align: center;
+    line-height: 1.8;
+  }
+</style>
+</head>
+<body>
+<div class="report-container">
+
+<h1 class="report-main-title">行业日报（2026-08-07）</h1>
+<div class="report-meta">2026年8月7日 · 星期五 · 数据来源：AI HOT / WebSearch / 公开报道</div>
+
+<div class="top-anchor-nav">
+  <span class="top-anchor-chip primary">当日总条数 <span class="count">16</span></span>
+  <a class="top-anchor-chip" href="#section-bag">箱包 <span class="count">1</span></a>
+  <a class="top-anchor-chip" href="#section-ec">电商 <span class="count">6</span></a>
+  <a class="top-anchor-chip" href="#section-ai">AI <span class="count">9</span></a>
+</div>
+
+<div class="report-intro">
+  本期日报覆盖过去24小时（8月6日10:00至8月7日10:00）的行业动态。箱包板块当日新闻稀少，仅有国产包袋品牌在高端商场加速崛起的趋势观察。电商领域，阿里将通义千问深度整合进淘宝、Temu关停国内仓转向海外自营仓、SHEIN通过港交所聆讯成为焦点，美国宣布8月29日全球取消800美元以下小包免税进一步推高跨境门槛。AI赛道迎来OpenAI免费版大升级——GPT-5.6 Luna面向十亿用户开放无限文本对话；微软首次披露OpenAI贡献约七成AI收入；Google DeepMind组织调整、AMD收购Taalas推理芯片、DeepSeek大幅上调API定价等多重信号显示AI产业格局正在加速重塑。
+</div>
+
+<!-- ===== 箱包动态 ===== -->
+<section class="section" id="section-bag">
+  <h2 class="section-title"><span class="section-icon" style="background:#2d5016;">BG</span>箱包动态</h2>
+  <div class="subsection-anchor-nav">
+    <a class="subsection-anchor-chip" href="#sub-bag-brand">品牌与产品</a>
+  </div>
+  <div class="section-summary">
+    过去24小时箱包板块公开报道极为稀少，当日无重大品牌发布、财报披露或供应链事件。仅有国产包袋品牌在高端商场的渠道拓展趋势分析一篇符合时效要求。其他搜索候选中，TUMI AXIS系列发布（8月4日）、RIMOWA新店开幕（8月2日）、LeSportsac哆啦A梦联名（8月3日）等均因发布时间超出24小时窗口被丢弃。
+  </div>
+
+  <div class="subsection" id="sub-bag-brand">
+    <div class="subsection-title">品牌与产品</div>
+    <ul class="news-list">
+      <li>
+        <div class="news-item-head"><span class="bullet">&rdquo;</span><span class="news-title">国产包袋品牌加速入驻万象系高端商场，裘真、山下有松、个乐GROTTO集体突围</span></div>
+        <div class="news-body">深圳万象天地即将成为国内首个集齐裘真、山下有松、个乐GROTTO三大国产包袋品牌的高端商场，西安万象城紧随其后。在新一轮商场渠道洗牌中，MCM、MICHAEL KORS等外资轻奢品牌收缩门店，而国产新锐包袋品牌借助万象系商场的核心商业资源快速填补空白，以更强的设计感和文化叙事在中端至轻奢价格带正面竞争。</div>
+        <div class="news-source"><span class="source-tag">商业地产志</span><a href="https://gu.qq.com/resources/shy/news/detail-v2/index.html?id=SN2026080617124897302eae" target="_blank">原文链接</a></div>
+      </li>
+    </ul>
+  </div>
+</section>
+
+<!-- ===== 电商动态 ===== -->
+<section class="section" id="section-ec">
+  <h2 class="section-title"><span class="section-icon" style="background:#2d5016;">EC</span>电商动态</h2>
+  <div class="subsection-anchor-nav">
+    <a class="subsection-anchor-chip" href="#sub-ec-platform">平台与零售</a>
+    <a class="subsection-anchor-chip" href="#sub-ec-crossborder">跨境与出海</a>
+    <a class="subsection-anchor-chip" href="#sub-ec-logistics">支付、物流与供应链</a>
+  </div>
+  <div class="section-summary">
+    电商板块过去24小时聚焦平台AI化与跨境合规升级：阿里将通义千问深度整合进淘宝，40亿商品接入对话式购物；即时零售闪电仓总量突破8万家。跨境方面，Temu关停广东国内仓加速海外自营仓布局，SHEIN正式通过港交所聆讯拟8月中旬招股，TikTok Shop上半年全球GMV达503亿美元。美国宣布8月29日起全球取消800美元以下小包免税，25国暂停对美寄包，跨境低价直邮模式面临终结。
+  </div>
+
+  <div class="subsection" id="sub-ec-platform">
+    <div class="subsection-title">平台与零售</div>
+    <ul class="news-list">
+      <li>
+        <div class="news-item-head"><span class="bullet">&rdquo;</span><span class="news-title">阿里将通义千问深度整合进淘宝，40亿商品接入对话式购物，搜索框让位AI助手</span></div>
+        <div class="news-body">阿里宣布将通义千问大模型深度整合进淘宝App，40亿商品接入对话式购物体验，支持虚拟试穿和30天价追踪。这是淘宝搜索框首次让位于AI助手，标志着电商从"搜索找货"模式向"对话推荐"模式的重大转型。同期天猫修订《违背承诺规则》，八大场景统一赔付5%。</div>
+        <div class="news-source"><span class="source-tag">零售日报/微博</span><a href="https://weibo.com/3205468931/5329195636883762" target="_blank">原文链接</a></div>
+      </li>
+      <li>
+        <div class="news-item-head"><span class="bullet">&rdquo;</span><span class="news-title">即时零售闪电仓总量突破8万家，非餐日单超2400万</span></div>
+        <div class="news-body">8月7日报道显示，全国即时零售闪电仓总量已突破8万家，非餐饮品类日订单量超过2400万单。美团以7.17亿美元收购叮咚买菜后整合收官，即时零售竞争从"卷时效"转向"买供给、买仓网"，行业进入供应链深度整合阶段。</div>
+        <div class="news-source"><span class="source-tag">零售日报/微博</span><a href="https://weibo.com/3205468931/5329195636883762" target="_blank">原文链接</a></div>
+      </li>
+    </ul>
+  </div>
+
+  <div class="subsection" id="sub-ec-crossborder">
+    <div class="subsection-title">跨境与出海</div>
+    <ul class="news-list">
+      <li>
+        <div class="news-item-head"><span class="bullet">&rdquo;</span><span class="news-title">Temu关停广东国内仓，加速转向海外自营仓与本土化履约</span></div>
+        <div class="news-body">Temu近期陆续关闭广东多地国内仓库，收缩全托管及Y2跨境直邮业务，同时在德国、波兰布局十余个自营仓并推进美国自建仓项目。欧盟7月1日取消小额包裹免税后，每件加收约3.6欧元税费导致全托管卖家单量暴跌。Temu计划Q3将欧洲站本土仓发货占比提升至80%，并筹备"新拼姆"百亿级自营品牌项目。</div>
+        <div class="news-source"><span class="source-tag">易仓ERP/跨境快讯</span><a href="https://www.eccang.com/news/4939" target="_blank">原文链接</a></div>
+      </li>
+      <li>
+        <div class="news-item-head"><span class="bullet">&rdquo;</span><span class="news-title">SHEIN通过港交所聆讯拟8月中旬招股，估值300-400亿美元</span></div>
+        <div class="news-body">SHEIN更新聆讯后资料集，正式通过港交所IPO聆讯。若顺利挂牌，将成为2026年港股最大跨境电商IPO。资料显示2025年SHEIN总收入418亿美元，净利润20.6亿美元，2023-2025年CAGR达14.2%，活跃用户2.73亿覆盖约160个市场。发行上限3.42亿股，估值300-400亿美元。</div>
+        <div class="news-source"><span class="source-tag">零售日报/微博</span><a href="https://weibo.com/3205468931/5329195636883762" target="_blank">原文链接</a></div>
+      </li>
+      <li>
+        <div class="news-item-head"><span class="bullet">&rdquo;</span><span class="news-title">[H1数据] TikTok Shop 2026上半年全球GMV达503亿美元，美国首超印尼成第一大市场</span></div>
+        <div class="news-body">TikTok Shop 2026年上半年全球GMV达503亿美元，同比翻倍。其中美国市场贡献118亿美元，首次超越印尼成为第一大市场。英国市场直播电商同比增长55%，日均直播超6000场。TikTok正从短视频娱乐平台加速向全品类电商超级应用进化。</div>
+        <div class="news-source"><span class="source-tag">零售日报/微博</span><a href="https://weibo.com/3205468931/5329195636883762" target="_blank">原文链接</a></div>
+      </li>
+    </ul>
+  </div>
+
+  <div class="subsection" id="sub-ec-logistics">
+    <div class="subsection-title">支付、物流与供应链</div>
+    <ul class="news-list">
+      <li>
+        <div class="news-item-head"><span class="bullet">&rdquo;</span><span class="news-title">美国宣布8月29日起全球取消800美元以下小包免税，25国暂停对美寄包</span></div>
+        <div class="news-body">美国宣布自8月29日起对全球所有国家取消800美元以下小额包裹免税政策，并堵住第三国转运漏洞。此举彻底终结跨境电商直邮小包的免税红利时代。已有25个国家暂停对美寄送小包。同期欧盟PPWR包装法将于8月12日无缓冲生效，要求统一标注材质与回收码，未上传EPR注册号的商品将被下架。</div>
+        <div class="news-source"><span class="source-tag">零售日报/微博</span><a href="https://weibo.com/3205468931/5329195636883762" target="_blank">原文链接</a></div>
+      </li>
+    </ul>
+  </div>
+</section>
+
+<!-- ===== AI动态 ===== -->
+<section class="section" id="section-ai">
+  <h2 class="section-title"><span class="section-icon" style="background:#2d5016;">AI</span>AI 动态</h2>
+  <div class="subsection-anchor-nav">
+    <a class="subsection-anchor-chip" href="#sub-ai-model">模型与技术更新</a>
+    <a class="subsection-anchor-chip" href="#sub-ai-product">产品与平台</a>
+    <a class="subsection-anchor-chip" href="#sub-ai-capital">产业与资本</a>
+    <a class="subsection-anchor-chip" href="#sub-ai-policy">政策与治理</a>
+    <a class="subsection-anchor-chip" href="#sub-ai-research">研究与观点</a>
+  </div>
+  <div class="section-summary">
+    过去24小时AI领域密集更新：OpenAI将GPT-5.6 Luna设为默认免费模型并开放无限文本对话，同时优化Sol模型的事实准确性与回答聚焦度；Google DeepMind宣布Demis Hassabis卸任CEO、Jeff Dean离职创业；微软首次披露OpenAI贡献约七成AI收入；AMD收购AI推理芯片公司Taalas；NVIDIA发布Cosmos 3开放世界模型；Agent Plugins 1.0.0获谷歌/亚马逊/微软联合支持；DeepSeek宣布将大幅上调API服务定价。产业格局正在资本、人才、技术三重维度上加速重塑。
+  </div>
+
+  <div class="subsection" id="sub-ai-model">
+    <div class="subsection-title">模型与技术更新</div>
+    <ul class="news-list">
+      <li>
+        <div class="news-item-head"><span class="bullet">&rdquo;</span><span class="news-title">OpenAI GPT-5.6 双版本升级：Sol优化事实准确性降误68%，Luna免费版全面开放无限文本对话</span></div>
+        <div class="news-body">OpenAI宣布将GPT-5.6 Luna设为Free和Go用户的默认模型，替代GPT-5.5 Instant，免费用户获得无限文本对话权限并新增Think按钮调用更深推理。付费用户的GPT-5.6 Sol经专项优化后事实错误率降低68%，并新增思考深度滑块工具。此次升级正值OpenAI上周将Luna API价格下调80%之后，单位推理成本下降正直接转化为免费层服务形态。</div>
+        <div class="news-source"><span class="source-tag">AI HOT / OpenAI</span><a href="https://aihot.virxact.com/items/cmsi5sy2s1192ronkt3lk2z88" target="_blank">AI HOT</a></div>
+      </li>
+      <li>
+        <div class="news-item-head"><span class="bullet">&rdquo;</span><span class="news-title">NVIDIA Cosmos 3发布：基于混合Transformer架构的开放世界模型推动物理AI前沿</span></div>
+        <div class="news-body">NVIDIA发布Cosmos 3，一个基于混合Transformer架构的开放物理AI基础全模态模型，整合视觉推理、世界生成与动作预测。该模型定位为推动机器人和自动驾驶等物理AI应用的核心基础能力，标志着NVIDIA从芯片基础设施向AI模型层的持续深入布局。</div>
+        <div class="news-source"><span class="source-tag">AI HOT / NVIDIA Blog</span><a href="https://aihot.virxact.com/items/cmshjdgsn0gf5ronkj2dwsbwh" target="_blank">AI HOT</a></div>
+      </li>
+    </ul>
+  </div>
+
+  <div class="subsection" id="sub-ai-product">
+    <div class="subsection-title">产品与平台</div>
+    <ul class="news-list">
+      <li>
+        <div class="news-item-head"><span class="bullet">&rdquo;</span><span class="news-title">Agent Plugins 1.0.0发布：谷歌、亚马逊、微软等支持的统一智能体插件规范</span></div>
+        <div class="news-body">Agent Plugins 1.0.0正式发布，将Agent Skills和MCP服务器打包为单一可移植单元，通过标准化plugin.json清单和固定目录布局实现跨平台兼容。谷歌已作为核心维护者加入并在Agents CLI和Data Agent Kit中提供支持，有望结束AI编码智能体和IDE各自维护独立插件生态的碎片化局面。</div>
+        <div class="news-source"><span class="source-tag">AI HOT / Google Developers Blog</span><a href="https://aihot.virxact.com/items/cmshra4es0oycronk0wcvjv03" target="_blank">AI HOT</a></div>
+      </li>
+      <li>
+        <div class="news-item-head"><span class="bullet">&rdquo;</span><span class="news-title">谷歌地图Ask Maps智能体升级：可对话订餐、找酒店并接入Gemini Personal Intelligence</span></div>
+        <div class="news-body">谷歌地图宣布Ask Maps迎来新一轮升级，新增智能体功能可替用户执行订餐操作，综合考虑饮食要求、当前位置和收藏地点；用户还可通过对话指定装修风格、环境氛围等条件查找酒店和当地活动。此举将地图从导航工具升级为AI驱动的本地生活服务平台。</div>
+        <div class="news-source"><span class="source-tag">AI HOT / IT之家</span><a href="https://aihot.virxact.com/items/cmshjall30g5vronk3jwsdnyr" target="_blank">AI HOT</a></div>
+      </li>
+    </ul>
+  </div>
+
+  <div class="subsection" id="sub-ai-capital">
+    <div class="subsection-title">产业与资本</div>
+    <ul class="news-list">
+      <li>
+        <div class="news-item-head"><span class="bullet">&rdquo;</span><span class="news-title">微软首次披露OpenAI贡献约七成AI收入，241亿美元中大部分为云账单</span></div>
+        <div class="news-body">微软在最新文件中首次披露，OpenAI贡献了微软约70%的AI收入。241亿美元中的大部分是OpenAI在微软数据中心训练和运行ChatGPT的云账单，加上模型开发成本和OpenAI自身销售分成，全部由微软合并计入收入。微软同时已向OpenAI投入119亿美元，这一高度绑定的财务关系引发市场对双方合作持续性及反垄断风险的关注。</div>
+        <div class="news-source"><span class="source-tag">AI HOT / X @rohanpaul_ai</span><a href="https://aihot.virxact.com/items/cmshmizyd0k71ronkfu9jy9lr" target="_blank">AI HOT</a></div>
+      </li>
+      <li>
+        <div class="news-item-head"><span class="bullet">&rdquo;</span><span class="news-title">Google DeepMind人事巨震：Demis Hassabis卸任CEO转任首席科学家，Jeff Dean离职创业</span></div>
+        <div class="news-body">Google宣布迄今最大规模AI组织调整：Demis Hassabis卸任DeepMind CEO，转任主席兼Alphabet首席科学家专注AGI研究；CTO Koray Kavukcuoglu接任；任职27年的老将Jeff Dean与三位顶级研究员离职创办DiscoLoop AI，尝试用AI自动化科学研究和工程实验。内部员工认为调整源于产品提速压力及与美国国防部合作引发的伦理冲突。</div>
+        <div class="news-source"><span class="source-tag">AI HOT / The Verge</span><a href="https://aihot.virxact.com/items/cmshkd62s0hgfronku3c71unr" target="_blank">AI HOT</a></div>
+      </li>
+      <li>
+        <div class="news-item-head"><span class="bullet">&rdquo;</span><span class="news-title">AMD收购AI推理芯片公司Taalas，推理速度号称达Nvidia H200的73倍</span></div>
+        <div class="news-body">AMD宣布收购总部位于多伦多的AI推理芯片初创公司Taalas。Taalas成立于2023年，主打"模型专用集成电路"技术，将AI模型直接硬连线至硅芯片。其首颗测试芯片基于台积电6nm工艺，为Llama 3.1 8B服务时每秒处理近1.7万token，号称速度是Nvidia H200的73倍而功耗仅1/10。交易金额未披露，Taalas累计融资约2.19亿美元。AMD计划将其技术整合进Instinct GPU加速器路线图。</div>
+        <div class="news-source"><span class="source-tag">Reuters / 智通财经</span><a href="https://www.163.com/dy/article/L3N7C7JP05198UNI.html" target="_blank">原文链接</a></div>
+      </li>
+    </ul>
+  </div>
+
+  <div class="subsection" id="sub-ai-policy">
+    <div class="subsection-title">政策与治理</div>
+    <ul class="news-list">
+      <li>
+        <div class="news-item-head"><span class="bullet">&rdquo;</span><span class="news-title">OpenAI称苹果自身安全实践削弱其商业机密诉讼</span></div>
+        <div class="news-body">OpenAI在驳回苹果商业机密诉讼的动议中辩称，苹果允许员工用个人iCloud处理工作且离职后未正确撤销访问权限，相关信息不构成受法律保护的商业机密。OpenAI还指苹果未指明具体被窃取的机密，并称其借诉讼阻碍竞争对手在AI硬件领域创新。此案可能为AI人才流动中的商业机密保护划定重要法律边界。</div>
+        <div class="news-source"><span class="source-tag">AI HOT / TechCrunch</span><a href="https://aihot.virxact.com/items/cmshnkwhc0l8xronk6qyoqqyv" target="_blank">AI HOT</a></div>
+      </li>
+    </ul>
+  </div>
+
+  <div class="subsection" id="sub-ai-research">
+    <div class="subsection-title">研究与观点</div>
+    <ul class="news-list">
+      <li>
+        <div class="news-item-head"><span class="bullet">&rdquo;</span><span class="news-title">科学家首次用AI制造新病毒，纽约时报报道引发安全与伦理讨论</span></div>
+        <div class="news-body">纽约时报报道科学家首次利用人工智能制造出新病毒，在为医学进步（如靶向治疗载体）带来希望的同时，也引发该技术可能被用于制造危险病原体的广泛担忧。此事件标志着AI在合成生物学领域的应用进入实质突破阶段，也凸显AI for Science场景下的安全治理空白。</div>
+        <div class="news-source"><span class="source-tag">AI HOT / NYTimes</span><a href="https://aihot.virxact.com/items/cmshx88tn0u50ronkhe4eiunz" target="_blank">AI HOT</a></div>
+      </li>
+    </ul>
+  </div>
+</section>
+
+<div class="report-footer">
+  <p>本期日报共收录 <strong>16 条</strong>新闻，筛选自过去 24 小时内的公开报道。</p>
+  <p>数据来源：AI HOT · WebSearch · 各媒体公开报道 | 生成时间：2026-08-07 10:00 CST</p>
+  <p>箱包 1 条 · 电商 6 条 · AI 9 条</p>
+  <p>时效审核：箱包候选7条/通过1条（丢弃原因：5条早于24h窗口、1条非行业新闻）；电商候选15条/通过6条（丢弃原因：9条早于24h窗口）；AI HOT候选19条/通过16条（丢弃原因：2条早于24h窗口、1条与#1重复）；AI WebSearch候选12条/通过4条（丢弃原因：多数与AI HOT重复）</p>
+</div>
+
+</div>
+</body>
+</html>
