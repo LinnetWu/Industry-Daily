@@ -1,0 +1,475 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>行业日报（2026-08-11）</title>
+<style>
+  :root {
+    --bg: #fafaf8;
+    --text: #1a1a1a;
+    --text-secondary: #6b7280;
+    --text-muted: #9ca3af;
+    --border: #e0e3dc;
+    --accent: #2d5016;
+    --surface: #f4f6f1;
+    --tag-bg: #eaf0e4;
+    --tag-text: #3a6b1e;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.7;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .report-container {
+    max-width: 780px;
+    margin: 0 auto;
+    padding: 48px 24px 64px;
+  }
+
+  .report-main-title {
+    font-size: 28px;
+    font-weight: 800;
+    color: var(--accent);
+    text-align: center;
+    margin-bottom: 8px;
+    letter-spacing: 0.5px;
+  }
+
+  .report-meta {
+    text-align: center;
+    font-size: 13px;
+    color: var(--text-muted);
+    margin-bottom: 10px;
+  }
+
+  .top-anchor-nav {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    justify-content: center;
+    margin-bottom: 28px;
+  }
+
+  .top-anchor-chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 10px 20px;
+    border-radius: 24px;
+    background: #fff;
+    border: 1.5px solid var(--accent);
+    color: var(--accent);
+    font-size: 13px;
+    font-weight: 600;
+    transition: all 0.18s;
+    cursor: pointer;
+    white-space: nowrap;
+    text-decoration: none;
+  }
+
+  .top-anchor-chip:hover {
+    background: var(--accent);
+    color: #fff;
+    text-decoration: none;
+  }
+
+  .top-anchor-chip.primary {
+    background: var(--accent);
+    color: #fff;
+    font-weight: 700;
+  }
+
+  .top-anchor-chip .count {
+    font-weight: 700;
+    font-size: 14px;
+  }
+
+  .subsection-anchor-nav {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin: 10px 0 16px;
+  }
+
+  .subsection-anchor-chip {
+    display: inline-flex;
+    align-items: center;
+    padding: 6px 14px;
+    border-radius: 14px;
+    background: var(--tag-bg);
+    color: var(--tag-text);
+    font-size: 12px;
+    font-weight: 600;
+    transition: all 0.18s;
+    white-space: nowrap;
+    text-decoration: none;
+  }
+
+  .subsection-anchor-chip:hover {
+    background: var(--accent);
+    color: #fff;
+    text-decoration: none;
+  }
+
+  .report-intro {
+    background: var(--surface);
+    border-radius: 10px;
+    padding: 20px 24px;
+    margin-bottom: 36px;
+    font-size: 14.5px;
+    color: var(--text-secondary);
+    line-height: 1.8;
+    border: 1px solid var(--border);
+  }
+
+  .section {
+    margin-bottom: 40px;
+  }
+
+  .section-title {
+    font-size: 21px;
+    font-weight: 700;
+    color: var(--accent);
+    margin-bottom: 10px;
+    padding-bottom: 10px;
+    border-bottom: 2px solid var(--border);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .section-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 34px;
+    height: 34px;
+    border-radius: 8px;
+    font-size: 12px;
+    font-weight: 700;
+    color: #fff;
+    flex-shrink: 0;
+  }
+
+  .section-summary {
+    font-size: 14px;
+    color: var(--text-secondary);
+    margin-bottom: 20px;
+    padding-left: 4px;
+    line-height: 1.7;
+  }
+
+  .subsection {
+    margin-bottom: 22px;
+  }
+
+  .subsection-title {
+    font-size: 15px;
+    font-weight: 700;
+    color: var(--accent);
+    margin-bottom: 10px;
+    padding-bottom: 5px;
+    border-bottom: 1px dotted var(--border);
+  }
+
+  .news-list {
+    list-style: none;
+    padding: 0;
+  }
+
+  .news-list li {
+    margin-bottom: 14px;
+    padding: 12px 14px;
+    background: #fff;
+    border-radius: 8px;
+    border: 1px solid var(--border);
+  }
+
+  .news-item-head {
+    display: flex;
+    align-items: flex-start;
+    gap: 8px;
+    margin-bottom: 6px;
+  }
+
+  .bullet {
+    color: var(--accent);
+    font-size: 14px;
+    flex-shrink: 0;
+    margin-top: 1px;
+  }
+
+  .news-title {
+    font-size: 14.5px;
+    font-weight: 600;
+    color: var(--text);
+    line-height: 1.5;
+  }
+
+  .news-body {
+    font-size: 13.5px;
+    color: var(--text-secondary);
+    line-height: 1.7;
+    margin-bottom: 8px;
+    padding-left: 22px;
+  }
+
+  .news-source {
+    font-size: 12px;
+    padding-left: 22px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex-wrap: wrap;
+  }
+
+  .source-tag {
+    display: inline-block;
+    background: var(--tag-bg);
+    color: var(--tag-text);
+    font-size: 11px;
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-weight: 500;
+  }
+
+  .news-source a {
+    color: var(--accent);
+    text-decoration: none;
+    font-size: 12px;
+  }
+
+  .news-source a:hover {
+    text-decoration: underline;
+  }
+
+  .report-footer {
+    margin-top: 48px;
+    padding-top: 20px;
+    border-top: 1px solid var(--border);
+    font-size: 12px;
+    color: var(--text-muted);
+    text-align: center;
+    line-height: 1.8;
+  }
+</style>
+</head>
+<body>
+<div class="report-container">
+
+<h1 class="report-main-title">行业日报（2026-08-11）</h1>
+<div class="report-meta">2026年8月11日 · 星期二 · 数据来源：WebSearch / AI HOT API / 公开报道</div>
+
+<div class="top-anchor-nav">
+  <span class="top-anchor-chip primary">当日总条数 <span class="count">22</span></span>
+  <a class="top-anchor-chip" href="#section-ec">电商 <span class="count">8</span></a>
+  <a class="top-anchor-chip" href="#section-ai">AI <span class="count">14</span></a>
+</div>
+
+<div class="report-intro">
+  本期日报覆盖过去24小时（8月10日10:00至8月11日10:00）的行业动态。箱包板块本期无有效时效内条目，不生成。电商板块聚焦即时零售混战升级：拼多多上线"最快明天达"一级入口正面切入美团/京东腹地；抖音818新潮好物节启动并严打AI虚假功效短视频；钟睒睒炮轰电商持续发酵，吴晓波/刘润/六神磊磊同日发文回应。跨境侧，PPWR欧盟包装法明日强制生效倒逼Temu/Shein转海外仓，TikTok Shop美区打通亚马逊FBA/MCF库存履约。AI板块为今日最重磅：英伟达联手六大华尔街巨头设5000亿美元AI算力融资平台；Meta发布Muse Glimmer 30B开源Agent模型、扎克伯格发表万字长文主张"个人超级智能"；OpenAI推出GPT-5.6-Cyber网络安全模型；Anthropic永久锁定Sonnet 5低价并泄露Sonnet 5.5（Fennec）；月之暗面Pre-IPO估值飙至500亿美元。产品侧千问开放平台上线、微信小微AI帮写内测；安全侧tl;dv逾18.1万段AI会议录音被公开暴露。
+</div>
+
+<!-- ===== 电商动态 ===== -->
+<section class="section" id="section-ec">
+  <h2 class="section-title"><span class="section-icon" style="background:#2d5016;">EC</span>电商动态</h2>
+  <div class="subsection-anchor-nav">
+    <a class="subsection-anchor-chip" href="#sub-ec-platform">平台与零售</a>
+    <a class="subsection-anchor-chip" href="#sub-ec-crossborder">跨境与出海</a>
+    <a class="subsection-anchor-chip" href="#sub-ec-policy">政策与监管</a>
+  </div>
+  <div class="section-summary">
+    电商板块过去24小时核心叙事围绕即时零售混战与合规升级。拼多多App首页上线"最快明天达"一级入口，与百亿补贴并列，正面切入美团/京东/淘宝主导的即时零售赛道。抖音818新潮好物节启动，打通家电3C以旧换新最高补1500元，同时8月11日起对虚假功效短视频最高扣全额保证金。钟睒睒炮轰电商持续发酵，吴晓波、刘润、六神磊磊同日发文回应，形成"平台权力边界"的舆论交锋。跨境侧，欧盟PPWR包装法明日（8月12日）强制生效，亚马逊拦截无EPR注册号新品、Temu/Shein加速从直邮转海外仓；TikTok Shop美区打通亚马逊FBA/MCF库存履约；SHEIN港股IPO估值缩至300-400亿美元。
+  </div>
+
+  <div class="subsection" id="sub-ec-platform">
+    <div class="subsection-title">平台与零售</div>
+    <ul class="news-list">
+      <li>
+        <div class="news-item-head"><span class="bullet">&rdquo;</span><span class="news-title">拼多多App首页上线"最快明天达"一级入口，正面切入即时零售赛道</span></div>
+        <div class="news-body">8月10日，拼多多App首页悄然上线"最快明天达"一级核心入口，与"百亿补贴"并列，覆盖水果生鲜、日用百货等高频刚需品类，由顺丰等第三方运力配送，部分城市新增免费送货上门；未按时送达将补偿至少3元无门槛代金券。知情人士称功能定位为优化履约而非30分钟级外卖，但观察者网等媒体指出此举实为向美团、京东主导的即时零售核心市场正面冲锋，即时零售从三方混战进入四方格局。</div>
+        <div class="news-source"><span class="source-tag">界面新闻/观察者网</span><a href="https://view.inews.qq.com/a/20260810A0B6PV00" target="_blank">原文链接</a></div>
+      </li>
+      <li>
+        <div class="news-item-head"><span class="bullet">&rdquo;</span><span class="news-title">抖音818新潮好物节启动：家电3C以旧换新最高补1500元，同步严打AI外呼诱导好评</span></div>
+        <div class="news-body">抖音818新潮好物节于8月11日晚8点启动，持续至8月18日。活动打通家电3C以旧换新通道，单件最高补贴1500元；平台同步严打包裹返现卡与AI外呼诱导好评行为，强化内容场与货架场的合规治理。苏宁同期将818升级为"智慧生活节"，AI家电渗透率目标冲65%，渠道从卖单品转向卖全屋智慧方案。</div>
+        <div class="news-source"><span class="source-tag">零售日报/苏宁</span><a href="https://weibo.com/3205468931/5330638166033207" target="_blank">原文链接</a></div>
+      </li>
+      <li>
+        <div class="news-item-head"><span class="bullet">&rdquo;</span><span class="news-title">淘宝×通义千问超40亿商品接入对话式购物，AI试穿试妆全量开放</span></div>
+        <div class="news-body">淘宝与通义千问深度整合，超40亿商品接入对话式购物，用户可通过自然对话完成选品、比价与下单。AI试穿试妆功能全量开放后，服饰退货率下降5%、美妆转化率提升18%。搜索分发逻辑正从关键词竞价切向AI推荐，标志着电商流量分配机制的根本性变革。</div>
+        <div class="news-source"><span class="source-tag">零售日报</span><a href="https://weibo.com/3205468931/5330638166033207" target="_blank">原文链接</a></div>
+      </li>
+    </ul>
+  </div>
+
+  <div class="subsection" id="sub-ec-crossborder">
+    <div class="subsection-title">跨境与出海</div>
+    <ul class="news-list">
+      <li>
+        <div class="news-item-head"><span class="bullet">&rdquo;</span><span class="news-title">TikTok Shop美区支持调用亚马逊FBA/MCF库存履约，双平台库存共享降备货压力</span></div>
+        <div class="news-body">TikTok Shop美区跨境POP上线新能力，支持卖家调用亚马逊FBA/MCF多仓配送库存直接履约TikTok订单，实现双平台库存共享。此举大幅降低跨境卖家的重复备货压力，尤其利好已在亚马逊布局FBA的成熟卖家快速启动TikTok Shop内容电商通道。</div>
+        <div class="news-source"><span class="source-tag">零售日报</span><a href="https://weibo.com/3205468931/5330638166033207" target="_blank">原文链接</a></div>
+      </li>
+      <li>
+        <div class="news-item-head"><span class="bullet">&rdquo;</span><span class="news-title">PPWR欧盟包装法明日强制生效：亚马逊拦截无EPR注册号新品，Temu/Shein加速转海外仓</span></div>
+        <div class="news-body">欧盟《包装与包装废弃物法规》（PPWR）将于8月12日零缓冲强制生效，27国统一执行。亚马逊已要求德法意西等九大站点卖家在8月12日前完成包装EPR注册并上传有效注册号，逾期直接禁售；Temu欧洲站已冻结未上传资质的卖家保证金，同步加速从直邮小包转向本土大贸发货，欧洲80%以上订单已切换为海外仓履约；Shein直邮成本因每件统一征收3欧元清关服务费及20%增值税而陡增。Shopee越南站也于8月11日强制NFC卡/电子配件类目全套资质，无照商品批量下架。</div>
+        <div class="news-source"><span class="source-tag">52by.com/亚马逊</span><a href="https://www.52by.com/article/230502" target="_blank">原文链接</a></div>
+      </li>
+      <li>
+        <div class="news-item-head"><span class="bullet">&rdquo;</span><span class="news-title">SHEIN港股IPO估值缩至300-400亿美元，Temu遭欧盟《异议声明》拟罚年营收1%</span></div>
+        <div class="news-body">据8月10日多源报道，SHEIN港股IPO估值从此前市场预期的600亿美元以上大幅缩水至300—400亿美元区间。同期Temu收到欧盟《异议声明》，面临年营收1%的潜在罚款。两家中国出海的明星平台同时承受合规与估值双重压力，低成本白牌出海红利持续消退。Temu已加入欧洲跨境商务组织CB Commerce，加速本土化合规与生态融入。</div>
+        <div class="news-source"><span class="source-tag">零售日报/财闻</span><a href="https://weibo.com/3205468931/5330638166033207" target="_blank">原文链接</a></div>
+      </li>
+    </ul>
+  </div>
+
+  <div class="subsection" id="sub-ec-policy">
+    <div class="subsection-title">政策与监管</div>
+    <ul class="news-list">
+      <li>
+        <div class="news-item-head"><span class="bullet">&rdquo;</span><span class="news-title">钟睒睒炮轰电商持续发酵：吴晓波称"看到疾病给错药方"，刘润"只同意一半"</span></div>
+        <div class="news-body">继钟睒睒8月8日在央视《对话》栏目呼吁"限制平台权力"后，8月10日三位知名财经人士同日发文回应。吴晓波发文称钟睒睒"十句话里七八句值得肯定"，但反对把电商视为"假想敌"及将电商与实体经济对立——"看到疾病，给错药方"。六神磊磊指出双方本质是渠道利益之争：钟睒睒反对低价，但农夫山泉也曾靠9.9元12瓶绿瓶水抢市场。刘润同意平台权力需监管，但反对因"旧渠道受伤就把交易成本下降判成有罪"——"一切商业的起点，都是消费者获益。"这场交锋将关于平台权力边界的讨论从情绪宣泄推向制度设计层面。</div>
+        <div class="news-source"><span class="source-tag">吴晓波频道/六神磊磊/刘润</span><a href="https://news.qq.com/rain/a/20260811A0341400" target="_blank">原文链接</a></div>
+      </li>
+      <li>
+        <div class="news-item-head"><span class="bullet">&rdquo;</span><span class="news-title">视频号AI生成内容强制标注生效+抖音电商虚假功效惩罚新政并行</span></div>
+        <div class="news-body">微信视频号AI生成内容强制标注规则于8月10日正式生效，未标注AI创作来源的内容将被限流，数字人直播进入"不标即违规"阶段。抖音电商同步宣布8月11日起，虚假功效短视频最高扣全额保证金，AI批量套图与夸大宣传遭精准打击。两大平台同日收紧内容合规闸门，标志着短视频/直播电商的"AI合规元年"到来。多地同步落实网络竞争新规，禁止平台算法胁迫商家低于成本价销售，中小商家限流维权首获合规依据。</div>
+        <div class="news-source"><span class="source-tag">零售日报/抖音电商</span><a href="https://weibo.com/3205468931/5330638166033207" target="_blank">原文链接</a></div>
+      </li>
+    </ul>
+  </div>
+</section>
+
+<!-- ===== AI动态 ===== -->
+<section class="section" id="section-ai">
+  <h2 class="section-title"><span class="section-icon" style="background:#2d5016;">AI</span>AI动态</h2>
+  <div class="subsection-anchor-nav">
+    <a class="subsection-anchor-chip" href="#sub-ai-model">模型与技术更新</a>
+    <a class="subsection-anchor-chip" href="#sub-ai-product">产品与平台</a>
+    <a class="subsection-anchor-chip" href="#sub-ai-industry">产业与资本</a>
+    <a class="subsection-anchor-chip" href="#sub-ai-policy">政策与治理</a>
+    <a class="subsection-anchor-chip" href="#sub-ai-research">研究与观点</a>
+  </div>
+  <div class="section-summary">
+    AI板块过去24小时信息密度极高。资本侧，英伟达联手Apollo、贝莱德、黑石、博枫、高盛、KKR六大华尔街巨头，设立独立融资平台撬动超5000亿美元第三方资本投向AI基础设施，堪称华尔街史上规模最大的融资安排之一。模型侧，Meta发布Muse Glimmer 30B开源Agent模型（Apache 2.0），Scale AI同步开源Muse Spark 1.2权重；扎克伯格发表万字长文《未来属于每一个人》，主张"个人超级智能"不应集中于少数机构。OpenAI推出GPT-5.6-Cyber网络安全专用模型；Anthropic Sonnet 5永久锁定初始低价、取消50%涨价计划，同时Sonnet 5.5（Fennec）泄露——200万token上下文对标DeepSeek V4 Flash。估值侧，月之暗面Pre-IPO轮估值飙至500亿美元，半年翻5倍。产品侧，阿里千问开放平台上线覆盖十余领域、微信小微AI帮写内测引发"朋友圈人味消失"争议。安全侧，tl;dv逾18.1万段AI会议录音因Firestore缺乏租户隔离被公开暴露，可实时闯入他人通话。
+  </div>
+
+  <div class="subsection" id="sub-ai-model">
+    <div class="subsection-title">模型与技术更新</div>
+    <ul class="news-list">
+      <li>
+        <div class="news-item-head"><span class="bullet">&rdquo;</span><span class="news-title">Meta发布Muse Glimmer 30B开源Agent模型，Apache 2.0协议，24GB显存可本地运行</span></div>
+        <div class="news-body">Meta Superintelligence Labs于8月10日正式发布Muse Glimmer，一款300亿参数的开源Agent模型，采用Apache 2.0协议开源权重，已上架Hugging Face。模型专为本地常驻Agent工作流优化，通过K-Quant量化（约17GB）和投机解码，可在单块24-32GB消费级GPU上运行（RTX 5090获3.1倍加速）。具备端到端任务执行、工具调用、多步推理、失败恢复与多模态理解能力，支持100多种语言。SGLang提供Day-0推理支持，LMSYS专文介绍其针对Agent工作流的高性能推理优化。这标志着Meta"开源中端、闭源旗舰"双轨制的最清晰落地——Glimmer代表可开放的智能上限，旗舰Muse Spark保持闭源API付费模式（定价仅为竞品25%）。</div>
+        <div class="news-source"><span class="source-tag">Meta/LMSYS/SGLang</span><a href="https://x.com/AIatMeta/status/2086757844544811485" target="_blank">原文链接</a></div>
+      </li>
+      <li>
+        <div class="news-item-head"><span class="bullet">&rdquo;</span><span class="news-title">OpenAI推出GPT-5.6-Cyber：面向授权漏洞研究的网络安全专用模型</span></div>
+        <div class="news-body">OpenAI于8月10日发布网络安全专用模型GPT-5.6-Cyber，可通过Daybreak Red平台获取，用于授权的漏洞研究、漏洞验证和安全测试。该模型旨在应对网络防御窗口不断收窄的挑战，为安全研究人员提供专门工具，标志着前沿AI模型能力向垂直安全领域正式渗透。</div>
+        <div class="news-source"><span class="source-tag">OpenAI</span><a href="https://openai.com/index/expanding-daybreak-as-the-cyber-defense-window-narrows" target="_blank">原文链接</a></div>
+      </li>
+      <li>
+        <div class="news-item-head"><span class="bullet">&rdquo;</span><span class="news-title">Claude未发布研究版挑战黎曼猜想：将zeta函数零点下界从41.6%提升至67.2%</span></div>
+        <div class="news-body">Anthropic于8月10日披露，让Claude尝试攻克黎曼猜想——这个困扰人类167年的数学难题。虽未完全成功，但一个未发布的研究版Claude取得突破性进展：将满足黎曼猜想的zeta函数零点比例下界从41.6%提升至67.2%。更引人注目的是研究过程：Claude连续尝试650个失败方案，组织60个子Agent搜索和验证，阅读前人研究并重组数学工具。Anthropic在博文中调侃道，Claude起初对自己的能力颇为怀疑——或许它在训练数据里读了太多关于AI科研局限的内容。最终是人类一句又一句"继续""相信自己"让它坚持了下来。</div>
+        <div class="news-source"><span class="source-tag">Anthropic/腾讯新闻</span><a href="https://www.anthropic.com/research/riemann-zeta" target="_blank">原文链接</a></div>
+      </li>
+      <li>
+        <div class="news-item-head"><span class="bullet">&rdquo;</span><span class="news-title">微软Maia 300 AI芯片最快9月亮相，正与台积电洽谈2027年交付30万颗</span></div>
+        <div class="news-body">据外媒8月10日报道，微软计划今年秋季推出全新Maia 300人工智能芯片，最快9月亮相。微软正与台积电洽谈2027年交付至少30万颗，同时与Anthropic等云客户谈判采用自研芯片方案，以降低推理成本、摆脱对英伟达的单一依赖。此举将加速云厂商自研芯片从"实验"走向"规模部署"的转折。</div>
+        <div class="news-source"><span class="source-tag">IT之家</span><a href="https://view.inews.qq.com/a/20260810A0CVFY00" target="_blank">原文链接</a></div>
+      </li>
+      <li>
+        <div class="news-item-head"><span class="bullet">&rdquo;</span><span class="news-title">Anthropic Sonnet 5.5（Fennec）泄露：200万token上下文，对标DeepSeek V4 Flash</span></div>
+        <div class="news-body">据腾讯研究院8月11日AI速递，Anthropic新一代Sonnet 5.5遭泄露，内部代号"Fennec"，据称已进入最后阶段，最早或于下月发布。核心升级包括200万token上下文（翻倍）、更快推理与更低延迟、长上下文与多步规划增强、浏览器与终端等工具调用大幅改善，综合能力逼近旗舰级Fable 5。定价维持Sonnet档位，业界推测Anthropic或让Sonnet接管Haiku定位，以接近Fable的能力和更低成本争夺中高端市场性价比之王。</div>
+        <div class="news-source"><span class="source-tag">腾讯研究院</span><a href="https://www.sohu.com/a/1061193334_455313" target="_blank">原文链接</a></div>
+      </li>
+    </ul>
+  </div>
+
+  <div class="subsection" id="sub-ai-product">
+    <div class="subsection-title">产品与平台</div>
+    <ul class="news-list">
+      <li>
+        <div class="news-item-head"><span class="bullet">&rdquo;</span><span class="news-title">千问开放平台上线：覆盖物流/房产/理财/汽车等十余领域，AI从"咨询"走向"代交易"</span></div>
+        <div class="news-body">阿里千问开放平台于8月10日正式上线，面向生态伙伴和开发者开放手机、PC和AI眼镜三类终端的服务接入，首批覆盖物流运输、房产居住、本地生活、理财、汽车等十多个领域。用户可在对话中@相关服务或点击"圆点角标"进入智能体，完成从咨询、推荐到下单的完整流程。平台支持标准化协议接入、一键授权与端到端调测，并提供账号、AI支付、订单接入等基础设施。这意味着AI助手正从"信息咨询"进化为"交易闭环"——千问App同步上线办公助理试水付费，豆包入口酒店订单抽佣约12%。</div>
+        <div class="news-source"><span class="source-tag">千问APP/零售日报</span><a href="https://mp.weixin.qq.com/s?__biz=MzYzNDE5MDEwMQ%3D%3D&mid=2247488345&idx=1&sn=ef4e57c9c9350f9238d90211eb2dd453" target="_blank">原文链接</a></div>
+      </li>
+      <li>
+        <div class="news-item-head"><span class="bullet">&rdquo;</span><span class="news-title">Qwen-MM-Plugins开源：让Agent原生支持读取图片/视频/文档、编辑视频、处理3D/CAD</span></div>
+        <div class="news-body">阿里通义千问团队于8月10日开源Qwen-MM-Plugins，将多模态模型的能力扩展为多模态Agent。插件支持读取图片、视频和文档，编辑视频，处理3D/CAD等，实现从"看见"到"操作"的跨越。这标志着Agent从纯文本交互全面进入多模态操作时代。</div>
+        <div class="news-source"><span class="source-tag">通义千问/X</span><a href="https://x.com/Alibaba_Qwen/status/2086664887560970531" target="_blank">原文链接</a></div>
+      </li>
+      <li>
+        <div class="news-item-head"><span class="bullet">&rdquo;</span><span class="news-title">微信小微AI帮写与AI点评内测：朋友圈"最后一点人味"正在消失？</span></div>
+        <div class="news-body">微信基于小微推出朋友圈AI帮写与AI点评内测功能：前者可根据图片和已写文字生成3条朋友圈文案，后者可长按文字生成评价或快捷评论。公众号"数字生命卡兹克"发文称这两个功能将AI置于社交核心位置，可能鼓励AI内容、破坏朋友圈"记录美好生活"的基调。公众号端小微还常驻首位，自动总结常看公众号文章，作者担忧这会反向影响创作者内容生产——当读者用AI替自己阅读、用AI替自己评论，人与人之间的社交连接正在被AI中介化。</div>
+        <div class="news-source"><span class="source-tag">公众号：数字生命卡兹克</span><a href="https://mp.weixin.qq.com/s?__biz=MzIyMzA5NjEyMA%3D%3D&mid=2647685081&idx=1&sn=13a05578a3959c047209c8e74b56fa48" target="_blank">原文链接</a></div>
+      </li>
+    </ul>
+  </div>
+
+  <div class="subsection" id="sub-ai-industry">
+    <div class="subsection-title">产业与资本</div>
+    <ul class="news-list">
+      <li>
+        <div class="news-item-head"><span class="bullet">&rdquo;</span><span class="news-title">英伟达联手六大华尔街巨头设5000亿美元AI算力融资平台，创华尔街史上最大规模之一</span></div>
+        <div class="news-body">8月10日（北京时间8月11日凌晨），英伟达CEO黄仁勋在X平台宣布，与Apollo、贝莱德旗下Global Infrastructure Partners、黑石、博枫资产管理、高盛及KKR合作，设立独立AI算力融资平台，动员超5000亿美元第三方资本支持AI基础设施建设——涵盖芯片采购、电力生产及数据中心建设。英伟达扮演合作牵头方而非出资方角色。消息公布后英伟达股价一度下跌3.2%，其5年期信用违约互换（CDS）价格创两周最大单日升幅。若最终落地，这将跻身华尔街历史上规模最大的融资安排之列，进一步凸显金融资本对AI基础设施赛道的大规模押注。结合英伟达此前拟为OpenAI提供250亿美元融资担保及3500亿美元芯片采购融资的报道，英伟达正在从"卖铲人"蜕变为AI产业的"资本调度中心"。</div>
+        <div class="news-source"><span class="source-tag">金融时报/黄仁勋X</span><a href="https://x.com/JensenHuang/status/2086934705207959965" target="_blank">原文链接</a></div>
+      </li>
+      <li>
+        <div class="news-item-head"><span class="bullet">&rdquo;</span><span class="news-title">扎克伯格发表万字长文《未来属于每一个人》：Meta要做"个人超级智能"，反对AI权力集中</span></div>
+        <div class="news-body">Meta CEO扎克伯格于美国当地时间8月10日发表6500+字长文，阐述"个人超级智能"愿景。核心论点：即使超级智能是安全的，如果能力只掌握在极少数公司、政府或实验室手中，仍可能形成新的权力失衡。Meta的方案是推动开源、将超级智能分配给更多普通人——未来每个人身边都有一个了解其工作、健康、家庭的长期AI。这一叙事将Meta的开源策略从技术路线升级为社会治理主张，也与其此前Facebook将内容生产和传播能力下放给每个用户的产品哲学一脉相承。扎克伯格同步宣布Meta将恢复发布部分开源模型并呼吁美国政府降低开源AI的政策限制。</div>
+        <div class="news-source"><span class="source-tag">扎克伯格X/腾讯新闻/华尔街见闻</span><a href="https://x.com/finkd/status/2086754845218726027" target="_blank">原文链接</a></div>
+      </li>
+      <li>
+        <div class="news-item-head"><span class="bullet">&rdquo;</span><span class="news-title">Anthropic永久锁定Sonnet 5初始低价，取消50%涨价计划，IPO前稳住企业客户</span></div>
+        <div class="news-body">Anthropic于8月11日宣布，Claude Sonnet 5的初始定价将永久保留——输入每百万Token 2美元、输出每百万10美元，取消原定8月底上调至3美元/15美元的计划。Sonnet 5是Anthropic定位"最具代理能力"的模型，已超过1000家企业客户年支出超100万美元。在IPO临近（已秘密提交注册文件）的敏感窗口，永久锁定低价为已基于Sonnet 5搭建Agent工作流的企业提供了更稳定的成本预期，被视为争夺企业代理AI工作负载的重要策略。</div>
+        <div class="news-source"><span class="source-tag">华尔街见闻/Anthropic</span><a href="https://news.qq.com/rain/a/20260811A020EZ00" target="_blank">原文链接</a></div>
+      </li>
+      <li>
+        <div class="news-item-head"><span class="bullet">&rdquo;</span><span class="news-title">月之暗面Pre-IPO轮估值飙至500亿美元，半年翻5倍，VIE拆改成上市关键障碍</span></div>
+        <div class="news-body">据8月10日多源报道，月之暗面（Kimi母公司）Pre-IPO轮投前估值约500亿美元，将于8月27日完成交割。几周前其刚完成超35亿美元F轮（投后估值350亿美元），半年内估值翻了5倍。公司正紧急接触高盛和中金冲刺港股上市，但VIE结构拆改成为关键障碍——不改则无法递表，而拆改成本高、周期长。同期Kimi K3以2.8万亿参数成为全球最大开源权重模型，被业内称为第二个"DeepSeek时刻"。老股转让市场上Kimi以180亿美元估值交易，真真假假消息横行。</div>
+        <div class="news-source"><span class="source-tag">投中网/无冕财经/美港探案</span><a href="https://view.inews.qq.com/a/20260810A06UZ000" target="_blank">原文链接</a></div>
+      </li>
+    </ul>
+  </div>
+
+  <div class="subsection" id="sub-ai-policy">
+    <div class="subsection-title">政策与治理</div>
+    <ul class="news-list">
+      <li>
+        <div class="news-item-head"><span class="bullet">&rdquo;</span><span class="news-title">tl;dv逾18.1万段AI会议录音被公开暴露：Firestore无租户隔离，可实时闯入他人通话</span></div>
+        <div class="news-body">Hacker News热帖披露，AI会议记录平台tl;dv的Firestore数据库因缺乏租户隔离，任何已认证用户可查询全部18.1万段会议记录，涉及84,312名用户、35,003个域名，含23国政府及多所高校会议。处于录制状态的约1,000场会议暴露可加入的会议ID，研究者借此闯入马来西亚教育部及美国某大学创业团队的实时通话。该漏洞自2026年1月报告后6个月仍未修复。此事件与Anthropic宣布"基本解决提示注入攻击"形成鲜明对比——模型层安全在进步，但AI应用的基础架构安全仍是重大盲区。</div>
+        <div class="news-source"><span class="source-tag">Hacker News（buzzing.cc）</span><a href="https://bobdahacker.com/blog/tldv-hack" target="_blank">原文链接</a></div>
+      </li>
+    </ul>
+  </div>
+
+  <div class="subsection" id="sub-ai-research">
+    <div class="subsection-title">研究与观点</div>
+    <ul class="news-list">
+      <li>
+        <div class="news-item-head"><span class="bullet">&rdquo;</span><span class="news-title">a16z：AI智能体操作电脑基准从42%升至85%，已超越人类测试者约72%的水平</span></div>
+        <div class="news-body">a16z于8月10日发布数据显示，计算机操作智能体在OSWorld-Verified基准上的最佳成绩已从一年前的42%飙升至85%，超过人类测试者约72%的水平，其中Claude Fable 5以85%领先。这一数据来自对多个前沿模型的实测对比，有力证明了过去一年Agent在真实GUI操作任务上的进展速度远超外界普遍认知。</div>
+        <div class="news-source"><span class="source-tag">a16z News</span><a href="https://www.a16z.news/p/can-agents-use-a-computer-yet-weve" target="_blank">原文链接</a></div>
+      </li>
+    </ul>
+  </div>
+</section>
+
+<div class="report-footer">
+  <p>本期日报共收录 <strong>22 条</strong>新闻，筛选自过去 24 小时内的公开报道与 AI HOT 精选。</p>
+  <p>数据来源：WebSearch · AI HOT API · 各媒体公开报道 | 生成时间：2026-08-11 10:00 CST</p>
+  <p>时间窗口：2026-08-10 10:00 — 2026-08-11 10:00 CST · 箱包 0 条（无时效内条目） · 电商 8 条 · AI 14 条</p>
+  <p>时效审核：AI HOT 16条中丢弃2条（Tomer Tunguz ARR分析发布于08-09、OpenRouter Auto路由器发布于08-10 08:00 CST）；WebSearch 候选逐条核验发布时间/事件时间；箱包板块搜索无有效24h窗口条目</p>
+</div>
+
+</div>
+</body>
+</html>
