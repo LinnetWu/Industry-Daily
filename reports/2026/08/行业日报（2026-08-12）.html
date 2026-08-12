@@ -1,0 +1,458 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>行业日报（2026-08-12）</title>
+<style>
+  :root {
+    --bg: #fafaf8;
+    --text: #1a1a1a;
+    --text-secondary: #6b7280;
+    --text-muted: #9ca3af;
+    --border: #e0e3dc;
+    --accent: #2d5016;
+    --surface: #f4f6f1;
+    --tag-bg: #eaf0e4;
+    --tag-text: #3a6b1e;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.7;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .report-container {
+    max-width: 780px;
+    margin: 0 auto;
+    padding: 48px 24px 64px;
+  }
+
+  .report-main-title {
+    font-size: 28px;
+    font-weight: 800;
+    color: var(--accent);
+    text-align: center;
+    margin-bottom: 8px;
+    letter-spacing: 0.5px;
+  }
+
+  .report-meta {
+    text-align: center;
+    font-size: 13px;
+    color: var(--text-muted);
+    margin-bottom: 10px;
+  }
+
+  .top-anchor-nav {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    justify-content: center;
+    margin-bottom: 28px;
+  }
+
+  .top-anchor-chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 10px 20px;
+    border-radius: 24px;
+    background: #fff;
+    border: 1.5px solid var(--accent);
+    color: var(--accent);
+    font-size: 13px;
+    font-weight: 600;
+    transition: all 0.18s;
+    cursor: pointer;
+    white-space: nowrap;
+    text-decoration: none;
+  }
+
+  .top-anchor-chip:hover {
+    background: var(--accent);
+    color: #fff;
+    text-decoration: none;
+  }
+
+  .top-anchor-chip.primary {
+    background: var(--accent);
+    color: #fff;
+    font-weight: 700;
+  }
+
+  .top-anchor-chip .count {
+    font-weight: 700;
+    font-size: 14px;
+  }
+
+  .subsection-anchor-nav {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin: 10px 0 16px;
+  }
+
+  .subsection-anchor-chip {
+    display: inline-flex;
+    align-items: center;
+    padding: 6px 14px;
+    border-radius: 14px;
+    background: var(--tag-bg);
+    color: var(--tag-text);
+    font-size: 12px;
+    font-weight: 600;
+    transition: all 0.18s;
+    white-space: nowrap;
+    text-decoration: none;
+  }
+
+  .subsection-anchor-chip:hover {
+    background: var(--accent);
+    color: #fff;
+    text-decoration: none;
+  }
+
+  .report-intro {
+    background: var(--surface);
+    border-radius: 10px;
+    padding: 20px 24px;
+    margin-bottom: 36px;
+    font-size: 14.5px;
+    color: var(--text-secondary);
+    line-height: 1.8;
+    border: 1px solid var(--border);
+  }
+
+  .section {
+    margin-bottom: 40px;
+  }
+
+  .section-title {
+    font-size: 21px;
+    font-weight: 700;
+    color: var(--accent);
+    margin-bottom: 10px;
+    padding-bottom: 10px;
+    border-bottom: 2px solid var(--border);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .section-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 34px;
+    height: 34px;
+    border-radius: 8px;
+    font-size: 12px;
+    font-weight: 700;
+    color: #fff;
+    flex-shrink: 0;
+  }
+
+  .section-summary {
+    font-size: 14px;
+    color: var(--text-secondary);
+    margin-bottom: 20px;
+    padding-left: 4px;
+    line-height: 1.7;
+  }
+
+  .subsection {
+    margin-bottom: 22px;
+  }
+
+  .subsection-title {
+    font-size: 15px;
+    font-weight: 700;
+    color: var(--accent);
+    margin-bottom: 10px;
+    padding-bottom: 5px;
+    border-bottom: 1px dotted var(--border);
+  }
+
+  .news-list {
+    list-style: none;
+    padding: 0;
+  }
+
+  .news-list li {
+    margin-bottom: 14px;
+    padding: 12px 14px;
+    background: #fff;
+    border-radius: 8px;
+    border: 1px solid var(--border);
+  }
+
+  .news-item-head {
+    display: flex;
+    align-items: flex-start;
+    gap: 8px;
+    margin-bottom: 6px;
+  }
+
+  .bullet {
+    color: var(--accent);
+    font-size: 14px;
+    flex-shrink: 0;
+    margin-top: 1px;
+  }
+
+  .news-title {
+    font-size: 14.5px;
+    font-weight: 600;
+    color: var(--text);
+    line-height: 1.5;
+  }
+
+  .news-body {
+    font-size: 13.5px;
+    color: var(--text-secondary);
+    line-height: 1.7;
+    margin-bottom: 8px;
+    padding-left: 22px;
+  }
+
+  .news-source {
+    font-size: 12px;
+    padding-left: 22px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex-wrap: wrap;
+  }
+
+  .source-tag {
+    display: inline-block;
+    background: var(--tag-bg);
+    color: var(--tag-text);
+    font-size: 11px;
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-weight: 500;
+  }
+
+  .news-source a {
+    color: var(--accent);
+    text-decoration: none;
+    font-size: 12px;
+  }
+
+  .news-source a:hover {
+    text-decoration: underline;
+  }
+
+  .report-footer {
+    margin-top: 48px;
+    padding-top: 20px;
+    border-top: 1px solid var(--border);
+    font-size: 12px;
+    color: var(--text-muted);
+    text-align: center;
+    line-height: 1.8;
+  }
+</style>
+</head>
+<body>
+<div class="report-container">
+
+<h1 class="report-main-title">行业日报（2026-08-12）</h1>
+<div class="report-meta">2026年8月12日 · 星期三 · 数据来源：WebSearch / 公开报道</div>
+
+<div class="top-anchor-nav">
+  <span class="top-anchor-chip primary">当日总条数 <span class="count">15</span></span>
+  <a class="top-anchor-chip" href="#section-bags">箱包 <span class="count">2</span></a>
+  <a class="top-anchor-chip" href="#section-ec">电商 <span class="count">7</span></a>
+  <a class="top-anchor-chip" href="#section-ai">AI <span class="count">6</span></a>
+</div>
+
+<div class="report-intro">
+  本期日报覆盖过去24小时（8月11日10:00至8月12日10:00）的行业动态。箱包板块延续"大包回潮"趋势，Lululemon 80升超大托特包在纽约48小时售罄，CHARLES & KEITH携代言人金裕贞全球上架秋冬系列。电商板块聚焦品牌入华与平台扩张：美国瑜伽品牌ALO完成微信小程序+天猫双渠道落地；京东全端用户突破10.66亿；TikTok Shop宣布2027年Q1进军沙特、韩国与澳洲。AI板块重资本与技术并行：英伟达曝光万亿参数开源模型Nemotron 4；ChatGPT月活突破10亿并上线Linux桌面端；Meta正式拆解20亿美元Manus收购交易；Anthropic将为Claude输出添加文本水印以应对欧盟AI法案，同时Bernie Sanders公开呼吁暂停前沿模型开发。
+</div>
+
+<!-- ===== 箱包动态 ===== -->
+<section class="section" id="section-bags">
+  <h2 class="section-title"><span class="section-icon" style="background:#2d5016;">BG</span>箱包动态</h2>
+  <div class="subsection-anchor-nav">
+    <a class="subsection-anchor-chip" href="#sub-bags-brand">品牌与产品</a>
+  </div>
+  <div class="section-summary">
+    箱包板块过去24小时呈现明显的"大包回潮"与秋冬换季节奏。Lululemon一款80升超大托特包在纽约全部门店48小时内售罄，成为"能装下生活"的功能包袋风潮缩影；CHARLES & KEITH则借代言人金裕贞正式全球发售2026秋冬系列，以大地秋色与Ginevra托特包锁定换季首波关注。
+  </div>
+
+  <div class="subsection" id="sub-bags-brand">
+    <div class="subsection-title">品牌与产品</div>
+    <ul class="news-list">
+      <li>
+        <div class="news-item-head"><span class="bullet">"</span><span class="news-title">Lululemon 80升超大托特包"Big-Ass Bag"纽约48小时售罄，"大包回潮"席卷功能包袋市场</span></div>
+        <div class="news-body">Lululemon一款名为"Big-Ass Bag 80L"的超大托特包近日上架纽约全部门店，仅48小时即告售罄。该包规格56×32×83cm，容量接近24寸行李箱，定价248美元。这一现象级单品反映出功能包袋市场正从"精致展示"转向"能装下生活"——通勤、健身、旅行、带娃被压缩进同一天，大容量成为通勤包的核心诉求。同期Saint Laurent Icare Maxi登顶LYST最热单品，The Row Margaux 17被称"新时代Birkin"，Coach Empire Carryall 40成为万元内黑马，"大包回潮"已从运动品牌向奢侈品牌全面蔓延。</div>
+        <div class="news-source"><span class="source-tag">Vista看天下/氢商业</span><a href="https://www.toutiao.com/w/1873242660199434/" target="_blank">原文链接</a></div>
+      </li>
+      <li>
+        <div class="news-item-head"><span class="bullet">"</span><span class="news-title">CHARLES & KEITH 2026秋冬系列全球上架：金裕贞出任品牌代言人，Ginevra托特包锁定换季焦点</span></div>
+        <div class="news-body">CHARLES & KEITH于8月11日起全球发售2026秋冬系列，并正式宣布韩国女星金裕贞出任品牌代言人。该系列以"时间淬炼的印记"为灵感，主打浓郁大地秋色，核心单品Ginevra托特包推出中、大两种尺寸，提供黑、酒红与棕色三种主调。秋冬同步推出多款横跨极简、优雅与个性风格的包袋与鞋履。形象大片以洒满自然光的温暖室内空间为背景，呈现贴近真实日常的自然从容感。</div>
+        <div class="news-source"><span class="source-tag">POPBEE</span><a href="https://popbee.com/accessories/handbags/charles-keith-kim-you-jung-fw-2026" target="_blank">原文链接</a></div>
+      </li>
+    </ul>
+  </div>
+</section>
+
+<!-- ===== 电商动态 ===== -->
+<section class="section" id="section-ec">
+  <h2 class="section-title"><span class="section-icon" style="background:#2d5016;">EC</span>电商动态</h2>
+  <div class="subsection-anchor-nav">
+    <a class="subsection-anchor-chip" href="#sub-ec-platform">平台与零售</a>
+    <a class="subsection-anchor-chip" href="#sub-ec-crossborder">跨境与出海</a>
+    <a class="subsection-anchor-chip" href="#sub-ec-logistics">支付、物流与供应链</a>
+    <a class="subsection-anchor-chip" href="#sub-ec-marketing">营销与内容电商</a>
+  </div>
+  <div class="section-summary">
+    电商板块过去24小时围绕品牌入华、平台扩张与物流差异化三条主线展开。美国瑜伽品牌ALO完成微信小程序+天猫双渠道落地，首日西裤销量破千件；京东全端去重用户突破10.66亿，成为国内第五家10亿级平台。跨境侧，TikTok Shop宣布2027年Q1进军沙特、韩国与澳洲；亚马逊华北产业带联合赋能计划发布，目标孵化500家出海品牌。物流与内容侧，京东外卖X1智能控温餐箱实现亦庄规模化覆盖，豆包就酒店推荐12%综合费率作出官方回应。
+  </div>
+
+  <div class="subsection" id="sub-ec-platform">
+    <div class="subsection-title">平台与零售</div>
+    <ul class="news-list">
+      <li>
+        <div class="news-item-head"><span class="bullet">"</span><span class="news-title">美国瑜伽品牌ALO完成中国电商双渠道落地：微信小程序上线+天猫旗舰店开售</span></div>
+        <div class="news-body">8月12日，美国瑜伽服品牌ALO在中国的电商布局再落一子：微信官方精品店小程序于近期悄然上线，天猫官方旗舰店亦于8月12日零点正式开售。ALO早在6月17日通过官方公众号宣布进入中国市场，目前线下门店项目正在推进。天猫开售当日，ALO女士SUIT UP宽松通勤弹力休闲直筒西裤销量已突破1000件，"赵露思同款"加长版同系列西裤销量亦超过500件。品牌同步通过微信公众号、微博、小红书等渠道建立中国社交媒体矩阵。</div>
+        <div class="news-source"><span class="source-tag">新浪财经</span><a href="https://finance.sina.com.cn/tech/shenji/2026-08-12/doc-inimzivu5340496.shtml" target="_blank">原文链接</a></div>
+      </li>
+      <li>
+        <div class="news-item-head"><span class="bullet">"</span><span class="news-title">京东全端去重用户突破10.66亿，成为国内第五家10亿级互联网巨头</span></div>
+        <div class="news-body">据QuestMobile 2026年半年报数据，京东集团全端去重总用户突破10.66亿，同比增长21.4%，是国内TOP15头部互联网企业中唯一增速破20%的平台。京东正式跻身腾讯、阿里、抖音、百度之列，成为第五家拿下10亿用户的互联网巨头。该数据涵盖京东主站、外卖、到家、健康、七鲜等线上产品，以及微信/支付宝小程序、京东MALL等线下门店客流。2026年Q1京东服务收入暴涨20.6%，零售业务经营利润率创下5.6%历史新高。</div>
+        <div class="news-source"><span class="source-tag">QuestMobile/网易号</span><a href="https://dy.163.com/article/L4494JN30556NGFK.html" target="_blank">原文链接</a></div>
+      </li>
+    </ul>
+  </div>
+
+  <div class="subsection" id="sub-ec-crossborder">
+    <div class="subsection-title">跨境与出海</div>
+    <ul class="news-list">
+      <li>
+        <div class="news-item-head"><span class="bullet">"</span><span class="news-title">TikTok Shop宣布2027年Q1进军沙特、韩国与澳洲，全球化扩张加速</span></div>
+        <div class="news-body">据8月12日电商资讯，TikTok电商计划2027年第一季度新开设沙特、韩国与澳洲三个市场。此前TikTok Shop上半年全球GMV已突破500亿美元，美区以118亿美元同比增103%重回第一。同时，TikTok Shop东南亚马来/泰国/越南跨境店订单取消审核于8月12日起由2天缩短至1天，进一步压缩履约响应周期。亚马逊同期在德国普福尔茨海姆仓追加3亿欧元扩建，计划2029年底员工增至2000人。</div>
+        <div class="news-source"><span class="source-tag">海豚社/微博</span><a href="https://m.weibo.cn/status/5331020989862254" target="_blank">原文链接</a></div>
+      </li>
+      <li>
+        <div class="news-item-head"><span class="bullet">"</span><span class="news-title">亚马逊华北产业带联合赋能计划发布：聚焦十大优势产业带，孵化500家出海品牌</span></div>
+        <div class="news-body">8月11日，2026亚马逊全球开店华北区域卖家大会在青岛召开，现场发布"华北产业带联合赋能计划"。该计划聚焦青岛假发、济宁工程机械、潍坊农机等十大优势产业带，目标孵化500家产业带出海品牌卖家。2025年山东已有2.2万家企业通过主流平台实现出口新增量。同日，亚马逊全球开店在跨交会上以"AI重塑出海新范式"为主题发布《2026中国出口跨境电商发展趋势白皮书》，与南沙全球跨境贸易产业集聚区的"服务集成+技术创新"模式形成产业共振。</div>
+        <div class="news-source"><span class="source-tag">中国新闻网/QQ新闻</span><a href="https://view.inews.qq.com/a/20260811A0B8GZ00" target="_blank">原文链接</a></div>
+      </li>
+      <li>
+        <div class="news-item-head"><span class="bullet">"</span><span class="news-title">Shopee泰国站与政府合作：OTOP商家可享最低4%平台费率</span></div>
+        <div class="news-body">据8月12日电商资讯，Shopee泰国站与泰国政府达成合作，OTOP（一乡一品）商家入驻可享受最低4%的平台费率。同时，7月东南亚电商访问量达5.957亿，Shopee以5.24亿稳居市场首位。马来西亚站海外仓自8月14日起调整佣金结构，部分品类最高上调至15%；菲律宾站则下调100个必需品类目佣金，形成"高频品类降佣、高客单品类提佣"的分层策略。</div>
+        <div class="news-source"><span class="source-tag">海豚社/微博</span><a href="https://m.weibo.cn/status/5331020989862254" target="_blank">原文链接</a></div>
+      </li>
+    </ul>
+  </div>
+
+  <div class="subsection" id="sub-ec-logistics">
+    <div class="subsection-title">支付、物流与供应链</div>
+    <ul class="news-list">
+      <li>
+        <div class="news-item-head"><span class="bullet">"</span><span class="news-title">京东外卖X1智能控温餐箱实现亦庄规模化覆盖，冷热分区独立运行</span></div>
+        <div class="news-body">京东外卖X1智能控温餐箱近日在北京亦庄实现规模化全覆盖，苏州、金华、宿迁等城市亦已陆续落地。该餐箱通过物理隔断与独立温控模块实现冷热分区：冷区控制在-5℃至15℃，热区控制在40℃至55℃。这一硬件投入置于京东外卖"品质外卖"战略框架中，以骑手AI头盔、控温餐箱作为差异化切入点，将外卖竞争维度从"价格战"转向"餐品品质保障"。</div>
+        <div class="news-source"><span class="source-tag">每日经济新闻</span><a href="https://so.html5.qq.com/page/real/search_news?docid=70000021_6486a7bab9150652" target="_blank">原文链接</a></div>
+      </li>
+    </ul>
+  </div>
+
+  <div class="subsection" id="sub-ec-marketing">
+    <div class="subsection-title">营销与内容电商</div>
+    <ul class="news-list">
+      <li>
+        <div class="news-item-head"><span class="bullet">"</span><span class="news-title">豆包公关回应酒店推荐12%综合费率：非广告费，与推荐排序无关</span></div>
+        <div class="news-body">8月11日，豆包公关负责人刘星回应酒店推荐渠道费率问题：抖音生活服务对豆包特定渠道酒店订单执行独立费率，软件服务费11.4%加0.6%支付手续费，综合费率12%。刘星强调，豆包生活服务业务目前没有付费推广，推荐酒店不收取广告费，商家不能通过付费影响推荐或排序，仅在订单成交后支付渠道服务费。分析认为，12%费率对中小商家的成本压力或将直接传导至终端定价，字节需在商业化变现与AI助手中立性之间寻找动态平衡。</div>
+        <div class="news-source"><span class="source-tag">每日经济新闻</span><a href="https://so.html5.qq.com/page/real/search_news?docid=70000021_6486a7bab9150652" target="_blank">原文链接</a></div>
+      </li>
+    </ul>
+  </div>
+</section>
+
+<!-- ===== AI动态 ===== -->
+<section class="section" id="section-ai">
+  <h2 class="section-title"><span class="section-icon" style="background:#2d5016;">AI</span>AI动态</h2>
+  <div class="subsection-anchor-nav">
+    <a class="subsection-anchor-chip" href="#sub-ai-model">模型与技术更新</a>
+    <a class="subsection-anchor-chip" href="#sub-ai-product">产品与平台</a>
+    <a class="subsection-anchor-chip" href="#sub-ai-industry">产业与资本</a>
+    <a class="subsection-anchor-chip" href="#sub-ai-policy">政策与治理</a>
+  </div>
+  <div class="section-summary">
+    AI板块过去24小时呈现"开源巨头加码+消费级里程碑+监管压力升温"的三重叙事。英伟达曝光万亿参数开源模型Nemotron 4并同步发布Nemotron 3.5 Lightning与NeMo Switchyard路由库；ChatGPT月活突破10亿并补齐Linux桌面端最后一块拼图；Meta正式拆解20亿美元Manus收购交易，中美AI交易脱钩加速。政策侧，Anthropic宣布为Claude输出添加文本水印以符合欧盟AI法案，美国参议员Bernie Sanders公开呼吁三大AI巨头暂停前沿模型开发。
+  </div>
+
+  <div class="subsection" id="sub-ai-model">
+    <div class="subsection-title">模型与技术更新</div>
+    <ul class="news-list">
+      <li>
+        <div class="news-item-head"><span class="bullet">"</span><span class="news-title">英伟达曝光万亿参数开源模型Nemotron 4，同步发布Nemotron 3.5 Lightning与NeMo Switchyard</span></div>
+        <div class="news-body">8月12日，英伟达被曝正在研发新一代开源AI模型系列Nemotron 4，最大版本参数量预计至少1万亿，约为现有Nemotron 3 Ultra的两倍，目标与全球顶尖开源模型竞争。为推进研发，英伟达组建了包括Mistral、Cursor在内的"Nemotron联盟"，并通过回租云服务器将多年期算力承诺增至280亿美元。同日，英伟达发布Nemotron 3.5 Lightning，采用混合专家架构，总参数约300亿、活跃参数约30亿，专攻AI智能体长期运行场景，最高可实现约4倍Token生成速度提升；并同步推出开源模型路由库NeMo Switchyard，可按任务需求自动分配最优模型。戴尔已宣布将上述两项技术纳入Dell Deskside Agentic AI平台。</div>
+        <div class="news-source"><span class="source-tag">钛媒体/搜狐/36氪</span><a href="https://www.sohu.com/a/1061728509_121400326" target="_blank">原文链接</a></div>
+      </li>
+      <li>
+        <div class="news-item-head"><span class="bullet">"</span><span class="news-title">智源研究院发布AREX自主研究智能体：首创"研究→验证→再研究"双循环递归框架</span></div>
+        <div class="news-body">8月11日，北京智源人工智能研究院发布AREX自主研究智能体，首创"研究→验证→再研究"双循环递归框架，可让AI在长程任务中持续自我修正、逐步接近正确答案。目前该模型权重已开源，科研体验版同步开放，支持资讯追踪、论文筛选、播客摘要，具备AI自主读论文、追热点、做综述等能力。这标志着国内研究机构在自主科研Agent方向的最新探索，将AI从"辅助阅读"推向"自主研究"。</div>
+        <div class="news-source"><span class="source-tag">智源研究院/163.com</span><a href="https://www.163.com/dy/article/L44BJJ8R0534A4SC.html" target="_blank">原文链接</a></div>
+      </li>
+    </ul>
+  </div>
+
+  <div class="subsection" id="sub-ai-product">
+    <div class="subsection-title">产品与平台</div>
+    <ul class="news-list">
+      <li>
+        <div class="news-item-head"><span class="bullet">"</span><span class="news-title">ChatGPT Linux桌面端应用正式上线，补全Windows/macOS后主要桌面系统布局</span></div>
+        <div class="news-body">8月12日，OpenAI正式发布ChatGPT桌面应用的Linux版本（预览版），支持x64及arm64架构，提供.deb和.rpm安装包，兼容Ubuntu 24.04/26.04 LTS、Debian 13、Fedora 43/44等主流发行版。应用整合Chat、ChatGPT Work与Codex三大功能模块，将ChatGPT桌面产品线覆盖至全部三大主流桌面操作系统。此前Anthropic已于约一个月前发布Claude桌面应用的Linux版本，两大实验室在开发者桌面生态上的竞争持续升级。</div>
+        <div class="news-source"><span class="source-tag">IT之家/DoNews</span><a href="https://www.donews.com/news/detail/8/6667503.html" target="_blank">原文链接</a></div>
+      </li>
+    </ul>
+  </div>
+
+  <div class="subsection" id="sub-ai-industry">
+    <div class="subsection-title">产业与资本</div>
+    <ul class="news-list">
+      <li>
+        <div class="news-item-head"><span class="bullet">"</span><span class="news-title">ChatGPT月活数月前突破10亿、7月周活达10亿，与Gemini同入十亿用户阶段</span></div>
+        <div class="news-body">8月12日，OpenAI确认ChatGPT月活数月前已突破10亿，7月周活亦达到10亿，与谷歌Gemini同入"十亿用户俱乐部"，标志生成式AI助手从实验走向基础设施。消费级AI首次同时出现两个十亿级产品，意味着下一阶段竞争将转向留存、变现与深度整合（搜索、办公、设备）。同时，OpenAI为ChatGPT Business推出Premium席位，用量达标准席5倍、取消5小时封顶，月费100至125美元，瞄准高活跃企业成员的大型项目需求。</div>
+        <div class="news-source"><span class="source-tag">手机中国/QQ新闻</span><a href="https://new.qq.com/rain/a/20260812A03VXW00" target="_blank">原文链接</a></div>
+      </li>
+      <li>
+        <div class="news-item-head"><span class="bullet">"</span><span class="news-title">Meta正式拆解20亿美元Manus收购交易，后者恢复独立运营</span></div>
+        <div class="news-body">据8月12日AI行业热点日报，Meta因北京监管阻挠，正式拆解此前20亿美元收购中国背景智能体创业公司Manus的交易，后者恢复独立运营。该交易脱钩意味着中美AI交易绑定难度进一步上升，中国创业公司与美国资本的整合路径面临更复杂的监管不确定性。与此同时，Meta CEO扎克伯格发布万字长文《未来属于每一个人》，重申开放权重立场，主张"个人超级智能"不应集中于少数机构，与OpenAI和Anthropic的闭源集中路线形成鲜明对照。</div>
+        <div class="news-source"><span class="source-tag">AI行业热点日报/微博</span><a href="https://weibo.com/7594643421/5330991997519209" target="_blank">原文链接</a></div>
+      </li>
+    </ul>
+  </div>
+
+  <div class="subsection" id="sub-ai-policy">
+    <div class="subsection-title">政策与治理</div>
+    <ul class="news-list">
+      <li>
+        <div class="news-item-head"><span class="bullet">"</span><span class="news-title">Anthropic将为Claude输出添加文本水印以符合欧盟AI法案；Bernie Sanders公开呼吁暂停前沿模型开发</span></div>
+        <div class="news-body">8月12日，AI行业热点日报披露Anthropic将为Claude输出添加不可见文本水印，以符合欧盟AI法案的可追溯要求，水印成为"可追踪"新标准。同日，美国参议员Bernie Sanders公开要求OpenAI、Anthropic、Meta暂停前沿模型开发。监管与安全叙事持续升温，与Anthropic此前宣布"基本解决提示注入攻击"形成对照——模型层安全在进步，但政策层对前沿AI的暂停呼声仍在加剧。欧盟AI法案的合规要求正推动技术方案从"自愿"走向"强制"。</div>
+        <div class="news-source"><span class="source-tag">AI行业热点日报/微博</span><a href="https://weibo.com/7594643421/5330991997519209" target="_blank">原文链接</a></div>
+      </li>
+    </ul>
+  </div>
+</section>
+
+<div class="report-footer">
+  <p>本期日报共收录 <strong>15 条</strong>新闻，筛选自过去 24 小时内的公开报道。</p>
+  <p>数据来源：WebSearch · 公开报道 | 生成时间：2026-08-12 10:00 CST</p>
+  <p>时间窗口：2026-08-11 10:00 — 2026-08-12 10:00 CST · 箱包 2 条 · 电商 7 条 · AI 6 条</p>
+  <p>时效审核：箱包候选8/通过2（丢弃：Bric's X-Collection日期不明、TUMI衣帽箱08-08发布、Maison de Clederobe预售始于5月）；电商候选15/通过7（丢弃：英加退货监管政策事件为7月、拼多多明天达已收录于08-11、抖音818已收录于08-11、PPWR已预告于08-11）；AI候选18/通过6（丢弃：GPT-5.6-Cyber已收录于08-11、Meta Muse Glimmer已收录于08-11、扎克伯格万字长文已收录于08-11、NVIDIA 5000亿融资平台已收录于08-11、Anthropic Sonnet 5锁价已收录于08-11、Anthropic黎曼猜想已收录于08-11、OpenAI 70亿回购已收录于08-11）</p>
+</div>
+
+</div>
+</body>
+</html>
