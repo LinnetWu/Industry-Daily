@@ -1,0 +1,488 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>行业日报（2026-08-13）</title>
+<style>
+  :root {
+    --bg: #fafaf8;
+    --text: #1a1a1a;
+    --text-secondary: #6b7280;
+    --text-muted: #9ca3af;
+    --border: #e0e3dc;
+    --accent: #2d5016;
+    --surface: #f4f6f1;
+    --tag-bg: #eaf0e4;
+    --tag-text: #3a6b1e;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.7;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .report-container {
+    max-width: 780px;
+    margin: 0 auto;
+    padding: 48px 24px 64px;
+  }
+
+  .report-main-title {
+    font-size: 28px;
+    font-weight: 800;
+    color: var(--accent);
+    text-align: center;
+    margin-bottom: 8px;
+    letter-spacing: 0.5px;
+  }
+
+  .report-meta {
+    text-align: center;
+    font-size: 13px;
+    color: var(--text-muted);
+    margin-bottom: 10px;
+  }
+
+  .top-anchor-nav {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    justify-content: center;
+    margin-bottom: 28px;
+  }
+
+  .top-anchor-chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 10px 20px;
+    border-radius: 24px;
+    background: #fff;
+    border: 1.5px solid var(--accent);
+    color: var(--accent);
+    font-size: 13px;
+    font-weight: 600;
+    transition: all 0.18s;
+    cursor: pointer;
+    white-space: nowrap;
+    text-decoration: none;
+  }
+
+  .top-anchor-chip:hover {
+    background: var(--accent);
+    color: #fff;
+    text-decoration: none;
+  }
+
+  .top-anchor-chip.primary {
+    background: var(--accent);
+    color: #fff;
+    font-weight: 700;
+  }
+
+  .top-anchor-chip .count {
+    font-weight: 700;
+    font-size: 14px;
+  }
+
+  .subsection-anchor-nav {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin: 10px 0 16px;
+  }
+
+  .subsection-anchor-chip {
+    display: inline-flex;
+    align-items: center;
+    padding: 6px 14px;
+    border-radius: 14px;
+    background: var(--tag-bg);
+    color: var(--tag-text);
+    font-size: 12px;
+    font-weight: 600;
+    transition: all 0.18s;
+    white-space: nowrap;
+    text-decoration: none;
+  }
+
+  .subsection-anchor-chip:hover {
+    background: var(--accent);
+    color: #fff;
+    text-decoration: none;
+  }
+
+  .report-intro {
+    background: var(--surface);
+    border-radius: 10px;
+    padding: 20px 24px;
+    margin-bottom: 36px;
+    font-size: 14.5px;
+    color: var(--text-secondary);
+    line-height: 1.8;
+    border: 1px solid var(--border);
+  }
+
+  .section {
+    margin-bottom: 40px;
+  }
+
+  .section-title {
+    font-size: 21px;
+    font-weight: 700;
+    color: var(--accent);
+    margin-bottom: 10px;
+    padding-bottom: 10px;
+    border-bottom: 2px solid var(--border);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .section-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 34px;
+    height: 34px;
+    border-radius: 8px;
+    font-size: 12px;
+    font-weight: 700;
+    color: #fff;
+    flex-shrink: 0;
+  }
+
+  .section-summary {
+    font-size: 14px;
+    color: var(--text-secondary);
+    margin-bottom: 20px;
+    padding-left: 4px;
+    line-height: 1.7;
+  }
+
+  .subsection {
+    margin-bottom: 22px;
+  }
+
+  .subsection-title {
+    font-size: 15px;
+    font-weight: 700;
+    color: var(--accent);
+    margin-bottom: 10px;
+    padding-bottom: 5px;
+    border-bottom: 1px dotted var(--border);
+  }
+
+  .news-list {
+    list-style: none;
+    padding: 0;
+  }
+
+  .news-list li {
+    margin-bottom: 14px;
+    padding: 12px 14px;
+    background: #fff;
+    border-radius: 8px;
+    border: 1px solid var(--border);
+  }
+
+  .news-item-head {
+    display: flex;
+    align-items: flex-start;
+    gap: 8px;
+    margin-bottom: 6px;
+  }
+
+  .bullet {
+    color: var(--accent);
+    font-size: 14px;
+    flex-shrink: 0;
+    margin-top: 1px;
+  }
+
+  .news-title {
+    font-size: 14.5px;
+    font-weight: 600;
+    color: var(--text);
+    line-height: 1.5;
+  }
+
+  .news-body {
+    font-size: 13.5px;
+    color: var(--text-secondary);
+    line-height: 1.7;
+    margin-bottom: 8px;
+    padding-left: 22px;
+  }
+
+  .news-source {
+    font-size: 12px;
+    padding-left: 22px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex-wrap: wrap;
+  }
+
+  .source-tag {
+    display: inline-block;
+    background: var(--tag-bg);
+    color: var(--tag-text);
+    font-size: 11px;
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-weight: 500;
+  }
+
+  .news-source a {
+    color: var(--accent);
+    text-decoration: none;
+    font-size: 12px;
+  }
+
+  .news-source a:hover {
+    text-decoration: underline;
+  }
+
+  .report-footer {
+    margin-top: 48px;
+    padding-top: 20px;
+    border-top: 1px solid var(--border);
+    font-size: 12px;
+    color: var(--text-muted);
+    text-align: center;
+    line-height: 1.8;
+  }
+</style>
+</head>
+<body>
+<div class="report-container">
+
+<h1 class="report-main-title">行业日报（2026-08-13）</h1>
+<div class="report-meta">2026年8月13日 · 星期四 · 数据来源：AI HOT / WebSearch / 公开报道</div>
+
+<div class="top-anchor-nav">
+  <span class="top-anchor-chip primary">当日总条数 <span class="count">21</span></span>
+  <a class="top-anchor-chip" href="#section-bags">箱包 <span class="count">3</span></a>
+  <a class="top-anchor-chip" href="#section-ec">电商 <span class="count">6</span></a>
+  <a class="top-anchor-chip" href="#section-ai">AI <span class="count">12</span></a>
+</div>
+
+<div class="report-intro">
+  本期日报覆盖过去24小时（8月12日10:00至8月13日10:00）的行业动态。AI板块迎来"双王同发"历史性时刻：DeepSeek V4 Pro正式版与xAI Grok 4.6在凌晨两小时内先后发布，双双将竞争焦点押向长程智能体能力，多项评测逼近或超越Claude Fable 5。微软首次推出自研推理模型MAI-Thinking-1，阿里开放Qwen3.8-2.4T-A95B权重为Qwen-Max级模型首次开源，腾讯Q2财报披露AI资本开支528亿元同比暴增176%致自由现金流转负。电商板块，淘宝深度整合通义千问推出对话式购物覆盖40亿商品，SHEIN估值缩水近600亿美元仍闯关港股IPO，欧盟PPWR包装法8月12日正式无缓冲生效倒逼跨境转型。箱包板块延续早秋换季节奏，BVLGARI上市2026夏季系列包袋，土屋鞄制造所与欧时纳分别推出新品。
+</div>
+
+<!-- ===== 箱包动态 ===== -->
+<section class="section" id="section-bags">
+  <h2 class="section-title"><span class="section-icon" style="background:#2d5016;">BG</span>箱包动态</h2>
+  <div class="subsection-anchor-nav">
+    <a class="subsection-anchor-chip" href="#sub-bags-brand">品牌与产品</a>
+  </div>
+  <div class="section-summary">
+    箱包板块过去24小时呈现早秋换季与夏季收尾并行的节奏。BVLGARI上市2026夏季系列包袋，以流光溢彩的珠宝美学延续奢侈品牌在配饰领域的季节叙事；日本皮具品牌土屋鞄制造所于8月13日发售ATTITU极简钱包与卡片夹系列，以可拆卸挂绳和数字支付时代轻薄设计切入日常轻携场景；国产品牌欧时纳JUSTSTAR推出随心流浪包，以油蜡皮质感与平绣工艺锁定早秋通勤市场。
+  </div>
+
+  <div class="subsection" id="sub-bags-brand">
+    <div class="subsection-title">品牌与产品</div>
+    <ul class="news-list">
+      <li>
+        <div class="news-item-head"><span class="bullet">"</span><span class="news-title">BVLGARI上市2026夏季系列包袋：流光溢彩的珠宝美学延续季节叙事</span></div>
+        <div class="news-body">BVLGARI于8月12日上市2026夏季系列包袋，延续品牌将珠宝美学融入配饰设计的传统。新系列以多彩宝石色调为核心灵感，结合Serpenti等经典品牌标志性元素，在材质上运用小牛皮与金属件的光泽对比，打造兼具度假风情与都市优雅的夏季手袋系列。该系列上市标志着奢侈品牌2026夏季配饰线的最后一波集中发布。</div>
+        <div class="news-source"><span class="source-tag">iBag新包杂志</span><a href="https://bag.icity.ly/" target="_blank">原文链接</a></div>
+      </li>
+      <li>
+        <div class="news-item-head"><span class="bullet">"</span><span class="news-title">土屋鞄制造所ATTITU极简系列8月13日发售：可拆卸挂绳钱包与轻薄卡片夹</span></div>
+        <div class="news-body">日本高端皮具品牌土屋鞄制造所（Tsuchiya Kaban）于8月13日在官网与部分店铺限定发售ATTITU系列全新极简钱包与卡片夹。极简三折钱包具备高实用机能，轻薄卡片夹则因应数字支付时代的轻携需求，两款均附可拆卸式挂绳，提供自由随心的背负方式。品牌以"防泼水轻盈皮革"和摔鼓加工工艺著称，此次新品延续其兼顾轻盈与细腻质感的品牌DNA。</div>
+        <div class="news-source"><span class="source-tag">土屋鞄制造所官网</span><a href="https://tsuchiya-kaban-global.com/pages/new_sale_item" target="_blank">原文链接</a></div>
+      </li>
+      <li>
+        <div class="news-item-head"><span class="bullet">"</span><span class="news-title">欧时纳JUSTSTAR随心流浪包早秋上市：油蜡皮质感与平绣工艺锁定通勤市场</span></div>
+        <div class="news-body">国产品牌欧时纳JUSTSTAR于8月12日通过官方微博正式发布随心系列流浪包，定位早秋通勤市场。新品甄选莹润质感油蜡皮，包身流露细腻纹理，兼具皮革复古感与都市灵动氛围；采用独特平绣工艺赋予菱格清晰轮廓，并支持科学扩容，可轻松携带14寸电脑。抽绳设计可自行调整开合，一包解锁两种形态，定价面向中端通勤消费群体。</div>
+        <div class="news-source"><span class="source-tag">欧时纳JUSTSTAR微博</span><a href="https://www.sina.cn/media/3071912992" target="_blank">原文链接</a></div>
+      </li>
+    </ul>
+  </div>
+</section>
+
+<!-- ===== 电商动态 ===== -->
+<section class="section" id="section-ec">
+  <h2 class="section-title"><span class="section-icon" style="background:#2d5016;">EC</span>电商动态</h2>
+  <div class="subsection-anchor-nav">
+    <a class="subsection-anchor-chip" href="#sub-ec-platform">平台与零售</a>
+    <a class="subsection-anchor-chip" href="#sub-ec-crossborder">跨境与出海</a>
+    <a class="subsection-anchor-chip" href="#sub-ec-logistics">支付、物流与供应链</a>
+    <a class="subsection-anchor-chip" href="#sub-ec-marketing">营销与内容电商</a>
+  </div>
+  <div class="section-summary">
+    电商板块过去24小时围绕AI赋能平台、跨境合规冲击与品牌出海三条主线展开。阿里将通义千问深度整合进淘宝，40亿商品接入对话式购物，搜索框让位AI助手；SHEIN估值从巅峰982亿美元缩水至400-500亿美元仍闯关港股IPO；欧盟PPWR包装法8月12日正式无缓冲生效，外包装须过重金属与PFAS检测；韩国PIPC对AliExpress和Temu合计罚款逾33亿韩元倒逼数据合规升级。产业带方面，全国家电产业带齐聚宁波开辟出海新航道，中欧班列将补货周期从40天压缩至15天。
+  </div>
+
+  <div class="subsection" id="sub-ec-platform">
+    <div class="subsection-title">平台与零售</div>
+    <ul class="news-list">
+      <li>
+        <div class="news-item-head"><span class="bullet">"</span><span class="news-title">淘宝深度整合通义千问：40亿商品接入对话式购物，搜索框让位AI助手</span></div>
+        <div class="news-body">阿里将通义千问大模型深度整合进淘宝App，覆盖40亿商品的对话式购物体验正式上线。用户可通过自然语言对话完成商品搜索、虚拟试穿、30天价追踪等操作，传统搜索框逐步让位AI助手。这是国内电商平台上首次实现如此大规模的商品知识图谱与对话式AI的结合，标志着电商交互范式从"人找货"向"AI助手帮人找货"的迁移。同步推出的还有天猫《违背承诺规则》修订版，于8月12日执行，八大场景统一赔偿5%（单笔5-50元），赠品与补寄单独计罚。</div>
+        <div class="news-source"><span class="source-tag">零售日报/微博</span><a href="https://weibo.com/3205468931/5329195636883762" target="_blank">原文链接</a></div>
+      </li>
+    </ul>
+  </div>
+
+  <div class="subsection" id="sub-ec-crossborder">
+    <div class="subsection-title">跨境与出海</div>
+    <ul class="news-list">
+      <li>
+        <div class="news-item-head"><span class="bullet">"</span><span class="news-title">SHEIN估值从982亿美元缩水至400-500亿美元，通过港交所聆讯冲刺港股IPO</span></div>
+        <div class="news-body">8月12日，跨境电商巨头SHEIN已通过港交所上市聆讯，拟推动优先股转股卸下172.94亿美元财务负债，估值从2022年C轮融资时的982亿美元缩水至400-500亿美元。财务数据显示，2025年营收418.47亿美元超越Zara（319亿美元），净利润20.64亿美元，库存周转天数仅36天，全球2.73亿活跃顾客覆盖160个市场。但2026年Q1营收增速放缓至1.1%、净亏9900万美元，关税壁垒与Temu/TikTok Shop分流构成持续压力。上市后拟按净利润50%派发股息以稳信心。</div>
+        <div class="news-source"><span class="source-tag">懂财帝/QQ新闻</span><a href="https://new.qq.com/rain/a/20260812A07J4W00?refer=cp_1009" target="_blank">原文链接</a></div>
+      </li>
+      <li>
+        <div class="news-item-head"><span class="bullet">"</span><span class="news-title">韩国PIPC罚款AliExpress与Temu合计逾33亿韩元，跨境数据合规红线收紧</span></div>
+        <div class="news-body">8月12日，韩国个人信息保护委员会（PIPC）因跨境数据传输违规，对AliExpress罚款19.78亿韩元、对Temu罚款13.69亿韩元。监管重心从事后处罚转向事前预防，在韩中资企业须关注韩文隐私政策、国内代理人指定、单独同意机制等八项合规要务。同期，泰国落地平台连带责任与集体诉讼制度，越南要求卖家与主播强制实名（2027年全面执行），Shopee越南8月11日起NFC银行卡须双证验证，东南亚合规收紧趋势加速。</div>
+        <div class="news-source"><span class="source-tag">南方都市报/QQ新闻</span><a href="https://new.qq.com/rain/a/20260812A07J4W00?refer=cp_1009" target="_blank">原文链接</a></div>
+      </li>
+      <li>
+        <div class="news-item-head"><span class="bullet">"</span><span class="news-title">全国家电产业带齐聚宁波开辟出海新航道：中欧班列将补货周期压缩至15天</span></div>
+        <div class="news-body">8月12日，全国家电产业带展会在宁波启幕，聚焦家电品牌抱团出海。欧洲极端高温带动"清凉经济"爆发，6月我国对欧盟空调出口额同比暴涨72.8%，移动空调与风扇成为海外爆品。针对欧洲移动空调的爆发式需求，国内多家厂商已将跨境补货通道由海运切换至中欧班列，运输周期从40天压缩至15天。北美份额持续收缩，欧洲市场份额创十五年新高，东盟、非洲、拉美新兴市场成为出口增长核心基本盘。展会同步落地全球电商专场活动，汇聚主流跨境平台与海外仓服务商。</div>
+        <div class="news-source"><span class="source-tag">央广网/宁波商务局</span><a href="https://swj.ningbo.gov.cn/col/col1229031554/art/2026/art_ab14b85b4e5547e29dc83453e0f65def.html" target="_blank">原文链接</a></div>
+      </li>
+    </ul>
+  </div>
+
+  <div class="subsection" id="sub-ec-logistics">
+    <div class="subsection-title">支付、物流与供应链</div>
+    <ul class="news-list">
+      <li>
+        <div class="news-item-head"><span class="bullet">"</span><span class="news-title">欧盟PPWR包装法8月12日正式无缓冲生效：外包装须过重金属+PFAS检测并附符合性声明</span></div>
+        <div class="news-body">8月12日，欧盟《包装和包装废弃物法规》（PPWR）正式无缓冲期生效。所有进入欧盟市场的商品外包装及塑胶配件须通过重金属与PFAS检测，并附符合性声明，统一标注材质与回收码。EPR注册号未传商品将面临下架。低值包裹3欧元固定税已实施满月，直邮成本陡增。该法规对中国跨境电商卖家的包装供应链提出全面合规要求，此前行业已有数月准备期，但无缓冲生效意味着8月12日起不合规商品将立即被拦截。同期，美国8月29日起取消全球800美元de minimis免税，墨西哥8月15日起50美元以下包裹关税从19%升至33.5%，全球跨境电商关税与合规环境持续收紧。</div>
+        <div class="news-source"><span class="source-tag">零售日报/微博</span><a href="https://weibo.com/3205468931/5329195636883762" target="_blank">原文链接</a></div>
+      </li>
+    </ul>
+  </div>
+
+  <div class="subsection" id="sub-ec-marketing">
+    <div class="subsection-title">营销与内容电商</div>
+    <ul class="news-list">
+      <li>
+        <div class="news-item-head"><span class="bullet">"</span><span class="news-title">[H1业绩预告 | 数据期间 2026年1-6月] 交个朋友上半年净利预增52.6%-65%，直播电商转AI全链路提效</span></div>
+        <div class="news-body">直播电商机构"交个朋友"公布2026年上半年业绩预告，预计净利润8600万-9300万元，同比增长52.6%-65%。这一增长反映了直播电商行业正从"流量竞赛"转向"AI全链路提效"的新阶段：AI驱动的选品、内容生成、投放优化与客服自动化正在系统性压低运营成本。同期，抖音电商收紧本地商家准入，餐饮与生鲜品类强制传食品经营资质；小红书处置40余团播账号整治低俗诱导消费，内容电商监管趋严推动行业向规范化转型。</div>
+        <div class="news-source"><span class="source-tag">零售日报/微博</span><a href="https://weibo.com/3205468931/5329195636883762" target="_blank">原文链接</a></div>
+      </li>
+    </ul>
+  </div>
+</section>
+
+<!-- ===== AI动态 ===== -->
+<section class="section" id="section-ai">
+  <h2 class="section-title"><span class="section-icon" style="background:#2d5016;">AI</span>AI动态</h2>
+  <div class="subsection-anchor-nav">
+    <a class="subsection-anchor-chip" href="#sub-ai-model">模型与技术更新</a>
+    <a class="subsection-anchor-chip" href="#sub-ai-product">产品与平台</a>
+    <a class="subsection-anchor-chip" href="#sub-ai-industry">产业与资本</a>
+    <a class="subsection-anchor-chip" href="#sub-ai-research">研究与观点</a>
+  </div>
+  <div class="section-summary">
+    AI板块过去24小时堪称"双王同发"的历史性时刻。DeepSeek V4 Pro正式版与xAI Grok 4.6在凌晨两小时内先后发布，双双将竞争焦点押向长程智能体能力，多项评测逼近或超越Claude Fable 5。微软首次推出自研推理模型MAI-Thinking-1，阿里开放Qwen3.8-2.4T-A95B权重实现Qwen-Max级模型首次开源，LTX-2.5视频模型实现10秒720P视频6.8秒生成。产业侧，腾讯Q2财报披露AI资本开支528亿元同比暴增176%致自由现金流转负，林俊旸创办语用科技天使轮估值20亿美元。产品侧，Claude Chrome侧边栏升级为Cowork会话，Meta Muse Glimmer登陆OpenRouter。
+  </div>
+
+  <div class="subsection" id="sub-ai-model">
+    <div class="subsection-title">模型与技术更新</div>
+    <ul class="news-list">
+      <li>
+        <div class="news-item-head"><span class="bullet">"</span><span class="news-title">DeepSeek V4 Pro正式版与xAI Grok 4.6凌晨两小时内同日发布，双王押注长程智能体</span></div>
+        <div class="news-body">8月13日凌晨，DeepSeek官网API文档悄然更新，V4 Pro正式版（DeepSeek-V4-Pro-0813）上线，支持1M上下文与384K最大输出，提供思考与非思考两种模式。评测数据显示，V4 Pro在CyberGym网络安全智能体测试中拿到83.3分超越Claude Fable 5的83.1分，AutomationBench拿到31.8分同样超越Fable 5的29.1分，Terminal-Bench 2.1拿到87.9分仅差Fable 5的0.1分，DeepSWE从预览版12.8分暴涨至62.7分。定价为缓存未命中输入3元/百万Token、输出6元/百万Token，暂未上调但官网预告"近期整体API价格预计有较大幅度上涨"。几乎同时，xAI发布Grok 4.6，重点强化长时运行智能体与交互式视觉任务，综合智能指数追平GPT-5.6 Sol的61分，CursorBench 69.9%超越GPT-5.6的67.2%，定价为每百万输入Token 2美元、输出6美元。两家不约而同将核心竞争点押向"模型能否在长任务中持续调用工具、修改代码、验证结果并交付可用成品"。</div>
+        <div class="news-source"><span class="source-tag">每经/36氪/猎云网/AI HOT</span><a href="https://new.qq.com/rain/a/20260813A03S8K00?refer=cp_1009" target="_blank">原文链接</a></div>
+      </li>
+      <li>
+        <div class="news-item-head"><span class="bullet">"</span><span class="news-title">阿里开放Qwen3.8-2.4T-A95B模型权重：Qwen-Max级模型首次开源，原生256K上下文可扩至百万</span></div>
+        <div class="news-body">8月12日，阿里Qwen团队正式开放Qwen3.8-2.4T-A95B模型权重，这是Qwen-Max级别模型首次开源。模型总参数2.4万亿（2.4T），每个Token激活950亿参数（95B），采用混合专家架构，原生支持262,144 Token上下文并可扩展至1,010,000 Token。此举标志着阿里在开源领域的又一重大布局，将此前仅在API层面提供的Max级能力以开放权重形式释放给社区，降低了前沿模型的自部署门槛。</div>
+        <div class="news-source"><span class="source-tag">IT之家/AI HOT</span><a href="https://www.ithome.com/0/989/001.htm" target="_blank">原文链接</a></div>
+      </li>
+      <li>
+        <div class="news-item-head"><span class="bullet">"</span><span class="news-title">微软首发自研推理模型MAI-Thinking-1：从零构建，已在Microsoft Foundry上线</span></div>
+        <div class="news-body">8月12日，微软AI CEO Mustafa Suleyman宣布微软首个自研推理模型MAI-Thinking-1从零开始构建完成，现已在Microsoft Foundry平台上线。这标志着微软在依赖OpenAI模型之外，正式建立自主推理模型研发能力。MAI-Thinking-1定位为推理增强模型，具体参数与基准成绩尚未完整披露，但Suleyman强调这是微软AI团队从"模型消费者"向"模型创造者"转型的关键里程碑。</div>
+        <div class="news-source"><span class="source-tag">X/Microsoft AI/AI HOT</span><a href="https://x.com/mustafasuleyman/status/2087570047967408396" target="_blank">原文链接</a></div>
+      </li>
+      <li>
+        <div class="news-item-head"><span class="bullet">"</span><span class="news-title">LTX-2.5视频生成模型登场：10秒720P视频仅需6.8秒，原生集成ComfyUI</span></div>
+        <div class="news-body">8月12日，LTX推出LTX-2.5视频生成模型，在2张英伟达GB200配置下生成10秒720P视频仅需6.8秒，实现"快于实时"的生成速度。LTX-2.5 Fast版本以每秒0.09美元生成带音频720p视频，10秒片段成本仅0.90美元；年度经常性收入低于1000万美元的组织可免费使用。模型原生集成ComfyUI工作流，降低了视频生成AI的创作门槛。这一速度突破意味着视频生成AI正从"等待分钟级"向"即时反馈"阶段过渡。</div>
+        <div class="news-source"><span class="source-tag">IT之家/AI HOT</span><a href="https://www.ithome.com/0/988/766.htm" target="_blank">原文链接</a></div>
+      </li>
+    </ul>
+  </div>
+
+  <div class="subsection" id="sub-ai-product">
+    <div class="subsection-title">产品与平台</div>
+    <ul class="news-list">
+      <li>
+        <div class="news-item-head"><span class="bullet">"</span><span class="news-title">Claude in Chrome侧边栏升级为Claude Cowork会话：跨设备无缝切换</span></div>
+        <div class="news-body">8月12日，Anthropic将Claude in Chrome浏览器扩展的侧边栏正式升级为Claude Cowork会话模式。升级后，对话会保存至历史记录，技能与连接器可在浏览器中工作，且任务可在桌面、网页和移动端应用间无缝切换。这意味着用户在Chrome中发起的AI任务不再是一次性的，而是持久化的工作会话，可在不同设备上继续推进。这一升级使浏览器侧边栏从"快捷问答工具"进化为"持续工作空间"。</div>
+        <div class="news-source"><span class="source-tag">Claude Blog/AI HOT</span><a href="https://claude.com/blog/cowork-chrome-side-panel" target="_blank">原文链接</a></div>
+      </li>
+      <li>
+        <div class="news-item-head"><span class="bullet">"</span><span class="news-title">Meta Muse Glimmer登陆OpenRouter：30B密集文本+图像模型，Apache 2.0开放权重</span></div>
+        <div class="news-body">8月12日，Meta AI超级智能实验室的首个开放权重模型Muse Glimmer已在OpenRouter上线。这是一款30B参数的密集文本+图像模型，采用Apache 2.0许可证，旨在成为可靠的本地智能体。MCP Atlas得分75.5，SWE-Bench Pro得分51.2。这是Meta超级智能实验室（前FAIR）成立以来首次以开放权重形式发布模型，标志着Meta在开源AI领域的战略延续。开发者现可通过OpenRouter API直接调用该模型。</div>
+        <div class="news-source"><span class="source-tag">X/OpenRouter/AI HOT</span><a href="https://x.com/OpenRouter/status/2087509478480765218" target="_blank">原文链接</a></div>
+      </li>
+      <li>
+        <div class="news-item-head"><span class="bullet">"</span><span class="news-title">OpenRouter推出实时网页搜索基准测试：模型选择比引擎更重要</span></div>
+        <div class="news-body">8月12日，OpenRouter发布实时网页搜索排行榜，系统评测模型、搜索引擎、搜索方法与预算四类配置组合。数据显示，将搜索预算从1轮增至25轮可使BrowseComp得分近乎翻倍，成本仅增2.5-7倍；模型选择比引擎更重要，平均分差15分 vs 10分。对于失败率高的任务，应降低搜索深度以控制成本。该基准为AI智能体开发者提供了"如何为不同任务选择搜索配置"的量化决策依据。</div>
+        <div class="news-source"><span class="source-tag">OpenRouter/AI HOT</span><a href="https://openrouter.ai/blog/announcements/web-search-benchmark" target="_blank">原文链接</a></div>
+      </li>
+    </ul>
+  </div>
+
+  <div class="subsection" id="sub-ai-industry">
+    <div class="subsection-title">产业与资本</div>
+    <ul class="news-list">
+      <li>
+        <div class="news-item-head"><span class="bullet">"</span><span class="news-title">[Q2财报 | 数据期间 2026年4-6月] 腾讯Q2资本开支528亿元同比暴增176%，AI投入致自由现金流转负138亿元</span></div>
+        <div class="news-body">8月12日晚间，腾讯发布2026年Q2财报：总营收2047.9亿元同比增长11%，Non-IFRS经营利润756.4亿元同比增长9%。若剔除新AI产品影响，Non-IFRS经营利润同比增长19%至861亿元。Q2资本开支527.8亿元同比暴增176%，环比增65%，主要用于AI算力采购与数据中心建设，直接导致自由现金流转为负138亿元（剔除算力预付款后为376亿元）。马化腾表示正从智能、应用、基础设施三层构建"AI赋能的腾讯"，Hy3正式版词元消耗量稳居全球前三，AI办公工具WorkBuddy与编程工具CodeBuddy用户爆发式增长。总裁刘炽平称AI资本开支"更像是一笔集中在今明两年投入的资金"，混元4更大参数版本正在训练中。截至6月末现金及等价物2069亿元，仍高于去年同期。</div>
+        <div class="news-source"><span class="source-tag">证券时报/每经/北京日报</span><a href="https://stcn.com/article/detail/4072590.html" target="_blank">原文链接</a></div>
+      </li>
+      <li>
+        <div class="news-item-head"><span class="bullet">"</span><span class="news-title">千问前技术负责人林俊旸创办AI公司语用科技，天使轮估值20亿美元</span></div>
+        <div class="news-body">8月12日，阿里千问（Qwen）前技术负责人林俊旸宣布在上海创办新公司"语用科技"，研究方向为横跨数字世界和物理世界的下一代智能体。高榕创投和HSG（红杉中国）共同领投天使轮融资，腾讯与上海未来产业基金提供支持，估值达20亿美元。1993年出生的林俊旸曾是阿里最年轻P10级技术专家，与智谱AI创始人唐杰、月之暗面创始人杨植麟、腾讯首席AI科学家姚顺雨并称"基模四杰"，今年3月从阿里离职创业。这一估值水平反映出顶级AI人才创业项目在当前资本环境下的稀缺溢价。</div>
+        <div class="news-source"><span class="source-tag">证券时报/第一财经/QQ新闻</span><a href="https://new.qq.com/rain/a/20260813A03TZA00?refer=cp_1009" target="_blank">原文链接</a></div>
+      </li>
+      <li>
+        <div class="news-item-head"><span class="bullet">"</span><span class="news-title">Research Gold号称"100%人类撰写、绝不使用AI"，实则全程AI驱动</span></div>
+        <div class="news-body">8月12日，面向医学研究者的网站Research Gold被曝宣称其服务"100%由人类撰写、绝不使用AI"，并列出多名博士审稿人。但调查发现，这些审稿人系AI生成、并不存在；部分真实方法学家的身份和照片未经许可被挪用。致电该公司时，自称"Sarah"的AI助手坚称自己是真人，邮件与聊天回复也均为AI生成。该事件揭示了AI内容冒充人类专业服务的新型欺诈模式，对学术诚信与AI治理提出警示。</div>
+        <div class="news-source"><span class="source-tag">404media/AI HOT</span><a href="https://www.404media.co/company-offering-100-human-written-never-ai-peer-review-is-entirely-ai" target="_blank">原文链接</a></div>
+      </li>
+    </ul>
+  </div>
+
+  <div class="subsection" id="sub-ai-research">
+    <div class="subsection-title">研究与观点</div>
+    <ul class="news-list">
+      <li>
+        <div class="news-item-head"><span class="bullet">"</span><span class="news-title">Anthropic研究：多智能体系统的模式与问题——45个协调智能体发现266个漏洞</span></div>
+        <div class="news-body">8月13日，Anthropic发布多智能体系统研究，指出随着AI智能体在共享代码库、市场等社会系统中承担更多任务，智能体间交互量或将超过人机交互。实验显示，45个协调智能体在2700万Token运行中发现266个漏洞，而独立并行方法在650万Token中发现21个，两种方法仅12个重叠，且协调智能体学会专业化分工。研究同时警示个体层面的良性行为怪癖可能叠加为意外的系统性失败，为多智能体部署的安全性提供了重要的实证参考。</div>
+        <div class="news-source"><span class="source-tag">Anthropic Research/AI HOT</span><a href="https://www.anthropic.com/research/multiagent-systems" target="_blank">原文链接</a></div>
+      </li>
+      <li>
+        <div class="news-item-head"><span class="bullet">"</span><span class="news-title">Google研究：Recall是参数化事实性的瓶颈——"丢钥匙"而非"空货架"</span></div>
+        <div class="news-body">8月12日，Google Research提出知识画像框架，发现前沿LLM（如Gemini3、GPT-5）的事实编码接近饱和，但回忆（recall）能力不足，多数事实错误源于"丢钥匙"而非"空货架"。该框架将事实分为编码失败、回忆失败等五类画像，并配套推出WikiProfile基准，含2150条维基百科事实，每条配10个问题，用于分别探测编码、回忆与识别能力。这一发现对LLM事实性改进方向有重要指引意义：提升回忆机制比增加知识量更关键。</div>
+        <div class="news-source"><span class="source-tag">Google Research Blog/AI HOT</span><a href="https://research.google/blog/empty-shelves-or-lost-keys-recall-is-the-bottleneck-for-parametric-factuality" target="_blank">原文链接</a></div>
+      </li>
+    </ul>
+  </div>
+</section>
+
+<div class="report-footer">
+  <p>本期日报共收录 <strong>21 条</strong>新闻，筛选自过去 24 小时内的公开报道。</p>
+  <p>数据来源：AI HOT · WebSearch · 公开报道 | 生成时间：2026-08-13 10:00 CST</p>
+  <p>时间窗口：2026-08-12 10:00 — 2026-08-13 10:00 CST · 箱包 3 条 · 电商 6 条 · AI 12 条</p>
+  <p>时效审核：箱包候选7/通过3（丢弃：TUMI衣帽箱8/8发布超出窗口、舒提啦国风行李箱8/11发布超出窗口、亮色系行李箱8/7发布超出窗口、拉杆箱排行榜为导购非新闻、Bric's LinkedIn日期不明待核实后丢弃）；电商候选15/通过6（丢弃：7月电商物流指数8/11发布超出窗口、TikTok Shop GMV已收录于08-12、菜鸟三日达已收录于08-11/12、TikTok带货博主8/11 19:34发布超出窗口、小红书Redshop 8/10发布超出窗口、亚马逊选品模拟器8/10发布超出窗口、Shein越南仓储8/10发布超出窗口、跨境电商招聘为8/10起始活动非今日事件、拉美跨境电商为通用分析非事件新闻）；AI HOT候选15/通过14（丢弃：Codex/Claude跨会话传消息publishedAt 8/11 22:15 CST超出窗口）；AI WebSearch候选8/通过5（丢弃：GPT-5.6 Sol改进8/6发布超出窗口、Anthropic水印已收录于08-12日报、OpenAI release notes非今日事件；通过：DeepSeek/Grok多源报道合并、腾讯Q2财报、林俊旸语用科技、谷歌Pixel 11偏消费电子未纳入AI板块、三星引入Claude信息不足未纳入）</p>
+</div>
+
+</div>
+</body>
+</html>
