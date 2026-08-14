@@ -1,0 +1,469 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>行业日报（2026-08-14）</title>
+<style>
+  :root {
+    --bg: #fafaf8;
+    --text: #1a1a1a;
+    --text-secondary: #6b7280;
+    --text-muted: #9ca3af;
+    --border: #e0e3dc;
+    --accent: #2d5016;
+    --surface: #f4f6f1;
+    --tag-bg: #eaf0e4;
+    --tag-text: #3a6b1e;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.7;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .report-container {
+    max-width: 780px;
+    margin: 0 auto;
+    padding: 48px 24px 64px;
+  }
+
+  .report-main-title {
+    font-size: 28px;
+    font-weight: 800;
+    color: var(--accent);
+    text-align: center;
+    margin-bottom: 8px;
+    letter-spacing: 0.5px;
+  }
+
+  .report-meta {
+    text-align: center;
+    font-size: 13px;
+    color: var(--text-muted);
+    margin-bottom: 10px;
+  }
+
+  .top-anchor-nav {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    justify-content: center;
+    margin-bottom: 28px;
+  }
+
+  .top-anchor-chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 10px 20px;
+    border-radius: 24px;
+    background: #fff;
+    border: 1.5px solid var(--accent);
+    color: var(--accent);
+    font-size: 13px;
+    font-weight: 600;
+    transition: all 0.18s;
+    cursor: pointer;
+    white-space: nowrap;
+    text-decoration: none;
+  }
+
+  .top-anchor-chip:hover {
+    background: var(--accent);
+    color: #fff;
+    text-decoration: none;
+  }
+
+  .top-anchor-chip.primary {
+    background: var(--accent);
+    color: #fff;
+    font-weight: 700;
+  }
+
+  .top-anchor-chip .count {
+    font-weight: 700;
+    font-size: 14px;
+  }
+
+  .subsection-anchor-nav {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin: 10px 0 16px;
+  }
+
+  .subsection-anchor-chip {
+    display: inline-flex;
+    align-items: center;
+    padding: 6px 14px;
+    border-radius: 14px;
+    background: var(--tag-bg);
+    color: var(--tag-text);
+    font-size: 12px;
+    font-weight: 600;
+    transition: all 0.18s;
+    white-space: nowrap;
+    text-decoration: none;
+  }
+
+  .subsection-anchor-chip:hover {
+    background: var(--accent);
+    color: #fff;
+    text-decoration: none;
+  }
+
+  .report-intro {
+    background: var(--surface);
+    border-radius: 10px;
+    padding: 20px 24px;
+    margin-bottom: 36px;
+    font-size: 14.5px;
+    color: var(--text-secondary);
+    line-height: 1.8;
+    border: 1px solid var(--border);
+  }
+
+  .section {
+    margin-bottom: 40px;
+  }
+
+  .section-title {
+    font-size: 21px;
+    font-weight: 700;
+    color: var(--accent);
+    margin-bottom: 10px;
+    padding-bottom: 10px;
+    border-bottom: 2px solid var(--border);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .section-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 34px;
+    height: 34px;
+    border-radius: 8px;
+    font-size: 12px;
+    font-weight: 700;
+    color: #fff;
+    flex-shrink: 0;
+  }
+
+  .section-summary {
+    font-size: 14px;
+    color: var(--text-secondary);
+    margin-bottom: 20px;
+    padding-left: 4px;
+    line-height: 1.7;
+  }
+
+  .subsection {
+    margin-bottom: 22px;
+  }
+
+  .subsection-title {
+    font-size: 15px;
+    font-weight: 700;
+    color: var(--accent);
+    margin-bottom: 10px;
+    padding-bottom: 5px;
+    border-bottom: 1px dotted var(--border);
+  }
+
+  .news-list {
+    list-style: none;
+    padding: 0;
+  }
+
+  .news-list li {
+    margin-bottom: 14px;
+    padding: 12px 14px;
+    background: #fff;
+    border-radius: 8px;
+    border: 1px solid var(--border);
+  }
+
+  .news-item-head {
+    display: flex;
+    align-items: flex-start;
+    gap: 8px;
+    margin-bottom: 6px;
+  }
+
+  .bullet {
+    color: var(--accent);
+    font-size: 14px;
+    flex-shrink: 0;
+    margin-top: 1px;
+  }
+
+  .news-title {
+    font-size: 14.5px;
+    font-weight: 600;
+    color: var(--text);
+    line-height: 1.5;
+  }
+
+  .news-body {
+    font-size: 13.5px;
+    color: var(--text-secondary);
+    line-height: 1.7;
+    margin-bottom: 8px;
+    padding-left: 22px;
+  }
+
+  .news-source {
+    font-size: 12px;
+    padding-left: 22px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex-wrap: wrap;
+  }
+
+  .source-tag {
+    display: inline-block;
+    background: var(--tag-bg);
+    color: var(--tag-text);
+    font-size: 11px;
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-weight: 500;
+  }
+
+  .news-source a {
+    color: var(--accent);
+    text-decoration: none;
+    font-size: 12px;
+  }
+
+  .news-source a:hover {
+    text-decoration: underline;
+  }
+
+  .report-footer {
+    margin-top: 48px;
+    padding-top: 20px;
+    border-top: 1px solid var(--border);
+    font-size: 12px;
+    color: var(--text-muted);
+    text-align: center;
+    line-height: 1.8;
+  }
+</style>
+</head>
+<body>
+<div class="report-container">
+
+<h1 class="report-main-title">行业日报（2026-08-14）</h1>
+<div class="report-meta">2026年8月14日 · 星期五 · 数据来源：AI HOT / WebSearch / 公开报道</div>
+
+<div class="top-anchor-nav">
+  <span class="top-anchor-chip primary">当日总条数 <span class="count">20</span></span>
+  <a class="top-anchor-chip" href="#section-bags">箱包 <span class="count">2</span></a>
+  <a class="top-anchor-chip" href="#section-ec">电商 <span class="count">7</span></a>
+  <a class="top-anchor-chip" href="#section-ai">AI <span class="count">11</span></a>
+</div>
+
+<div class="report-intro">
+  本期日报覆盖过去24小时（8月13日10:00至8月14日10:00）的行业动态。AI板块竞争焦点从模型能力向推理速度与智能体落地转移：OpenAI联合Cerebras推出GPT-5.6 Sol Ultrafast模式，以750 tokens/s刷新前沿模型推理速度纪录，Humanity's Last Exam答题速度较Claude Fable 5快近7倍；Google发布Gemini 3.7 Flash，编程与智能体能力强化且价格减半；DeepSeek开源Harness v0.1"一切皆插件"智能体框架；Databricks以1900亿美元估值完成50亿美元融资，年化收入突破70亿美元。电商板块迎来财报季密集披露：京东Q2利润创新高但收入承压，AI产品成交额增125%；滴滴国际业务GTV暴涨61%成最强引擎；马士基Q2超预期并上调全年指引。监管层面，三大外卖平台在京落地"红灯停表"算法向善，SHEIN英国版权案败诉须赔偿Temu，Shopee马来佣金上调最高至18%，Lazada首次实现EBITDA整体转正。箱包板块，新秀丽双线操作——H1溢利下滑24.5%承压，同时1.785亿美元收购DTC品牌BÉIS加速年轻化布局。
+</div>
+
+<!-- ===== 箱包动态 ===== -->
+<section class="section" id="section-bags">
+  <h2 class="section-title"><span class="section-icon" style="background:#2d5016;">BG</span>箱包动态</h2>
+  <div class="subsection-anchor-nav">
+    <a class="subsection-anchor-chip" href="#sub-bags-brand">品牌与产品</a>
+  </div>
+  <div class="section-summary">
+    箱包板块过去24小时被新秀丽（Samsonite）双线操作主导。一方面，H1 2026中报披露销售额微增1.1%至16.81亿美元但溢利大幅下滑24.5%，核心TUMI与Samsonite品牌在北美与亚洲面临需求疲软；另一方面，新秀丽以1.785亿美元现金收购数字原生旅行品牌BÉIS 85%股权，对应企业价值约2.1亿美元，切入年轻女性消费者与DTC能力缺口。这两条新闻一压一拉，恰好映射了传统箱包巨头在存量市场的增长困境与通过并购寻找新增长极的战略选择。
+  </div>
+
+  <div class="subsection" id="sub-bags-brand">
+    <div class="subsection-title">品牌与产品</div>
+    <ul class="news-list">
+      <li>
+        <div class="news-item-head"><span class="bullet">"</span><span class="news-title">[H1中报 | 数据期间 2026年1-6月] 新秀丽H1销售16.81亿美元微增1.1%，溢利下滑24.5%至0.98亿美元</span></div>
+        <div class="news-body">新秀丽集团发布2026年上半年财报，销售额16.81亿美元同比增长1.1%，但归母溢利0.98亿美元同比大幅下滑24.5%。核心品牌中，TUMI 2025年全球销售额约8.7亿美元占集团近四分之一，在中国市场仍取得两位数增长；Samsonite品牌在北美承压。集团CEO Kyle Gendreau此前提出的战略方向之一是继续抢占生活方式包袋市场并强化数字渠道，而当日同步宣布的BÉIS收购正是这一战略的直接落地。Q1数据显示集团旅行产品销售占比约62%，Lifestyle bags占比已接近38%且固定汇率增长4.8%，生活方式品类正成为对冲旅行箱增长放缓的关键。</div>
+        <div class="news-source"><span class="source-tag">今日头条/新秀丽公告</span><a href="https://www.toutiao.com/" target="_blank">原文链接</a></div>
+      </li>
+      <li>
+        <div class="news-item-head"><span class="bullet">"</span><span class="news-title">新秀丽1.785亿美元收购BÉIS 85%股权：2.1亿企业价值切入年轻女性DTC市场</span></div>
+        <div class="news-body">8月13日（美东时间8月12日），新秀丽集团公告其全资附属公司Samsonite LLC与BÉIS及卖方签署协议，以1.785亿美元现金收购BÉIS 85%在外成员权益，对应企业价值约2.1亿美元，预计2026年Q4完成。BÉIS由演员Shay Mitchell于2018年创立，由洛杉矶品牌孵化器Beach House Group孵化，2025年营收约2.1亿美元，约90%来自DTC渠道，Instagram与TikTok粉丝合计超200万。完成后Mitchell保留15%股权并继续担任创意与设计总监，CEO Adeela Hussain Johnson及管理团队继续经营，品牌保持独立运作。此举标志着新秀丽从"买产品缺口"到"买品牌缺口"再到"买能力缺口"的并购逻辑演进——BÉIS带来的不仅是一个年轻女性旅行品牌，更是新秀丽集团DTC能力（目前仅占集团收入约40%）的即装即用模块。</div>
+        <div class="news-source"><span class="source-tag">PR Newswire/新浪财经/观点网</span><a href="https://www.prnewswire.com/news-releases/beach-house-group-sells-majority-stake-in-beis-to-samsonite-in-210-million-deal-302850354.html" target="_blank">原文链接</a></div>
+      </li>
+    </ul>
+  </div>
+</section>
+
+<!-- ===== 电商动态 ===== -->
+<section class="section" id="section-ec">
+  <h2 class="section-title"><span class="section-icon" style="background:#2d5016;">EC</span>电商动态</h2>
+  <div class="subsection-anchor-nav">
+    <a class="subsection-anchor-chip" href="#sub-ec-platform">平台与零售</a>
+    <a class="subsection-anchor-chip" href="#sub-ec-crossborder">跨境与出海</a>
+    <a class="subsection-anchor-chip" href="#sub-ec-logistics">物流与出行</a>
+  </div>
+  <div class="section-summary">
+    电商板块过去24小时围绕财报季、平台治理与跨境合规三条主线展开。京东Q2收入3464亿同比降2.9%但归母净利71亿增15%，零售利润率4.6%创新高，AI产品成交额暴涨125%；滴滴Q2国际业务GTV增速61.1%成最强引擎；马士基Q2营收157.6亿美元增20%，年内第二次上调全年指引。监管层面，美团、淘宝闪购、京东外卖三大平台在京率先落地"红灯停表"——等红灯时长在考核中顺延，美团同步发布全国首个骑手AI智能体助手"团宝"。跨境侧，SHEIN在英国高等法院版权诉讼中败诉于Temu，须赔偿对方因下架遭受的损失；Shopee马来8月14日起佣金四级重算，SCP卖家最高14%-15%、Non-SCP最高17%-18%；Lazada 7月EBITDA首次整体转正，阿里东南亚战略跑通盈利模型。
+  </div>
+
+  <div class="subsection" id="sub-ec-platform">
+    <div class="subsection-title">平台与零售</div>
+    <ul class="news-list">
+      <li>
+        <div class="news-item-head"><span class="bullet">"</span><span class="news-title">[Q2财报 | 数据期间 2026年4-6月] 京东Q2收入3464亿同比降2.9%，归母净利71亿增15%，零售利润率4.6%创新高</span></div>
+        <div class="news-body">8月13日，京东集团发布2026年Q2财报：收入3464亿元同比降2.9%（产品收入2671亿降5.4%，服务收入793亿增6.8%），归母净利71亿元同比增15.4%，Non-GAAP净利89亿元增20.3%，经营利润45亿元同比扭亏。核心京东零售经营利润135亿元，利润率4.6%创大促季历史新高；京东外卖等新业务亏损同比收窄近50亿元。营销开支同比降24.8%至203亿元，研发投入逆势增37.7%至73亿元（上半年增53%）。AI产品方面，AI眼镜、AI PC、大屏AI手机、AI学习机等成交额同比增125%；JoyAI大模型与JoyInside智能体平台已与近200个品牌合作；全国首个具身数据采集社区落地宿迁，计划5年布局80余个RoboBase机器人基地。CEO许冉称"利润大幅改善标志着盈利轨迹迎来明确拐点"。截至6月末现金及等价物2351亿元，Q2自由现金流318亿元增44.5%。</div>
+        <div class="news-source"><span class="source-tag">新浪财经/新华日报/同花顺</span><a href="https://finance.sina.cn/stock/relnews/hk/2026-08-13/detail-inineqhm3345077.d.html" target="_blank">原文链接</a></div>
+      </li>
+      <li>
+        <div class="news-item-head"><span class="bullet">"</span><span class="news-title">美团/淘宝闪购/京东外卖在京率先落地"红灯停表"：等红灯时长在考核中顺延，美团发布骑手AI助手"团宝"</span></div>
+        <div class="news-body">8月13日，在北京市市场监管局组织的平台经济"破卷向善"第二次协商对话会上，美团、淘宝闪购、京东外卖三家平台宣布率先集中在北京落地"红灯停表"机制——骑手等红灯的时长在配送考核时间中顺延，让"赶时间"不再成为骑手的"紧箍咒"。首批路测已在朝阳区、通州区、经济技术开发区部分道路完成，交管部门将红绿灯读秒数据共享给平台，骑手更新App打开导航即可使用。同步措施还包括：电动自行车配送以平均时速不超过15公里计算时长、恶劣天气加大补时、避免"分钟级竞速"、商家出餐慢导致的超时不影响骑手服务分。美团现场发布全国首个骑手AI智能体助手"团宝"，提供等灯提示、事故多发路段提示、绿波通行、逆行识别、智能速度提醒5项功能，率先在北京落地并全国推广。京沪两地市场监管部门联手推动协商共治柔性监管。</div>
+        <div class="news-source"><span class="source-tag">中国青年报/中新社/央视新闻1+1</span><a href="https://www.163.com/dy/article/L4969D5L0514CDBK.html" target="_blank">原文链接</a></div>
+      </li>
+    </ul>
+  </div>
+
+  <div class="subsection" id="sub-ec-crossborder">
+    <div class="subsection-title">跨境与出海</div>
+    <ul class="news-list">
+      <li>
+        <div class="news-item-head"><span class="bullet">"</span><span class="news-title">SHEIN英国高等法院版权案败诉于Temu：须赔偿下架损失，服务器在爱尔兰规避英国管辖</span></div>
+        <div class="news-body">8月13日，英国高等法院就SHEIN诉Temu版权侵权案作出判决，SHEIN败诉。法官Kelyn Bacon驳回SHEIN关于Temu"产业化规模"版权侵权的指控，认定Temu作为第三方平台仅扮演"被动中介"角色，已禁止商家上传侵权内容且不具备对具体侵权行为的实际知情。即便构成侵权，Temu也可援引"托管抗辩"（hosting defence）免于责任。法院同时支持Temu反诉，SHEIN须赔偿Temu因先前禁令而下架非SHEIN拥有版权商品的损失。SHEIN发言人表示"惊讶"，称Temu仅因服务器位于爱尔兰便规避了英国管辖。此判决对在线平台第三方卖家版权责任认定具有判例意义，可能使权利人转向追究卖家而非平台。SHEIN另诉Temu违反竞争法（强制供应商独家协议）将于明年开庭。</div>
+        <div class="news-source"><span class="source-tag">Bloomberg/Khaleej Times/BM Magazine</span><a href="https://www.bloomberg.com/news/articles/2026-08-13/shein-loses-uk-lawsuit-against-temu-over-copyright-violations" target="_blank">原文链接</a></div>
+      </li>
+      <li>
+        <div class="news-item-head"><span class="bullet">"</span><span class="news-title">Shopee马来西亚8月14日起佣金四级重算：SCP卖家最高15%，Non-SCP最高18%</span></div>
+        <div class="news-body">Shopee马来西亚站宣布自2026年8月14日起调整本地Marketplace卖家佣金费率，按电子、时尚、快消、生活方式四大类及是否参与Shopee Cashback Programme（SCP）双轨计价。SCP卖家费率上调显著：电子类7.5%-14.0%（此前6.0%-11.0%），时尚类11.5%-13.5%（此前9.0%-12.0%），快消类0.0%-15.0%（此前0.0%-12.0%），生活方式类11.0%-14.0%（此前8.5%-11.5%）。Non-SCP卖家费率基本维持原水平（最高17%-18%）。新卖家自首次上架超120天或完成200笔订单后开始收费（以先达标者为准）。基础食品类（米面粮油等）继续免收佣金。此次调整仅适用于本地Marketplace卖家，Shopee Mall与海外卖家不受影响。</div>
+        <div class="news-source"><span class="source-tag">Shopee MY卖家中心/ Elias跨境/ AMZ123</span><a href="https://seller.shopee.com.my/edu/article/6799" target="_blank">原文链接</a></div>
+      </li>
+      <li>
+        <div class="news-item-head"><span class="bullet">"</span><span class="news-title">Lazada 2026年7月EBITDA首次整体转正：阿里东南亚战略跑通"重投入+本地化"盈利模型</span></div>
+        <div class="news-body">8月13日，财联社报道东南亚电商平台Lazada在今年7月录得EBITDA（息税折旧摊销前利润）转正，实现整体盈利。这是Lazada自2016年被阿里巴巴控股以来首次实现整体EBITDA转正，标志着阿里东南亚电商战略从"烧钱换规模"向"可持续运营"的关键拐点。Lazada CEO董铮在内部讲话中表示，盈利证明了商业策略的有效性，公司将在可持续运营模式下持续增加对东南亚市场的投入。作为对比，竞争对手Shopee Q2营收同比增长48%但盈利可持续性仍受质疑。Lazada在东南亚六国运营，拥有1.6亿活跃消费者和47+个仓储中心，近年深度应用生成式AI技术构建全链路智能电商生态。</div>
+        <div class="news-source"><span class="source-tag">财联社/华尔街日报/零售日报</span><a href="https://m.cls.cn/detail/1762300" target="_blank">原文链接</a></div>
+      </li>
+    </ul>
+  </div>
+
+  <div class="subsection" id="sub-ec-logistics">
+    <div class="subsection-title">物流与出行</div>
+    <ul class="news-list">
+      <li>
+        <div class="news-item-head"><span class="bullet">"</span><span class="news-title">[Q2财报 | 数据期间 2026年4-6月] 马士基Q2营收157.6亿美元增20%，EBITDA 30亿超预期，年内第二次上调全年指引</span></div>
+        <div class="news-body">8月13日，马士基发布2026年Q2财报：营收157.57亿美元同比增长20%（超市场预期138.68亿），EBITDA 29.92亿美元同比增30%（超预期21.2亿），EBIT 15.71亿美元同比增86%，EBIT利润率重返10%。海运业务营收增23%，装载量同比增4.1%由亚洲出口带动，平均运价上涨22%，船舶利用率96%；物流业务EBIT利润率提升至5.1%营收增15%；码头业务营收增11%。中东地缘冲突导致霍尔木兹海峡通行受阻，但受影响运力被迅速重新部署至其他增长航线，中国出口是核心引擎。基于Q2表现和下半年改善可见度，马士基再次上调全年指引：EBITDA从80-100亿美元升至105-125亿，EBIT从20-40亿升至45-65亿，自由现金流从"不低于负15亿"上调至"超过0美元"。CEO Vincent Clerc警告港口拥堵和供应链瓶颈"根深蒂固"，需持续投资关键贸易基础设施。</div>
+        <div class="news-source"><span class="source-tag">同花顺/Shipping Telegraph/Nasdaq</span><a href="https://news.10jqka.com.cn/20260813/c678932508.shtml" target="_blank">原文链接</a></div>
+      </li>
+      <li>
+        <div class="news-item-head"><span class="bullet">"</span><span class="news-title">[Q2财报 | 数据期间 2026年4-6月] 滴滴Q2核心平台订单50.52亿单创新高，国际业务GTV增速61.1%成最强引擎</span></div>
+        <div class="news-body">8月13日，滴滴在官网发布2026年Q2业绩报告。核心平台订单量同比增长13.2%至50.52亿单，季度日均超5500万单；其中中国出行日均4009万单，国际业务日均1542万单。核心平台GTV同比增长22.2%达1339亿元，国际业务GTV增速高达61.1%成为最大增长引擎。Q2经调整EBITDA实现盈利13亿元；单季营收625.22亿元同比增11%，运营利润10.45亿元，净利润8.9亿元，较一季度净亏12亿元实现扭亏为盈。上半年整体营收1212.65亿元同比增10.58%。国际化战略持续推进，国际业务的高速增长表明滴滴在海外市场的布局正在收获成效，但分析机构指出国际化与自动驾驶业务的持续投入仍构成短期盈利压力。</div>
+        <div class="news-source"><span class="source-tag">滴滴官网/新浪财经/QQ新闻</span><a href="https://k.sina.com.cn/article_5952915705_162d248f906703lfle.html" target="_blank">原文链接</a></div>
+      </li>
+    </ul>
+  </div>
+</section>
+
+<!-- ===== AI动态 ===== -->
+<section class="section" id="section-ai">
+  <h2 class="section-title"><span class="section-icon" style="background:#2d5016;">AI</span>AI动态</h2>
+  <div class="subsection-anchor-nav">
+    <a class="subsection-anchor-chip" href="#sub-ai-model">模型与技术更新</a>
+    <a class="subsection-anchor-chip" href="#sub-ai-product">产品与平台</a>
+    <a class="subsection-anchor-chip" href="#sub-ai-industry">产业与资本</a>
+  </div>
+  <div class="section-summary">
+    AI板块过去24小时的核心叙事是"速度即新智能"——当前沿模型能力已足够强大，推理速度成为下一个解锁应用爆发的关键约束。OpenAI联合Cerebras推出GPT-5.6 Sol Ultrafast模式，以750 tokens/s的输出速度（标准模式14倍）首次让前沿模型在"不牺牲智能"的前提下达到实时响应，Humanity's Last Exam 2500道博士级问题11小时答完，Claude Fable 5需78小时。Google同日发布Gemini 3.7 Flash，编程与智能体能力强化且价格减半，与Ultrafast形成"快+便宜"双线夹击。DeepSeek开源Harness v0.1"一切皆插件"框架，MiniMax发布Music 3.0开源音乐模型，小红书开源20亿参数dots.tts连续自回归TTS模型，开源生态在多模态方向加速推进。产业侧，Databricks以1900亿美元估值完成50亿美元融资，年化收入突破70亿同比增长超80%，成为AI数据基础设施领域估值最高的私有公司。
+  </div>
+
+  <div class="subsection" id="sub-ai-model">
+    <div class="subsection-title">模型与技术更新</div>
+    <ul class="news-list">
+      <li>
+        <div class="news-item-head"><span class="bullet">"</span><span class="news-title">OpenAI联合Cerebras推出GPT-5.6 Sol Ultrafast模式：750 tokens/s刷新前沿模型推理速度，HLE答题较Claude Fable 5快近7倍</span></div>
+        <div class="news-body">8月13日，Cerebras（NASDAQ: CBRS）宣布为OpenAI GPT-5.6 Sol提供Ultrafast新模式，输出速度达750 tokens/s，较标准处理快14倍，且不损失任何智能质量。该模式基于Cerebras晶圆级引擎（Wafer-Scale Engine）架构，44GB SRAM将模型权重全部保留在单芯片上，消除了GPU推理中权重在片上内存与片外存储间反复传输的带宽瓶颈。对比测试显示：Ultrafast比Claude Fable 5快11倍、比Claude Opus 4.8 Fast模式快5倍；在Humanity's Last Exam（2500道博士级问题）中，Ultrafast用11小时11分钟完成全部答题，Claude Fable 5需78小时27分钟（近7倍慢）；在GDP-Val经济价值知识工作基准上实现5.6倍端到端加速且无质量损失。目前以限量预览形式面向部分API客户开放。这是OpenAI今年早些时候向Cerebras承诺100亿美元低延迟算力合作的最新落地。</div>
+        <div class="news-source"><span class="source-tag">Cerebras/OpenAI/AI HOT</span><a href="https://openai.com/index/previewing-ultrafast/" target="_blank">原文链接</a></div>
+      </li>
+      <li>
+        <div class="news-item-head"><span class="bullet">"</span><span class="news-title">Google发布Gemini 3.7 Flash：编程与智能体能力强化，价格减半</span></div>
+        <div class="news-body">8月13日，Google发布Gemini 3.7 Flash模型，重点强化编程能力与智能体（agent）任务表现，同时将API调用价格较前代减半。Flash系列定位为速度与成本平衡的轻量级模型，3.7版本在保持快速推理的同时显著提升了代码生成、工具调用与多步推理能力。价格减半的策略直指开发者市场，与同日OpenAI推出的Ultrafast模式形成"快+便宜"（Gemini Flash）与"最快+最强"（GPT-5.6 Sol Ultrafast）的双线竞争格局。Google联合创始人Sergey Brin近期已亲自介入DeepMind团队督促Gemini研发加速，此举被视为Google在AI竞赛中缩小与Anthropic、OpenAI差距的关键一步。</div>
+        <div class="news-source"><span class="source-tag">AI HOT/新浪财经</span><a href="https://aihot.virxact.com/" target="_blank">原文链接</a></div>
+      </li>
+      <li>
+        <div class="news-item-head"><span class="bullet">"</span><span class="news-title">DeepSeek开源Harness v0.1开发者预览版：MIT许可证，"一切皆插件"智能体架构</span></div>
+        <div class="news-body">8月13日，DeepSeek发布Harness v0.1开发者预览版，采用MIT开源许可证。Harness的核心设计理念是"一切皆插件"（everything is a plugin），将工具调用、记忆管理、多步规划等智能体核心能力模块化为可组合的插件接口，开发者可像搭积木一样构建自定义AI智能体。该框架支持热插拔式工具注册、跨会话状态持久化与多智能体协调，定位为构建生产级AI Agent应用的基础设施层。Harness的发布标志着DeepSeek在开源模型（V4 Pro等）之外，正式向智能体框架赛道扩展，与LangChain、CrewAI等框架形成直接竞争。社区已涌现多篇速通教程。</div>
+        <div class="news-source"><span class="source-tag">AI HOT/DeepSeek</span><a href="https://aihot.virxact.com/" target="_blank">原文链接</a></div>
+      </li>
+      <li>
+        <div class="news-item-head"><span class="bullet">"</span><span class="news-title">MiniMax发布Music 3.0开源音乐生成模型</span></div>
+        <div class="news-body">8月13日，MiniMax发布Music 3.0音乐生成模型并开源。该模型支持从文本描述生成完整音乐作品，涵盖旋律、和声、编曲与人声合成，定位为开源生态中最强的音乐生成模型之一。MiniMax此前在语音与视频生成领域已有积累，Music 3.0的发布进一步扩展了其在多模态生成方向的版图。开源策略延续了MiniMax在HuggingFace等平台积极释放模型权重的传统，今年早些时候其H3模型曾冲上HuggingFace榜首。</div>
+        <div class="news-source"><span class="source-tag">AI HOT/MiniMax</span><a href="https://aihot.virxact.com/" target="_blank">原文链接</a></div>
+      </li>
+      <li>
+        <div class="news-item-head"><span class="bullet">"</span><span class="news-title">小红书开源dots.tts：20亿参数连续自回归TTS模型</span></div>
+        <div class="news-body">8月13日，小红书开源dots.tts文本转语音模型，参数量20亿，采用连续自回归（continuous autoregressive）架构。与传统离散token TTS不同，dots.tts直接在连续语音特征空间建模，有望生成更自然、更具表现力的语音。模型支持多说话人、情感控制与跨语言合成，开源后开发者可自部署或微调。这是小红书在AI基础设施领域的又一开源贡献，也反映出内容平台正将TTS能力从"朗读工具"向"AI声音演员"方向推进。</div>
+        <div class="news-source"><span class="source-tag">AI HOT/小红书</span><a href="https://aihot.virxact.com/" target="_blank">原文链接</a></div>
+      </li>
+    </ul>
+  </div>
+
+  <div class="subsection" id="sub-ai-product">
+    <div class="subsection-title">产品与平台</div>
+    <ul class="news-list">
+      <li>
+        <div class="news-item-head"><span class="bullet">"</span><span class="news-title">OpenAI发布GPT-5.6构建者指南：ARC-AGI-3得分从13.3%跃升至38.3%</span></div>
+        <div class="news-body">8月13日，OpenAI发布GPT-5.6构建者指南（Builder Guide），详细披露了GPT-5.6在智能体任务上的能力跃升。其中最引人注目的数据是ARC-AGI-3基准得分从上一代的13.3%大幅跃升至38.3%，提升近3倍。指南涵盖了如何利用GPT-5.6的多步推理、工具调用与代码执行能力构建生产级智能体应用的最佳实践，包括上下文工程、工具定义、失败模式处理等。该指南与同日推出的Ultrafast模式形成互补——前者解决"能做什么"，后者解决"能做多快"。</div>
+        <div class="news-source"><span class="source-tag">AI HOT/OpenAI</span><a href="https://aihot.virxact.com/" target="_blank">原文链接</a></div>
+      </li>
+      <li>
+        <div class="news-item-head"><span class="bullet">"</span><span class="news-title">Cursor推出builds功能：云智能体启动速度提升3倍</span></div>
+        <div class="news-body">8月13日，AI编程工具Cursor推出builds功能，将云智能体的启动速度提升3倍。该功能允许开发者在云端启动持久化的编程智能体，自动处理代码构建、测试与部署流程，而无需在本地等待。builds的推出标志着Cursor从"AI代码补全工具"向"AI编程平台"的定位升级，开发者可以将重复性的构建与测试工作交给云端智能体，自己专注于架构设计与代码审查。结合xAI此前宣布的Grok Bot（云端AI工作团队），AI编程工具正加速向"人机协作开发"模式演进。</div>
+        <div class="news-source"><span class="source-tag">AI HOT/Cursor</span><a href="https://aihot.virxact.com/" target="_blank">原文链接</a></div>
+      </li>
+      <li>
+        <div class="news-item-head"><span class="bullet">"</span><span class="news-title">Claude接管应用维护：自主管理388个Pull Request</span></div>
+        <div class="news-body">8月13日，Anthropic披露Claude AI已成功自主接管一个应用项目的维护工作，独立管理388个Pull Request，涵盖bug修复、依赖更新、代码重构与文档维护等任务。Claude在无需人工逐步指令的情况下，能够理解项目代码库结构、定位问题、编写修复代码、运行测试并提交PR。这一里程碑标志着AI从"代码助手"向"代码维护者"的角色转变——开发者可以将日常维护工作完全交给AI，自己专注于新功能开发与架构设计。这也是Anthropic在Claude Cowork会话模式之后的又一智能体能力实证。</div>
+        <div class="news-source"><span class="source-tag">AI HOT/Anthropic</span><a href="https://aihot.virxact.com/" target="_blank">原文链接</a></div>
+      </li>
+      <li>
+        <div class="news-item-head"><span class="bullet">"</span><span class="news-title">Google Sheets引入canvas画布模式：表格与自由文本融合</span></div>
+        <div class="news-body">8月13日，Google Sheets引入canvas画布模式，打破传统电子表格的网格限制，允许用户在表格中嵌入自由格式的文本块、图表与备注，实现结构化数据与非结构化笔记的融合。该功能类似于Notion的块编辑器与Airtable的画布视图，但直接内置于Google Workspace生态中，可与Google Docs、Slides无缝协作。canvas模式被视为Google应对Notion、Coda等新一代生产力工具竞争的重要一步，也反映出"表格即应用"的产品趋势正在从垂直工具向主流办公套件渗透。</div>
+        <div class="news-source"><span class="source-tag">AI HOT/Google</span><a href="https://aihot.virxact.com/" target="_blank">原文链接</a></div>
+      </li>
+      <li>
+        <div class="news-item-head"><span class="bullet">"</span><span class="news-title">WorkBuddy上线远程控制功能：AI助手从对话终端延伸至设备操作</span></div>
+        <div class="news-body">8月13日，AI办公助手WorkBuddy上线远程控制功能，将AI助手的能力边界从"对话式问答"延伸至"直接操作用户设备"。用户可通过自然语言指令让WorkBuddy远程执行文件管理、应用切换、系统设置调整等操作，AI在执行前会明确展示操作计划并请求用户确认。该功能标志着AI办公助手正从"信息提供者"向"任务执行者"演进，与xAI Grok Bot的"云端电脑"理念和Anthropic Claude的Cowork会话模式形成同一趋势：AI不再只是建议你做什么，而是直接帮你做。</div>
+        <div class="news-source"><span class="source-tag">AI HOT/WorkBuddy</span><a href="https://aihot.virxact.com/" target="_blank">原文链接</a></div>
+      </li>
+    </ul>
+  </div>
+
+  <div class="subsection" id="sub-ai-industry">
+    <div class="subsection-title">产业与资本</div>
+    <ul class="news-list">
+      <li>
+        <div class="news-item-head"><span class="bullet">"</span><span class="news-title">Databricks完成50亿美元融资估值1900亿美元：年化收入破70亿增超80%，AI数据基础设施成资本宠儿</span></div>
+        <div class="news-body">8月13日，数据与AI公司Databricks宣布完成50亿美元战略融资，投后估值达1900亿美元，较上一轮约1340亿美元大幅跃升。本轮由Coatue领投，黑石、MGX、T. Rowe Price及新投资者Sixth Street Growth等参投，现有投资者包括a16z、Thrive Capital、淡马锡等。Databricks同时披露：年化收入运行率突破70亿美元，Q2同比增长超80%；过去12个月持续实现正向调整后自由现金流；Lakehouse数据仓库年化收入超15亿美元（增超100%），Lakebase（AI智能体专用无服务器Postgres）年化收入超1亿美元；超1000家客户年消费超100万美元。CEO Ali Ghodsi表示"市场需求非常疯狂，所有人都在使用智能体"，资金将投入Lakebase、Genie AI助手与Unity AI Gateway三大产品线。Databricks最终计划IPO但当前优先聚焦AI产品投入。</div>
+        <div class="news-source"><span class="source-tag">Databricks/财联社/雷递网</span><a href="https://www.databricks.com/company/newsroom/press-releases/databricks-grows-80-yoy-surpasses-7b-revenue-run-rate-scales" target="_blank">原文链接</a></div>
+      </li>
+    </ul>
+  </div>
+</section>
+
+<div class="report-footer">
+  <p>本期日报共收录 <strong>20 条</strong>新闻，筛选自过去 24 小时内的公开报道。</p>
+  <p>数据来源：AI HOT · WebSearch · 公开报道 | 生成时间：2026-08-14 10:00 CST</p>
+  <p>时间窗口：2026-08-13 10:00 — 2026-08-14 10:00 CST · 箱包 2 条 · 电商 7 条 · AI 11 条</p>
+  <p>时效审核：箱包候选4/通过2（丢弃：新秀丽Q1数据为08-12已收录于08-13日报、Bric's新品为导购非新闻）；电商候选11/通过7（丢弃：TikTok Shop H1 GMV原报告08-06发布已收录于08-12日报、美国de minimis已收录于08-13日报作为PPWR背景、Alo入驻天猫发布日期不明待核实后丢弃、阿根廷Temu/Shein热潮为通用分析非事件新闻）；AI HOT候选10/通过10（全部publishedAt在窗口内）；AI WebSearch候选9/通过1（丢弃：面壁智能IPO事件08-11超出窗口、台积电CoWoS事件08-11所有报道在窗口起点前、DeepSeek V4 Pro已收录于08-13日报、Grok Bot事件08-11报道08-12超出窗口、Dyna Robotics DYNA-2事件08-10超出窗口、Gemini 3.7 Flash已在AI HOT去重、MiniMax Music 3.0已在AI HOT去重、GPT-5.6构建者指南已在AI HOT去重、Cursor builds已在AI HOT去重）；通过：GPT-5.6 Sol Ultrafast多源报道合并、Databricks融资多源报道合并</p>
+</div>
+
+</div>
+</body>
+</html>
