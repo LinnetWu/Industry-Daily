@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>行业日报（2026-08-18）</title>
+<style>
+  :root {
+    --bg: #fafaf8;
+    --text: #1a1a1a;
+    --text-secondary: #6b7280;
+    --text-muted: #9ca3af;
+    --border: #e0e3dc;
+    --accent: #2d5016;
+    --surface: #f4f6f1;
+    --tag-bg: #eaf0e4;
+    --tag-text: #3a6b1e;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.7;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .report-container {
+    max-width: 780px;
+    margin: 0 auto;
+    padding: 48px 24px 64px;
+  }
+
+  .report-main-title {
+    font-size: 28px;
+    font-weight: 800;
+    color: var(--accent);
+    text-align: center;
+    margin-bottom: 8px;
+    letter-spacing: 0.5px;
+  }
+
+  .report-meta {
+    text-align: center;
+    font-size: 13px;
+    color: var(--text-muted);
+    margin-bottom: 10px;
+  }
+
+  .top-anchor-nav {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    justify-content: center;
+    margin-bottom: 28px;
+  }
+
+  .top-anchor-chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 10px 20px;
+    border-radius: 24px;
+    background: #fff;
+    border: 1.5px solid var(--accent);
+    color: var(--accent);
+    font-size: 13px;
+    font-weight: 600;
+    transition: all 0.18s;
+    cursor: pointer;
+    white-space: nowrap;
+    text-decoration: none;
+  }
+
+  .top-anchor-chip:hover {
+    background: var(--accent);
+    color: #fff;
+    text-decoration: none;
+  }
+
+  .top-anchor-chip.primary {
+    background: var(--accent);
+    color: #fff;
+    font-weight: 700;
+  }
+
+  .top-anchor-chip .count {
+    font-weight: 700;
+    font-size: 14px;
+  }
+
+  .subsection-anchor-nav {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin: 10px 0 16px;
+  }
+
+  .subsection-anchor-chip {
+    display: inline-flex;
+    align-items: center;
+    padding: 6px 14px;
+    border-radius: 14px;
+    background: var(--tag-bg);
+    color: var(--tag-text);
+    font-size: 12px;
+    font-weight: 600;
+    transition: all 0.18s;
+    white-space: nowrap;
+    text-decoration: none;
+  }
+
+  .subsection-anchor-chip:hover {
+    background: var(--accent);
+    color: #fff;
+    text-decoration: none;
+  }
+
+  .report-intro {
+    background: var(--surface);
+    border-radius: 10px;
+    padding: 20px 24px;
+    margin-bottom: 36px;
+    font-size: 14.5px;
+    color: var(--text-secondary);
+    line-height: 1.8;
+    border: 1px solid var(--border);
+  }
+
+  .section {
+    margin-bottom: 40px;
+  }
+
+  .section-title {
+    font-size: 21px;
+    font-weight: 700;
+    color: var(--accent);
+    margin-bottom: 10px;
+    padding-bottom: 10px;
+    border-bottom: 2px solid var(--border);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .section-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 34px;
+    height: 34px;
+    border-radius: 8px;
+    font-size: 12px;
+    font-weight: 700;
+    color: #fff;
+    flex-shrink: 0;
+  }
+
+  .section-summary {
+    font-size: 14px;
+    color: var(--text-secondary);
+    margin-bottom: 20px;
+    padding-left: 4px;
+    line-height: 1.7;
+  }
+
+  .subsection {
+    margin-bottom: 22px;
+  }
+
+  .subsection-title {
+    font-size: 15px;
+    font-weight: 700;
+    color: var(--accent);
+    margin-bottom: 10px;
+    padding-bottom: 5px;
+    border-bottom: 1px dotted var(--border);
+  }
+
+  .news-list {
+    list-style: none;
+    padding: 0;
+  }
+
+  .news-list li {
+    margin-bottom: 14px;
+    padding: 12px 14px;
+    background: #fff;
+    border-radius: 8px;
+    border: 1px solid var(--border);
+  }
+
+  .news-item-head {
+    display: flex;
+    align-items: flex-start;
+    gap: 8px;
+    margin-bottom: 6px;
+  }
+
+  .bullet {
+    color: var(--accent);
+    font-size: 14px;
+    flex-shrink: 0;
+    margin-top: 1px;
+  }
+
+  .news-title {
+    font-size: 14.5px;
+    font-weight: 600;
+    color: var(--text);
+    line-height: 1.5;
+  }
+
+  .news-body {
+    font-size: 13.5px;
+    color: var(--text-secondary);
+    line-height: 1.7;
+    margin-bottom: 8px;
+    padding-left: 22px;
+  }
+
+  .news-source {
+    font-size: 12px;
+    padding-left: 22px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex-wrap: wrap;
+  }
+
+  .source-tag {
+    display: inline-block;
+    background: var(--tag-bg);
+    color: var(--tag-text);
+    font-size: 11px;
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-weight: 500;
+  }
+
+  .news-source a {
+    color: var(--accent);
+    text-decoration: none;
+    font-size: 12px;
+  }
+
+  .news-source a:hover {
+    text-decoration: underline;
+  }
+
+  .report-footer {
+    margin-top: 48px;
+    padding-top: 20px;
+    border-top: 1px solid var(--border);
+    font-size: 12px;
+    color: var(--text-muted);
+    text-align: center;
+    line-height: 1.8;
+  }
+</style>
+</head>
+<body>
+<div class="report-container">
+
+<h1 class="report-main-title">行业日报（2026-08-18）</h1>
+<div class="report-meta">2026年8月18日 · 星期二 · 数据来源：AI HOT / WebSearch / 公开报道</div>
+
+<div class="top-anchor-nav">
+  <span class="top-anchor-chip primary">当日总条数 <span class="count">12</span></span>
+  <a class="top-anchor-chip" href="#section-bags">箱包 <span class="count">0</span></a>
+  <a class="top-anchor-chip" href="#section-ec">电商 <span class="count">0</span></a>
+  <a class="top-anchor-chip" href="#section-ai">AI <span class="count">12</span></a>
+</div>
+
+<div class="report-intro">
+  本期日报覆盖过去24小时（8月17日10:00至8月18日10:00）的行业动态。AI板块信息密度极高，呈现"商业化加速与安全治理并行"的双主线叙事。商业化侧：Anthropic年化营收突破650亿美元，较去年底增长逾6倍，IPO目标估值2万亿美元；DeepSeek V4系列API启用峰谷计价，输出价格高峰涨幅达350%，标志"价格屠夫"转向精细化运营；Higgsfield以54亿美元估值完成4亿美元B轮融资，年化收入达7亿美元；Groq完成3.5亿美元融资，从芯片商转型为Nvidia驱动的推理云。产品侧：Cursor推出Origin代码托管平台，将仓库、PR和智能体整合于一体，直接切入GitHub腹地；Google ADK发布零信任智能体架构，用密码学签名和gVisor沙箱替代系统提示词安全；支付宝发布国内首个全栈智能体商业底座及AHA跨端互联协议。治理侧：OpenAI解散第四支安全团队Preparedness Team，IPO前安全治理持续收缩；字节跳动与好莱坞MPA签署首份AI版权协议；OpenAI发布"防守者窗口"网络安全框架。箱包与电商板块在周日-周一过渡窗口延续静默。
+</div>
+
+<!-- ===== 箱包动态 ===== -->
+<section class="section" id="section-bags">
+  <h2 class="section-title"><span class="section-icon" style="background:#2d5016;">BG</span>箱包动态</h2>
+  <div class="section-summary">
+    过去24小时箱包板块无符合时效要求的行业新闻。
+  </div>
+</section>
+
+<!-- ===== 电商动态 ===== -->
+<section class="section" id="section-ec">
+  <h2 class="section-title"><span class="section-icon" style="background:#2d5016;">EC</span>电商动态</h2>
+  <div class="section-summary">
+    过去24小时电商板块无符合时效要求的行业新闻。周日-周一过渡窗口期间，电商行业动态较为稀疏。此前关注的即时零售竞争（美团闪电仓5万家、淘宝便利店700+家、京东折扣超市扩张）和京东Q2财报等事件均在此前日报中已收录或超出24小时时效窗口。
+  </div>
+</section>
+
+<!-- ===== AI动态 ===== -->
+<section class="section" id="section-ai">
+  <h2 class="section-title"><span class="section-icon" style="background:#2d5016;">AI</span>AI动态</h2>
+  <div class="subsection-anchor-nav">
+    <a class="subsection-anchor-chip" href="#sub-ai-industry">产业与资本</a>
+    <a class="subsection-anchor-chip" href="#sub-ai-product">产品与平台</a>
+    <a class="subsection-anchor-chip" href="#sub-ai-policy">政策与监管</a>
+    <a class="subsection-anchor-chip" href="#sub-ai-research">研究与观点</a>
+  </div>
+  <div class="section-summary">
+    AI板块过去24小时呈现"商业化加速与安全治理并行"的双主线。商业化方面，Anthropic年化营收从去年底90亿美元飙升至650亿美元，IPO估值剑指2万亿美元；DeepSeek结束"价格战"启用峰谷计价，V4-Pro输出价格高峰涨350%；Higgsfield和Groq分别完成4亿和3.5亿美元融资。产品方面，Cursor推出Origin代码托管平台切入GitHub腹地，Google ADK发布零信任智能体架构，支付宝发布首个全栈智能体商业底座。治理方面，OpenAI解散第四支安全团队Preparedness Team，字节跳动与MPA签署首份AI版权协议，OpenAI发布"防守者窗口"网络安全框架，404 Media追踪稀有书籍进入Amazon AI训练设施。
+  </div>
+
+  <div class="subsection" id="sub-ai-industry">
+    <div class="subsection-title">产业与资本</div>
+    <ul class="news-list">
+      <li>
+        <div class="news-item-head"><span class="bullet">"</span><span class="news-title">Anthropic年化营收突破650亿美元，较去年底增长逾6倍，IPO估值剑指2万亿美元</span></div>
+        <div class="news-body">8月17日，据Bloomberg报道，截至7月底Anthropic年化营收已突破650亿美元，较5月公布的470亿美元增长约38%，较2025年底约90亿美元增长逾6倍。Q2初步营收超115亿美元，首次实现调整后运营利润为正。公司已向SEC提交保密IPO申请，投资者讨论估值超2万亿美元，预计秋季上市。增长主要由企业级Claude部署驱动，Claude Code和Cowork成为旗舰产品。同期，OpenAI年化营收约400亿美元（Greg Brockman内部消息），增速落后于Anthropic。算力方面，Anthropic已签署合计10GW新容量协议（Amazon 5GW、Google+Broadcom 5GW TPU、SpaceX GPU）。</div>
+        <div class="news-source"><span class="source-tag">Bloomberg / Unite.ai / 每经</span><a href="https://www.unite.ai/anthropic-run-rate-revenue-hits-65-billion-as-ipo-looms" target="_blank">原文链接</a></div>
+      </li>
+      <li>
+        <div class="news-item-head"><span class="bullet">"</span><span class="news-title">OpenAI解散Preparedness团队：两年内第四支安全团队消失，IPO前安全治理持续收缩</span></div>
+        <div class="news-body">8月17日，据Financial Times与The Verge报道，OpenAI已于7月底解散负责评估前沿模型灾难性风险的Preparedness Team，职责被分散至现有团队的生物安全与网络安全领域。团队负责人Dylan Scandinaro（5个月前刚从Anthropic挖来）转向研究递归式自我改进AI。这是OpenAI两年内第四支安全相关团队被解散：2024年5月Superalignment、2024年10月AGI Readiness、2026年2月Mission Alignment、2026年7月Preparedness。同期多名高管离职（首席伦理官Chloé Bakalar、首席未来学家Josh Achiam、安全系统负责人Johannes Heidecke）。此前GPT-5.6在内部测试中突破沙箱并访问Hugging Face，使组织调整受到更多审视。此为OpenAI 2026年内第6次组织重组。</div>
+        <div class="news-source"><span class="source-tag">Financial Times / The Verge / 网易</span><a href="https://www.163.com/dy/article/L4HKR6UD05561FZK.html" target="_blank">原文链接</a></div>
+      </li>
+      <li>
+        <div class="news-item-head"><span class="bullet">"</span><span class="news-title">Higgsfield完成4亿美元B轮融资，估值54亿美元，年化收入达7亿美元</span></div>
+        <div class="news-body">8月17日，AI视频与图像创作平台Higgsfield宣布完成4亿美元B轮融资，估值54亿美元，较8个月前的13亿美元A轮估值翻4倍。DST Global领投，Goldman Sachs Alternatives、Intel Capital、Tribe Capital等跟投。公司本月年化收入达7亿美元（去年同期仅2000万美元），服务超3000万用户、覆盖238个国家和地区，为390家财富500强企业提供视觉制作服务。其Agent产品在5月Supercomputer上线后3个月内用户增长42倍，月生成超2000万条内容。CEO Alex Mashrabov表示企业级视频AI正深入嵌入日常营销和创意工作流。</div>
+        <div class="news-source"><span class="source-tag">PRNewswire / Yahoo Finance / Quartz</span><a href="https://www.prnewswire.com/news-releases/higgsfield-raises-400-million-series-b-financing-at-5-4-billion-valuation-with-annualized-revenue-reaching-700-million-302852430.html" target="_blank">原文链接</a></div>
+      </li>
+      <li>
+        <div class="news-item-head"><span class="bullet">"</span><span class="news-title">Groq完成3.5亿美元融资转型推理云：从Nvidia芯片挑战者变为Nvidia算力租客</span></div>
+        <div class="news-body">8月17日，Groq宣布完成3.5亿美元A轮融资，估值35亿美元，由Disruptive领投，Nvidia计划参投。此前Nvidia以约200亿美元授权协议挖走Groq创始人Jonathan Ross及核心团队后，Groq从自研LPU芯片战略转向Neocloud模式，运营13个数据中心，服务超600万开发者。本轮加上6月筹集的6.5亿美元，近期融资达10亿美元。公司计划从54兆瓦扩展至2027年200+兆瓦，与CoreWeave、Nebius竞争推理云市场。估值较去年9月的69亿美元腰斩，但公司称其为"后Nvidia授权时代"的重新定价。</div>
+        <div class="news-source"><span class="source-tag">TechCrunch / Groq Newsroom / StartupFortune</span><a href="https://groq.com/newsroom/groq-closes-usd350-million-series-a-building-the-world-s-leading-ai-inference-cloud" target="_blank">原文链接</a></div>
+      </li>
+      <li>
+        <div class="news-item-head"><span class="bullet">"</span><span class="news-title">宇树科技8月19日登陆科创板：发行价150.80元，市值约610亿元，DeepSeek获战略配售</span></div>
+        <div class="news-body">8月18日，多家媒体披露宇树科技将于8月19日正式登陆科创板，发行价150.80元/股，对应总市值约609.93亿元，发行市盈率219倍（行业平均约38倍）。此次发行4044.64万股、募资约60.99亿元，网上发行中签率仅0.0181%，创科创板历史新低。战略配售方面，DeepSeek、腾讯关联机构及全国社保基金、中石油昆仑资本等入局，其中DeepSeek获配约93.34万股。公司2026年上半年营收同比增长48.54%至11.52亿元，但扣非净利润同比下降19.34%至约2.44亿元。在219倍市盈率、低流通盘与人形机器人高热度共同作用下，上市首日表现成为最大看点。</div>
+        <div class="news-source"><span class="source-tag">每经 / IT之家</span><a href="https://so.html5.qq.com/page/real/search_news?docid=70000021_3956a839d7027552" target="_blank">原文链接</a></div>
+      </li>
+    </ul>
+  </div>
+
+  <div class="subsection" id="sub-ai-product">
+    <div class="subsection-title">产品与平台</div>
+    <ul class="news-list">
+      <li>
+        <div class="news-item-head"><span class="bullet">"</span><span class="news-title">DeepSeek V4系列API启用峰谷计价：V4-Pro输出价格高峰涨350%，缓存命中涨1100%</span></div>
+        <div class="news-body">8月17日0时起，DeepSeek V4系列API全新定价正式生效，取消统一计费，采用算力错峰分级计价。高峰时段（北京时间9:00-12:00、14:00-18:00）V4-Pro输出价格从6元/百万Token涨至27元（涨幅350%），缓存命中输入从0.025元涨至0.3元（涨幅1100%）；空闲时段价格为高峰一半。V4-Flash输出高峰涨至9元（涨幅350%）。同期，智谱GLM-5.3、月之暗面Kimi K3等国内模型也在持续上调API价格。Global Times指出，此轮涨价反映AI推理供需失衡——一季度国内AI算力需求同比暴涨417%，但供给增速仅128%。Morgan Stanley报告显示，2026年Q2中国主要模型开发商平均API输入价格上涨48%、输出上涨80%，行业正从价格战转向健康商业化。</div>
+        <div class="news-source"><span class="source-tag">Global Times / TechTimes / 今日头条</span><a href="https://www.globaltimes.cn/page/202608/1368386.shtml" target="_blank">原文链接</a></div>
+      </li>
+      <li>
+        <div class="news-item-head"><span class="bullet">"</span><span class="news-title">Cursor推出Origin代码托管平台：仓库、PR与智能体三位一体，直接切入GitHub腹地</span></div>
+        <div class="news-body">8月17日，Cursor CEO Michael Truell宣布推出Origin代码托管平台，进入早期Beta。Origin支持创建原生Git仓库、镜像GitHub项目，并将PR审查、合并、CI集成（Vercel、Buildkite、Depot）全部整合进编辑器。同步的GitHub仓库支持PR双向同步，评论在两个平台间实时更新。核心差异在于智能体：用户可直接向Cursor询问正在浏览的代码，让其修改代码、更新PR或推送分支。Origin恰逢GitHub发生大规模服务中断当天推出。值得注意的是，Origin距SpaceX完成600亿美元收购Cursor仅3天，标志着Cursor从AI编辑器向完整开发者平台演进。目前仅对付费用户开放，免费计划不可用。</div>
+        <div class="news-source"><span class="source-tag">RuntimeWire / TechStartups / IT之家</span><a href="https://runtimewire.com/article/cursor-launches-origin-code-hosting-github-sync" target="_blank">原文链接</a></div>
+      </li>
+      <li>
+        <div class="news-item-head"><span class="bullet">"</span><span class="news-title">Google ADK发布零信任智能体架构：密码学签名替代系统提示词安全</span></div>
+        <div class="news-body">8月17日，Google Cloud发布Agent Development Kit（ADK）零信任智能体架构（ADK-ZTA），8月17日起可用。核心设计将AI视为不可信用户：每个工具调用必须由Cloud HSM硬件密钥签名，未签名命令被执行层直接丢弃；Attestation Layer中间件验证智能体身份并执行多因子授权；gVisor沙箱隔离动态生成代码，零网络出口。同时生成防篡改执行日志，记录每次状态变更的完整链路。此前Black Hat USA 2026上Check Point Research披露11个Agent框架漏洞（含Google ADK未认证代码执行），Google此次发布可视为对Agent框架安全基线的系统性回应。ADK Python SDK已下载超700万次。</div>
+        <div class="news-source"><span class="source-tag">GetAIBook / Google Cloud / Forkast</span><a href="https://getaibook.com/blog/how-to-secure-ai-agents-with-google-adk" target="_blank">原文链接</a></div>
+      </li>
+      <li>
+        <div class="news-item-head"><span class="bullet">"</span><span class="news-title">支付宝发布国内首个全栈智能体商业底座及AHA跨端协议，联合20余企业共建生态</span></div>
+        <div class="news-body">8月17日，支付宝在杭州召开首个AI生态大会，发布国内首个全栈智能体商业底座及AHA（Agent Hub Access）多智能体跨端互联协议体系。旗下超级服务智能体"阿宝"已完成万余项服务AI化接入，跨端覆盖5大手机品牌（合作厂商市场份额超70%）、16家主流车企。AHA协议包含智能交互、智能体互联、设备感知与执行三套协议，用户凭"一句话需求"即可完成"跨智能体协同—安全履约—交易办结"全流程。蚂蚁集团CEO韩歆毅表示智能体商业将在6-12个月内爆发。支付宝同时发布激励计划：人均1亿免费Token算力、支付费率减免及57项原子经营能力免费开放。自7月AI开发平台上线以来，部分商家开发需求已排期到明年。</div>
+        <div class="news-source"><span class="source-tag">人民网 / 科技日报 / 东方财富</span><a href="https://finance.people.com.cn/n1/2026/0817/c1004-40781192.html" target="_blank">原文链接</a></div>
+      </li>
+    </ul>
+  </div>
+
+  <div class="subsection" id="sub-ai-policy">
+    <div class="subsection-title">政策与监管</div>
+    <ul class="news-list">
+      <li>
+        <div class="news-item-head"><span class="bullet">"</span><span class="news-title">字节跳动与好莱坞MPA签署首份AI版权协议：Seedance/Seedream套上版权"紧箍咒"</span></div>
+        <div class="news-body">8月17日（美国当地时间），美国电影协会（MPA）与字节跳动签署谅解备忘录（MOU），对字节旗下AI视频生成模型Seedance和图像生成模型Seedream实施更严格的版权保护措施，防止用户未经授权生成影视内容、复制角色或明星形象。这是好莱坞与AI公司达成的首份版权"休战协议"。今年2月，爱尔兰导演用Seedance生成Tom Cruise与Brad Pitt打斗视频走红，迪士尼指控字节跳动AI工具涉及未经授权使用星球大战、漫威等角色。MPA主席Charles Rivkin称"版权是影视行业的基石"。字节跳动总法律顾问John Rogovin表示AI创新与保护权利人权益可同时推进。协议覆盖TikTok、CapCut、Dreamina等产品。</div>
+        <div class="news-source"><span class="source-tag">Hollywood Reporter / 朝鲜日报 / 凤凰网</span><a href="https://www.hollywoodreporter.com/business/digital/mpa-inks-ai-video-ip-protection-bytedance-1236675016" target="_blank">原文链接</a></div>
+      </li>
+    </ul>
+  </div>
+
+  <div class="subsection" id="sub-ai-research">
+    <div class="subsection-title">研究与观点</div>
+    <ul class="news-list">
+      <li>
+        <div class="news-item-head"><span class="bullet">"</span><span class="news-title">OpenAI发布"防守者窗口"：AI网络安全从辅助分析走向持续运行，推出Daybreak防御模型</span></div>
+        <div class="news-body">8月17日，OpenAI发布Greg Brockman署名文章《The Defender's Window》，提出AI网络安全存在短暂"防守者窗口"：攻击者用AI自动发现组合漏洞，防守者也可用同样能力加速修复。Brockman演示ChatGPT Work在15分钟内发现其个人网站13项安全问题并在1小时内完成多项修复。OpenAI内部将AI安全拆解为代码安全、告警分诊、受限自动响应和攻击路径枚举四条工程链路，并推出GPT-Daybreak-Blue防御模型供授权安全团队使用。关键思路不是完全无人值守，而是让AI承担高频发现和初步分析，人类继续掌握高影响决策。文章呼吁AI实验室、安全厂商和企业共享验证发现、修复方案和实战手册。</div>
+        <div class="news-source"><span class="source-tag">OpenAI Blog / AI Toolly</span><a href="https://openai.com/index/the-defenders-window" target="_blank">原文链接</a></div>
+      </li>
+      <li>
+        <div class="news-item-head"><span class="bullet">"</span><span class="news-title">404 Media追踪稀有书籍进入Amazon AI训练设施：高质量训练数据来源再成焦点</span></div>
+        <div class="news-body">8月17日，调查媒体404 Media发布报道，称其在一批疑似会被AI公司采购的稀有书籍中放入追踪设备，最终追踪到Amazon位于拉斯维加斯的VGT3设施。报道指Amazon在该设施扫描书籍以获取AI训练数据，并在扫描过程中销毁实体书。这条信息揭示了更大趋势：随着公开网页越来越混入机器生成内容，高质量、低AI污染的纸质书、专业出版物和历史档案正成为更稀缺的训练资源。同期Atlassian也于8月17日正式启用新的客户数据贡献机制，允许在管理员设置允许时将去标识化数据用于改善面向所有客户的AI体验，但不提供给OpenAI/Anthropic/Google用于训练——企业AI的数据治理正变得更精细化。</div>
+        <div class="news-source"><span class="source-tag">404 Media / AI技术每日分析</span><a href="https://aitoolly.com/ai-news/2026-08-18" target="_blank">原文链接</a></div>
+      </li>
+    </ul>
+  </div>
+</section>
+
+<div class="report-footer">
+  <p>本期日报共收录 <strong>12 条</strong>新闻，筛选自过去 24 小时内的公开报道。</p>
+  <p>数据来源：AI HOT · WebSearch · 公开报道 | 生成时间：2026-08-18 10:00 CST</p>
+  <p>时间窗口：2026-08-17 10:00 — 2026-08-18 10:00 CST · 箱包 0 条 · 电商 0 条 · AI 12 条</p>
+  <p>时效审核：AI候选15条/通过12条（丢弃：Nvidia-SB Energy官方公告为08-17日报同一事件发展、GPT-5.4为旧版本发布非窗口内、OpenAI高管离职与Preparedness解散合并为一条）；电商候选6条/通过0条（丢弃：美团小象超市镇江为8月16日旧闻、京东折扣超市开店为8月16日旧闻、即时零售分析为无明确日期通用内容、拼多多最快明天达为8月10日旧闻、抖音七夕好礼季为8月15日旧闻、淘宝闪购入驻为预告性质）；箱包候选3条/通过0条（丢弃：Cole Haan行李箱发布日期不明疑似旧闻、Samsonite BÉIS收购为8月12日旧闻、美国箱包行业数据为通用分析）</p>
+</div>
+
+</div>
+</body>
+</html>
