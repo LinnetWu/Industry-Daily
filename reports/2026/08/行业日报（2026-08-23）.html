@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>行业日报（2026-08-23）</title>
+<style>
+  :root {
+    --bg: #fafaf8;
+    --text: #1a1a1a;
+    --text-secondary: #6b7280;
+    --text-muted: #9ca3af;
+    --border: #e0e3dc;
+    --accent: #2d5016;
+    --surface: #f4f6f1;
+    --tag-bg: #eaf0e4;
+    --tag-text: #3a6b1e;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.7;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .report-container {
+    max-width: 780px;
+    margin: 0 auto;
+    padding: 48px 24px 64px;
+  }
+
+  .report-main-title {
+    font-size: 28px;
+    font-weight: 800;
+    color: var(--accent);
+    text-align: center;
+    margin-bottom: 8px;
+    letter-spacing: 0.5px;
+  }
+
+  .report-meta {
+    text-align: center;
+    font-size: 13px;
+    color: var(--text-muted);
+    margin-bottom: 10px;
+  }
+
+  .top-anchor-nav {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    justify-content: center;
+    margin-bottom: 28px;
+  }
+
+  .top-anchor-chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 10px 20px;
+    border-radius: 24px;
+    background: #fff;
+    border: 1.5px solid var(--accent);
+    color: var(--accent);
+    font-size: 13px;
+    font-weight: 600;
+    transition: all 0.18s;
+    cursor: pointer;
+    white-space: nowrap;
+    text-decoration: none;
+  }
+
+  .top-anchor-chip:hover {
+    background: var(--accent);
+    color: #fff;
+    text-decoration: none;
+  }
+
+  .top-anchor-chip.primary {
+    background: var(--accent);
+    color: #fff;
+    font-weight: 700;
+  }
+
+  .top-anchor-chip .count {
+    font-weight: 700;
+    font-size: 14px;
+  }
+
+  .subsection-anchor-nav {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin: 10px 0 16px;
+  }
+
+  .subsection-anchor-chip {
+    display: inline-flex;
+    align-items: center;
+    padding: 6px 14px;
+    border-radius: 14px;
+    background: var(--tag-bg);
+    color: var(--tag-text);
+    font-size: 12px;
+    font-weight: 600;
+    transition: all 0.18s;
+    white-space: nowrap;
+    text-decoration: none;
+  }
+
+  .subsection-anchor-chip:hover {
+    background: var(--accent);
+    color: #fff;
+    text-decoration: none;
+  }
+
+  .report-intro {
+    background: var(--surface);
+    border-radius: 10px;
+    padding: 20px 24px;
+    margin-bottom: 36px;
+    font-size: 14.5px;
+    color: var(--text-secondary);
+    line-height: 1.8;
+    border: 1px solid var(--border);
+  }
+
+  .section {
+    margin-bottom: 40px;
+  }
+
+  .section-title {
+    font-size: 21px;
+    font-weight: 700;
+    color: var(--accent);
+    margin-bottom: 10px;
+    padding-bottom: 10px;
+    border-bottom: 2px solid var(--border);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .section-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 34px;
+    height: 34px;
+    border-radius: 8px;
+    font-size: 12px;
+    font-weight: 700;
+    color: #fff;
+    flex-shrink: 0;
+  }
+
+  .section-summary {
+    font-size: 14px;
+    color: var(--text-secondary);
+    margin-bottom: 20px;
+    padding-left: 4px;
+    line-height: 1.7;
+  }
+
+  .subsection {
+    margin-bottom: 22px;
+  }
+
+  .subsection-title {
+    font-size: 15px;
+    font-weight: 700;
+    color: var(--accent);
+    margin-bottom: 10px;
+    padding-bottom: 5px;
+    border-bottom: 1px dotted var(--border);
+  }
+
+  .news-list {
+    list-style: none;
+    padding: 0;
+  }
+
+  .news-list li {
+    margin-bottom: 14px;
+    padding: 12px 14px;
+    background: #fff;
+    border-radius: 8px;
+    border: 1px solid var(--border);
+  }
+
+  .news-item-head {
+    display: flex;
+    align-items: flex-start;
+    gap: 8px;
+    margin-bottom: 6px;
+  }
+
+  .bullet {
+    color: var(--accent);
+    font-size: 14px;
+    flex-shrink: 0;
+    margin-top: 1px;
+  }
+
+  .news-title {
+    font-size: 14.5px;
+    font-weight: 600;
+    color: var(--text);
+    line-height: 1.5;
+  }
+
+  .news-body {
+    font-size: 13.5px;
+    color: var(--text-secondary);
+    line-height: 1.7;
+    margin-bottom: 8px;
+    padding-left: 22px;
+  }
+
+  .news-source {
+    font-size: 12px;
+    padding-left: 22px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex-wrap: wrap;
+  }
+
+  .source-tag {
+    display: inline-block;
+    background: var(--tag-bg);
+    color: var(--tag-text);
+    font-size: 11px;
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-weight: 500;
+  }
+
+  .news-source a {
+    color: var(--accent);
+    text-decoration: none;
+    font-size: 12px;
+  }
+
+  .news-source a:hover {
+    text-decoration: underline;
+  }
+
+  .report-footer {
+    margin-top: 48px;
+    padding-top: 20px;
+    border-top: 1px solid var(--border);
+    font-size: 12px;
+    color: var(--text-muted);
+    text-align: center;
+    line-height: 1.8;
+  }
+</style>
+</head>
+<body>
+<div class="report-container">
+
+<h1 class="report-main-title">行业日报（2026-08-23）</h1>
+<div class="report-meta">2026年8月23日 · 星期日 · 数据来源：WebSearch / 公开报道</div>
+
+<div class="top-anchor-nav">
+  <span class="top-anchor-chip primary">当日总条数 <span class="count">10</span></span>
+  <a class="top-anchor-chip" href="#section-bags">箱包 <span class="count">0</span></a>
+  <a class="top-anchor-chip" href="#section-ec">电商 <span class="count">1</span></a>
+  <a class="top-anchor-chip" href="#section-ai">AI <span class="count">9</span></a>
+</div>
+
+<div class="report-intro">
+  本期日报覆盖过去24小时（8月22日10:00至8月23日10:00 CST）的行业动态。周日窗口延续周末低密特征，箱包板块无有效新闻，电商板块仅1条财报类条目。AI板块则迎来资本层面的密集释放：阿里巴巴启动港股上市以来最大规模配售、Anthropic被曝冲刺全球史上最大IPO、英伟达以70亿美元收编Poolside亲自下场做开源模型、OpenAI收购Agent记忆层公司Instant——四笔交易共同指向AI军备竞赛正从"模型层"向"资本层"全面升级。产品侧，OpenAI下调GPT-5.6 Sol定价并收尾Codex用量异常争议，小米MiMo-V2.5-Pro登顶全球开源模型榜单。本期共收录10条新闻。
+</div>
+
+<!-- ===== 箱包动态 ===== -->
+<section class="section" id="section-bags">
+  <h2 class="section-title"><span class="section-icon" style="background:#2d5016;">BG</span>箱包动态</h2>
+  <div class="section-summary">
+    过去24小时箱包板块无符合时效要求的有效新闻，所有子章节留白跳过。
+  </div>
+</section>
+
+<!-- ===== 电商动态 ===== -->
+<section class="section" id="section-ec">
+  <h2 class="section-title"><span class="section-icon" style="background:#2d5016;">EC</span>电商动态</h2>
+  <div class="subsection-anchor-nav">
+    <a class="subsection-anchor-chip" href="#sub-ec-finance">财报与业绩</a>
+  </div>
+  <div class="section-summary">
+    过去24小时电商板块新闻稀疏，仅收录1条跨境电商业绩快报。
+  </div>
+
+  <div class="subsection" id="sub-ec-finance">
+    <div class="subsection-title">财报与业绩</div>
+    <ul class="news-list">
+      <li>
+        <div class="news-item-head"><span class="bullet">&#9642;</span><span class="news-title">吉宏股份2026年H1：跨境社交电商净利润同比增80.92%，拟中期分红</span></div>
+        <div class="news-body">8月23日，吉宏股份发布2026年半年报，H1营收37.36亿元同比增15.53%，归母净利润1.58亿元同比增33.52%；其中跨境社交电商营收24.51亿元同比增15.82%，归母净利润1.00亿元同比增80.92%，并拟每10股派现1.40元。</div>
+        <div class="news-source"><span class="source-tag">和讯网 / 腾讯新闻</span><a href="https://new.qq.com/rain/a/20260823A06DSQ00" target="_blank">原文链接</a></div>
+      </li>
+    </ul>
+  </div>
+</section>
+
+<!-- ===== AI动态 ===== -->
+<section class="section" id="section-ai">
+  <h2 class="section-title"><span class="section-icon" style="background:#2d5016;">AI</span>AI动态</h2>
+  <div class="subsection-anchor-nav">
+    <a class="subsection-anchor-chip" href="#sub-ai-product">产品与平台</a>
+    <a class="subsection-anchor-chip" href="#sub-ai-industry">产业与资本</a>
+  </div>
+  <div class="section-summary">
+    过去24小时AI板块以资本动作与平台更新为主线。阿里巴巴800亿港元配售、Anthropic冲刺2万亿美元IPO、英伟达70亿美元收编Poolside、OpenAI收购Instant四笔重磅交易同日发酵，标志着AI赛道进入"超级融资周期"。产品侧，OpenAI下调GPT-5.6 Sol API价格并修复Codex用量异常；小米MiMo-V2.5-Pro登顶全球开源模型榜单；字节豆包被曝将推出对标腾讯WorkBuddy的办公类产品。
+  </div>
+
+  <div class="subsection" id="sub-ai-product">
+    <div class="subsection-title">产品与平台</div>
+    <ul class="news-list">
+      <li>
+        <div class="news-item-head"><span class="bullet">&#9642;</span><span class="news-title">OpenAI下调GPT-5.6 Sol API价格超20%：输入降至4美元/百万token，为期三个月</span></div>
+        <div class="news-body">8月23日，OpenAI宣布未来三个月内将GPT-5.6 Sol的API价格下调超过20%，输入从5美元/百万token降至4美元，输出从30美元降至20美元。目前该调价已对API用户和按量计费的Codex用户生效，Pro/Plus/Business订阅价不变。</div>
+        <div class="news-source"><span class="source-tag">极客公园 / 腾讯新闻</span><a href="https://new.qq.com/rain/a/20260824A02PL300" target="_blank">原文链接</a></div>
+      </li>
+      <li>
+        <div class="news-item-head"><span class="bullet">&#9642;</span><span class="news-title">Codex用量异常争议收尾：OpenAI定位多项问题并全面重置付费用户额度</span></div>
+        <div class="news-body">8月23日，OpenAI表示已定位导致Codex额度消耗偏快的多项问题——包括长时间会话中图像压缩低效、Computer History的p95+使用率过高、生成对话标题功能用量超预期等。团队承诺推送修复并对所有付费订阅用户全面重置使用量，同时明确不支持sub2api等多人共享用法。</div>
+        <div class="news-source"><span class="source-tag">OpenAI / Twitter</span><a href="https://headsupai.io/ai-news-and-updates" target="_blank">原文链接</a></div>
+      </li>
+      <li>
+        <div class="news-item-head"><span class="bullet">&#9642;</span><span class="news-title">小米MiMo-V2.5-Pro登顶全球开源模型榜单，周调用量曾高达10.5万亿token</span></div>
+        <div class="news-body">8月23日，小米自研大模型MiMo-V2.5-Pro在Artificial Analysis全球大模型综合智能排行榜中位列开源模型并列第一，MiMo-V2.5综合排名第三、为最高国产自研大模型。在OpenRouter全球开发者调用平台上，MiMo-V2.5周调用量曾高达10.5万亿token，登顶全球调用量榜首。小米Q2财报披露MiMo API已开始贡献收入。</div>
+        <div class="news-source"><span class="source-tag">AI行业热点日报</span><a href="https://weibo.com/7594643421/5335356506639349" target="_blank">原文链接</a></div>
+      </li>
+      <li>
+        <div class="news-item-head"><span class="bullet">&#9642;</span><span class="news-title">字节豆包最快下周推出WorkBuddy类办公产品，飞书十年协作能力组件化</span></div>
+        <div class="news-body">据第一财经8月23日报道，豆包团队最快下周推出对标腾讯WorkBuddy的办公类产品，由"工作任务"模式独立拆分而来；7月底飞书产品团队已并入豆包，十年企业协作能力正被拆解为Agent可调用的基础模块，字节补齐AI办公入口。</div>
+        <div class="news-source"><span class="source-tag">第一财经 / 钛媒体</span><a href="https://new.qq.com/rain/a/20260824A02PL300" target="_blank">原文链接</a></div>
+      </li>
+    </ul>
+  </div>
+
+  <div class="subsection" id="sub-ai-industry">
+    <div class="subsection-title">产业与资本</div>
+    <ul class="news-list">
+      <li>
+        <div class="news-item-head"><span class="bullet">&#9642;</span><span class="news-title">阿里巴巴启动800亿港元港股配售：2019年上市以来首次，100%投向全栈AI</span></div>
+        <div class="news-body">8月23日，阿里巴巴宣布拟向美国境外非美国人士配售新股，总金额约800亿港元（约102亿美元），为2019年港股上市以来首次启动新股配售。配售所得净额将100%用于投资全栈AI能力和AI基础设施建设，已获主权财富基金等长线资金超额认购，有望成为香港上市公司史上规模最大的增发新股交易。</div>
+        <div class="news-source"><span class="source-tag">财联社 / 东方财富</span><a href="https://caifuhao.eastmoney.com/news/20260824072808596582080" target="_blank">原文链接</a></div>
+      </li>
+      <li>
+        <div class="news-item-head"><span class="bullet">&#9642;</span><span class="news-title">英伟达70亿美元收编Poolside：60亿美元换模型授权+10亿美元投资，百余名工程师并入Nemotron</span></div>
+        <div class="news-body">8月23日，据《华尔街日报》报道，英伟达同意向AI初创Poolside支付60亿美元换取Model Factory技术非独家许可，并追加10亿美元股权投资（对应估值120亿美元）。Poolside 109名核心工程师将加入英伟达Nemotron开源模型项目，目标一年内推出可叫板DeepSeek、Kimi K3乃至OpenAI、Anthropic闭源前沿的开源模型。</div>
+        <div class="news-source"><span class="source-tag">华尔街日报 / The CODEW</span><a href="https://www.thecodew.com/2026/08/nvidia-builds-worlds-most-powerful-opensource-ai-model.html" target="_blank">原文链接</a></div>
+      </li>
+      <li>
+        <div class="news-item-head"><span class="bullet">&#9642;</span><span class="news-title">Anthropic冲刺2万亿美元IPO：拟募资超1000亿美元，或超越SpaceX成史上最大</span></div>
+        <div class="news-body">8月23日，据彭博社和《纽约时报》报道，Anthropic承销银行在闭门会议中向潜在投资者表示，拟通过IPO募资超1000亿美元，企业估值有望达2万亿美元。若成行将超越SpaceX今年6月IPO的1.77万亿美元估值和857亿美元募资额，成为全球史上最大IPO。公司今年5月完成650亿美元H轮融资，仅三个月后IPO估值预期便翻倍。</div>
+        <div class="news-source"><span class="source-tag">彭博社 / 纽约时报 / AI行业热点日报</span><a href="https://weibo.com/7594643421/5335356506639349" target="_blank">原文链接</a></div>
+      </li>
+      <li>
+        <div class="news-item-head"><span class="bullet">&#9642;</span><span class="news-title">OpenAI收购Agent记忆层公司Instant：补上Agent"跨会话持久记忆"关键短板</span></div>
+        <div class="news-body">8月23日，YC S22明星创业公司Instant宣布整个团队加入OpenAI。Instant被称为"AI时代的Firebase"，为AI智能体提供数据库、权限验证、实时同步等后端基础设施，GitHub星标已突破1万。此次收购旨在为OpenAI Agent补上"记忆层"——让Agent具备跨会话的持久记忆能力，是长程任务执行的关键基础设施。</div>
+        <div class="news-source"><span class="source-tag">AI行业热点日报</span><a href="https://weibo.com/7594643421/5335356506639349" target="_blank">原文链接</a></div>
+      </li>
+      <li>
+        <div class="news-item-head"><span class="bullet">&#9642;</span><span class="news-title">英伟达AI服务器明年初涨价超15%：HBM内存成本飙升，1GW级数据中心单轮加价或超50亿美元</span></div>
+        <div class="news-body">8月23日，据彭博社报道，因三星、SK hynix和美光的高带宽内存（HBM）成本飙升，英伟达已通知微软、谷歌、甲骨文等最大客户：搭载Vera Rubin和Grace Blackwell芯片的AI服务器价格将从2027年初起上涨超15%。具体涨幅取决于芯片代际和内存配置。英伟达将于8月26日发布二季度财报。</div>
+        <div class="news-source"><span class="source-tag">彭博社 / 量子位 / 雪球</span><a href="https://xueqiu.com/2815370195/406260022" target="_blank">原文链接</a></div>
+      </li>
+    </ul>
+  </div>
+</section>
+
+<div class="report-footer">
+  数据来源：AI HOT / WebSearch / 公开报道<br>
+  本期日报共收录 10 条新闻，筛选自过去 24 小时内的公开报道<br>
+  生成时间：2026-08-24 10:00 CST
+</div>
+
+</div>
+</body>
+</html>

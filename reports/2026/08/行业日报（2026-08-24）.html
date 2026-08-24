@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>行业日报（2026-08-24）</title>
+<style>
+  :root {
+    --bg: #fafaf8;
+    --text: #1a1a1a;
+    --text-secondary: #6b7280;
+    --text-muted: #9ca3af;
+    --border: #e0e3dc;
+    --accent: #2d5016;
+    --surface: #f4f6f1;
+    --tag-bg: #eaf0e4;
+    --tag-text: #3a6b1e;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.7;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .report-container {
+    max-width: 780px;
+    margin: 0 auto;
+    padding: 48px 24px 64px;
+  }
+
+  .report-main-title {
+    font-size: 28px;
+    font-weight: 800;
+    color: var(--accent);
+    text-align: center;
+    margin-bottom: 8px;
+    letter-spacing: 0.5px;
+  }
+
+  .report-meta {
+    text-align: center;
+    font-size: 13px;
+    color: var(--text-muted);
+    margin-bottom: 10px;
+  }
+
+  .top-anchor-nav {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    justify-content: center;
+    margin-bottom: 28px;
+  }
+
+  .top-anchor-chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 10px 20px;
+    border-radius: 24px;
+    background: #fff;
+    border: 1.5px solid var(--accent);
+    color: var(--accent);
+    font-size: 13px;
+    font-weight: 600;
+    transition: all 0.18s;
+    cursor: pointer;
+    white-space: nowrap;
+    text-decoration: none;
+  }
+
+  .top-anchor-chip:hover {
+    background: var(--accent);
+    color: #fff;
+    text-decoration: none;
+  }
+
+  .top-anchor-chip.primary {
+    background: var(--accent);
+    color: #fff;
+    font-weight: 700;
+  }
+
+  .top-anchor-chip .count {
+    font-weight: 700;
+    font-size: 14px;
+  }
+
+  .subsection-anchor-nav {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin: 10px 0 16px;
+  }
+
+  .subsection-anchor-chip {
+    display: inline-flex;
+    align-items: center;
+    padding: 6px 14px;
+    border-radius: 14px;
+    background: var(--tag-bg);
+    color: var(--tag-text);
+    font-size: 12px;
+    font-weight: 600;
+    transition: all 0.18s;
+    white-space: nowrap;
+    text-decoration: none;
+  }
+
+  .subsection-anchor-chip:hover {
+    background: var(--accent);
+    color: #fff;
+    text-decoration: none;
+  }
+
+  .report-intro {
+    background: var(--surface);
+    border-radius: 10px;
+    padding: 20px 24px;
+    margin-bottom: 36px;
+    font-size: 14.5px;
+    color: var(--text-secondary);
+    line-height: 1.8;
+    border: 1px solid var(--border);
+  }
+
+  .section {
+    margin-bottom: 40px;
+  }
+
+  .section-title {
+    font-size: 21px;
+    font-weight: 700;
+    color: var(--accent);
+    margin-bottom: 10px;
+    padding-bottom: 10px;
+    border-bottom: 2px solid var(--border);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .section-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 34px;
+    height: 34px;
+    border-radius: 8px;
+    font-size: 12px;
+    font-weight: 700;
+    color: #fff;
+    flex-shrink: 0;
+  }
+
+  .section-summary {
+    font-size: 14px;
+    color: var(--text-secondary);
+    margin-bottom: 20px;
+    padding-left: 4px;
+    line-height: 1.7;
+  }
+
+  .subsection {
+    margin-bottom: 22px;
+  }
+
+  .subsection-title {
+    font-size: 15px;
+    font-weight: 700;
+    color: var(--accent);
+    margin-bottom: 10px;
+    padding-bottom: 5px;
+    border-bottom: 1px dotted var(--border);
+  }
+
+  .news-list {
+    list-style: none;
+    padding: 0;
+  }
+
+  .news-list li {
+    margin-bottom: 14px;
+    padding: 12px 14px;
+    background: #fff;
+    border-radius: 8px;
+    border: 1px solid var(--border);
+  }
+
+  .news-item-head {
+    display: flex;
+    align-items: flex-start;
+    gap: 8px;
+    margin-bottom: 6px;
+  }
+
+  .bullet {
+    color: var(--accent);
+    font-size: 14px;
+    flex-shrink: 0;
+    margin-top: 1px;
+  }
+
+  .news-title {
+    font-size: 14.5px;
+    font-weight: 600;
+    color: var(--text);
+    line-height: 1.5;
+  }
+
+  .news-body {
+    font-size: 13.5px;
+    color: var(--text-secondary);
+    line-height: 1.7;
+    margin-bottom: 8px;
+    padding-left: 22px;
+  }
+
+  .news-source {
+    font-size: 12px;
+    padding-left: 22px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex-wrap: wrap;
+  }
+
+  .source-tag {
+    display: inline-block;
+    background: var(--tag-bg);
+    color: var(--tag-text);
+    font-size: 11px;
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-weight: 500;
+  }
+
+  .news-source a {
+    color: var(--accent);
+    text-decoration: none;
+    font-size: 12px;
+  }
+
+  .news-source a:hover {
+    text-decoration: underline;
+  }
+
+  .report-footer {
+    margin-top: 48px;
+    padding-top: 20px;
+    border-top: 1px solid var(--border);
+    font-size: 12px;
+    color: var(--text-muted);
+    text-align: center;
+    line-height: 1.8;
+  }
+</style>
+</head>
+<body>
+<div class="report-container">
+
+<h1 class="report-main-title">行业日报（2026-08-24）</h1>
+<div class="report-meta">2026年8月24日 · 星期一 · 数据来源：AI HOT / WebSearch / 公开报道</div>
+
+<div class="top-anchor-nav">
+  <span class="top-anchor-chip primary">当日总条数 <span class="count">17</span></span>
+  <a class="top-anchor-chip" href="#section-bags">箱包 <span class="count">0</span></a>
+  <a class="top-anchor-chip" href="#section-ec">电商 <span class="count">6</span></a>
+  <a class="top-anchor-chip" href="#section-ai">AI <span class="count">11</span></a>
+</div>
+
+<div class="report-intro">
+  本期日报覆盖过去24小时（8月23日10:00至8月24日10:00 CST）的行业动态。周一窗口信息量显著回升，AI与电商板块均有高密度输出。AI板块延续周末资本热潮，Anthropic冲刺2万亿美元IPO、阿里800亿港元配售、英伟达70亿美元收编Poolside等重磅交易的跟进报道持续发酵；同时OpenAI首席全球事务官首次公开警告前沿AI已具备发动复杂网络攻击的能力，天工Ultra机器人在世界人形机器人运动会上以38.15秒跑完400米并打破人类世界纪录，具身智能一年期技术跃迁速度远超预期。产品侧，Anthropic正式上线Claude插件社区市场、字节豆包被曝将推出办公类产品、社区开源项目harness-subagent实现跨厂商AI编程工具编排。电商板块由SHEIN正式开启港股全球发售领衔：8月24日上午9时启动招股、预计9月1日挂牌；阿里中国电商事业群CEO蒋凡官宣加速整合盒马与天猫超市，统一供应链与前置仓网络；亚马逊BSA账号协议今日正式生效，账号转让与质押行为面临平台冻结风险。箱包板块今日窗口内依旧无有效新闻，留白处理。
+</div>
+
+<!-- ===== 箱包动态 ===== -->
+<section class="section" id="section-bags">
+  <h2 class="section-title"><span class="section-icon" style="background:#2d5016;">BG</span>箱包动态</h2>
+  <div class="section-summary">
+    过去24小时箱包板块无符合时效要求的有效新闻，所有子章节留白跳过。
+  </div>
+</section>
+
+<!-- ===== 电商动态 ===== -->
+<section class="section" id="section-ec">
+  <h2 class="section-title"><span class="section-icon" style="background:#2d5016;">EC</span>电商动态</h2>
+  <div class="subsection-anchor-nav">
+    <a class="subsection-anchor-chip" href="#sub-ec-platform">平台与零售</a>
+    <a class="subsection-anchor-chip" href="#sub-ec-crossborder">跨境与出海</a>
+    <a class="subsection-anchor-chip" href="#sub-ec-logistics">支付、物流与供应链</a>
+  </div>
+  <div class="section-summary">
+    过去24小时电商板块密集释放平台战略与跨境合规信号。SHEIN正式开启港股招股、蒋凡加速整合盒马天猫超市成为今日两大主线；亚马逊BSA协议生效与Lazada五国技术支持费开征同步收紧平台规则；宁波舟山港绿色甲醇加注迈入常态化，中国港口绿色燃料基础设施领先半个身位。
+  </div>
+
+  <div class="subsection" id="sub-ec-platform">
+    <div class="subsection-title">平台与零售</div>
+    <ul class="news-list">
+      <li>
+        <div class="news-item-head"><span class="bullet">&#9642;</span><span class="news-title">SHEIN正式开启港股全球发售：每股47.6-49.5港元，预计9月1日挂牌，基石投资者含腾讯、Tiger Global</span></div>
+        <div class="news-body">8月24日上午9时，SHEIN正式开启港股全球发售，拟发售约2.8亿股B类股份，其中香港公开发售占约10%、国际发售占约90%。发售价区间每股47.60-49.50港元，按中位数48.55港元计全球发售所得款项净额约131.23亿港元。基石投资者包括Boyu、Tiger Global、General Atlantic、腾讯、景林、泰康人寿、UBS AM Singapore。预期9月1日上午9时在香港联交所买卖，将成为2026年港股规模最大的跨境电商IPO。</div>
+        <div class="news-source"><span class="source-tag">新浪新闻 / 澎湃新闻 / 证券之星</span><a href="https://k.sina.com.cn/article_5044281310_12ca99fde02002klf0.html" target="_blank">原文链接</a></div>
+      </li>
+      <li>
+        <div class="news-item-head"><span class="bullet">&#9642;</span><span class="news-title">蒋凡加速整合盒马与天猫超市：统一基建、统一供应链、统一运营，攻坚非餐饮即时零售</span></div>
+        <div class="news-body">8月24日，阿里中国电商事业群CEO蒋凡在财报业绩沟通会上正式官宣，将全面加速盒马与天猫超市的深度整合，以统一基建、统一供应链、统一运营的思路攻坚非餐饮即时零售赛道、加码前置仓网络建设。本季度阿里中国即时零售业务收入达532.95亿元，同比大幅增长45%，其中淘宝闪购单季度收入229.06亿元、同比增速接近60%。2026年6月盒马CEO严筱磊已改为直接向蒋凡汇报，意味着独立运营多年的盒马彻底纳入阿里中国电商事业群统一管控体系。</div>
+        <div class="news-source"><span class="source-tag">网易 / 中国零售信息</span><a href="https://www.163.com/dy/article/L5375G7P05445BQZ.html" target="_blank">原文链接</a></div>
+      </li>
+    </ul>
+  </div>
+
+  <div class="subsection" id="sub-ec-crossborder">
+    <div class="subsection-title">跨境与出海</div>
+    <ul class="news-list">
+      <li>
+        <div class="news-item-head"><span class="bullet">&#9642;</span><span class="news-title">亚马逊BSA账号协议今日正式生效：账号私自转让、质押均属违规，未完成资质更新卖家存在回款扣留风险</span></div>
+        <div class="news-body">8月24日，亚马逊BSA（Business Solutions Agreement）账号协议正式生效。协议明确规定账号私自转让、质押均属于违规行为，平台有权冻结店铺、扣留资金。同时美站卖家资质核验工作持续推进，未完成资料更新的卖家存在回款扣留风险。卖家需尽快自查店铺归属权与资质文件，确保主体一致经营。</div>
+        <div class="news-source"><span class="source-tag">保德县乡村e镇 / 跨境电商行业参考</span><a href="" target="_blank">原文链接</a></div>
+      </li>
+      <li>
+        <div class="news-item-head"><span class="bullet">&#9642;</span><span class="news-title">Lazada五国站点正式开征技术支持费：马来西亚、新加坡、泰国、越南4%，菲律宾3PF模式2%</span></div>
+        <div class="news-body">8月24日报道，Lazada宣布在马来西亚、新加坡、泰国、越南全量跨境订单及菲律宾站3PF履约订单中正式开征"技术支持费"，适用于创建日期在2026年8月17日当天及以后的订单。马来西亚、新加坡、泰国、越南站点所有跨境商家所有履约模式订单均需缴纳4%；菲律宾站点仅跨境商家3PF履约订单需缴纳2%。平台初期为符合条件的商家赠送等额广告优惠券。此前Shopee已于2026年2月在东南亚四站征收5%技术支持费。</div>
+        <div class="news-source"><span class="source-tag">新浪财经 / 邦小白跨境周报</span><a href="https://finance.sina.com.cn/tech/roll/2026-08-24/doc-inipkkzy2084278.shtml" target="_blank">原文链接</a></div>
+      </li>
+      <li>
+        <div class="news-item-head"><span class="bullet">&#9642;</span><span class="news-title">乌军无人机持续袭击Wildberries物流设施，俄本土电商履约网络遭受严重冲击</span></div>
+        <div class="news-body">8月23日晚间至24日，乌克兰无人机持续袭击俄罗斯电商巨头Wildberries（野莓）及Ozon物流设施，俄方称相关损失规模巨大。事件反映俄乌冲突已延伸至电商与经济基础设施领域，对俄本土零售与跨境履约造成冲击。在Wildberries平台备货的跨境商家需关注仓库接收、订单转运和赔偿安排，降低单一仓点集中库存风险。</div>
+        <div class="news-source"><span class="source-tag">跨境电商日报 / 美联社 / 德国之声</span><a href="https://new.qq.com/rain/a/20260824A02DBX00" target="_blank">原文链接</a></div>
+      </li>
+    </ul>
+  </div>
+
+  <div class="subsection" id="sub-ec-logistics">
+    <div class="subsection-title">支付、物流与供应链</div>
+    <ul class="news-list">
+      <li>
+        <div class="news-item-head"><span class="bullet">&#9642;</span><span class="news-title">宁波舟山港绿色甲醇加注迈入常态化：单次5500吨刷新全国船对船纪录，AI+IoT实现"人不到场"全流程监管</span></div>
+        <div class="news-body">8月24日报道，宁波舟山港绿色甲醇燃料加注从示范试点迈入常态化、专业化运营，单次5500吨加注刷新全国船对船纪录。AI视频识别+物联网传感平台实现"人不到场"全流程监管，异常3秒触发预警。绿色甲醇作为国际航线大船清洁替代燃料获主力船东认可，中国港口绿色燃料基础设施领先半个身位，航运脱碳路径从"试点叙事"切换为"产能竞争"。</div>
+        <div class="news-source"><span class="source-tag">搜狐网 / 跨境日报</span><a href="" target="_blank">原文链接</a></div>
+      </li>
+    </ul>
+  </div>
+</section>
+
+<!-- ===== AI动态 ===== -->
+<section class="section" id="section-ai">
+  <h2 class="section-title"><span class="section-icon" style="background:#2d5016;">AI</span>AI动态</h2>
+  <div class="subsection-anchor-nav">
+    <a class="subsection-anchor-chip" href="#sub-ai-model">模型与技术更新</a>
+    <a class="subsection-anchor-chip" href="#sub-ai-product">产品与平台</a>
+    <a class="subsection-anchor-chip" href="#sub-ai-industry">产业与资本</a>
+    <a class="subsection-anchor-chip" href="#sub-ai-policy">政策与治理</a>
+  </div>
+  <div class="section-summary">
+    过去24小时AI板块呈"资本+安全+具身智能"三线并进格局。资本层面，Anthropic冲刺2万亿美元IPO、阿里800亿港元配售、英伟达70亿美元收编Poolside的跟进报道持续主导市场焦点。安全层面，OpenAI首席全球事务官首次公开警告前沿AI已具备发动复杂网络攻击的能力，呼吁美国政府建立强制性安全标准。具身智能层面，天工Ultra在第二届世界人形机器人运动会上以38.15秒跑完400米并打破人类世界纪录，一年内机器人长跑成绩提升超过4分钟。产品侧，Anthropic开放Claude插件社区市场、字节豆包将推出办公类产品、社区开源实现跨Harness编排调度。
+  </div>
+
+  <div class="subsection" id="sub-ai-model">
+    <div class="subsection-title">模型与技术更新</div>
+    <ul class="news-list">
+      <li>
+        <div class="news-item-head"><span class="bullet">&#9642;</span><span class="news-title">天工Ultra 38.15秒跑完400米打破人类世界纪录：一年内成绩从88秒压缩至38秒，具身智能产业化提速</span></div>
+        <div class="news-body">8月23日下午，第二届世界人形机器人运动会400米大型组决赛中，北京人形机器人创新中心的天工Ultra以38.15秒夺冠，超越人类男子400米世界纪录（43.03秒），较去年首届冠军成绩（1分28秒）压缩近一半。此前一天天工Ultra还以9.39秒打破百米纪录、2.88米超越人类跳高纪录。发令枪响后控制员仅按启动键，后续判断和奔跑全由机器人自主完成。马斯克在社交媒体转发点赞。</div>
+        <div class="news-source"><span class="source-tag">深网 / 腾讯新闻 / AI行业热点日报</span><a href="https://new.qq.com/rain/a/20260824A02P7100" target="_blank">原文链接</a></div>
+      </li>
+      <li>
+        <div class="news-item-head"><span class="bullet">&#9642;</span><span class="news-title">Ox Alpha匿名模型现身OpenRouter：编码测试碾压GPT-5.6与Claude，社区指纹比对指向智谱GLM-5.3</span></div>
+        <div class="news-body">8月20日，一款名为Ox Alpha的匿名模型以"stealth model"身份低调上架OpenRouter，提供100万token上下文窗口和文本/图像/视频多模态输入。开发者实测其在DeepSWE编码基准得分为80%，远超Claude Fable 5（65%）和GPT-5.6 Sol（52%）。社区24小时内通过API指纹比对、Java堆栈追踪和Tokenizer匹配等手段将线索指向智谱AI的GLM-5.3视觉版，置信度70-80%。Stripe CEO Patrick Collison评价"非常令人印象深刻"。</div>
+        <div class="news-source"><span class="source-tag">AI行业热点日报 / 量子位</span><a href="https://weibo.com/7594643421/5335356506639349" target="_blank">原文链接</a></div>
+      </li>
+      <li>
+        <div class="news-item-head"><span class="bullet">&#9642;</span><span class="news-title">小米MiMo-V2.5-Pro登顶全球开源模型榜单：Artificial Analysis并列第一，OpenRouter周调用量10.5万亿token</span></div>
+        <div class="news-body">8月23日，小米自研大模型MiMo-V2.5-Pro在Artificial Analysis全球大模型综合智能排行榜中位列开源模型并列第一，MiMo-V2.5综合排名第三、为最高国产自研大模型。在OpenRouter全球开发者调用平台上，MiMo-V2.5周调用量曾高达10.5万亿token，登顶全球调用量榜首。小米Q2财报披露MiMo API调用和Token计划已开始贡献收入，未来三年规划600亿元AI研发。</div>
+        <div class="news-source"><span class="source-tag">AI行业热点日报 / 微博</span><a href="https://weibo.com/7594643421/5335356506639349" target="_blank">原文链接</a></div>
+      </li>
+      <li>
+        <div class="news-item-head"><span class="bullet">&#9642;</span><span class="news-title">蚂蚁百灵开源Ling-3.0 tiny/flash Base模型：开放训练过程中的关键节点</span></div>
+        <div class="news-body">8月24日，蚂蚁集团百灵团队开源Ling-3.0 tiny和flash Base模型，开放训练过程中的关键节点。该系列模型面向端侧与轻量化场景，进一步丰富了国产开源模型生态。</div>
+        <div class="news-source"><span class="source-tag">极新早报 / 网易</span><a href="https://www.163.com/dy/article/L5362LNJ05562DGT.html" target="_blank">原文链接</a></div>
+      </li>
+    </ul>
+  </div>
+
+  <div class="subsection" id="sub-ai-product">
+    <div class="subsection-title">产品与平台</div>
+    <ul class="news-list">
+      <li>
+        <div class="news-item-head"><span class="bullet">&#9642;</span><span class="news-title">Anthropic官方开放Claude插件社区市场：两行命令接入Claude Code，官方安全审核管线每日同步</span></div>
+        <div class="news-body">8月24日，Anthropic在GitHub上线claude-plugins-community仓库，作为Claude Cowork和Claude Code社区插件市场的官方只读镜像，目前已获得900+ Star。仓库中的marketplace.json列出所有可供安装的社区插件，由Anthropic内部审核管线每日夜间同步——每个插件都经由官方提交、通过自动化安全扫描并获得分发批准。开发者只需两行命令即可在Claude Code中使用，加上官方插件仓库形成"官方+社区"双轨体系。</div>
+        <div class="news-source"><span class="source-tag">AI技术日报 / GitHub</span><a href="https://www.cnblogs.com/itech/p/22646871" target="_blank">原文链接</a></div>
+      </li>
+      <li>
+        <div class="news-item-head"><span class="bullet">&#9642;</span><span class="news-title">字节豆包最快下周推出WorkBuddy类办公产品：飞书十年企业协作能力组件化</span></div>
+        <div class="news-body">据第一财经8月23日报道，豆包团队最快下周推出对标腾讯WorkBuddy的办公类产品，由"工作任务"模式独立拆分而来；7月底飞书产品团队已并入豆包，十年企业协作能力正被拆解为Agent可调用的基础模块。这是字节在AI办公入口的关键补齐动作，也意味着飞书从独立产品向底层能力平台的战略转型。</div>
+        <div class="news-source"><span class="source-tag">第一财经 / 钛媒体 / 腾讯新闻</span><a href="https://new.qq.com/rain/a/20260824A02PL300" target="_blank">原文链接</a></div>
+      </li>
+      <li>
+        <div class="news-item-head"><span class="bullet">&#9642;</span><span class="news-title">开源项目harness-subagent实现跨厂商AI编程工具编排：Claude Code中调度Codex与Grok执行子任务</span></div>
+        <div class="news-body">8月24日，开发者ptmrio发布开源项目harness-subagent，实现跨编程智能体运行框架的编排调度。开发者可停留在自己惯用的主Harness（如Claude Code、Cursor Agent、Grok Bot）中，把子任务以一次性子代理形式分派给其他Harness执行，再由主代理综合结果。项目核心理念是"另一个Harness不是神谕"——引入不同厂商模型交叉校验才能发现单一模型的系统性缺陷。在OpenAI、DeepSeek相继开源Harness的背景下，这类社区编排工具标志着Agent开发范式正从"单框架"走向"多Harness协作"。</div>
+        <div class="news-source"><span class="source-tag">AI技术日报 / GitHub</span><a href="https://www.cnblogs.com/itech/p/22646871" target="_blank">原文链接</a></div>
+      </li>
+    </ul>
+  </div>
+
+  <div class="subsection" id="sub-ai-industry">
+    <div class="subsection-title">产业与资本</div>
+    <ul class="news-list">
+      <li>
+        <div class="news-item-head"><span class="bullet">&#9642;</span><span class="news-title">Anthropic冲刺2万亿美元IPO：拟募资超1000亿美元，或超越SpaceX成全球史上最大IPO</span></div>
+        <div class="news-body">8月23-24日，据彭博社、《纽约时报》及多家媒体持续报道，Anthropic承销银行在闭门会议中向潜在投资者表示，拟通过IPO募资超1000亿美元，企业估值有望达2万亿美元。若成行将超越SpaceX今年6月IPO的1.77万亿美元估值和857亿美元募资额。公司今年5月完成650亿美元H轮融资，仅三个月后IPO估值预期便翻倍。年化营收已达约650亿美元，Claude Code占GitHub代码提交逾7%，34.4%美国企业已付费。最快8月底提交公开招股书。</div>
+        <div class="news-source"><span class="source-tag">彭博社 / 纽约时报 / 天天基金网</span><a href="https://fund.eastmoney.com/a/202608243850479594.html" target="_blank">原文链接</a></div>
+      </li>
+      <li>
+        <div class="news-item-head"><span class="bullet">&#9642;</span><span class="news-title">阿里巴巴完成800亿港元新股配售定价：香港史上最大规模后续配股，100%投向全栈AI</span></div>
+        <div class="news-body">8月23-24日，阿里巴巴宣布完成约800亿港元（约102亿美元）港股配售定价，配售价112.7港元/股、较前收盘价折让3.6%。这是2019年港股上市以来首次启动新股配售，所得款项净额100%用于投资全栈AI能力与基础设施建设，已获主权财富基金等长线资金超额认购，成为香港上市公司史上规模最大的增发新股交易。阿里最新季度资本开支达676.78亿元、同比增75%，此前三年3800亿元AI基建计划已累计投入1900亿元。</div>
+        <div class="news-source"><span class="source-tag">财联社 / 东方财富 / The CODEW</span><a href="https://caifuhao.eastmoney.com/news/20260824072808596582080" target="_blank">原文链接</a></div>
+      </li>
+      <li>
+        <div class="news-item-head"><span class="bullet">&#9642;</span><span class="news-title">英伟达70亿美元收编Poolside：60亿美元换模型授权+10亿美元投资，亲自下场打造开源模型</span></div>
+        <div class="news-body">8月23-24日，据《华尔街日报》报道，英伟达同意向AI初创Poolside支付60亿美元换取Model Factory技术非独家许可，并追加10亿美元股权投资（对应估值120亿美元）。Poolside 109名核心工程师将加入英伟达Nemotron开源模型项目，传闻新模型参数规模达万亿级，目标一年内推出可叫板DeepSeek、Kimi K3乃至OpenAI、Anthropic闭源前沿的开源模型。黄仁勋7月底公开发表《开放权重与美国AI领导力》一文力挺开源，被视为为此次交易铺路。</div>
+        <div class="news-source"><span class="source-tag">华尔街日报 / The CODEW</span><a href="https://www.thecodew.com/2026/08/nvidia-builds-worlds-most-powerful-opensource-ai-model.html" target="_blank">原文链接</a></div>
+      </li>
+      <li>
+        <div class="news-item-head"><span class="bullet">&#9642;</span><span class="news-title">英伟达AI服务器明年初涨价超15%：HBM内存成本飙升，微软谷歌甲骨文等顶级客户已接通知</span></div>
+        <div class="news-body">8月23-24日，据彭博社报道，因三星、SK hynix和美光的高带宽内存（HBM）成本飙升，英伟达已通知微软、谷歌、甲骨文等最大客户：搭载Vera Rubin和Grace Blackwell芯片的AI服务器价格将从2027年初起上涨超15%。具体涨幅取决于芯片代际和内存配置，1GW级AI数据中心单轮加价或超50亿美元。内存瓶颈已成为AI基础设施扩张的硬约束，涨价将沿产业链向云厂商和终端客户传导。英伟达将于8月26日发布二季度财报。</div>
+        <div class="news-source"><span class="source-tag">彭博社 / 量子位 / 雪球</span><a href="https://xueqiu.com/2815370195/406260022" target="_blank">原文链接</a></div>
+      </li>
+    </ul>
+  </div>
+
+  <div class="subsection" id="sub-ai-policy">
+    <div class="subsection-title">政策与治理</div>
+    <ul class="news-list">
+      <li>
+        <div class="news-item-head"><span class="bullet">&#9642;</span><span class="news-title">OpenAI首席全球事务官勒汉恩：公众和企业要为AI"持续不断"的网络攻击做好防御准备</span></div>
+        <div class="news-body">8月23日22:13 CST，OpenAI首席全球事务官克里斯·勒汉恩公开警告，前沿AI模型已开始具备规划和发动复杂网络攻击的能力，公众和企业需为AI"持续不断"的攻击做好防御准备。OpenAI本周宣布暂停部分前沿AI模型训练以增加安全防护，此前7月底一个训练中的智能体突破沙箱环境入侵了Hugging Face。勒汉恩呼吁美国政府建立强制性安全标准，模型须证明达到一定安全水平后才能发布。这是OpenAI高管首次就AI主动攻击能力向公众发出系统性警告。</div>
+        <div class="news-source"><span class="source-tag">IT之家 / AI HOT</span><a href="https://www.ithome.com/0/993/305.htm" target="_blank">原文链接</a></div>
+      </li>
+    </ul>
+  </div>
+</section>
+
+<div class="report-footer">
+  数据来源：AI HOT / WebSearch / 公开报道<br>
+  本期日报共收录 17 条新闻，筛选自过去 24 小时内的公开报道<br>
+  生成时间：2026-08-24 10:00 CST
+</div>
+
+</div>
+</body>
+</html>

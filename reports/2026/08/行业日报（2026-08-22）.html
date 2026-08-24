@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>行业日报（2026-08-22）</title>
+<style>
+  :root {
+    --bg: #fafaf8;
+    --text: #1a1a1a;
+    --text-secondary: #6b7280;
+    --text-muted: #9ca3af;
+    --border: #e0e3dc;
+    --accent: #2d5016;
+    --surface: #f4f6f1;
+    --tag-bg: #eaf0e4;
+    --tag-text: #3a6b1e;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.7;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .report-container {
+    max-width: 780px;
+    margin: 0 auto;
+    padding: 48px 24px 64px;
+  }
+
+  .report-main-title {
+    font-size: 28px;
+    font-weight: 800;
+    color: var(--accent);
+    text-align: center;
+    margin-bottom: 8px;
+    letter-spacing: 0.5px;
+  }
+
+  .report-meta {
+    text-align: center;
+    font-size: 13px;
+    color: var(--text-muted);
+    margin-bottom: 10px;
+  }
+
+  .top-anchor-nav {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    justify-content: center;
+    margin-bottom: 28px;
+  }
+
+  .top-anchor-chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 10px 20px;
+    border-radius: 24px;
+    background: #fff;
+    border: 1.5px solid var(--accent);
+    color: var(--accent);
+    font-size: 13px;
+    font-weight: 600;
+    transition: all 0.18s;
+    cursor: pointer;
+    white-space: nowrap;
+    text-decoration: none;
+  }
+
+  .top-anchor-chip:hover {
+    background: var(--accent);
+    color: #fff;
+    text-decoration: none;
+  }
+
+  .top-anchor-chip.primary {
+    background: var(--accent);
+    color: #fff;
+    font-weight: 700;
+  }
+
+  .top-anchor-chip .count {
+    font-weight: 700;
+    font-size: 14px;
+  }
+
+  .subsection-anchor-nav {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin: 10px 0 16px;
+  }
+
+  .subsection-anchor-chip {
+    display: inline-flex;
+    align-items: center;
+    padding: 6px 14px;
+    border-radius: 14px;
+    background: var(--tag-bg);
+    color: var(--tag-text);
+    font-size: 12px;
+    font-weight: 600;
+    transition: all 0.18s;
+    white-space: nowrap;
+    text-decoration: none;
+  }
+
+  .subsection-anchor-chip:hover {
+    background: var(--accent);
+    color: #fff;
+    text-decoration: none;
+  }
+
+  .report-intro {
+    background: var(--surface);
+    border-radius: 10px;
+    padding: 20px 24px;
+    margin-bottom: 36px;
+    font-size: 14.5px;
+    color: var(--text-secondary);
+    line-height: 1.8;
+    border: 1px solid var(--border);
+  }
+
+  .section {
+    margin-bottom: 40px;
+  }
+
+  .section-title {
+    font-size: 21px;
+    font-weight: 700;
+    color: var(--accent);
+    margin-bottom: 10px;
+    padding-bottom: 10px;
+    border-bottom: 2px solid var(--border);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .section-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 34px;
+    height: 34px;
+    border-radius: 8px;
+    font-size: 12px;
+    font-weight: 700;
+    color: #fff;
+    flex-shrink: 0;
+  }
+
+  .section-summary {
+    font-size: 14px;
+    color: var(--text-secondary);
+    margin-bottom: 20px;
+    padding-left: 4px;
+    line-height: 1.7;
+  }
+
+  .subsection {
+    margin-bottom: 22px;
+  }
+
+  .subsection-title {
+    font-size: 15px;
+    font-weight: 700;
+    color: var(--accent);
+    margin-bottom: 10px;
+    padding-bottom: 5px;
+    border-bottom: 1px dotted var(--border);
+  }
+
+  .news-list {
+    list-style: none;
+    padding: 0;
+  }
+
+  .news-list li {
+    margin-bottom: 14px;
+    padding: 12px 14px;
+    background: #fff;
+    border-radius: 8px;
+    border: 1px solid var(--border);
+  }
+
+  .news-item-head {
+    display: flex;
+    align-items: flex-start;
+    gap: 8px;
+    margin-bottom: 6px;
+  }
+
+  .bullet {
+    color: var(--accent);
+    font-size: 14px;
+    flex-shrink: 0;
+    margin-top: 1px;
+  }
+
+  .news-title {
+    font-size: 14.5px;
+    font-weight: 600;
+    color: var(--text);
+    line-height: 1.5;
+  }
+
+  .news-body {
+    font-size: 13.5px;
+    color: var(--text-secondary);
+    line-height: 1.7;
+    margin-bottom: 8px;
+    padding-left: 22px;
+  }
+
+  .news-source {
+    font-size: 12px;
+    padding-left: 22px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex-wrap: wrap;
+  }
+
+  .source-tag {
+    display: inline-block;
+    background: var(--tag-bg);
+    color: var(--tag-text);
+    font-size: 11px;
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-weight: 500;
+  }
+
+  .news-source a {
+    color: var(--accent);
+    text-decoration: none;
+    font-size: 12px;
+  }
+
+  .news-source a:hover {
+    text-decoration: underline;
+  }
+
+  .report-footer {
+    margin-top: 48px;
+    padding-top: 20px;
+    border-top: 1px solid var(--border);
+    font-size: 12px;
+    color: var(--text-muted);
+    text-align: center;
+    line-height: 1.8;
+  }
+</style>
+</head>
+<body>
+<div class="report-container">
+
+<h1 class="report-main-title">行业日报（2026-08-22）</h1>
+<div class="report-meta">2026年8月22日 · 星期六 · 数据来源：WebSearch / 公开报道</div>
+
+<div class="top-anchor-nav">
+  <span class="top-anchor-chip primary">当日总条数 <span class="count">7</span></span>
+  <a class="top-anchor-chip" href="#section-bags">箱包 <span class="count">0</span></a>
+  <a class="top-anchor-chip" href="#section-ec">电商 <span class="count">0</span></a>
+  <a class="top-anchor-chip" href="#section-ai">AI <span class="count">7</span></a>
+</div>
+
+<div class="report-intro">
+  本期日报覆盖过去24小时（8月21日10:00至8月22日10:00 CST）的行业动态。周六窗口内整体新闻密度偏低，电商与箱包板块未检索到符合24小时时效要求的有效条目，均已留白处理。AI板块延续周五晚间至周六凌晨的输出节奏，以模型更新、开发工具迭代和资本市场动态为主：DeepSeek在8月21日晚间上线V4-Flash-Vision-Exp实验性多模态模型，Exa和Google Antigravity同日发布面向开发者的平台级插件与IDE扩展，Anthropic在人才与产品两端同步动作，面壁智能正式开启A股IPO辅导。本期共收录7条AI领域新闻。
+</div>
+
+<!-- ===== 箱包动态 ===== -->
+<section class="section" id="section-bags">
+  <h2 class="section-title"><span class="section-icon" style="background:#2d5016;">BG</span>箱包动态</h2>
+  <div class="section-summary">
+    过去24小时箱包板块无符合时效要求的有效新闻，所有子章节留白跳过。
+  </div>
+</section>
+
+<!-- ===== 电商动态 ===== -->
+<section class="section" id="section-ec">
+  <h2 class="section-title"><span class="section-icon" style="background:#2d5016;">EC</span>电商动态</h2>
+  <div class="section-summary">
+    过去24小时电商板块无符合时效要求的有效新闻，所有子章节留白跳过。
+  </div>
+</section>
+
+<!-- ===== AI动态 ===== -->
+<section class="section" id="section-ai">
+  <h2 class="section-title"><span class="section-icon" style="background:#2d5016;">AI</span>AI动态</h2>
+  <div class="subsection-anchor-nav">
+    <a class="subsection-anchor-chip" href="#sub-ai-model">模型与技术更新</a>
+    <a class="subsection-anchor-chip" href="#sub-ai-product">产品与平台</a>
+    <a class="subsection-anchor-chip" href="#sub-ai-industry">产业与资本</a>
+  </div>
+  <div class="section-summary">
+    过去24小时AI板块以模型层与开发者工具更新为核心。DeepSeek在21日晚间推出V4-Flash-Vision-Exp，正式将视觉理解能力接入Flash系列；Exa和Google Antigravity分别面向Codex生态和主流IDE发布平台级扩展；Anthropic在Claude Code中新增Concise输出模式，同时从Google挖来TPU创始人组建自研芯片团队；面壁智能成为首家启动A股IPO的端侧大模型独角兽。
+  </div>
+
+  <div class="subsection" id="sub-ai-model">
+    <div class="subsection-title">模型与技术更新</div>
+    <ul class="news-list">
+      <li>
+        <div class="news-item-head"><span class="bullet">&#9642;</span><span class="news-title">DeepSeek上线V4-Flash-Vision-Exp实验性多模态模型：图片最高仅计384 tokens，Agent能力逼近Claude Opus 4.8</span></div>
+        <div class="news-body">8月21日17:12，DeepSeek发布V4-Flash-Vision-Exp实验性视觉理解模型，在保持原有文本能力的同时新增图像理解支持。单张图片最高折算384 tokens，与文本统一计费、无额外视觉服务费。官方数据显示其多模态Agent能力已接近Claude旗舰Opus 4.8，同时推出免费的Files API和DeepSeek Harness 0.1.1以支持开发者处理图文混合任务。</div>
+        <div class="news-source"><span class="source-tag">DeepSeek 官方 / 财联社</span><a href="https://www.163.com/dy/article/L5362LNJ05562DGT.html" target="_blank">原文链接</a></div>
+      </li>
+    </ul>
+  </div>
+
+  <div class="subsection" id="sub-ai-product">
+    <div class="subsection-title">产品与平台</div>
+    <ul class="news-list">
+      <li>
+        <div class="news-item-head"><span class="bullet">&#9642;</span><span class="news-title">Exa推出OpenAI Codex与ChatGPT搜索插件：覆盖超1000亿网页、文档与论文</span></div>
+        <div class="news-body">8月22日，Exa发布面向OpenAI Codex和ChatGPT的搜索插件，提供超过1000亿网站、文档、研究论文、人物和公司数据的实时检索能力。开发者可通过Codex插件菜单直接安装，为AI编程助手增加跨源数据检索功能。</div>
+        <div class="news-source"><span class="source-tag">HeadsUpAI / Exa</span><a href="https://headsupai.io/ai-news-and-updates" target="_blank">原文链接</a></div>
+      </li>
+      <li>
+        <div class="news-item-head"><span class="bullet">&#9642;</span><span class="news-title">Anthropic为Claude Code新增内置Concise输出样式：默认跳过前置叙述、直接给出结果</span></div>
+        <div class="news-body">8月22日，Anthropic在Claude Code 2.1.237版本中新增Concise输出样式，该模式以结果为先、跳过默认的前置叙述，在保持工程工作完整性的同时显著缩短响应长度。用户可通过/config菜单或settings.json启用。</div>
+        <div class="news-source"><span class="source-tag">HeadsUpAI / Anthropic</span><a href="https://headsupai.io/ai-news-and-updates" target="_blank">原文链接</a></div>
+      </li>
+      <li>
+        <div class="news-item-head"><span class="bullet">&#9642;</span><span class="news-title">Google Antigravity推出VS Code、Visual Studio、Zed和JetBrains IDE扩展</span></div>
+        <div class="news-body">8月22日，Google Antigravity发布面向四大主流IDE的扩展插件，将其智能体开发平台集成到代码编辑器中，支持代码检查、编译器诊断审查和局部调整。企业团队可通过Gemini Enterprise或Google Cloud凭据访问，数据排除在基础模型训练之外。</div>
+        <div class="news-source"><span class="source-tag">HeadsUpAI / Google</span><a href="https://headsupai.io/ai-news-and-updates" target="_blank">原文链接</a></div>
+      </li>
+      <li>
+        <div class="news-item-head"><span class="bullet">&#9642;</span><span class="news-title">Nous Research为Hermes Desktop引入Bot Mode：多智能体独立协作、自定义模型与记忆</span></div>
+        <div class="news-body">8月22日，Nous Research发布Hermes Desktop的Bot Mode功能，允许将智能体配置文件转换为具有独立角色、模型、记忆、技能和头像的专用机器人。各Bot可独立运行、支持自定义模型选择，并直接相互通信以协调复杂任务。</div>
+        <div class="news-source"><span class="source-tag">HeadsUpAI / Nous Research</span><a href="https://headsupai.io/ai-news-and-updates" target="_blank">原文链接</a></div>
+      </li>
+    </ul>
+  </div>
+
+  <div class="subsection" id="sub-ai-industry">
+    <div class="subsection-title">产业与资本</div>
+    <ul class="news-list">
+      <li>
+        <div class="news-item-head"><span class="bullet">&#9642;</span><span class="news-title">Anthropic聘请谷歌TPU创始人Amir Salek，组建自研芯片团队以降低对英伟达依赖</span></div>
+        <div class="news-body">8月22日，Anthropic聘请前谷歌定制芯片业务创始人Amir Salek加入算力团队，向算力主管James Bradbury汇报。此前Anthropic已挖走OpenAI定制芯片早期成员Clive Chan，并正与Fractile、三星等洽谈芯片合作，同时训练Claude辅助设计芯片。</div>
+        <div class="news-source"><span class="source-tag">机器之心 / 腾讯新闻</span><a href="https://new.qq.com/rain/a/20260822A068R400" target="_blank">原文链接</a></div>
+      </li>
+      <li>
+        <div class="news-item-head"><span class="bullet">&#9642;</span><span class="news-title">面壁智能启动A股IPO辅导：上半年融资超50亿元，估值超200亿元</span></div>
+        <div class="news-body">8月22日，清华系端侧大模型独角兽面壁智能完成北京证监局辅导备案，正式启动A股IPO进程。公司上半年融资超50亿元、估值超200亿元；MiniCPM系列已落地三星盖乐世AI、吉利等30万台车载端，目标冲击"端侧大模型第一股"。</div>
+        <div class="news-source"><span class="source-tag">星岛记事 / 腾讯新闻</span><a href="https://new.qq.com/rain/a/20260822A068R400" target="_blank">原文链接</a></div>
+      </li>
+    </ul>
+  </div>
+</section>
+
+<div class="report-footer">
+  数据来源：AI HOT / WebSearch / 公开报道<br>
+  本期日报共收录 7 条新闻，筛选自过去 24 小时内的公开报道<br>
+  生成时间：2026-08-24 10:00 CST
+</div>
+
+</div>
+</body>
+</html>
