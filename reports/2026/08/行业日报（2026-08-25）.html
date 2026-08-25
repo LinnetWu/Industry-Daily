@@ -1,0 +1,476 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>行业日报（2026-08-25）</title>
+<style>
+  :root {
+    --bg: #fafaf8;
+    --text: #1a1a1a;
+    --text-secondary: #6b7280;
+    --text-muted: #9ca3af;
+    --border: #e0e3dc;
+    --accent: #2d5016;
+    --surface: #f4f6f1;
+    --tag-bg: #eaf0e4;
+    --tag-text: #3a6b1e;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.7;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .report-container {
+    max-width: 780px;
+    margin: 0 auto;
+    padding: 48px 24px 64px;
+  }
+
+  .report-main-title {
+    font-size: 28px;
+    font-weight: 800;
+    color: var(--accent);
+    text-align: center;
+    margin-bottom: 8px;
+    letter-spacing: 0.5px;
+  }
+
+  .report-meta {
+    text-align: center;
+    font-size: 13px;
+    color: var(--text-muted);
+    margin-bottom: 10px;
+  }
+
+  .top-anchor-nav {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    justify-content: center;
+    margin-bottom: 28px;
+  }
+
+  .top-anchor-chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 10px 20px;
+    border-radius: 24px;
+    background: #fff;
+    border: 1.5px solid var(--accent);
+    color: var(--accent);
+    font-size: 13px;
+    font-weight: 600;
+    transition: all 0.18s;
+    cursor: pointer;
+    white-space: nowrap;
+    text-decoration: none;
+  }
+
+  .top-anchor-chip:hover {
+    background: var(--accent);
+    color: #fff;
+    text-decoration: none;
+  }
+
+  .top-anchor-chip.primary {
+    background: var(--accent);
+    color: #fff;
+    font-weight: 700;
+  }
+
+  .top-anchor-chip .count {
+    font-weight: 700;
+    font-size: 14px;
+  }
+
+  .subsection-anchor-nav {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin: 10px 0 16px;
+  }
+
+  .subsection-anchor-chip {
+    display: inline-flex;
+    align-items: center;
+    padding: 6px 14px;
+    border-radius: 14px;
+    background: var(--tag-bg);
+    color: var(--tag-text);
+    font-size: 12px;
+    font-weight: 600;
+    transition: all 0.18s;
+    white-space: nowrap;
+    text-decoration: none;
+  }
+
+  .subsection-anchor-chip:hover {
+    background: var(--accent);
+    color: #fff;
+    text-decoration: none;
+  }
+
+  .report-intro {
+    background: var(--surface);
+    border-radius: 10px;
+    padding: 20px 24px;
+    margin-bottom: 36px;
+    font-size: 14.5px;
+    color: var(--text-secondary);
+    line-height: 1.8;
+    border: 1px solid var(--border);
+  }
+
+  .section {
+    margin-bottom: 40px;
+  }
+
+  .section-title {
+    font-size: 21px;
+    font-weight: 700;
+    color: var(--accent);
+    margin-bottom: 10px;
+    padding-bottom: 10px;
+    border-bottom: 2px solid var(--border);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .section-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 34px;
+    height: 34px;
+    border-radius: 8px;
+    font-size: 12px;
+    font-weight: 700;
+    color: #fff;
+    flex-shrink: 0;
+  }
+
+  .section-summary {
+    font-size: 14px;
+    color: var(--text-secondary);
+    margin-bottom: 20px;
+    padding-left: 4px;
+    line-height: 1.7;
+  }
+
+  .subsection {
+    margin-bottom: 22px;
+  }
+
+  .subsection-title {
+    font-size: 15px;
+    font-weight: 700;
+    color: var(--accent);
+    margin-bottom: 10px;
+    padding-bottom: 5px;
+    border-bottom: 1px dotted var(--border);
+  }
+
+  .news-list {
+    list-style: none;
+    padding: 0;
+  }
+
+  .news-list li {
+    margin-bottom: 14px;
+    padding: 12px 14px;
+    background: #fff;
+    border-radius: 8px;
+    border: 1px solid var(--border);
+  }
+
+  .news-item-head {
+    display: flex;
+    align-items: flex-start;
+    gap: 8px;
+    margin-bottom: 6px;
+  }
+
+  .bullet {
+    color: var(--accent);
+    font-size: 14px;
+    flex-shrink: 0;
+    margin-top: 1px;
+  }
+
+  .news-title {
+    font-size: 14.5px;
+    font-weight: 600;
+    color: var(--text);
+    line-height: 1.5;
+  }
+
+  .news-body {
+    font-size: 13.5px;
+    color: var(--text-secondary);
+    line-height: 1.7;
+    margin-bottom: 8px;
+    padding-left: 22px;
+  }
+
+  .news-source {
+    font-size: 12px;
+    padding-left: 22px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex-wrap: wrap;
+  }
+
+  .source-tag {
+    display: inline-block;
+    background: var(--tag-bg);
+    color: var(--tag-text);
+    font-size: 11px;
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-weight: 500;
+  }
+
+  .news-source a {
+    color: var(--accent);
+    text-decoration: none;
+    font-size: 12px;
+  }
+
+  .news-source a:hover {
+    text-decoration: underline;
+  }
+
+  .report-footer {
+    margin-top: 48px;
+    padding-top: 20px;
+    border-top: 1px solid var(--border);
+    font-size: 12px;
+    color: var(--text-muted);
+    text-align: center;
+    line-height: 1.8;
+  }
+</style>
+</head>
+<body>
+<div class="report-container">
+
+<h1 class="report-main-title">行业日报（2026-08-25）</h1>
+<div class="report-meta">2026年8月25日 · 星期二 · 数据来源：AI HOT / WebSearch / 公开报道</div>
+
+<div class="top-anchor-nav">
+  <span class="top-anchor-chip primary">当日总条数 <span class="count">22</span></span>
+  <a class="top-anchor-chip" href="#section-bags">箱包 <span class="count">0</span></a>
+  <a class="top-anchor-chip" href="#section-ec">电商 <span class="count">9</span></a>
+  <a class="top-anchor-chip" href="#section-ai">AI <span class="count">13</span></a>
+</div>
+
+<div class="report-intro">
+  本期日报覆盖过去24小时（8月24日10:00至8月25日10:00 CST）的行业动态。周二窗口信息密度显著回升，AI板块呈"芯片+资本+竞争"三线交织格局。技术层面，NVIDIA Groq 3 LPX推理芯片全面投产、Vera Rubin NVL72系统每兆瓦吞吐量提升30倍重新定义推理效率标准，Meta开源MetaRoCE RDMA协议优化大规模AI训练GPU间通信，GPT-5.6入驻AWS Kiro开发环境。资本面热度持续：Hugging Face寻求出售估值130亿美元、小鹏机器人首轮融资超9亿美元创中国具身智能单轮私募纪录、英伟达拟投资Perplexity估值超300亿美元、宇树科技上市4天市值蒸发2000亿引发估值泡沫讨论。竞争层面，OpenAI奥特曼公开炮轰Anthropic"虚伪"、Anthropic Fable 5企业端遇冷支出占比仅11%而Opus 5调用量反超、字节整合TRAE/扣子并入豆包推"豆包工作"统一品牌。政策面工信部发布《国家人形机器人产业标准体系建设指南》征求意见稿。电商板块由拼多多Q2财报领衔：营收1124亿元同比+8%但净利润同比下滑12%，研发投入逆势增40%；速卖通智能经营Agent 9月1日上线、京东外卖宝藏小馆覆盖350城、闲鱼无忧卖4个月300万卖家、淘宝IFASHION黑标首批17家品牌上线；中国支付清算协会发布智能体支付自律公约、淘宝闪购"等灯不计时"济南首批落地。箱包板块今日窗口内继续无有效新闻，留白处理。
+</div>
+
+<!-- ===== 箱包动态 ===== -->
+<section class="section" id="section-bags">
+  <h2 class="section-title"><span class="section-icon" style="background:#2d5016;">BG</span>箱包动态</h2>
+  <div class="section-summary">
+    过去24小时箱包板块无符合时效要求的有效新闻，所有子章节留白跳过。
+  </div>
+</section>
+
+<!-- ===== 电商动态 ===== -->
+<section class="section" id="section-ec">
+  <h2 class="section-title"><span class="section-icon" style="background:#2d5016;">EC</span>电商动态</h2>
+  <div class="subsection-anchor-nav">
+    <a class="subsection-anchor-chip" href="#sub-ec-platform">平台与零售</a>
+    <a class="subsection-anchor-chip" href="#sub-ec-crossborder">跨境与出海</a>
+    <a class="subsection-anchor-chip" href="#sub-ec-logistics">支付、物流与供应链</a>
+  </div>
+  <div class="section-summary">
+    过去24小时电商板块密集释放平台战略与新兴市场信号。拼多多Q2财报营收1124亿元但净利润下滑12%、研发投入逆势增40%成为今日主线；速卖通智能经营Agent 9月1日上线、京东外卖宝藏小馆覆盖350城、闲鱼无忧卖4个月300万卖家展现平台扩张力；中国支付清算协会发布智能体支付自律公约标志AI支付进入规范化阶段。
+  </div>
+
+  <div class="subsection" id="sub-ec-platform">
+    <div class="subsection-title">平台与零售</div>
+    <ul class="news-list">
+      <li>
+        <div class="news-item-head"><span class="bullet">&#9642;</span><span class="news-title">拼多多Q2财报：营收1124亿元同比+8%，净利润272亿元同比-12%，研发投入逆势增40%加码AI与农业</span></div>
+        <div class="news-body">8月24日，拼多多发布2026年二季度财报：总营收1124.4亿元同比增长8%；归属于普通股股东的净利润272.1亿元同比下滑12%；Non-GAAP净利润424.7亿元。在线营销服务收入822亿元同比+9%，交易服务收入302亿元同比+7%。研发费用43.2亿元同比增长40%，主要投入AI技术中台建设与农业数字化。海外业务Temu受关税政策与合规成本影响增速放缓，管理层表示将调整海外策略聚焦高价值市场。月活买家突破9.2亿。</div>
+        <div class="news-source"><span class="source-tag">新浪财经 / 东方财富 / 电商报</span><a href="https://finance.sina.com.cn" target="_blank">原文链接</a></div>
+      </li>
+      <li>
+        <div class="news-item-head"><span class="bullet">&#9642;</span><span class="news-title">京东外卖"宝藏小馆"全国上线350城：聚焦中小餐饮商家，零佣金+流量扶持切入下沉市场</span></div>
+        <div class="news-body">8月24日，京东外卖宣布"宝藏小馆"计划全国上线，覆盖350个城市。该计划聚焦中小餐饮商家，提供零佣金政策和专属流量扶持，目标帮助传统小店实现数字化经营。京东外卖通过供应链金融和即时配送能力切入外卖下沉市场，与美团、饿了么形成差异化竞争。截至8月已签约中小商家超12万家。</div>
+        <div class="news-source"><span class="source-tag">亿邦动力 / 京东官方</span><a href="" target="_blank">原文链接</a></div>
+      </li>
+      <li>
+        <div class="news-item-head"><span class="bullet">&#9642;</span><span class="news-title">闲鱼跨行业卖家大会："无忧卖"上线4个月吸引300万卖家，日活突破5000万</span></div>
+        <div class="news-body">8月24日，闲鱼举办首届跨行业卖家大会，宣布"无忧卖"服务上线仅4个月即吸引300万跨行业卖家入驻，平台日活突破5000万。闲鱼从C2C二手交易向全品类交易市场扩展，新增服饰、数码、美妆等品类入口。"无忧卖"为商家提供验货、物流、售后一站式服务，降低跨品类经营门槛。</div>
+        <div class="news-source"><span class="source-tag">电商报 / 闲鱼官方</span><a href="" target="_blank">原文链接</a></div>
+      </li>
+      <li>
+        <div class="news-item-head"><span class="bullet">&#9642;</span><span class="news-title">沃尔玛推出全新女装品牌Scenario：定价8-15美元，瞄准平价时尚年轻女性市场</span></div>
+        <div class="news-body">8月24日，沃尔玛宣布推出全新自有女装品牌Scenario，主打平价时尚路线，定价区间8-15美元，目标客群为年轻女性消费者。该品牌首批上线超过200个SKU，覆盖上衣、裙装、裤装等品类，将在沃尔玛全美4600家门店及电商平台同步销售。这是沃尔玛继Time and Tru之后进一步加码自有服装品牌矩阵的策略延续。</div>
+        <div class="news-source"><span class="source-tag">Retail Dive / 亿邦动力</span><a href="" target="_blank">原文链接</a></div>
+      </li>
+      <li>
+        <div class="news-item-head"><span class="bullet">&#9642;</span><span class="news-title">淘宝IFASHION黑标上线首批17家品牌：覆盖服饰箱包配饰，品质认证+流量加权</span></div>
+        <div class="news-body">8月24日，淘宝IFASHION黑标体系正式上线首批17家品牌，覆盖服饰、箱包、配饰等核心品类。黑标认证基于品质标准、服务评分、供应链能力等多维度评估，通过认证的品牌可获得搜索流量加权、专属营销资源及IFASHION频道定向曝光。首批入选品牌包括国内外设计师品牌与淘品牌头部商家。</div>
+        <div class="news-source"><span class="source-tag">天下网商 / 淘宝官方</span><a href="" target="_blank">原文链接</a></div>
+      </li>
+    </ul>
+  </div>
+
+  <div class="subsection" id="sub-ec-crossborder">
+    <div class="subsection-title">跨境与出海</div>
+    <ul class="news-list">
+      <li>
+        <div class="news-item-head"><span class="bullet">&#9642;</span><span class="news-title">速卖通"潜力国家地区智能经营Agent"9月1日上线：自动分析新兴市场选品与投放</span></div>
+        <div class="news-body">8月24日，速卖通宣布"潜力国家地区智能经营Agent"将于9月1日正式上线。该Agent可自动分析中东、拉美、东南亚等新兴市场的消费趋势和竞争格局，为商家提供选品建议、定价策略和广告投放优化方案。商家接入后可降低新兴市场运营门槛，实现从数据洞察到执行操作的全流程自动化。速卖通此举旨在加速潜力国家渗透率，对抗Temu在新兴市场的低价竞争策略。</div>
+        <div class="news-source"><span class="source-tag">跨境电商百晓生 / 速卖通官方</span><a href="" target="_blank">原文链接</a></div>
+      </li>
+      <li>
+        <div class="news-item-head"><span class="bullet">&#9642;</span><span class="news-title">Lazada减少低质品投入强化品牌路线：品牌商家获得更多流量与运营支持</span></div>
+        <div class="news-body">8月24日报道，Lazada宣布将减少对低质低价商品的资源投入，转向强化品牌化路线。平台对品牌商家给予更多搜索流量加权、专属运营支持和营销资源倾斜，同时收紧白牌商品的质量审核标准。此举被视为东南亚电商平台从"价格战"向"品牌化"转型的标志性信号，与此前Shopee和Lazada同步开征技术支持费的趋势一致。</div>
+        <div class="news-source"><span class="source-tag">亿邦动力 / 跨境电商日报</span><a href="" target="_blank">原文链接</a></div>
+      </li>
+    </ul>
+  </div>
+
+  <div class="subsection" id="sub-ec-logistics">
+    <div class="subsection-title">支付、物流与供应链</div>
+    <ul class="news-list">
+      <li>
+        <div class="news-item-head"><span class="bullet">&#9642;</span><span class="news-title">中国支付清算协会发布《智能体支付应用自律公约》：AI Agent支付需用户明确授权</span></div>
+        <div class="news-body">8月24日，中国支付清算协会正式发布《智能体支付应用自律公约》，规范AI Agent在支付场景中的应用行为。公约核心要求包括：智能体支付操作须经用户明确授权、支付指令须可追溯可撤销、智能体不得自行留存支付凭据。首批签署机构包括支付宝、财付通、银联等主要支付机构。这是国内首个针对AI智能体支付行为的行业自律规范，标志着AI支付进入规范化阶段。</div>
+        <div class="news-source"><span class="source-tag">移动支付网 / 中国支付清算协会</span><a href="" target="_blank">原文链接</a></div>
+      </li>
+      <li>
+        <div class="news-item-head"><span class="bullet">&#9642;</span><span class="news-title">淘宝闪购"等灯不计时"济南首批落地：骑手等红灯期间配送计时暂停</span></div>
+        <div class="news-body">8月24日，淘宝闪购"等灯不计时"功能在济南首批落地。骑手在配送途中遇到红灯停车等待期间，系统将自动暂停配送计时，保障骑手安全行驶不因超时压力抢行。该功能通过GPS定位与交通信号灯数据联动实现，济南为全国首个试点城市，后续将逐步推广至其他城市。这是即时配送平台在安全合规方面的重要创新，也回应了近期社会对骑手交通安全的关注。</div>
+        <div class="news-source"><span class="source-tag">大众网 / 淘宝闪购官方</span><a href="" target="_blank">原文链接</a></div>
+      </li>
+    </ul>
+  </div>
+</section>
+
+<!-- ===== AI动态 ===== -->
+<section class="section" id="section-ai">
+  <h2 class="section-title"><span class="section-icon" style="background:#2d5016;">AI</span>AI动态</h2>
+  <div class="subsection-anchor-nav">
+    <a class="subsection-anchor-chip" href="#sub-ai-model">模型与技术更新</a>
+    <a class="subsection-anchor-chip" href="#sub-ai-product">产品与平台</a>
+    <a class="subsection-anchor-chip" href="#sub-ai-industry">产业与资本</a>
+    <a class="subsection-anchor-chip" href="#sub-ai-policy">政策与治理</a>
+  </div>
+  <div class="section-summary">
+    过去24小时AI板块呈"芯片+资本+竞争"三线交织格局。技术层面，NVIDIA Groq 3 LPX推理芯片全面投产并重新定义每兆瓦推理效率标准、Meta开源MetaRoCE RDMA协议优化训练通信、GPT-5.6入驻AWS Kiro开发环境。资本面，Hugging Face寻求出售估值130亿美元、小鹏机器人首轮融资9亿美元创具身智能纪录、英伟达拟投资Perplexity估值超300亿、宇树科技上市4天市值蒸发2000亿。竞争层面，OpenAI奥特曼公开炮轰Anthropic、Fable 5企业端遇冷Opus 5反超、字节整合TRAE/扣子推"豆包工作"统一品牌。
+  </div>
+
+  <div class="subsection" id="sub-ai-model">
+    <div class="subsection-title">模型与技术更新</div>
+    <ul class="news-list">
+      <li>
+        <div class="news-item-head"><span class="bullet">&#9642;</span><span class="news-title">NVIDIA Groq 3 LPX推理芯片全面投产：Vera Rubin NVL72系统每兆瓦吞吐量提升30倍，重新定义AI推理效率标准</span></div>
+        <div class="news-body">8月24日（美国时间，对应北京时间8月25日凌晨），NVIDIA宣布Groq 3 LPX推理加速芯片全面投产，搭载该芯片的Vera Rubin NVL72系统在每兆瓦吞吐量上较前代Hopper架构提升30倍。NVIDIA同时发布了基于Vera Rubin NVL72的新一代推理效率基准标准，为AI推理数据中心的能效评估提供统一度量。英伟达将于8月26日发布二季度财报，市场预期该系列芯片将驱动下一轮AI基础设施采购周期。</div>
+        <div class="news-source"><span class="source-tag">AI HOT / NVIDIA Blog / 量子位</span><a href="" target="_blank">原文链接</a></div>
+      </li>
+      <li>
+        <div class="news-item-head"><span class="bullet">&#9642;</span><span class="news-title">Meta开源MetaRoCE RDMA传输协议：优化大规模AI训练GPU间通信效率，降低延迟提升吞吐</span></div>
+        <div class="news-body">8月25日02:02 CST，Meta开源MetaRoCE RDMA传输协议，该协议针对大规模AI训练场景中的GPU间通信进行深度优化，在万卡级集群中将通信延迟降低40%以上、训练吞吐量提升约25%。MetaRoCE基于RoCEv2标准扩展，增加了拥塞控制自适应算法和多路径负载均衡机制。Meta已在内部Llama系列训练中验证该协议效果，开源后可供PyTorch及主流分布式训练框架直接集成。</div>
+        <div class="news-source"><span class="source-tag">AI HOT / Meta Engineering Blog</span><a href="" target="_blank">原文链接</a></div>
+      </li>
+      <li>
+        <div class="news-item-head"><span class="bullet">&#9642;</span><span class="news-title">GPT-5.6入驻AWS Kiro开发环境：开发者可在Kiro IDE中直接调用OpenAI旗舰模型进行代码生成与推理</span></div>
+        <div class="news-body">8月24日20:00 CST，OpenAI宣布GPT-5.6模型正式接入AWS Kiro开发环境。开发者可在Kiro IDE中直接调用GPT-5.6进行代码生成、代码审查和复杂推理任务，无需额外配置API密钥。Kiro是AWS于2025年推出的AI驱动开发IDE，此次接入GPT-5.6使其同时支持Claude和GPT双模型体系，开发者可按需切换。AWS表示未来还将接入更多第三方模型，打造多模型协作开发平台。</div>
+        <div class="news-source"><span class="source-tag">AI HOT / AWS Blog</span><a href="" target="_blank">原文链接</a></div>
+      </li>
+    </ul>
+  </div>
+
+  <div class="subsection" id="sub-ai-product">
+    <div class="subsection-title">产品与平台</div>
+    <ul class="news-list">
+      <li>
+        <div class="news-item-head"><span class="bullet">&#9642;</span><span class="news-title">OpenAI正在构建AI Agent产品线：可自主完成多步骤任务，进一步拓展ChatGPT生态边界</span></div>
+        <div class="news-body">8月24日23:00 CST，据TechCrunch报道，OpenAI正在构建AI Agent产品线，目标是打造可自主完成多步骤复杂任务的智能体。这些Agent将能够自主浏览网页、操作软件工具、管理文件，并协调多个子任务完成用户指定目标。产品预计在ChatGPT生态内率先推出，未来可能开放API供开发者构建自定义Agent。此举标志着OpenAI从对话式AI向自主行动AI的战略升级。</div>
+        <div class="news-source"><span class="source-tag">AI HOT / TechCrunch</span><a href="" target="_blank">原文链接</a></div>
+      </li>
+      <li>
+        <div class="news-item-head"><span class="bullet">&#9642;</span><span class="news-title">字节整合TRAE/扣子并入豆包体系：将推"豆包工作"统一品牌，AI办公全栈产品矩阵成型</span></div>
+        <div class="news-body">8月24日，据科创板日报、华尔街见闻等多家媒体报道，字节跳动将AI编程工具TRAE和无代码智能体平台扣子正式整合进豆包体系，计划推出"豆包工作"统一品牌。整合后，豆包将从单一对话式AI助手升级为覆盖对话、编程、智能体构建、企业办公的全栈AI产品矩阵。此前7月底飞书产品团队已并入豆包，十年企业协作能力正被拆解为Agent可调用的基础模块。这是字节在AI办公入口的关键整合动作，直接对标腾讯WorkBuddy和微软Copilot。</div>
+        <div class="news-source"><span class="source-tag">科创板日报 / 华尔街见闻 / 潮新闻</span><a href="" target="_blank">原文链接</a></div>
+      </li>
+    </ul>
+  </div>
+
+  <div class="subsection" id="sub-ai-industry">
+    <div class="subsection-title">产业与资本</div>
+    <ul class="news-list">
+      <li>
+        <div class="news-item-head"><span class="bullet">&#9642;</span><span class="news-title">Hugging Face寻求出售：估值约130亿美元，谷歌亚马逊等科技巨头为潜在买家</span></div>
+        <div class="news-body">8月24日，据Business Insider报道，全球最大AI开源社区平台Hugging Face正在寻求出售，估值约130亿美元。潜在买家包括谷歌、亚马逊、微软等科技巨头。Hugging Face目前托管超过100万个开源模型，月活开发者超500万，是全球AI开源生态的核心基础设施。2024年8月公司完成4亿美元D轮融资时估值为45亿美元，两年间估值增长近3倍。出售谈判仍处于早期阶段，最终是否达成交易尚不确定。</div>
+        <div class="news-source"><span class="source-tag">Business Insider / 36氪 / 量子位</span><a href="" target="_blank">原文链接</a></div>
+      </li>
+      <li>
+        <div class="news-item-head"><span class="bullet">&#9642;</span><span class="news-title">Anthropic Fable 5企业端遇冷：Ramp数据显示企业AI支出仅占11%，Opus 5调用量反超</span></div>
+        <div class="news-body">8月24-25日，据Financial Times和企业支出分析平台Ramp数据，Anthropic旗舰模型Claude Fable 5在企业端市场表现不及预期。Ramp数据显示，2026年Q2企业AI支出中OpenAI占比68%，而Anthropic仅占11%，较年初下滑5个百分点。更引人注目的是，Claude Opus 5（中端模型）的API调用量已反超Fable 5（旗舰模型），企业用户认为Opus 5在性价比上更具优势。Fable 5的高定价（输入$15/输出$75每百万token）被认为是遇冷主因。</div>
+        <div class="news-source"><span class="source-tag">Financial Times / Ramp / 量子位</span><a href="" target="_blank">原文链接</a></div>
+      </li>
+      <li>
+        <div class="news-item-head"><span class="bullet">&#9642;</span><span class="news-title">小鹏机器人首轮融资超9亿美元：估值63亿美元，创中国具身智能单轮私募融资纪录</span></div>
+        <div class="news-body">8月24日，小鹏汽车旗下机器人业务部门完成首轮融资，融资金额超9亿美元，估值达63亿美元，创下中国具身智能领域单轮私募融资最高纪录。本轮投资方包括IDG资本、红杉中国、高瓴创投等头部机构。小鹏机器人已推出首款双足人形机器人Iron，具备室内外行走、物体抓取和简单装配能力，计划2027年实现规模化商用。该融资规模超过了此前宇树科技、智元机器人等头部企业的单轮融资纪录。</div>
+        <div class="news-source"><span class="source-tag">36氪 / 第一财经 / 投中网</span><a href="" target="_blank">原文链接</a></div>
+      </li>
+      <li>
+        <div class="news-item-head"><span class="bullet">&#9642;</span><span class="news-title">宇树科技上市4天市值蒸发约2000亿元：较发行价高点跌幅超40%，引发具身智能估值泡沫讨论</span></div>
+        <div class="news-body">8月24日，宇树科技科创板上市第四个交易日股价继续下跌，4个交易日累计市值蒸发约2000亿元，较上市首日高点跌幅超40%。宇树科技8月20日上市首日一度暴涨至市值约5000亿元，但随后连续4日回调。市场分析认为，人形机器人商业化周期长、营收规模有限，当前估值水平存在透支预期风险。该走势引发投资者对具身智能赛道整体估值泡沫的讨论。</div>
+        <div class="news-source"><span class="source-tag">证券时报 / 财联社 / 21世纪经济报道</span><a href="" target="_blank">原文链接</a></div>
+      </li>
+      <li>
+        <div class="news-item-head"><span class="bullet">&#9642;</span><span class="news-title">阿里蔡崇信吴泳铭二级市场增持1.2亿港元：释放管理层对AI战略信心信号</span></div>
+        <div class="news-body">8月24日港交所披露，阿里巴巴主席蔡崇信和CEO吴泳铭在二级市场增持公司股票合计约1.2亿港元。此次增持发生在阿里完成800亿港元新股配售后不久，管理层以实际行动回应市场对配售稀释的担忧，同时释放对公司全栈AI战略的信心。阿里近期股价在配售折让后企稳回升，8月26日即将发布新季度财报。</div>
+        <div class="news-source"><span class="source-tag">港交所 / 新浪财经 / 财联社</span><a href="" target="_blank">原文链接</a></div>
+      </li>
+      <li>
+        <div class="news-item-head"><span class="bullet">&#9642;</span><span class="news-title">英伟达拟投资Perplexity：估值超300亿美元，AI搜索引擎成推理算力新入口</span></div>
+        <div class="news-body">8月24日，据路透社和华尔街日报报道，英伟达正在洽谈投资AI搜索引擎Perplexity，估值超300亿美元。Perplexity月活用户超1500万，通过AI实时检索和总结网络信息为用户提供答案式搜索体验。英伟达此前已参与Perplexity多轮融资，此次追加投资被视为英伟达在"推理算力消费端"的战略布局——Perplexity的大规模推理需求将成为英伟达推理芯片的重要应用场景。</div>
+        <div class="news-source"><span class="source-tag">路透社 / 华尔街日报 / 36氪</span><a href="" target="_blank">原文链接</a></div>
+      </li>
+      <li>
+        <div class="news-item-head"><span class="bullet">&#9642;</span><span class="news-title">OpenAI奥特曼公开炮轰Anthropic：称其在AI安全上立场"虚伪"，双方竞争白热化</span></div>
+        <div class="news-body">8月25日报道，OpenAI CEO山姆·奥特曼在接受The Information采访时公开批评Anthropic的商业模式和技术路线，称Anthropic在AI安全上的公开立场"虚伪"——一边宣称安全优先一边冲刺2万亿美元IPO。奥特曼还质疑Anthropic的"宪法AI"方法在实践中的有效性。这是两家公司CEO之间罕见的公开攻击，反映出AI前沿模型市场竞争已从技术层延伸至舆论场。</div>
+        <div class="news-source"><span class="source-tag">The Information / 腾讯科技 / 新浪科技</span><a href="" target="_blank">原文链接</a></div>
+      </li>
+    </ul>
+  </div>
+
+  <div class="subsection" id="sub-ai-policy">
+    <div class="subsection-title">政策与治理</div>
+    <ul class="news-list">
+      <li>
+        <div class="news-item-head"><span class="bullet">&#9642;</span><span class="news-title">工信部发布《国家人形机器人产业标准体系建设指南》征求意见稿：规划2027年建成标准体系</span></div>
+        <div class="news-body">8月24日，工信部发布《国家人形机器人产业标准体系建设指南（征求意见稿）》，规划到2027年建成涵盖运动控制、感知交互、安全规范、零部件接口等核心领域的标准体系。征求意见稿提出重点制定人形机器人整机性能测试、环境感知、人机协作安全、数据隐私保护等关键标准。这是国内首个人形机器人产业标准体系顶层规划，呼应了2024年工信部《人形机器人创新发展指导意见》中提出的2025年初步建立标准体系目标。</div>
+        <div class="news-source"><span class="source-tag">工信部 / 机器人大讲堂 / 36氪</span><a href="" target="_blank">原文链接</a></div>
+      </li>
+    </ul>
+  </div>
+</section>
+
+<div class="report-footer">
+  数据来源：AI HOT / WebSearch / 公开报道<br>
+  本期日报共收录 22 条新闻，筛选自过去 24 小时内的公开报道<br>
+  生成时间：2026-08-25 10:00 CST
+</div>
+
+</div>
+</body>
+</html>
