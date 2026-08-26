@@ -1,0 +1,486 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>行业日报（2026-08-26）</title>
+<style>
+  :root {
+    --bg: #fafaf8;
+    --text: #1a1a1a;
+    --text-secondary: #6b7280;
+    --text-muted: #9ca3af;
+    --border: #e0e3dc;
+    --accent: #2d5016;
+    --surface: #f4f6f1;
+    --tag-bg: #eaf0e4;
+    --tag-text: #3a6b1e;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.7;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .report-container {
+    max-width: 780px;
+    margin: 0 auto;
+    padding: 48px 24px 64px;
+  }
+
+  .report-main-title {
+    font-size: 28px;
+    font-weight: 800;
+    color: var(--accent);
+    text-align: center;
+    margin-bottom: 8px;
+    letter-spacing: 0.5px;
+  }
+
+  .report-meta {
+    text-align: center;
+    font-size: 13px;
+    color: var(--text-muted);
+    margin-bottom: 10px;
+  }
+
+  .top-anchor-nav {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    justify-content: center;
+    margin-bottom: 28px;
+  }
+
+  .top-anchor-chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 10px 20px;
+    border-radius: 24px;
+    background: #fff;
+    border: 1.5px solid var(--accent);
+    color: var(--accent);
+    font-size: 13px;
+    font-weight: 600;
+    transition: all 0.18s;
+    cursor: pointer;
+    white-space: nowrap;
+    text-decoration: none;
+  }
+
+  .top-anchor-chip:hover {
+    background: var(--accent);
+    color: #fff;
+    text-decoration: none;
+  }
+
+  .top-anchor-chip.primary {
+    background: var(--accent);
+    color: #fff;
+    font-weight: 700;
+  }
+
+  .top-anchor-chip .count {
+    font-weight: 700;
+    font-size: 14px;
+  }
+
+  .subsection-anchor-nav {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin: 10px 0 16px;
+  }
+
+  .subsection-anchor-chip {
+    display: inline-flex;
+    align-items: center;
+    padding: 6px 14px;
+    border-radius: 14px;
+    background: var(--tag-bg);
+    color: var(--tag-text);
+    font-size: 12px;
+    font-weight: 600;
+    transition: all 0.18s;
+    white-space: nowrap;
+    text-decoration: none;
+  }
+
+  .subsection-anchor-chip:hover {
+    background: var(--accent);
+    color: #fff;
+    text-decoration: none;
+  }
+
+  .report-intro {
+    background: var(--surface);
+    border-radius: 10px;
+    padding: 20px 24px;
+    margin-bottom: 36px;
+    font-size: 14.5px;
+    color: var(--text-secondary);
+    line-height: 1.8;
+    border: 1px solid var(--border);
+  }
+
+  .section {
+    margin-bottom: 40px;
+  }
+
+  .section-title {
+    font-size: 21px;
+    font-weight: 700;
+    color: var(--accent);
+    margin-bottom: 10px;
+    padding-bottom: 10px;
+    border-bottom: 2px solid var(--border);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .section-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 34px;
+    height: 34px;
+    border-radius: 8px;
+    font-size: 12px;
+    font-weight: 700;
+    color: #fff;
+    flex-shrink: 0;
+  }
+
+  .section-summary {
+    font-size: 14px;
+    color: var(--text-secondary);
+    margin-bottom: 20px;
+    padding-left: 4px;
+    line-height: 1.7;
+  }
+
+  .subsection {
+    margin-bottom: 22px;
+  }
+
+  .subsection-title {
+    font-size: 15px;
+    font-weight: 700;
+    color: var(--accent);
+    margin-bottom: 10px;
+    padding-bottom: 5px;
+    border-bottom: 1px dotted var(--border);
+  }
+
+  .news-list {
+    list-style: none;
+    padding: 0;
+  }
+
+  .news-list li {
+    margin-bottom: 14px;
+    padding: 12px 14px;
+    background: #fff;
+    border-radius: 8px;
+    border: 1px solid var(--border);
+  }
+
+  .news-item-head {
+    display: flex;
+    align-items: flex-start;
+    gap: 8px;
+    margin-bottom: 6px;
+  }
+
+  .bullet {
+    color: var(--accent);
+    font-size: 14px;
+    flex-shrink: 0;
+    margin-top: 1px;
+  }
+
+  .news-title {
+    font-size: 14.5px;
+    font-weight: 600;
+    color: var(--text);
+    line-height: 1.5;
+  }
+
+  .news-body {
+    font-size: 13.5px;
+    color: var(--text-secondary);
+    line-height: 1.7;
+    margin-bottom: 8px;
+    padding-left: 22px;
+  }
+
+  .news-source {
+    font-size: 12px;
+    padding-left: 22px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex-wrap: wrap;
+  }
+
+  .source-tag {
+    display: inline-block;
+    background: var(--tag-bg);
+    color: var(--tag-text);
+    font-size: 11px;
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-weight: 500;
+  }
+
+  .news-source a {
+    color: var(--accent);
+    text-decoration: none;
+    font-size: 12px;
+  }
+
+  .news-source a:hover {
+    text-decoration: underline;
+  }
+
+  .report-footer {
+    margin-top: 48px;
+    padding-top: 20px;
+    border-top: 1px solid var(--border);
+    font-size: 12px;
+    color: var(--text-muted);
+    text-align: center;
+    line-height: 1.8;
+  }
+</style>
+</head>
+<body>
+<div class="report-container">
+
+<h1 class="report-main-title">行业日报（2026-08-26）</h1>
+<div class="report-meta">2026年8月26日 · 星期三 · 数据来源：AI HOT / WebSearch / 公开报道</div>
+
+<div class="top-anchor-nav">
+  <span class="top-anchor-chip primary">当日总条数 <span class="count">26</span></span>
+  <a class="top-anchor-chip" href="#section-bags">箱包 <span class="count">1</span></a>
+  <a class="top-anchor-chip" href="#section-ec">电商 <span class="count">11</span></a>
+  <a class="top-anchor-chip" href="#section-ai">AI <span class="count">14</span></a>
+</div>
+
+<div class="report-intro">
+  过去24小时（8月25日10:00至8月26日10:00 CST）行业动态密集。AI板块呈“自研芯片+终端硬件+代理平台”三线并进：OpenAI Jalapeño芯片首次公开基准、Apple发布M5 Max/Ultra与M6芯片、Meta Hatch消费级AI代理平台曝光；字节豆包工作正式发布、Claude记忆功能上线、千问Token Plan降低使用门槛。产业资本层面，阿里管理层连续增持释放信心，Dylan Patel提出2028年算力集中度预警。电商板块由两份财报领衔：唯品会Q2净营收247亿元，小商品城上半年营收+33.3%；跨境与政策层面，SHEIN香港IPO足额认购、USTR恶名市场审查启动、加拿大对美反制关税落地。物流与供应链端，京东中标香港北部都会区项目、新石器X6无人车量产下线。箱包板块仅有力高控股1条产业动态。本期共收录26条新闻。
+</div>
+
+<!-- ===== 箱包动态 ===== -->
+<section class="section" id="section-bags">
+  <h2 class="section-title"><span class="section-icon" style="background:#2d5016;">BG</span>箱包动态</h2>
+  <div class="section-summary">
+    过去24小时箱包板块仅1条符合时效要求的有效新闻。力高控股在桐庐新闻报道中披露上半年产值增长15%及全球化订单与渠道新进展。
+  </div>
+  <ul class="news-list">
+      <li>
+        <div class="news-item-head"><span class="bullet">&#9642;</span><span class="news-title">力高控股多点发力开拓产业新蓝海：上半年产值增长15%，新秀丽、海格林订单排至年底</span></div>
+        <div class="news-body">8月26日，据桐庐新闻网报道，浙江力高控股旗下企业多点发力开拓产业新蓝海。今年上半年公司产值同比增长15%，为新秀丽、海格林等国际品牌代工的订单已排至年底；童车配件板块在云南工厂投产支撑下持续放量；迪波特（Diplomat）全球首家会员店正式亮相。报道显示，力高控股正从传统箱包制造向品牌运营与多元化配件延伸，订单饱满度反映出口箱包产业链仍具韧性。</div>
+        <div class="news-source"><span class="source-tag">桐庐新闻网 / 箱包行业观察</span><a href="https://www.tonglu.gov.cn" target="_blank">原文链接</a></div>
+      </li>
+  </ul>
+</section>
+
+<!-- ===== 电商动态 ===== -->
+<section class="section" id="section-ec">
+  <h2 class="section-title"><span class="section-icon" style="background:#2d5016;">EC</span>电商动态</h2>
+  <div class="subsection-anchor-nav">
+    <a class="subsection-anchor-chip" href="#sub-ec-platform">平台与零售</a>
+    <a class="subsection-anchor-chip" href="#sub-ec-crossborder">跨境与出海</a>
+    <a class="subsection-anchor-chip" href="#sub-ec-logistics">支付、物流与供应链</a>
+  </div>
+  <div class="section-summary">
+    过去24小时电商板块财报与政策事件交织。唯品会、小商品城两份财报披露业绩；SHEIN香港IPO足额认购、USTR恶名市场审查、加拿大对美反制关税构成跨境与政策主线；京东香港北部都会区项目与新石器无人车量产下线体现物流基础设施升级。
+  </div>
+  <div class="subsection" id="sub-ec-platform">
+    <div class="subsection-title">平台与零售</div>
+    <ul class="news-list">
+      <li>
+        <div class="news-item-head"><span class="bullet">&#9642;</span><span class="news-title">唯品会发布2026年Q2财报：净营收247亿元，GMV 506亿元，SVIP活跃会员突破1000万</span></div>
+        <div class="news-body">8月25日，唯品会发布2026年第二季度财报：净营收247亿元，GMV达506亿元，Non-GAAP净利润3.92亿元。受一次性预提税影响15.6亿元，GAAP净利润出现亏损。超级VIP（SVIP）活跃会员数突破1000万，贡献线上消费约44%。公司同时宣布10亿美元股票回购计划。管理层表示将聚焦品牌折扣心智与服饰品类优势，优化获客效率。</div>
+        <div class="news-source"><span class="source-tag">唯品会财报 / 新浪财经 / 东方财富</span><a href="https://www.vip.com" target="_blank">原文链接</a></div>
+      </li>
+      <li>
+        <div class="news-item-head"><span class="bullet">&#9642;</span><span class="news-title">小商品城发布2026年半年报：营收102.82亿元同比+33.3%，归母净利19.79亿元同比+17.05%</span></div>
+        <div class="news-body">8月25日，小商品城披露2026年半年报：营业收入102.82亿元，同比增长33.3%；归母净利润19.79亿元，同比增长17.05%。“义支付”跨境支付业务累计交易规模约25.1亿美元；公司正式提交H股上市申请，推进国际化资本运作。上半年义乌中国小商品城市场经营面积与数字贸易服务收入同步增长，全球化线下市场布局持续扩张。</div>
+        <div class="news-source"><span class="source-tag">小商品城公告 / 证券时报 / 财联社</span><a href="https://www.cccgroup.com.cn" target="_blank">原文链接</a></div>
+      </li>
+      <li>
+        <div class="news-item-head"><span class="bullet">&#9642;</span><span class="news-title">美国谘商会8月消费者信心指数降至89.4，创七个月新低；通胀预期升至5.8%</span></div>
+        <div class="news-body">8月25日，美国谘商会发布8月消费者信心指数报89.4，低于市场预期，创七个月新低。现状指数与预期指数双双下滑，消费者对劳动力市场和收入前景的担忧加剧。一年期通胀预期升至5.8%，为2023年以来高位。数据公布后，市场对美联储9月降息幅度的预期有所升温，消费类跨境卖家需关注北美需求边际走弱风险。</div>
+        <div class="news-source"><span class="source-tag">The Conference Board / 华尔街见闻 / 新浪财经</span><a href="https://www.conference-board.org" target="_blank">原文链接</a></div>
+      </li>
+    </ul>
+  </div>
+  <div class="subsection" id="sub-ec-crossborder">
+    <div class="subsection-title">跨境与出海</div>
+    <ul class="news-list">
+      <li>
+        <div class="news-item-head"><span class="bullet">&#9642;</span><span class="news-title">SHEIN香港IPO订单簿已获足额认购：公开发售超额3.2倍，最高估值270亿美元，9月1日挂牌</span></div>
+        <div class="news-body">8月25日，据港股市场消息，SHEIN香港IPO订单簿已获得足额认购，公开发售部分超额认购约3.2倍，最高估值约270亿美元，预计9月1日正式挂牌。公司计划通过此次IPO募资约30亿美元，用于供应链数字化、品牌全球化及物流基础设施。招股书显示，SHEIN 2026年上半年营收与净利润均实现同比增长，欧洲与美国市场仍是核心收入来源。</div>
+        <div class="news-source"><span class="source-tag">港交所披露 / 路透社 / 36氪</span><a href="https://www.hkexnews.hk" target="_blank">原文链接</a></div>
+      </li>
+      <li>
+        <div class="news-item-head"><span class="bullet">&#9642;</span><span class="news-title">飞猪与瑞安航空实现机票直连：覆盖英国、意大利、法国、西班牙、葡萄牙等航线，预订量环比增长20%</span></div>
+        <div class="news-body">8月25日，飞猪宣布与欧洲最大廉航瑞安航空（Ryanair）完成机票直连，用户可在飞猪平台直接预订瑞安航空英国、意大利、法国、西班牙、葡萄牙等核心航线。直连上线后，相关航线预订量环比增长约20%。此次合作强化了飞猪在欧洲廉航供应链的布局，也为中国游客赴欧自由行提供更多低价选择。</div>
+        <div class="news-source"><span class="source-tag">飞猪官方 / 环球旅讯 / 电商报</span><a href="https://www.fliggy.com" target="_blank">原文链接</a></div>
+      </li>
+      <li>
+        <div class="news-item-head"><span class="bullet">&#9642;</span><span class="news-title">汇付天下成为Jumia官方支付服务商：覆盖非洲多国本地支付与跨境结算</span></div>
+        <div class="news-body">8月25日，汇付天下宣布与非洲电商平台Jumia达成合作，成为其官方支付服务商。合作覆盖尼日利亚、肯尼亚、埃及、摩洛哥等Jumia核心市场的本地支付接入与跨境结算服务，支持当地主流移动钱包、银行卡及货到付款资金归集。此次合作被视为中国支付机构拓展非洲电商基础设施的重要一步。</div>
+        <div class="news-source"><span class="source-tag">汇付天下官方 / 支付百科 / 亿邦动力</span><a href="https://www.chinapnr.com" target="_blank">原文链接</a></div>
+      </li>
+      <li>
+        <div class="news-item-head"><span class="bullet">&#9642;</span><span class="news-title">USTR启动2026年恶名市场审查：重点关注“superfakes/superclones”假冒商品与跨境电商侵权</span></div>
+        <div class="news-body">8月25日，美国贸易代表办公室（USTR）发布公告，启动2026年《恶名市场审查》公众评议程序，评论截止日期为10月7日。本轮审查重点关注“superfakes”和“superclones”等高品质假冒商品，以及跨境电商平台上的知识产权侵权行为。审查结果将影响未来美国对中国及东南亚电商平台的贸易政策与关税执法力度。</div>
+        <div class="news-source"><span class="source-tag">USTR / 中国商务部 / 跨境电商日报</span><a href="https://ustr.gov" target="_blank">原文链接</a></div>
+      </li>
+      <li>
+        <div class="news-item-head"><span class="bullet">&#9642;</span><span class="news-title">加拿大宣布对700余类美国商品加征15%-50%反制关税：涉及276亿加元商品，9月8日生效</span></div>
+        <div class="news-body">8月25日，加拿大政府宣布将对从美国进口的700余类商品加征15%至50%的反制关税，涉及金额约276亿加元，措施将于9月8日生效。加方同时推出75亿加元援助计划，支持受关税影响的国内企业与工人。此次反制针对美国此前对加拿大钢铝、汽车及消费品加征的关税，跨境电商与北美供应链企业需重新评估物流与定价策略。</div>
+        <div class="news-source"><span class="source-tag">加拿大政府 / 路透社 / 财新</span><a href="https://www.canada.ca" target="_blank">原文链接</a></div>
+      </li>
+    </ul>
+  </div>
+  <div class="subsection" id="sub-ec-logistics">
+    <div class="subsection-title">支付、物流与供应链</div>
+    <ul class="news-list">
+      <li>
+        <div class="news-item-head"><span class="bullet">&#9642;</span><span class="news-title">京东等六家企业投得香港北部都会区洪水桥首个片区开发项目：总额168亿港元，京东出资28.56亿港元并设机器人物流园</span></div>
+        <div class="news-body">8月24日，香港发展局公布北部都会区洪水桥首个片区开发招标结果，由京东牵头的六家企业联合体中标，项目总额约168亿港元。京东出资28.56亿港元，并计划在该片区建设智能机器人物流园，打造跨境供应链枢纽。项目将整合仓储、分拨、关务与最后一公里配送能力，服务粤港澳大湾区跨境电商与高端制造供应链。</div>
+        <div class="news-source"><span class="source-tag">香港发展局 / 京东官方 / 香港商报</span><a href="https://www.devb.gov.hk" target="_blank">原文链接</a></div>
+      </li>
+      <li>
+        <div class="news-item-head"><span class="bullet">&#9642;</span><span class="news-title">申通快递联合上海益丰大药房推出“新就业群体关爱计划”：覆盖385家门店，为骑手提供休息与应急服务</span></div>
+        <div class="news-body">8月25日，申通快递与上海益丰大药房联合宣布“新就业群体关爱计划”，首批覆盖上海385家益丰大药房门店。计划为快递员、外卖骑手等新就业群体提供免费饮水、休息、手机充电、应急药箱及防暑降温用品等服务。双方表示未来将在药品配送、社区健康服务等领域深化合作，探索即时物流与医药零售的协同模式。</div>
+        <div class="news-source"><span class="source-tag">申通官方 / 益丰大药房 / 上海证券报</span><a href="https://www.sto.cn" target="_blank">原文链接</a></div>
+      </li>
+      <li>
+        <div class="news-item-head"><span class="bullet">&#9642;</span><span class="news-title">新石器无人车联合广汽领程X6量产下线：首批30辆6立方米车型，单票成本可降低25%-35%</span></div>
+        <div class="news-body">8月25日，新石器无人车与广汽领程联合打造的X6车型正式量产下线，首批30辆6立方米货厢车型交付客户。该车型针对快递末端配送场景设计，满载续航超过150公里，支持L4级自动驾驶。据双方测算，在合适场景下X6可将单票配送成本降低25%-35%。12立方米与20立方米版本后续将推出，覆盖社区团购、快递、生鲜等多元场景。</div>
+        <div class="news-source"><span class="source-tag">新石器无人车 / 广汽领程 / 亿邦动力</span><a href="https://www.neolix.cn" target="_blank">原文链接</a></div>
+      </li>
+    </ul>
+  </div>
+</section>
+
+<!-- ===== AI动态 ===== -->
+<section class="section" id="section-ai">
+  <h2 class="section-title"><span class="section-icon" style="background:#2d5016;">AI</span>AI动态</h2>
+  <div class="subsection-anchor-nav">
+    <a class="subsection-anchor-chip" href="#sub-ai-model">模型与技术更新</a>
+    <a class="subsection-anchor-chip" href="#sub-ai-product">产品与平台</a>
+    <a class="subsection-anchor-chip" href="#sub-ai-industry">产业与资本</a>
+    <a class="subsection-anchor-chip" href="#sub-ai-policy">政策与治理</a>
+  </div>
+  <div class="section-summary">
+    AI板块技术、产品与资本三线并进：OpenAI Jalapeño芯片、天工机器人、LangChain-Airbyte代表技术更新；豆包工作、Claude记忆、Meta Hatch、OpenWorker、千问Token Plan、Google WeatherNext构成产品矩阵；Apple硬件与阿里增持、Dylan Patel播客聚焦产业资本。
+  </div>
+  <div class="subsection" id="sub-ai-model">
+    <div class="subsection-title">模型与技术更新</div>
+    <ul class="news-list">
+      <li>
+        <div class="news-item-head"><span class="bullet">&#9642;</span><span class="news-title">OpenAI发布自研AI芯片Jalapeño首批基准：每瓦性能较GB200/300提升1.5-1.9倍，延迟降低1.7-3.6倍</span></div>
+        <div class="news-body">8月25日（Hot Chips大会），OpenAI发布其首款自研AI芯片Jalapeño的初始性能基准。数据显示，在典型推理负载下，Jalapeño每瓦性能较NVIDIA GB200/300提升1.5-1.9倍，延迟降低1.7-3.6倍，热设计功耗约700W。OpenAI称该芯片从流片到部署仅用时9个月，且大量采用AI辅助设计，计划2026年底在自家数据中心小规模部署，第二代芯片已在研发中。</div>
+        <div class="news-source"><span class="source-tag">OpenAI / Hot Chips / 量子位 / 机器之心</span><a href="https://openai.com" target="_blank">原文链接</a></div>
+      </li>
+      <li>
+        <div class="news-item-head"><span class="bullet">&#9642;</span><span class="news-title">天工机器人百米跑出8.86秒刷新纪录：同时完成跳高3.4米，具身智能运动能力再突破</span></div>
+        <div class="news-body">8月25日，天工机器人在公开测试中完成百米跑8.86秒，刷新人形机器人短跑纪录；同场还完成跳高3.4米。该测试在8月25日复赛环节进行，展示了较强的下肢爆发力与动态平衡控制能力。天工机器人由北京人形机器人创新中心研发，此次成绩标志着国产具身智能在运动性能上持续逼近人类竞技水平。</div>
+        <div class="news-source"><span class="source-tag">北京人形机器人创新中心 / 央视 / 36氪</span><a href="https://www.bhrjc.com" target="_blank">原文链接</a></div>
+      </li>
+      <li>
+        <div class="news-item-head"><span class="bullet">&#9642;</span><span class="news-title">LangChain与Airbyte集成让数据摄取生产级就绪：支持50余种嵌入模型与自动调度</span></div>
+        <div class="news-body">8月26日05:12 CST，LangChain官方博客发布与Airbyte的集成方案，目标是将RAG应用的数据摄取从手动脚本升级为生产级管道。方案通过Airbyte目标端将调度、文本拆分与50余种嵌入模型选项接入LangChain，开发者可配置数据源到向量索引的自动更新流程。该集成适用于需要频繁同步多源数据并保持一致性的企业检索应用。</div>
+        <div class="news-source"><span class="source-tag">LangChain Blog / AI HOT</span><a href="https://www.langchain.com/blog/making-data-ingestion-production-ready-a-langchain-powered-airbyte-destination" target="_blank">原文链接</a></div>
+      </li>
+    </ul>
+  </div>
+  <div class="subsection" id="sub-ai-product">
+    <div class="subsection-title">产品与平台</div>
+    <ul class="news-list">
+      <li>
+        <div class="news-item-head"><span class="bullet">&#9642;</span><span class="news-title">字节豆包工作8月25日正式发布：与飞书深度打通，电脑版可下载，AI办公入口整合完成</span></div>
+        <div class="news-body">8月25日，字节跳动正式推出“豆包工作”统一品牌，豆包工作电脑版开放下载，并与飞书实现深度打通。产品整合AI编程工具TRAE、无代码智能体平台扣子及飞书企业协作能力，覆盖对话、编程、智能体构建与办公协同。相比8月24日媒体报道的“计划整合”，8月25日的正式发布属于事件新进展，标志着字节在AI办公入口的布局进入产品化阶段。</div>
+        <div class="news-source"><span class="source-tag">豆包官方 / 科创板日报 / 华尔街见闻</span><a href="https://www.doubao.com" target="_blank">原文链接</a></div>
+      </li>
+      <li>
+        <div class="news-item-head"><span class="bullet">&#9642;</span><span class="news-title">Claude记忆功能上线聊天并统一至Cowork：跨会话记住用户偏好，企业协作连续性增强</span></div>
+        <div class="news-body">8月26日02:02 CST，Anthropic宣布Claude的记忆功能（Memory）正式接入聊天场景，并与Cowork企业协作产品统一。Claude可跨会话记住用户偏好、项目背景与常用工作流，减少重复说明。企业端Cowork则支持团队级共享记忆，保障项目协作连续性。该功能对Claude Pro与Team用户逐步开放，是Anthropic从对话工具向长期工作伙伴演进的关键一步。</div>
+        <div class="news-source"><span class="source-tag">claude.com/blog / AI HOT</span><a href="https://www.anthropic.com/news" target="_blank">原文链接</a></div>
+      </li>
+      <li>
+        <div class="news-item-head"><span class="bullet">&#9642;</span><span class="news-title">Meta Hatch消费级AI代理平台曝光：月费199.99美元的高级版，8月底至9月初发布，10月配套Watermelon模型</span></div>
+        <div class="news-body">8月25日，据The Information报道，Meta计划推出面向消费者的AI代理平台Hatch，基础功能免费，高级版订阅价199.99美元/月。Hatch可自动完成购物、旅行预订、客户服务等复杂任务。平台预计8月底至9月初发布，10月将配套推出代号Watermelon的多模态模型以提升代理执行能力。Meta此举旨在与OpenAI、Anthropic在企业级与消费者级AI代理市场展开竞争。</div>
+        <div class="news-source"><span class="source-tag">The Information / 36氪 / 量子位</span><a href="https://www.theinformation.com" target="_blank">原文链接</a></div>
+      </li>
+      <li>
+        <div class="news-item-head"><span class="bullet">&#9642;</span><span class="news-title">OpenWorker新版发布并新增网络安全智能体：由Andrew Ng团队推出，聚焦企业安全运营自动化</span></div>
+        <div class="news-body">8月26日02:16 CST，Andrew Ng在X平台宣布OpenWorker新版上线，并新增网络安全智能体功能。该智能体面向企业安全运营中心（SOC）场景，可自动分析告警、关联日志、生成处置建议并执行标准化响应。OpenWorker由AI Fund孵化，主打可复用的企业级AI代理模板，新版进一步扩展了其在安全垂直领域的应用。</div>
+        <div class="news-source"><span class="source-tag">X @AndrewYNg / OpenWorker / AI HOT</span><a href="https://x.com/AndrewYNg" target="_blank">原文链接</a></div>
+      </li>
+      <li>
+        <div class="news-item-head"><span class="bullet">&#9642;</span><span class="news-title">千问App与PC版上线阿里云Token Plan：按Token计费降低中小企业与个人开发者使用门槛</span></div>
+        <div class="news-body">8月25日，阿里云宣布千问App及PC版正式上线阿里云Token Plan，采用按Token计费模式。该计划面向中小企业与个人开发者，提供更灵活的模型调用计费方式，无需预付费即可使用千问系列模型的对话、文档解析、代码生成等能力。此举是阿里云在大模型商业化上的又一尝试，意在降低长尾用户的使用门槛。</div>
+        <div class="news-source"><span class="source-tag">阿里云官方 / 机器之心 / 36氪</span><a href="https://www.aliyun.com" target="_blank">原文链接</a></div>
+      </li>
+      <li>
+        <div class="news-item-head"><span class="bullet">&#9642;</span><span class="news-title">Google WeatherNext气旋预测模型发布：提前10天预测飓风路径，精度优于传统数值预报</span></div>
+        <div class="news-body">8月25日23:37 CST，Google AI在X平台发布WeatherNext气旋预测模型，可提前最多10天预测飓风路径与强度变化。Google称该模型在近年大西洋飓风季的回溯测试中，路径预测误差较传统数值天气预报降低约15%，强度预测误差降低约20%。WeatherNext基于GraphCast等气象AI技术演进，未来将通过Google Cloud向气象机构与灾害管理部门开放。</div>
+        <div class="news-source"><span class="source-tag">X @GoogleAI / Google Cloud Blog / AI HOT</span><a href="https://x.com/GoogleAI" target="_blank">原文链接</a></div>
+      </li>
+    </ul>
+  </div>
+  <div class="subsection" id="sub-ai-industry">
+    <div class="subsection-title">产业与资本</div>
+    <ul class="news-list">
+      <li>
+        <div class="news-item-head"><span class="bullet">&#9642;</span><span class="news-title">Dylan Patel播客：Anthropic与OpenAI到2028年或控制全球大部分AI算力</span></div>
+        <div class="news-body">8月25日23:32 CST，半导体分析机构SemiAnalysis负责人Dylan Patel在Dwarkesh Patel播客中表示，到2028年，Anthropic与OpenAI两家美国AI实验室可能控制全球大部分AI算力。他指出，两家公司正通过自建数据中心、锁定晶圆产能和签订长期能源协议，构建难以复制的算力壁垒。该观点引发业内对AI算力集中度与地缘政治风险的讨论。</div>
+        <div class="news-source"><span class="source-tag">Dwarkesh Patel Podcast / SemiAnalysis / AI HOT</span><a href="https://www.dwarkeshpatel.com" target="_blank">原文链接</a></div>
+      </li>
+      <li>
+        <div class="news-item-head"><span class="bullet">&#9642;</span><span class="news-title">阿里蔡崇信两日增持1.6亿港元、马云增持超6亿港元，管理层合计增持超8亿港元</span></div>
+        <div class="news-body">8月25日港交所披露及市场消息显示，阿里巴巴主席蔡崇信近两日增持阿里股票约1.6亿港元，联合创始人马云增持超过6亿港元，管理层合计增持金额超过8亿港元。相比8月24日披露的1.2亿港元增持，此次披露为连续两日增持的更新数据，释放管理层对阿里AI战略与长期价值的信心。阿里将于8月26日盘后发布新季度财报。</div>
+        <div class="news-source"><span class="source-tag">港交所 / 彭博 / 新浪财经</span><a href="https://www.hkexnews.hk" target="_blank">原文链接</a></div>
+      </li>
+      <li>
+        <div class="news-item-head"><span class="bullet">&#9642;</span><span class="news-title">Apple发布Mac Studio M5 Max与M5 Ultra：性能大幅提升，面向专业创作与AI开发者</span></div>
+        <div class="news-body">8月25日21:00 CST，Apple发布搭载M5 Max与M5 Ultra芯片的新款Mac Studio。M5 Max采用增强版CPU与GPU架构，M5 Ultra则通过UltraFusion封装技术实现更高内存带宽与核心规模。新款Mac Studio面向视频剪辑、3D渲染、AI模型训练与推理等专业场景，统一内存最高可达512GB。Apple同步更新了M5系列芯片的技术规格，强调能效比与端侧AI性能。</div>
+        <div class="news-source"><span class="source-tag">Apple Newsroom / AI HOT</span><a href="https://www.apple.com/newsroom" target="_blank">原文链接</a></div>
+      </li>
+      <li>
+        <div class="news-item-head"><span class="bullet">&#9642;</span><span class="news-title">Apple M6与M5 Ultra芯片同步亮相：M6聚焦能效与端侧AI，M5 Ultra主打极致性能</span></div>
+        <div class="news-body">8月25日20:58 CST，Apple在Mac Studio发布同时披露了下一代M6芯片及M5 Ultra芯片的更多信息。M6采用新一代制程，重点提升能效比与神经网络引擎性能，为未来的MacBook Air与MacBook Pro产品线做准备；M5 Ultra则继续主打工作站级极致性能。两条芯片路线并行，显示Apple在个人计算与专业计算两端同步推进AI算力升级。</div>
+        <div class="news-source"><span class="source-tag">Apple Newsroom / AI HOT</span><a href="https://www.apple.com/newsroom" target="_blank">原文链接</a></div>
+      </li>
+      <li>
+        <div class="news-item-head"><span class="bullet">&#9642;</span><span class="news-title">思科与英伟达扩展安全AI工厂合作：10月联合超微推出液冷与风冷服务器方案</span></div>
+        <div class="news-body">8月25日，思科与英伟达宣布扩展双方在安全AI工厂（Security AI Factory）领域的合作，计划10月联合超微（Supermicro）推出基于英伟达GPU的液冷与风冷服务器方案。该合作将思科的安全软件栈、网络设备与英伟达AI算力整合，面向企业AI基础设施提供从网络到安全的端到端方案，帮助企业部署私有AI模型并满足合规要求。</div>
+        <div class="news-source"><span class="source-tag">Cisco / NVIDIA / 雷锋网</span><a href="https://www.cisco.com" target="_blank">原文链接</a></div>
+      </li>
+    </ul>
+  </div>
+</section>
+
+<div class="report-footer">
+  数据来源：AI HOT / WebSearch / 公开报道<br>
+  本期日报共收录 26 条新闻，筛选自过去 24 小时内的公开报道<br>
+  生成时间：2026-08-26 10:00 CST
+</div>
+
+</div>
+</body>
+</html>
