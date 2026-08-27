@@ -1,0 +1,491 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>行业日报（2026-08-27）</title>
+<style>
+  :root {
+    --bg: #fafaf8;
+    --text: #1a1a1a;
+    --text-secondary: #6b7280;
+    --text-muted: #9ca3af;
+    --border: #e0e3dc;
+    --accent: #2d5016;
+    --surface: #f4f6f1;
+    --tag-bg: #eaf0e4;
+    --tag-text: #3a6b1e;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.7;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .report-container {
+    max-width: 780px;
+    margin: 0 auto;
+    padding: 48px 24px 64px;
+  }
+
+  .report-main-title {
+    font-size: 28px;
+    font-weight: 800;
+    color: var(--accent);
+    text-align: center;
+    margin-bottom: 8px;
+    letter-spacing: 0.5px;
+  }
+
+  .report-meta {
+    text-align: center;
+    font-size: 13px;
+    color: var(--text-muted);
+    margin-bottom: 10px;
+  }
+
+  .top-anchor-nav {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    justify-content: center;
+    margin-bottom: 28px;
+  }
+
+  .top-anchor-chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 10px 20px;
+    border-radius: 24px;
+    background: #fff;
+    border: 1.5px solid var(--accent);
+    color: var(--accent);
+    font-size: 13px;
+    font-weight: 600;
+    transition: all 0.18s;
+    cursor: pointer;
+    white-space: nowrap;
+    text-decoration: none;
+  }
+
+  .top-anchor-chip:hover {
+    background: var(--accent);
+    color: #fff;
+    text-decoration: none;
+  }
+
+  .top-anchor-chip.primary {
+    background: var(--accent);
+    color: #fff;
+    font-weight: 700;
+  }
+
+  .top-anchor-chip .count {
+    font-weight: 700;
+    font-size: 14px;
+  }
+
+  .subsection-anchor-nav {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin: 10px 0 16px;
+  }
+
+  .subsection-anchor-chip {
+    display: inline-flex;
+    align-items: center;
+    padding: 6px 14px;
+    border-radius: 14px;
+    background: var(--tag-bg);
+    color: var(--tag-text);
+    font-size: 12px;
+    font-weight: 600;
+    transition: all 0.18s;
+    white-space: nowrap;
+    text-decoration: none;
+  }
+
+  .subsection-anchor-chip:hover {
+    background: var(--accent);
+    color: #fff;
+    text-decoration: none;
+  }
+
+  .report-intro {
+    background: var(--surface);
+    border-radius: 10px;
+    padding: 20px 24px;
+    margin-bottom: 36px;
+    font-size: 14.5px;
+    color: var(--text-secondary);
+    line-height: 1.8;
+    border: 1px solid var(--border);
+  }
+
+  .section {
+    margin-bottom: 40px;
+  }
+
+  .section-title {
+    font-size: 21px;
+    font-weight: 700;
+    color: var(--accent);
+    margin-bottom: 10px;
+    padding-bottom: 10px;
+    border-bottom: 2px solid var(--border);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .section-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 34px;
+    height: 34px;
+    border-radius: 8px;
+    font-size: 12px;
+    font-weight: 700;
+    color: #fff;
+    flex-shrink: 0;
+  }
+
+  .section-summary {
+    font-size: 14px;
+    color: var(--text-secondary);
+    margin-bottom: 20px;
+    padding-left: 4px;
+    line-height: 1.7;
+  }
+
+  .subsection {
+    margin-bottom: 22px;
+  }
+
+  .subsection-title {
+    font-size: 15px;
+    font-weight: 700;
+    color: var(--accent);
+    margin-bottom: 10px;
+    padding-bottom: 5px;
+    border-bottom: 1px dotted var(--border);
+  }
+
+  .news-list {
+    list-style: none;
+    padding: 0;
+  }
+
+  .news-list li {
+    margin-bottom: 14px;
+    padding: 12px 14px;
+    background: #fff;
+    border-radius: 8px;
+    border: 1px solid var(--border);
+  }
+
+  .news-item-head {
+    display: flex;
+    align-items: flex-start;
+    gap: 8px;
+    margin-bottom: 6px;
+  }
+
+  .bullet {
+    color: var(--accent);
+    font-size: 14px;
+    flex-shrink: 0;
+    margin-top: 1px;
+  }
+
+  .news-title {
+    font-size: 14.5px;
+    font-weight: 600;
+    color: var(--text);
+    line-height: 1.5;
+  }
+
+  .news-body {
+    font-size: 13.5px;
+    color: var(--text-secondary);
+    line-height: 1.7;
+    margin-bottom: 8px;
+    padding-left: 22px;
+  }
+
+  .news-source {
+    font-size: 12px;
+    padding-left: 22px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex-wrap: wrap;
+  }
+
+  .source-tag {
+    display: inline-block;
+    background: var(--tag-bg);
+    color: var(--tag-text);
+    font-size: 11px;
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-weight: 500;
+  }
+
+  .news-source a {
+    color: var(--accent);
+    text-decoration: none;
+    font-size: 12px;
+  }
+
+  .news-source a:hover {
+    text-decoration: underline;
+  }
+
+  .report-footer {
+    margin-top: 48px;
+    padding-top: 20px;
+    border-top: 1px solid var(--border);
+    font-size: 12px;
+    color: var(--text-muted);
+    text-align: center;
+    line-height: 1.8;
+  }
+</style>
+</head>
+<body>
+<div class="report-container">
+
+<h1 class="report-main-title">行业日报（2026-08-27）</h1>
+<div class="report-meta">2026年8月27日 · 星期四 · 数据来源：AI HOT / WebSearch / 公开报道</div>
+
+<div class="top-anchor-nav">
+  <span class="top-anchor-chip primary">当日总条数 <span class="count">26</span></span>
+  <a class="top-anchor-chip" href="#section-bags">箱包 <span class="count">1</span></a>
+  <a class="top-anchor-chip" href="#section-ec">电商 <span class="count">10</span></a>
+  <a class="top-anchor-chip" href="#section-ai">AI <span class="count">15</span></a>
+</div>
+
+<div class="report-intro">
+  过去24小时（8月26日10:00至8月27日10:00 CST）行业动态密集。AI板块呈「AGI时间表+巨型IPO+财报季」三线并进：OpenAI高管称年底内部AGI将落地，Anthropic冲刺2万亿美元IPO并披露30万亿美元潜在市场，英伟达发布2027财年上半年报并预计2028财年营收再增70%；模型端智谱GLM-5.3-Flash、阿里Qwen3.8-Flash/腾讯混元/Gemini 3.5 Transcribe齐发，产品与治理层面亦有新进展。电商板块由SHEIN香港IPO公开发售截止领衔，叠加SHOPLINE Q2高增长、亚马逊欧洲FBA窗口收紧、韵达中报净利大增、京东物流「超脑」3.0与亚马逊协议三扫号等事件。箱包板块仅有地平线8号×月壤色合作一条有效新闻。本期共收录26条新闻。
+</div>
+
+<!-- ===== 箱包动态 ===== -->
+<section class="section" id="section-bags">
+  <h2 class="section-title"><span class="section-icon" style="background:#2d5016;">BG</span>箱包动态</h2>
+  <div class="section-summary">
+    过去24小时箱包板块仅1条符合时效要求的有效新闻。地平线8号携手中国深空探测「月壤色」IP推出限定旅行箱，是本土出行品牌与中国航天美学IP结合的标志性案例。
+  </div>
+  <ul class="news-list">
+      <li>
+        <div class="news-item-head"><span class="bullet">&#9642;</span><span class="news-title">地平线8号携手中国深空探测首个美学色彩IP「月壤色」，推出限定系列旅行箱</span></div>
+        <div class="news-body">8月27日，地平线8号官宣与中国深空探测首个美学色彩IP「月壤色」开启长期合作，成为行李箱品类唯一合作品牌。首期合作推出大旅行家与探索家Elite两大「月壤色」限定系列旅行箱，将中国探月成果转化的创意灵感与月球科学意象融入现代出行产品。官方称，大旅行家系列宽拉杆设计使箱内空间利用率提升约13%，实测容量利用率可达98%。此次合作标志着源自中国深空探测的「月壤色」首次走向大众出行场景。</div>
+        <div class="news-source"><span class="source-tag">中国网 / 中国日报网</span><a href="https://www.china.com.cn/aboutus/2026-08/27/content_118666440.htm" target="_blank">原文链接</a></div>
+      </li>
+  </ul>
+</section>
+
+<!-- ===== 电商动态 ===== -->
+<section class="section" id="section-ec">
+  <h2 class="section-title"><span class="section-icon" style="background:#2d5016;">EC</span>电商动态</h2>
+  <div class="subsection-anchor-nav">
+    <a class="subsection-anchor-chip" href="#sub-平台与零售">平台与零售</a>
+    <a class="subsection-anchor-chip" href="#sub-跨境与出海">跨境与出海</a>
+    <a class="subsection-anchor-chip" href="#sub-支付、物流与供应链">支付、物流与供应链</a>
+  </div>
+  <div class="section-summary">
+    过去24小时电商板块IPO节点、平台政策与物流科技交织。SHEIN香港IPO公开发售截止并引导发行价；SHOPLINE跨境业务高增长；亚马逊欧洲FBA窗口期收紧、协议三扫号与德国Prime提速要求同时落地；国内平台小红书、1688、京东物流、韵达等也各有新动态。
+  </div>
+  <div class="subsection" id="sub-平台与零售">
+    <div class="subsection-title">平台与零售</div>
+    <ul class="news-list">
+      <li>
+        <div class="news-item-head"><span class="bullet">&#9642;</span><span class="news-title">SHEIN香港IPO公开发售正式截止：定价引导约48.56港元，公开发售超额认购3.7倍</span></div>
+        <div class="news-body">8月27日中午12时，希音（SHEIN）香港公开发售正式截止。据市场消息，截至8月26日中午公开发售部分已超额认购约3.7倍，机构簿记建档此前已实现足额认购。公司据悉向潜在投资者引导发行价定在每股约48.56港元，略高于推介区间47.6-49.5港元的中点；按此价格将筹集约136亿港元（17亿美元），最高估值约270亿美元。最终定价预计8月28日公布，9月1日正式挂牌。</div>
+        <div class="news-source"><span class="source-tag">新浪财经 / 阿斯达克 / 彭博</span><a href="https://finance.sina.com.cn/stock/usstock/c/2026-08-27/doc-inipthnz8999202.shtml" target="_blank">原文链接</a></div>
+      </li>
+      <li>
+        <div class="news-item-head"><span class="bullet">&#9642;</span><span class="news-title">小红书开放覆盖代理商服务全流程的AI能力，推动代理商向行业经营伙伴升级</span></div>
+        <div class="news-body">8月26日，小红书发布2026年渠道战略，宣布将向代理商开放覆盖服务全流程的AI能力，并提供额外激励支持，推动代理商从执行角色向行业经营伙伴升级。产品层面，小红书商业产品将构建AI产品体系，覆盖投前洞察、投中优化到投后复盘。公司表示未来一年将重点聚焦行业深耕、客户经营、生态共建与能力沉淀四个方向。</div>
+        <div class="news-source"><span class="source-tag">亿邦动力 / 小红书商业</span><a href="https://www.ebrun.com/20260827/700475.shtml" target="_blank">原文链接</a></div>
+      </li>
+      <li>
+        <div class="news-item-head"><span class="bullet">&#9642;</span><span class="news-title">天猫：「冰块自由」带动制冰家电成交同比增长83%</span></div>
+        <div class="news-body">8月26日，天猫发布数据显示，年轻人「冰块自由」需求带火制冰家电新品类，近三个月制冰家电下单用户同比增加30%，其中25-39岁消费群体占比近七成。制冰冰箱成交规模与增速均居首，同比增长达83%；制冰净饮机、家用制冰机成为另两大高速增长细分品类。美的、海尔、海信多款单品成交额超千万元。</div>
+        <div class="news-source"><span class="source-tag">天猫 / 亿邦动力</span><a href="https://m.ebrun.com/ebrungo/zb/699365.html" target="_blank">原文链接</a></div>
+      </li>
+      <li>
+        <div class="news-item-head"><span class="bullet">&#9642;</span><span class="news-title">1688发布「邢台产业带联营计划」，聚焦AI智能调度与供应链深度联营</span></div>
+        <div class="news-body">8月26日，阿里巴巴1688在邢台产业带赋能大会上发布「1688邢台产业带联营计划」，当地150余家制造与商贸企业参会。计划围绕「AI智能调度赋能生产流通」「供应链深度联营模式探索」「企业跨境出海路径与策略」等主题，为产业带企业提供店铺经营诊断、跨境电商业务精准对接及一对一扶持政策解读。</div>
+        <div class="news-source"><span class="source-tag">1688 / 电商派</span><a href="https://www.pai.com.cn/p/01m0ygrpg7re6z25nwxkdvcekf" target="_blank">原文链接</a></div>
+      </li>
+    </ul>
+  </div>
+  <div class="subsection" id="sub-跨境与出海">
+    <div class="subsection-title">跨境与出海</div>
+    <ul class="news-list">
+      <li>
+        <div class="news-item-head"><span class="bullet">&#9642;</span><span class="news-title">欢聚集团旗下SHOPLINE二季度收入3440万美元，同比增长28.6%</span></div>
+        <div class="news-body">8月26日，欢聚集团旗下电商业务SHOPLINE发布最新业绩：第二季度实现收入3440万美元，同比增长28.6%，环比增长12.5%；以跨境商户为代表的业务同比增幅达73.5%，成为核心增长引擎。上半年，SHOPLINE商家来自AI渠道的流量PV同比增长约15倍，订单量同比增长超35倍。公司已开启AI助手「SHOPLINE Copilot」内测，支持商户通过自然语言完成店铺管理。</div>
+        <div class="news-source"><span class="source-tag">欢聚集团 / 中证网</span><a href="https://www.cs.com.cn/ssgs/01/2026/08/26/detail_2026082610034278.html" target="_blank">原文链接</a></div>
+      </li>
+      <li>
+        <div class="news-item-head"><span class="bullet">&#9642;</span><span class="news-title">亚马逊欧洲五国FBA送达窗口期将缩短至7天，9月1日起生效</span></div>
+        <div class="news-body">8月26日消息，亚马逊「7天送达窗口期（Delivery Window）」政策将于9月1日起在英国、德国、法国、意大利、西班牙五国生效。凡卖家发往以上五国的非亚马逊合作承运商国际FBA货件，均需手动填写7天预计送达窗口并准时送仓。此前跨境货件送达窗口期为14天，新政策直接减半，将提高对卖家物流计划与预约送仓的精准度要求。</div>
+        <div class="news-source"><span class="source-tag">亚马逊 / 亿邦动力</span><a href="https://www.163.com/dy/article/L594GMRL05118A6A.html" target="_blank">原文链接</a></div>
+      </li>
+      <li>
+        <div class="news-item-head"><span class="bullet">&#9642;</span><span class="news-title">美国政府被曝拟对中国商品追加7.5%关税，方案仍在内部讨论</span></div>
+        <div class="news-body">8月26日消息，美国政府正准备依据所谓结构性产能过剩的301调查，对中国商品追加征收7.5%的新关税，方案仍在内部讨论，可能于9月下旬中美元首会晤前公布。若本轮7.5%落地，叠加今年7月以强迫劳动为由加征的12.5%关税，两轮新增301税负合计将达20%。分析指出，该税率相对克制，但出口企业仍需提前重算到岸成本、查船期运价并调整发货节奏。</div>
+        <div class="news-source"><span class="source-tag">彭博 / 腾讯新闻</span><a href="https://new.qq.com/rain/a/20260826A06F7J00?refer=cp_1009" target="_blank">原文链接</a></div>
+      </li>
+    </ul>
+  </div>
+  <div class="subsection" id="sub-支付、物流与供应链">
+    <div class="subsection-title">支付、物流与供应链</div>
+    <ul class="news-list">
+      <li>
+        <div class="news-item-head"><span class="bullet">&#9642;</span><span class="news-title">韵达股份发布2026年半年报：归母净利润9.98亿元，同比增长88.82%</span></div>
+        <div class="news-body">8月26日，韵达股份公告2026年半年报：营业收入264.39亿元，同比增长6.47%；归属于上市公司股东的净利润9.98亿元，同比增长88.82%；扣非归母净利润9.31亿元，同比增长105.68%。公司上半年在成本管控与运营效率提升上持续发力，业务量与单票成本均呈改善态势。</div>
+        <div class="news-source"><span class="source-tag">韵达股份公告 / 中证网</span><a href="https://www.cs.com.cn/ssgs/01/2026/08/26/detail_2026082610034283.html" target="_blank">原文链接</a></div>
+      </li>
+      <li>
+        <div class="news-item-head"><span class="bullet">&#9642;</span><span class="news-title">京东物流发布「超脑」大模型3.0：亿级包裹端到端最优路径规划求解压缩至秒级</span></div>
+        <div class="news-body">8月26日，在第十八届国际交通技术与设备展览会上，京东物流正式发布「超脑」大模型3.0。相比2.0版本，3.0在运作效率、系统韧性与运营成本上进一步提升，亿级包裹端到端最优路径规划的求解时间从分钟级压缩至秒级。该模型将应用于干线运输、末端配送及应急调度等场景。</div>
+        <div class="news-source"><span class="source-tag">京东物流 / 新浪财经</span><a href="https://finance.sina.com.cn/stock/relnews/hk/2026-08-26/doc-iniprumt6095947.shtml" target="_blank">原文链接</a></div>
+      </li>
+      <li>
+        <div class="news-item-head"><span class="bullet">&#9642;</span><span class="news-title">亚马逊突发「协议三扫号」行动，启用AI回溯店铺长期运营记录</span></div>
+        <div class="news-body">8月26日消息，亚马逊8月下旬突发「协议三扫号」行动，大量卖家后台出现店铺状态变灰、Listing批量下架及资金冻结。与8月中旬身份核验不同，本轮审核利用AI技术回溯店铺长期运营记录，对账号全生命周期行为进行审查，重点打击涉嫌欺骗性、欺诈性或非法活动及「规避平台检测」行为，可能采取最高级别处罚。</div>
+        <div class="news-source"><span class="source-tag">亚马逊 / AMZ123</span><a href="https://www.amz123.com/kx/uBrQ5cJL" target="_blank">原文链接</a></div>
+      </li>
+    </ul>
+  </div>
+</section>
+
+<!-- ===== AI动态 ===== -->
+<section class="section" id="section-ai">
+  <h2 class="section-title"><span class="section-icon" style="background:#2d5016;">AI</span>AI动态</h2>
+  <div class="subsection-anchor-nav">
+    <a class="subsection-anchor-chip" href="#sub-模型与技术更新">模型与技术更新</a>
+    <a class="subsection-anchor-chip" href="#sub-产品与平台">产品与平台</a>
+    <a class="subsection-anchor-chip" href="#sub-产业与资本">产业与资本</a>
+    <a class="subsection-anchor-chip" href="#sub-政策与治理">政策与治理</a>
+  </div>
+  <div class="section-summary">
+    过去24小时AI板块技术、资本与治理同步推进。OpenAI与Anthropic分别放出AGI时间表与巨型IPO叙事；英伟达财报持续超预期并锁定亚马逊大额GPU订单；智谱、阿里、Google、腾讯混元集中发布新模型；Anthropic开放真实使用数据、Claude in Chrome与千问办公国际版则体现产品化与全球化竞争。
+  </div>
+  <div class="subsection" id="sub-模型与技术更新">
+    <div class="subsection-title">模型与技术更新</div>
+    <ul class="news-list">
+      <li>
+        <div class="news-item-head"><span class="bullet">&#9642;</span><span class="news-title">智谱GLM-5.3-Flash开源：320B总参数、AA智能指数57分，定价为Claude Opus 4.8的1/40</span></div>
+        <div class="news-body">8月26日，智谱公众号宣布GLM-5.3-Flash正式开源。该模型总参数达320B，在AA智能指数上获得57分，定位为企业级高可用模型。官方称其API定价为Claude Opus 4.8的1/40，在推理成本与性能之间实现显著平衡。开源版本将加速开发者在长文本、代码与多轮对话等场景的应用探索。</div>
+        <div class="news-source"><span class="source-tag">智谱GLM / 界面新闻</span><a href="https://www.163.com/dy/article/L59RD82A0534A4SC.html" target="_blank">原文链接</a></div>
+      </li>
+      <li>
+        <div class="news-item-head"><span class="bullet">&#9642;</span><span class="news-title">阿里通义千问开源Qwen3.8-Flash并预览Qwen4架构：125B MoE多模态模型</span></div>
+        <div class="news-body">8月26日，阿里云通义千问宣布开源Qwen3.8-Flash，并提前预览Qwen4架构。Qwen3.8-Flash为125B总参数、32B激活参数的MoE多模态模型，在推理速度、代码生成与视觉理解上进一步提升。Qwen4早期预览显示其采用全新架构设计，目标向长程智能体与跨模态统一推理演进。</div>
+        <div class="news-source"><span class="source-tag">通义千问 / AI HOT</span><a href="https://qwen.ai/blog?id=qwen3.8-flash-next" target="_blank">原文链接</a></div>
+      </li>
+      <li>
+        <div class="news-item-head"><span class="bullet">&#9642;</span><span class="news-title">Google发布Gemini 3.5 Transcribe：面向实时语音交互的高精度语音转文本模型</span></div>
+        <div class="news-body">8月26日，Google DeepMind博客发布Gemini 3.5 Transcribe，专为实时语音交互设计的高精度语音转文本模型。该模型支持多语言连续语音识别、说话人分离与噪声抑制，面向会议、客服、内容创作等场景。Google表示其将在Google Cloud及Workspace生态中逐步集成，进一步扩展Gemini在语音交互领域的应用。</div>
+        <div class="news-source"><span class="source-tag">Google DeepMind / AI HOT</span><a href="https://deepmind.google/blog/intelligent-transcription-with-gemini-3-5-transcribe" target="_blank">原文链接</a></div>
+      </li>
+      <li>
+        <div class="news-item-head"><span class="bullet">&#9642;</span><span class="news-title">腾讯混元将端侧翻译模型Hy-MT2-1.8B压缩至440MB，已落地哔哩哔哩直播弹幕翻译</span></div>
+        <div class="news-body">8月26日，腾讯混元宣布通过模型压缩与蒸馏技术，将端侧翻译模型Hy-MT2-1.8B压缩至440MB，在保持翻译质量的同时显著降低部署成本。该模型已落地哔哩哔哩直播弹幕翻译场景，支持实时多语言互译，显示腾讯在端侧大模型工程化与消费级应用落地上持续加码。</div>
+        <div class="news-source"><span class="source-tag">腾讯混元 / 同花顺</span><a href="https://stock.10jqka.com.cn/20260826/c679306800.shtml" target="_blank">原文链接</a></div>
+      </li>
+      <li>
+        <div class="news-item-head"><span class="bullet">&#9642;</span><span class="news-title">Warp发布在Claude上构建自我改进智能体的工程实践</span></div>
+        <div class="news-body">8月26日，Warp团队在Claude官方博客分享如何在Claude上构建自我改进智能体的工程实践。该方案通过让智能体持续评审自身输出、自动生成改进任务并执行，形成闭环迭代。Warp称其终端AI助手在代码生成、调试与命令解释等任务中的准确率因此持续提升，为开发者工具集成AI代理提供了可复用范式。</div>
+        <div class="news-source"><span class="source-tag">Warp / Claude Blog / AI HOT</span><a href="https://claude.com/blog/how-warp-builds-self-improving-agents-on-claude" target="_blank">原文链接</a></div>
+      </li>
+    </ul>
+  </div>
+  <div class="subsection" id="sub-产品与平台">
+    <div class="subsection-title">产品与平台</div>
+    <ul class="news-list">
+      <li>
+        <div class="news-item-head"><span class="bullet">&#9642;</span><span class="news-title">Anthropic宣布Claude in Chrome全面上线，支持网页端一键调用Claude</span></div>
+        <div class="news-body">8月26日，Anthropic宣布Claude in Chrome浏览器扩展正式全面上线。用户可在浏览任意网页时一键调用Claude进行总结、翻译、问答与内容改写，扩展会自动读取当前页面上下文。该功能对Claude Pro与Team用户逐步开放，是Anthropic将Claude从独立聊天工具向用户工作流入口延伸的重要一步。</div>
+        <div class="news-source"><span class="source-tag">Anthropic / Claude Blog / AI HOT</span><a href="https://claude.com/blog/claude-in-chrome-generally-available" target="_blank">原文链接</a></div>
+      </li>
+      <li>
+        <div class="news-item-head"><span class="bullet">&#9642;</span><span class="news-title">阿里「千问办公」国际版开启公测，海外用户可通过qwenwork.ai体验</span></div>
+        <div class="news-body">8月26日，阿里巴巴旗下Agent产品「千问办公」国际版（QwenWork）开启公测，海外个人与企业用户可通过国际官网qwenwork.ai体验，目前网页版与PC客户端已开放。产品整合千问模型能力，覆盖文档解析、代码生成、会议纪要与任务管理，是阿里云在AI办公场景全球化布局的重要举措。</div>
+        <div class="news-source"><span class="source-tag">36氪 / 阿里云</span><a href="https://so.html5.qq.com/page/real/search_news?docid=70000021_0946a8f84a068952" target="_blank">原文链接</a></div>
+      </li>
+    </ul>
+  </div>
+  <div class="subsection" id="sub-产业与资本">
+    <div class="subsection-title">产业与资本</div>
+    <ul class="news-list">
+      <li>
+        <div class="news-item-head"><span class="bullet">&#9642;</span><span class="news-title">英伟达发布2027财年半年报：归母净利润1180亿美元，同比增长161.1%</span></div>
+        <div class="news-body">8月26日，英伟达发布2027财年半年报：上半年营收1778.37亿美元，归母净利润1180.1亿美元，同比增长161.1%，GAAP毛利率75%。第二财季营收962.21亿美元，同比增长106%，环比增长18%；归母净利润596.88亿美元，同比增长126%。数据中心业务持续高增长，连续第13个季度创下营收纪录。</div>
+        <div class="news-source"><span class="source-tag">英伟达 / IT之家</span><a href="https://www.ithome.com/0/994/791.htm" target="_blank">原文链接</a></div>
+      </li>
+      <li>
+        <div class="news-item-head"><span class="bullet">&#9642;</span><span class="news-title">英伟达预计2028财年营收同比增长约70%，黄仁勋称实际需求远高于此</span></div>
+        <div class="news-body">8月27日，英伟达在财报电话会上预计2028财年销售额同比增长约70%。CEO黄仁勋表示，实际市场需求远高于这一数字，增速主要受供应能力限制。他将需求分为超大规模云与主权AI两类，并强调仅按云厂商资本开支外推会低估正在扩大的企业端采购。公司同时宣布将在2027至2028年向AWS额外供应200万块GPU。</div>
+        <div class="news-source"><span class="source-tag">英伟达 / IT之家</span><a href="https://www.ithome.com/0/994/807.htm" target="_blank">原文链接</a></div>
+      </li>
+      <li>
+        <div class="news-item-head"><span class="bullet">&#9642;</span><span class="news-title">亚马逊将英伟达芯片订单增至三倍，将在2027-2028年为AWS新增200万颗GPU</span></div>
+        <div class="news-body">8月26日，亚马逊与英伟达宣布扩大合作，将在2027和2028年为AWS数据中心新增200万颗GPU，包括Blackwell Ultra、Rubin和Rubin Ultra架构。此前五个月亚马逊刚同意部署超100万颗英伟达GPU，英伟达称此后「需求超出预期」。按GPU单价估算，该交易价值达数百亿美元，显示云厂商自研芯片短期内仍难完全替代英伟达。</div>
+        <div class="news-source"><span class="source-tag">TechCrunch / 腾讯新闻</span><a href="https://techcrunch.com/2026/08/26/amazon-just-tripled-its-order-of-nvidia-chips-over-surging-demand" target="_blank">原文链接</a></div>
+      </li>
+      <li>
+        <div class="news-item-head"><span class="bullet">&#9642;</span><span class="news-title">Anthropic冲刺全球最大IPO：向投资者披露超30万亿美元潜在市场，签署450亿美元算力协议</span></div>
+        <div class="news-body">8月25日至26日，据《华尔街日报》等报道，Anthropic在推进IPO筹备中拟向投资者披露潜在市场规模超30万亿美元，目标估值约2万亿美元，最快9月或10月上市；预计2028年营收1900至2000亿美元。8月27日消息，Anthropic与Nscale签署六年期、总额450亿美元的算力协议，涵盖西弗吉尼亚州数据中心约460兆瓦电力，将部署英伟达Vera Rubin芯片，预计2027年底上线。</div>
+        <div class="news-source"><span class="source-tag">华尔街日报 / 腾讯新闻 / AI HOT</span><a href="https://new.qq.com/rain/a/20260827A02RIU00" target="_blank">原文链接</a></div>
+      </li>
+      <li>
+        <div class="news-item-head"><span class="bullet">&#9642;</span><span class="news-title">OpenAI高管称2026年底内部AGI将落地，首席研究官称研发进度已达80%</span></div>
+        <div class="news-body">8月26日至27日，据《时代》周刊长报道，OpenAI管理层对通用人工智能（AGI）到来表现出高度信心。CEO Sam Altman表示，到今年年底公司将拥有一套他愿意称之为AGI的内部系统。首席研究官Mark Chen称OpenAI距离AGI已走完80%。支撑该判断的核心是即将推出的Astra模型家族，其已达到「自动化AI研究实习生」内部基准，并支持长时间自主处理任务的「持久智能体」。</div>
+        <div class="news-source"><span class="source-tag">TIME / 网易科技 / AI HOT</span><a href="https://www.163.com/dy/article/L5A6JJ2F05561FZW.html" target="_blank">原文链接</a></div>
+      </li>
+      <li>
+        <div class="news-item-head"><span class="bullet">&#9642;</span><span class="news-title">MINIMAX发布上半年业绩：收入1.17亿美元同比增长283.1%，亏损收窄</span></div>
+        <div class="news-body">8月26日，MINIMAX公告上半年总收入同比增长283.1%至1.17亿美元，超过2025年全年7900万美元总收入；期内亏损为3.58亿美元，上年同期亏损4.02亿美元，亏损幅度收窄。公司收入高速增长主要受海外用户增长与AI产品付费转化推动，反映了国内AI原生应用在全球市场的扩张能力。</div>
+        <div class="news-source"><span class="source-tag">MINIMAX / 雪球 / AI HOT</span><a href="https://so.html5.qq.com/page/real/search_news?docid=70000021_7356a8f832275652" target="_blank">原文链接</a></div>
+      </li>
+    </ul>
+  </div>
+  <div class="subsection" id="sub-政策与治理">
+    <div class="subsection-title">政策与治理</div>
+    <ul class="news-list">
+      <li>
+        <div class="news-item-head"><span class="bullet">&#9642;</span><span class="news-title">Anthropic开放Claude真实使用数据供外部独立研究，公布试点结果</span></div>
+        <div class="news-body">8月26日，Anthropic研究博客宣布开放Claude真实使用数据供外部独立研究，并公布试点结果。该计划允许经审核的研究者访问匿名化对话数据，以研究AI在实际使用中的能力、风险与社会影响。Anthropic称此举旨在提升大模型透明度与外部审计能力，是AI安全治理领域的重要尝试。</div>
+        <div class="news-source"><span class="source-tag">Anthropic Research / AI HOT</span><a href="https://www.anthropic.com/research/enabling-independent-research" target="_blank">原文链接</a></div>
+      </li>
+      <li>
+        <div class="news-item-head"><span class="bullet">&#9642;</span><span class="news-title">Hacker News热帖：以色列资助的假美国智库被曝试图利用AI进行宣传</span></div>
+        <div class="news-body">8月26日，Hacker News上一篇热帖引发关注：以色列政府被曝资助了一家伪装成美国智库的机构，并试图利用AI生成内容与社交媒体自动化工具进行政治宣传。该事件再次引发对生成式AI在信息战、舆论操控与虚假智库传播中双重用途的监管讨论，也成为当日AI治理与安全领域的高关注度话题。</div>
+        <div class="news-source"><span class="source-tag">Hacker News / buzzing.cc / AI HOT</span><a href="https://www.theguardian.com/world/2026/aug/26/fake-thinktank-israel-ai-propaganda" target="_blank">原文链接</a></div>
+      </li>
+    </ul>
+  </div>
+</section>
+
+<div class="report-footer">
+  数据来源：AI HOT / WebSearch / 公开报道<br>
+  本期日报共收录 26 条新闻，筛选自过去 24 小时内的公开报道<br>
+  生成时间：2026-08-27 10:00 CST
+</div>
+
+</div>
+</body>
+</html>
