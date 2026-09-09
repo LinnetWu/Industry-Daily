@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-page-node-id="6V4b2Tu6IAXSHk3Wj8yNuZ">
+<head data-page-node-id="2nX4YaEVufvgJHO5ty5yHZ">
+<meta charset="UTF-8" data-page-node-id="Dz5NR3CrkuPCBHylD9Cr5w">
+<meta name="viewport" content="width=device-width, initial-scale=1.0" data-page-node-id="ErDgzRlBXOfDPzbCWY6DST">
+<title>行业日报（2026-09-08）</title>
+<style>
+  :root {
+    --bg: #fafaf8;
+    --text: #1a1a1a;
+    --text-secondary: #6b7280;
+    --text-muted: #9ca3af;
+    --border: #e0e3dc;
+    --accent: #2d5016;
+    --surface: #f4f6f1;
+    --tag-bg: #eaf0e4;
+    --tag-text: #3a6b1e;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.7;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .report-container {
+    max-width: 780px;
+    margin: 0 auto;
+    padding: 48px 24px 64px;
+  }
+
+  .report-main-title {
+    font-size: 28px;
+    font-weight: 800;
+    color: var(--accent);
+    text-align: center;
+    margin-bottom: 8px;
+    letter-spacing: 0.5px;
+  }
+
+  .report-meta {
+    text-align: center;
+    font-size: 13px;
+    color: var(--text-muted);
+    margin-bottom: 10px;
+  }
+
+  .top-anchor-nav {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    justify-content: center;
+    margin-bottom: 28px;
+  }
+
+  .top-anchor-chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 10px 20px;
+    border-radius: 24px;
+    background: #fff;
+    border: 1.5px solid var(--accent);
+    color: var(--accent);
+    font-size: 13px;
+    font-weight: 600;
+    transition: all 0.18s;
+    cursor: pointer;
+    white-space: nowrap;
+    text-decoration: none;
+  }
+
+  .top-anchor-chip:hover {
+    background: var(--accent);
+    color: #fff;
+    text-decoration: none;
+  }
+
+  .top-anchor-chip.primary {
+    background: var(--accent);
+    color: #fff;
+    font-weight: 700;
+  }
+
+  .top-anchor-chip .count {
+    font-weight: 700;
+    font-size: 14px;
+  }
+
+  .subsection-anchor-nav {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin: 10px 0 16px;
+  }
+
+  .subsection-anchor-chip {
+    display: inline-flex;
+    align-items: center;
+    padding: 6px 14px;
+    border-radius: 14px;
+    background: var(--tag-bg);
+    color: var(--tag-text);
+    font-size: 12px;
+    font-weight: 600;
+    transition: all 0.18s;
+    white-space: nowrap;
+    text-decoration: none;
+  }
+
+  .subsection-anchor-chip:hover {
+    background: var(--accent);
+    color: #fff;
+    text-decoration: none;
+  }
+
+  .report-intro {
+    background: var(--surface);
+    border-radius: 10px;
+    padding: 20px 24px;
+    margin-bottom: 36px;
+    font-size: 14.5px;
+    color: var(--text-secondary);
+    line-height: 1.8;
+    border: 1px solid var(--border);
+  }
+
+  .section {
+    margin-bottom: 40px;
+  }
+
+  .section-title {
+    font-size: 21px;
+    font-weight: 700;
+    color: var(--accent);
+    margin-bottom: 10px;
+    padding-bottom: 10px;
+    border-bottom: 2px solid var(--border);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .section-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 34px;
+    height: 34px;
+    border-radius: 8px;
+    font-size: 12px;
+    font-weight: 700;
+    color: #fff;
+    flex-shrink: 0;
+  }
+
+  .section-summary {
+    font-size: 14px;
+    color: var(--text-secondary);
+    margin-bottom: 20px;
+    padding-left: 4px;
+    line-height: 1.7;
+  }
+
+  .subsection {
+    margin-bottom: 22px;
+  }
+
+  .subsection-title {
+    font-size: 15px;
+    font-weight: 700;
+    color: var(--accent);
+    margin-bottom: 10px;
+    padding-bottom: 5px;
+    border-bottom: 1px dotted var(--border);
+  }
+
+  .news-list {
+    list-style: none;
+    padding: 0;
+  }
+
+  .news-list li {
+    margin-bottom: 14px;
+    padding: 12px 14px;
+    background: #fff;
+    border-radius: 8px;
+    border: 1px solid var(--border);
+  }
+
+  .news-item-head {
+    display: flex;
+    align-items: flex-start;
+    gap: 8px;
+    margin-bottom: 6px;
+  }
+
+  .bullet {
+    color: var(--accent);
+    font-size: 14px;
+    flex-shrink: 0;
+    margin-top: 1px;
+  }
+
+  .news-title {
+    font-size: 14.5px;
+    font-weight: 600;
+    color: var(--text);
+    line-height: 1.5;
+  }
+
+  .news-body {
+    font-size: 13.5px;
+    color: var(--text-secondary);
+    line-height: 1.7;
+    margin-bottom: 8px;
+    padding-left: 22px;
+  }
+
+  .news-source {
+    font-size: 12px;
+    padding-left: 22px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex-wrap: wrap;
+  }
+
+  .source-tag {
+    display: inline-block;
+    background: var(--tag-bg);
+    color: var(--tag-text);
+    font-size: 11px;
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-weight: 500;
+  }
+
+  .news-source a {
+    color: var(--accent);
+    text-decoration: none;
+    font-size: 12px;
+  }
+
+  .news-source a:hover {
+    text-decoration: underline;
+  }
+
+  .report-footer {
+    margin-top: 48px;
+    padding-top: 20px;
+    border-top: 1px solid var(--border);
+    font-size: 12px;
+    color: var(--text-muted);
+    text-align: center;
+    line-height: 1.8;
+  }
+</style>
+</head>
+<body data-page-node-id="i5YDVjIsa2u5PagzruOurQ">
+<div class="report-container" data-page-node-id="70lowRQPZHdAfk4gLAguik">
+
+<h1 class="report-main-title" data-page-node-id="AoU2nVf5QbOXANCZD39SzS">行业日报（2026-09-08）</h1>
+<div class="report-meta" data-page-node-id="uUQ2IWczitZZCgijZpYmEc">2026年9月8日 · 星期二 · 数据来源：AI HOT / WebSearch / 公开报道</div>
+
+<div class="top-anchor-nav" data-page-node-id="vxrfWnIeCTfPXcgY19gSxF">
+  <span class="top-anchor-chip primary" data-page-node-id="9FKCsB3lclUihibO25ZlqZ">当日总条数 <span class="count" data-page-node-id="tExVDs2ikkNZRkxWIPSHL7">15</span></span>
+  <a class="top-anchor-chip" href="#section-bags" data-page-node-id="pvQgkUfLXZCEACBvZiPHsg">箱包 <span class="count" data-page-node-id="rzUZKal4GXXPWzRTEit3DO">2</span></a>
+  <a class="top-anchor-chip" href="#section-ec" data-page-node-id="elxqxw5kdkr5zIJ4oQrHrH">电商 <span class="count" data-page-node-id="zTbzs2AfFqhzFfRCKjY0ux">6</span></a>
+  <a class="top-anchor-chip" href="#section-ai" data-page-node-id="AOZiDW3H0MZuAF5EtyZkfw">AI <span class="count" data-page-node-id="OJGGN0jDpvviRYUV2JX8yQ">7</span></a>
+</div>
+
+<div class="report-intro" data-page-node-id="VFFg06jgsAgBterCZHnoj6">
+  过去24小时（9月7日10:00至9月8日10:00 CST）行业动态呈现 AI 与电商两翼齐飞的格局。AI 板块 OpenAI 同日双线叙事：发布图像模型 ChatGPT Images 2.5 并首次按速度/精度拆分 API 双档（Flare/Sunburst），同时宣布以约一万个智能体协作 88 小时攻克纳维-斯托克斯千禧年难题并附 Lean 形式化验证；产业资本侧 Mistral 完成 30 亿欧元 D 轮估值超 210 亿欧元（史上欧洲科技最大股权融资），Anthropic 却在 IPO 前夕放弃对 Decart 约 60 亿美元的收购；字节跳动由张一鸣亲自挂帅实时空间世界模型最快 10 月推出。电商板块阿里宣布 1688 与阿里国际站打通组建"全球批发"板块、淘宝闪购关联公司因资质审查缺位被罚 655 万元、TikTok Shop 欧英双向跨境将于 10/19 全面铺开、Ozon 进入蒙古、沃尔玛 SWW 推最高 35% 折扣。箱包板块仅有 2 条硬新闻：Gucci 罕见调价方向向下，包袋单品最高降幅超 40%；CAC40 收涨 0.14%，但 Hermès、LVMH 同步下跌，欧元区通胀 3.3% 创近三年新高施压奢侈品股价。本期共收录 15 条新闻。
+</div>
+
+<!-- ===== 箱包动态 ===== -->
+<section class="section" id="section-bags" data-page-node-id="k7vja29lgbcVWkDKLpsdxn">
+  <h2 class="section-title" data-page-node-id="nnHeVxkhA9gmNU67yQHOPF"><span class="section-icon" style="background:#2d5016;" data-page-node-id="imhwPNbqK9LbVnNSNxEvZU">BG</span>箱包动态</h2>
+  <div class="subsection-anchor-nav" data-page-node-id="CwXFsFdXVmJ8b0BAodEhZ4">
+    <a class="subsection-anchor-chip" href="#sub-品牌与产品" data-page-node-id="M6GgCBzYQm52PHKwcazBPw">品牌与产品</a>
+    <a class="subsection-anchor-chip" href="#sub-财报与业绩" data-page-node-id="RHLzHhdfhP4JBua9UDvCcb">财报与业绩</a>
+  </div>
+  <div class="section-summary" data-page-node-id="tVlq41Kg3M2DwxqSV1L9GW">
+    过去24小时箱包板块有效新闻2条。Gucci 罕见完成"降价方向"调价，2026春夏新款 Mercato、Ophidia 与 GG Marmont 系列单品下调 27%-40%；法国奢侈品股价 9/8 同步承压，Hermès 跌 2.19%、LVMH 跌 1.10%，欧元区 8 月通胀 3.3% 加速叠加 ECB 加息预期使板块情绪偏弱。
+  </div>
+  <div class="subsection" id="sub-品牌与产品" data-page-node-id="JTfuqurneEEUNHjDda6bor">
+    <div class="subsection-title" data-page-node-id="zcSRYf68adjuhN6nhseEo9">品牌与产品</div>
+    <ul class="news-list" data-page-node-id="3d1QPzruVQ62uuuADeQvQU">
+      <li data-page-node-id="l9PI8DIwlLakdEe9ednJIL">
+        <div class="news-item-head" data-page-node-id="7M2g15R64U7FBAo22R928k"><span class="bullet" data-page-node-id="PfUyq22l5kX3LHhavmFCaN">&#9642;</span><span class="news-title" data-page-node-id="Atb6LeylTP4IDMecmviUVc">Gucci 罕见"降价方向"调价：2026 春夏 Mercato 托特降 27%、Ophidia 水桶降 40%、GG Marmont 直降至 8100 元</span></div>
+        <div class="news-body" data-page-node-id="FPRH9ZQ5gYtM25HbmCf3he">9月8日，界面新闻确认奢侈品牌 Gucci 近日完成新一轮调价，与过往持续涨势相反，本次方向为下调且范围覆盖包袋与成衣。具体看，2026 春夏新款 Mercato 小号托特包售价由 25500 元降至 20000 元，降幅约 27%；Ophidia 系列迷你水桶包直降 3600 元至 8700 元，降幅超过 40%；GG Marmont 系列小水桶包由突破万元降至 8100 元。成衣方面，帆布连衣裙、连体泳衣、羊毛开衫等品类降幅普遍在 30% 上下。开云集团 CEO 此前的财报会议曾指出过去几年行业涨价能力已不复从前、部分产品定价过高导致销量不佳，本次调价可视作该判断在价盘层面的直接落地。</div>
+        <div class="news-source" data-page-node-id="4jKwqt4KuSi1WAPcDTnDbA"><span class="source-tag" data-page-node-id="tEk4smp9UcMFBhpRhmJfMC">界面新闻</span><a href="https://field.10jqka.com.cn/20260909/c679727222.shtml" target="_blank" data-page-node-id="MzMyAJBxgS2h5qEUToa6q3">原文链接</a></div>
+      </li>
+    </ul>
+  </div>
+  <div class="subsection" id="sub-财报与业绩" data-page-node-id="7gwCPXHqYYNNMvZsmJIrmY">
+    <div class="subsection-title" data-page-node-id="ARz1PNpNH8aFlmQyGmX2vX">财报与业绩</div>
+    <ul class="news-list" data-page-node-id="C8Nk3XooXz9EnItBxzjNnY">
+      <li data-page-node-id="dlUby37nGX10Q2Z3UdbW1M">
+        <div class="news-item-head" data-page-node-id="goBL7rJRZS6R4J5hYcs6dy"><span class="bullet" data-page-node-id="QL2jakjWIDX7Zll7wHlGIo">&#9642;</span><span class="news-title" data-page-node-id="8jpSE4XG7ooODoY7lC78sl">法国奢侈品股价 9/8 集体承压：Hermès 跌 2.19%、LVMH 跌 1.10%、Kering 涨 1.2%，CAC40 收涨 0.14%</span></div>
+        <div class="news-body" data-page-node-id="fYNCnqJ4F7TWs3Vsr41x3V">9月8日，欧洲股市整体小幅震荡，CAC40 指数收涨 0.14% 至 8318 点，但奢侈品板块明显分化：Hermès 收跌 2.19%、LVMH 跌 1.10%、L'Oréal 涨 0.90%、Kering 涨 1.20%。当日公布的欧元区 8 月通胀终值 3.3% 创近三年新高，市场对 ECB 9 月再加 25bp 的预期上升，叠加中东局势推升油价使奢侈品板块整体承压。法国 7 月出口环比 +0.3% 至 547 亿欧元，由碳氢化合物、采掘品和工业品拉动；个股中 Carrefour 涨 2.37%、Bureau Veritas 涨 2.18%、Edenred 跌 3.44% 表现领先/垫底。</div>
+        <div class="news-source" data-page-node-id="qxwHscnyWkwquSC0hPCA8h"><span class="source-tag" data-page-node-id="FAkzxxxAoRJ6oib0WJKSIt">Trading Economics</span><a href="https://tradingeconomics.com/france/stock-market/news/0" target="_blank" data-page-node-id="2gNPiK1YWUdDhHHKnF0siH">原文链接</a></div>
+      </li>
+    </ul>
+  </div>
+</section>
+
+<!-- ===== 电商动态 ===== -->
+<section class="section" id="section-ec" data-page-node-id="4BjPrraH1KpqSy5j1L34GW">
+  <h2 class="section-title" data-page-node-id="XxYXpa0VgzQNlgFcVDyjv2"><span class="section-icon" style="background:#2d5016;" data-page-node-id="qHbAT841PjjBlefKHUapZF">EC</span>电商动态</h2>
+  <div class="subsection-anchor-nav" data-page-node-id="sgk4zF2VgBgx8rIpmqEp0L">
+    <a class="subsection-anchor-chip" href="#sub-平台与零售" data-page-node-id="Y5GMRlJ9wLbIhMx5rhoRbp">平台与零售</a>
+    <a class="subsection-anchor-chip" href="#sub-跨境与出海" data-page-node-id="9AAjRzVbhnMOWzYIMeTqzH">跨境与出海</a>
+    <a class="subsection-anchor-chip" href="#sub-政策与监管" data-page-node-id="lmIPjD6QJ0jZdlE5AavQIy">政策与监管</a>
+  </div>
+  <div class="section-summary" data-page-node-id="iByUrYoNpqowGLFUxcA83K">
+    过去24小时电商板块以阿里 1688+国际站打通、淘宝闪购关联公司被罚 655 万元为头条；TikTok Shop 欧英双向跨境 9/21 试点、沃尔玛 SWW 推出最高 35% 折扣、Ozon 蒙古开站，上海长宁跑通 9810 首单，国内外平台/政策双向加力。Adyen 与 Limitless 整合四支付网关，跨境支付端走向标准化。
+  </div>
+  <div class="subsection" id="sub-平台与零售" data-page-node-id="TAR7VKMyI1pK0GEZzbeCZJ">
+    <div class="subsection-title" data-page-node-id="ifOOLZrYCxidN9J3KDC5Ct">平台与零售</div>
+    <ul class="news-list" data-page-node-id="q6MXsQrVXqxX2pTj16KCdM">
+      <li data-page-node-id="woviKOnkpoGLe3Odif43HD">
+        <div class="news-item-head" data-page-node-id="AndvJkivJOdY0JsaXcOYPR"><span class="bullet" data-page-node-id="x4zGFddm9d1i1uzTmOPN0I">&#9642;</span><span class="news-title" data-page-node-id="YCwGcz4AvmrRvnPGoQaqVp">阿里 B2B 业务战略整合：1688 与阿里国际站打通，整体运营由张阔负责，强化 AI 驱动协同</span></div>
+        <div class="news-body" data-page-node-id="p2XEGeHU7wAwFRnapVXFD7">9月8日第一财经报道，阿里正推动电商业务进一步战略整合：1688 与阿里国际站打通整体运营，由张阔负责，原 1688 负责人余涌另有任用。最新季度财报将电商业务划分为"中国电商、即时零售、国际电商、全球批发"四个板块，1688 与阿里国际站统一纳入"全球批发"。艾媒咨询 CEO 张毅分析，打通的核心是打破内外贸割裂，让工厂一套货盘同时承接国内批发与海外询盘；驱动力来自拼多多 Temu 等对手向上穿透供应链的竞争压力、AI Agent 普及下买家更倾向直连工厂。阿里国际站面向跨境商家的 AI 智能体 Accio Work 付费商家已超 5 万。</div>
+        <div class="news-source" data-page-node-id="99Wy4lm9KbC2uzNNyF1Tuh"><span class="source-tag" data-page-node-id="zdX8HDdTDn5FQG5EsLengs">第一财经 / 极目新闻</span><a href="https://gu.qq.com/resources/shy/news/detail-v2/index.html?t=1#/?id=SN20260908183358a43c9556" target="_blank" data-page-node-id="cRQk7TsyYrmjAdysIYfs9A">原文链接</a></div>
+      </li>
+      <li data-page-node-id="bf64ma3DAKDjR9BprqdbEG">
+        <div class="news-item-head" data-page-node-id="UD0GqEV6WV16FL8wDN94sG"><span class="bullet" data-page-node-id="P4Xwjvq94dHAfSPRBnBVM3">&#9642;</span><span class="news-title" data-page-node-id="CA8wFUQhdCGflw5zxEfiIE">淘宝闪购关联公司因 51 家入网餐饮资质审查缺位被罚 655 万元</span></div>
+        <div class="news-body" data-page-node-id="xDcYoRfGhZFu82LNN6X9Nf">9月8日，上海市市场监管局对上海拉扎斯信息科技有限公司（淘宝闪购关联公司）开出 655 万元罚单，因未对平台内 51 家入网餐饮服务提供者履行资质审查义务，责令改正并处以罚款。该处罚反映外卖新规下平台审查责任持续收紧，后续或推动淘宝闪购加强商户准入管控，平台合规链条正向"资质核验"环节集中。</div>
+        <div class="news-source" data-page-node-id="3xERY0nt0wKzObwQ486nCk"><span class="source-tag" data-page-node-id="7XoGWmJswnZbGCnKVpVrfl">观点新媒体 / 腾讯新闻</span><a href="https://view.inews.qq.com/a/20260908A0BR0O00" target="_blank" data-page-node-id="wBuGm81ZMVJtszobE66O2t">原文链接</a></div>
+      </li>
+      <li data-page-node-id="hw5LJ0cXYDSZEXxMpgF1g5">
+        <div class="news-item-head" data-page-node-id="iiLZk7gc2K68DZEZ485WY7"><span class="bullet" data-page-node-id="2n4XbY1OGLARxhBcC5czFp">&#9642;</span><span class="news-title" data-page-node-id="hRJQL5CC55rshcNA54ouR6">沃尔玛 SWW 推最高 35% 运费折扣：2 日达最高 35% off、3 日达 15% off，9 月生效</span></div>
+        <div class="news-body" data-page-node-id="AVRdlWDP78EEfaDCsgSXug">9月8日消息，沃尔玛宣布面向使用自营物流 Ship with Walmart（SWW）的卖家推出全新运费优惠政策，2026 年 9 月正式生效。Rising、Advanced 及 Pro 等级的合格卖家，在实际配送速度与前台展示的预计送达时间一致的前提下，3 日达配送标签最高可享 15% 折扣，2 日达配送标签最高折扣可达 35%。此项优惠适用于自行发货的第三方卖家。在 Q4 黑五等年终大促旺季前，平台以物流标签折扣对冲卖家履约成本，体现平台对第三方履约能力的"激励式合规"。</div>
+        <div class="news-source" data-page-node-id="AhXiwma4ApYSaHejWNFbDF"><span class="source-tag" data-page-node-id="OIezPwe7c0fPxxODDkBpVt">搜狐科技 / IT 之家聚合</span><a href="https://www.sohu.com/a/1073671210_120773210" target="_blank" data-page-node-id="NKHP0QZS63RUQbslxE2RI0">原文链接</a></div>
+      </li>
+    </ul>
+  </div>
+  <div class="subsection" id="sub-跨境与出海" data-page-node-id="aicmR9A6HNxrbP2KvRfT1L">
+    <div class="subsection-title" data-page-node-id="zDE5hKPCVSsGIA3fSEP3qA">跨境与出海</div>
+    <ul class="news-list" data-page-node-id="DHWJDgDobv5Kq1G9Qexk7f">
+      <li data-page-node-id="iiLZk7gc2K68DZEZ485WY7b">
+        <div class="news-item-head" data-page-node-id="A1B2C3D4E5F6G7H8I9J0K1"><span class="bullet" data-page-node-id="L1M2N3O4P5Q6R7S8T9U0V">&#9642;</span><span class="news-title" data-page-node-id="W1X2Y3Z4A5B6C7D8E9F0G">TikTok Shop 欧英双向跨境销售 9/21 试点、10/19 全面铺开：8 个欧盟市场对英、12 国对欧双向开通</span></div>
+        <div class="news-body" data-page-node-id="H1I2J3K4L5M6N7O8P9Q0R">9月8日消息，TikTok Shop 正式推出欧盟与英国之间的双向跨境销售功能：计划于 9 月 21 日启动部分欧盟卖家试点，10 月 19 日实现全面推广。届时比利时、德国、法国、爱尔兰、意大利、荷兰、波兰、西班牙八国卖家可向英国消费者供货，英国卖家可面向 Sell Across Europe 网络覆盖的 12 个欧盟国家销售。欧盟发往英国仅支持卖家自发货模式，须自选承运商、自承担运费及物流纠纷；店铺须满足信誉良好、近销售记录、无大额未结清负余额等准入条件，英国卖家资格由平台实时评估。这是 TikTok Shop 首次在跨欧洲区域正式打通"双向供货"链路。</div>
+        <div class="news-source" data-page-node-id="S1T2U3V4W5X6Y7Z8A9B0C"><span class="source-tag" data-page-node-id="D1E2F3G4H5I6J7K8L9M0N">搜狐科技 / IT 之家</span><a href="https://www.sohu.com/a/1073671210_120773210" target="_blank" data-page-node-id="O1P2Q3R4S5T6U7V8W9X0Y">原文链接</a></div>
+      </li>
+      <li data-page-node-id="i1J2K3L4M5N6O7P8Q9R0S">
+        <div class="news-item-head" data-page-node-id="T1U2V3W4X5Y6Z7A8B9C0D"><span class="bullet" data-page-node-id="E1F2G3H4I5J6K7L8M9N0O">&#9642;</span><span class="news-title" data-page-node-id="P1Q2R3S4T5U6V7W8X9Y0Z">Ozon 正式进入蒙古市场：海外第 9 国，初期 900 万 SKU 在售，订单由蒙古邮政配送</span></div>
+        <div class="news-body" data-page-node-id="A1B2C3D4E5F6G7H8I9J0K">9月8日消息，俄罗斯电商平台 Ozon 宣布正式进入蒙古市场，开启当地商品销售业务。此次拓展意味着 Ozon 的海外市场版图进一步扩大，蒙古也成为 Ozon 在俄罗斯以外开展电商业务的第九个国家。目前蒙古消费者已经可以在 Ozon 平台购买超过 9000 万件不同品类商品；平台上线初期订单配送时间最长约 10 天，消费者可前往蒙古邮政网点领取包裹。这是中俄欧亚大陆跨境电商链路向蒙图经济圈的首次规模化延伸。</div>
+        <div class="news-source" data-page-node-id="L1M2N3O4P5Q6R7S8T9U0V"><span class="source-tag" data-page-node-id="W1X2Y3Z4A5B6C7D8E9F0G">搜狐科技 / IT 之家</span><a href="https://www.sohu.com/a/1073671210_120773210" target="_blank" data-page-node-id="H1I2J3K4L5M6N7O8P9Q0R">原文链接</a></div>
+      </li>
+      <li data-page-node-id="M1N2O3P4Q5R6S7T8U9V0W">
+        <div class="news-item-head" data-page-node-id="X1Y2Z3A4B5C6D7E8F9G0H"><span class="bullet" data-page-node-id="I1J2K3L4M5N6O7P8Q9R0S">&#9642;</span><span class="news-title" data-page-node-id="T1U2V3W4X5Y6Z7A8B9C0D">Adyen 与 Limitless Technology Group 整合四支付网关：本地收单 + 跨境处理双轨并行</span></div>
+        <div class="news-body" data-page-node-id="E1F2G3H4I5J6K7L8M9N0O">9月8日，全球支付平台 Adyen 宣布与 Limitless Technology Group 合作，将其旗下五个礼品电商品牌、覆盖六市场的四个分散支付网关整合至统一平台，其中四地采用本地收单、两地采用跨境交易处理。该方案通过统一的对账、风控与拒付管理后台，将多国独立站接入单一 API，预计将集团跨境资金链路标准化周期缩短 50% 以上，并为后续在欧亚新市场的礼品电商拓展提供基础设施。该动作也是 Adyen 在"超大型集团多品牌整合"场景的一次标志性案例。</div>
+        <div class="news-source" data-page-node-id="P1Q2R3S4T5U6V7W8X9Y0Z"><span class="source-tag" data-page-node-id="A1B2C3D4E5F6G7H8I9J0K">支付之家网 / 腾讯财经聚合</span><a href="https://view.inews.qq.com/a/20260908A0D7SX00" target="_blank" data-page-node-id="L1M2N3O4P5Q6R7S8T9U0V">原文链接</a></div>
+      </li>
+    </ul>
+  </div>
+  <div class="subsection" id="sub-政策与监管" data-page-node-id="SHGAqGzfAkqbACTYHLuB7s">
+    <div class="subsection-title" data-page-node-id="7JyEwpz1KFbSMVQNBr2DXC">政策与监管</div>
+    <ul class="news-list" data-page-node-id="1bLeHaOc5awwNCfCZ5icwj">
+      <li data-page-node-id="3PuLpuGfcdtKfapM5LKQGt">
+        <div class="news-item-head" data-page-node-id="L3XK547Wrl4HwG80CfktlA"><span class="bullet" data-page-node-id="m7EKVPn0CMICyymF2CQykL">&#9642;</span><span class="news-title" data-page-node-id="IjC6SwiXhH7G6JMj84eTKY">上海长宁跑通首单跨境电商 9810 出口落地：离境即退税、销售再核算</span></div>
+        <div class="news-body" data-page-node-id="eKwGnbPRjcwQooAm8j45R4">9月8日，上海长宁区福蕾网络科技跑通首单跨境电商"9810"（出口海外仓）模式，实现"离境即退税、销售再核算"，缓解备货资金占用压力，为小微企业出海提供可复制的合规路径样本。"9810"模式适用于跨境电商出口至海外仓的 B2B2C 业务，退税前置让中小卖家在不占用大量流动资金的前提下提前布局海外仓，被视为对接海外仓本地化"硬支出"的关键合规抓手。</div>
+        <div class="news-source" data-page-node-id="AhkziUg2noTMy1EO3S7UDX"><span class="source-tag" data-page-node-id="CEr7ZfA1T63WkuSj6EA9Jy">上海长宁官方 / 腾讯财经</span><a href="https://view.inews.qq.com/a/20260908A0D7SX00" target="_blank" data-page-node-id="j0ExiryUBiCOVZm5KMTqx1">原文链接</a></div>
+      </li>
+    </ul>
+  </div>
+</section>
+
+<!-- ===== AI动态 ===== -->
+<section class="section" id="section-ai" data-page-node-id="ZDMPwvYOSDywrOKEiHvawd">
+  <h2 class="section-title" data-page-node-id="fJ6eSLEYbMUdpE1nxFMyvq"><span class="section-icon" style="background:#2d5016;" data-page-node-id="q1xafXVUXv6HradAxXBXgi">AI</span>AI动态</h2>
+  <div class="subsection-anchor-nav" data-page-node-id="dAhQXmsfMbHravBHuQLYb2">
+    <a class="subsection-anchor-chip" href="#sub-模型与技术更新" data-page-node-id="qVNLVmPoDOhxFoLOa5DVc1">模型与技术更新</a>
+    <a class="subsection-anchor-chip" href="#sub-研究突破" data-page-node-id="62k75G0EVNltoTDDD7PPYp">研究突破</a>
+    <a class="subsection-anchor-chip" href="#sub-产业与资本" data-page-node-id="LMnr5nlAaAh1u5e2Lz1l9Y">产业与资本</a>
+    <a class="subsection-anchor-chip" href="#sub-产品与平台" data-page-node-id="F0G1H2I3J4K5L6M7N8O9P">产品与平台</a>
+  </div>
+  <div class="section-summary" data-page-node-id="YBV4OvKMb4ARBH0ofAv9dO">
+    过去24小时AI板块围绕 OpenAI 同日双线叙事：发布 ChatGPT Images 2.5（Flare/Sunburst 双 API）与宣布纳维-斯托克斯千禧年难题解答（含 Lean 4 形式化验证）。产业资本侧 Mistral 30 亿欧元 D 轮（三星领投）创欧洲史上最大股权融资；Anthropic 在 IPO 前夕放弃对 Decart 约 60 亿美元收购；字节跳动由张一鸣挂帅押注实时空间视频生成"世界模型"，最快 10 月推出；Meta 推出个人 AI 代理 Muse。同期 OpenAI 向 Plus/Pro 全量推 GPT-6 Astra，Google DeepMind 发布 AlphaGenome Atlas 基因变异图谱。
+  </div>
+  <div class="subsection" id="sub-模型与技术更新" data-page-node-id="cPIlJ29jMcCrLo6OlW2kxC">
+    <div class="subsection-title" data-page-node-id="N5ubYlKVMgCcR3biHeFFau">模型与技术更新</div>
+    <ul class="news-list" data-page-node-id="TWFMROWToIttSkb493ZZaN">
+      <li data-page-node-id="TSeQXwlwpzky50PoIJzXxt">
+        <div class="news-item-head" data-page-node-id="iihtavbDMsSQ5ost3c1NGv"><span class="bullet" data-page-node-id="KJllWZ9iYwKE8nKxHgiPo7">&#9642;</span><span class="news-title" data-page-node-id="GAr1XNBTnv6AXxl0GW8ZeI">OpenAI 发布 ChatGPT Images 2.5：延迟最高降 50%，API 首次按速度/精度拆分 Flare、Sunburst 双档</span></div>
+        <div class="news-body" data-page-node-id="VVgDbiPmjHy97Br88VSnn2">美东时间 9 月 8 日，OpenAI 正式发布新一代图像生成模型 ChatGPT Images 2.5，面向 ChatGPT、ChatGPT Work 与 Codex 全线用户开放（含免费版），覆盖桌面、移动与网页端。生成延迟较 Images 2.0 最高降低 50%，细节锐度、自然光照与纹理表现同步提升，对参考照片中人物、宠物等主体的特征保留能力显著增强。编辑侧新增 Sketch 手绘参考（输入"@Sketch"画草图生成成品）、海报/商品图模板库以及"图片上添加评论标注、指哪改哪"的多轮一致性编辑能力；API 端同步推出两款模型：GPT-Image-2.5 Flare 定位速度与批量生成（Manus 评测出图速度达 GPT-Image-2 的 2-4 倍）、GPT-Image-2.5 Sunburst 面向精修与成品级创作工作流；两款定价相同，约为上一代 GPT-Image-2 的两倍。Adobe 已确认在 Firefly 中接入，Higgsfield AI、Manus 已投入使用。</div>
+        <div class="news-source" data-page-node-id="tlU5v3eU9YjALDtGVLTfXC"><span class="source-tag" data-page-node-id="atU9N3KFdR0SrMjOrt440o">OpenAI 官网 / Unite.AI / IT 之家</span><a href="https://www.unite.ai/openai-releases-chatgpt-images-2-5-with-sketch-and-two-new-api-models/" target="_blank" data-page-node-id="YvKkS77Buj67jV2PbCTxfC">原文链接</a></div>
+      </li>
+      <li data-page-node-id="A1B2C3D4E5F6G7H8I9J0K">
+        <div class="news-item-head" data-page-node-id="L1M2N3O4P5Q6R7S8T9U0V"><span class="bullet" data-page-node-id="W1X2Y3Z4A5B6C7D8E9F0G">&#9642;</span><span class="news-title" data-page-node-id="H1I2J3K4L5M6N7O8P9Q0R">GPT-6 Astra 在 Amazon Bedrock 正式 GA，AWS：客户可直接调用 OpenAI 当前最强模型</span></div>
+        <div class="news-body" data-page-node-id="S1T2U3V4W5X6Y7Z8A9B0C">9月8日，AWS 在机器学习博客中宣布 OpenAI 的 GPT-6 Astra 已正式在 Amazon Bedrock 上线 GA。AWS 称其为 OpenAI 当前最新且能力最强的模型，客户可通过 Amazon Bedrock 直接调用。这是 OpenAI 与 AWS 在基础模型 API 销售层面的合作加深；与此同时 OpenAI 也在 9/8 向 Plus、Pro、Business 与 Enterprise 用户全量推送 Astra，配套 OpenRouter 同步标价 $10/$50 每百万 Token（输入/输出）。</div>
+        <div class="news-source" data-page-node-id="D1E2F3G4H5I6J7K8L9M0N"><span class="source-tag" data-page-node-id="O1P2Q3R4S5T6U7V8W9X0Y">The AI Wrap / Unite.AI</span><a href="https://www.theaiwrap.com/" target="_blank" data-page-node-id="Z1A2B3C4D5E6F7G8H9I0J">原文链接</a></div>
+      </li>
+      <li data-page-node-id="K1L2M3N4O5P6Q7R8S9T0U">
+        <div class="news-item-head" data-page-node-id="V1W2X3Y4Z5A6B7C8D9E0F"><span class="bullet" data-page-node-id="G1H2I3J4K5L6M7N8O9P0Q">&#9642;</span><span class="news-title" data-page-node-id="R1S2T3U4V5W6X7Y8Z9A0B">Google DeepMind 发布 AlphaGenome Atlas：覆盖 90 亿单字母变异、形成 1PB 数据集，免费供学术研究</span></div>
+        <div class="news-body" data-page-node-id="C1D2E3F4G5H6I7J8K9L0M">9月8日，Google DeepMind 正式发布 AlphaGenome Atlas，预计算人类基因组约 90 亿种单字母变异的分子效应，形成 1PB 级数据集（约为 AlphaFold 数据库 30 倍），并配套 AVI 变异影响评分，免费向学术研究者开放，可结合 Google Antigravity 智能体使用，加速致病机理发现与实验验证。DeepMind 同时强调该数据集与 AlphaFold 蛋白结构数据形成"基础模型 × 基因组 × 实验自动化"组合，目标是从基因型到表型再到药物靶点构建全栈 AI for Science 通路。</div>
+        <div class="news-source" data-page-node-id="N1O2P3Q4R5S6T7U8V9W0X"><span class="source-tag" data-page-node-id="Y1Z2A3B4C5D6E7F8G9H0I">IT 之家 / 腾讯新闻</span><a href="https://view.inews.qq.com/a/20260909A03IVA00" target="_blank" data-page-node-id="J1K2L3M4N5O6P7Q8R9S0T">原文链接</a></div>
+      </li>
+    </ul>
+  </div>
+  <div class="subsection" id="sub-研究突破" data-page-node-id="voteMrs2lmhcWLTWyMm9QW">
+    <div class="subsection-title" data-page-node-id="fjzvXkhMgqBG0XABwUTLCr">研究突破</div>
+    <ul class="news-list" data-page-node-id="yRivOQ0wTsMfPK0kNYSN0h">
+      <li data-page-node-id="aX7d39eBasVi9A6a571SG5">
+        <div class="news-item-head" data-page-node-id="4DBlUnb9dYR56JwqFHvOFa"><span class="bullet" data-page-node-id="etB9GBGjMzONb3mgxsp5Ck">&#9642;</span><span class="news-title" data-page-node-id="b9KdtLgfHkruQZDZBuYdSO">OpenAI 用未发布模型 + 约 1 万个智能体协作 88 小时攻克纳维-斯托克斯千禧难题，并提交 Lean 4 形式化验证</span></div>
+        <div class="news-body" data-page-node-id="MjOqsBjuduIGQOnLBGwsC8">9月8日，OpenAI 公告其内部未发布的"显著强于 GPT-6 Astra"的模型协调约 1 万个 AI 智能体在 88 小时内完成对纳维-斯托克斯方程存在性与光滑性问题的解析推导：证明三维光滑流体可在有限时间内产生奇点（速度无界增长而能量保持有限），覆盖克莱数学研究所官方表述中的陈述 C 与 D；其后由 GPT-6 Astra 耗时 17 小时完成 Lean 4 形式化验证。165 页论文与 Lean 证明文件已公开供独立验证；OpenAI 称不会申领 100 万美元奖金。该项目估算成本约 1500-2250 万美元；NYU 数学家 Buckmaster 与 Anthropic 研究员 Alpöge 同日发布相关流体方程成果，质疑 OpenAI 可能参考其研究思路，引发关于"研究独立性、功劳归属"的学界争议。</div>
+        <div class="news-source" data-page-node-id="moKUOaY3wTMWDManClhjZ6"><span class="source-tag" data-page-node-id="XU9GzF3mWxk9HQ7TXtkbeH">OpenAI 官网 / AI TLDR / IT 之家</span><a href="https://ai-tldr.dev/releases/openai-navier-stokes-proof/" target="_blank" data-page-node-id="FGuxvy5OaDCkFjBHj7W0nR">原文链接</a></div>
+      </li>
+    </ul>
+  </div>
+  <div class="subsection" id="sub-产业与资本" data-page-node-id="iQT0CXREHtErHBt7QjxOE5">
+    <div class="subsection-title" data-page-node-id="KU7xcRkyGKjApu880mmsxe">产业与资本</div>
+    <ul class="news-list" data-page-node-id="0oZH8wlJC8bVqNKAmYy2gx">
+      <li data-page-node-id="i4XABErgJpXBg89LZfvwPO">
+        <div class="news-item-head" data-page-node-id="D6BWLTqf10i2RZlkksFbth"><span class="bullet" data-page-node-id="ymPuPU0RHghvqjj2B4zdCz">&#9642;</span><span class="news-title" data-page-node-id="WFUtTkCFzfndoxTtN26msS">Mistral 完成 30 亿欧元 D 轮融资，估值超 210 亿欧元（约 240 亿美元），三星领投，创欧洲科技公司史上最大股权融资</span></div>
+        <div class="news-body" data-page-node-id="fLhEsxlMIC00K0B2O1eqpv">9月8日，法国 AI 公司 Mistral 宣布完成 30 亿欧元 D 轮融资，投后估值超 210 亿欧元（约 240 亿美元），较一年前 ASML 领投轮的 117 亿欧元接近翻倍。三星电子领投，欧盟支持的 Scaleup Europe Fund（EQT 管理）与老股东 PSG Equity 联合领投，Advent、BlackRock、卢森堡大公国等新进，NVIDIA、a16z、ASML、Bpifrance 等老股东跟投。CEO Arthur Mensch 表示资金将用于前沿模型研发与自建数据中心，未来五年自有算力规模增长约 100%；CFO 称年底年化营收预计达 10 亿美元。</div>
+        <div class="news-source" data-page-node-id="8nreX3s2nHNL0kmHsd4TUV"><span class="source-tag" data-page-node-id="Fzg3idh6UDPteFfZ2Kqpxi">Mistral 官网 / EU-Startups / 界面新闻</span><a href="https://www.eu-startups.com/2026/09/french-ai-company-mistral-raises-e3-billion-series-d-led-by-samsung-at-over-e21-billion-valuation/" target="_blank" data-page-node-id="xUp87CfykJHUUFOniqhFMA">原文链接</a></div>
+      </li>
+      <li data-page-node-id="U1V2W3X4Y5Z6A7B8C9D0E">
+        <div class="news-item-head" data-page-node-id="F1G2H3I4J5K6L7M8N9O0P"><span class="bullet" data-page-node-id="Q1R2S3T4U5V6W7X8Y9Z0A">&#9642;</span><span class="news-title" data-page-node-id="B1C2D3E4F5G6H7I8J9K0L">Anthropic 放弃约 60 亿美元收购 Decart：IPO 前夕最大收购谈判告吹，原因为推理成本而非世界模型</span></div>
+        <div class="news-body" data-page-node-id="M1N2O3P4Q5R6S7T8U9V0W">据 Bloomberg 9 月 8 日报道，Anthropic 在完成对以色列初创公司 Decart 数周尽职调查后决定放弃收购，交易规模原约 60 亿美元，本将成为其历史上最大收购案；知情人士称双方仍可能以投资或客户关系等更轻的形式合作。Decart 成立仅三年，累计融资约 4.5 亿美元（最新估值近 40 亿美元，Radical Ventures 领投、NVIDIA/红杉/Benchmark 参投），核心资产是提升芯片训练与推理吞吐的优化技术以及 Lucy、Oasis 等世界模型。市场解读：对一家"卖 token"的公司而言，每一点芯片吞吐提升都直接改善 IPO 前的毛利率，放弃 60 亿美元收购反而是上市前的一种纪律信号。</div>
+        <div class="news-source" data-page-node-id="X1Y2Z3A4B5C6D7E8F9G0H"><span class="source-tag" data-page-node-id="I1J2K3L4M5N6O7P8Q9R0S">Bloomberg / FourWeekMBA / MarketAnalysis</span><a href="https://marketanalysis.com/anthropic-walks-away-from-6-billion-decart-acquisition-the-deal-was-about-inference-cost-not-world-models/" target="_blank" data-page-node-id="T1U2V3W4X5Y6Z7A8B9C0D">原文链接</a></div>
+      </li>
+      <li data-page-node-id="E1F2G3H4I5J6K7L8M9N0O">
+        <div class="news-item-head" data-page-node-id="P1Q2R3S4T5U6V7W8X9Y0Z"><span class="bullet" data-page-node-id="A1B2C3D4E5F6G7H8I9J0K">&#9642;</span><span class="news-title" data-page-node-id="L1M2N3O4P5Q6R7S8T9U0V">AI 编程创企 Cognition AI 完成 20 亿美元 E 轮融资，估值达 480 亿美元</span></div>
+        <div class="news-body" data-page-node-id="W1X2Y3Z4A5B6C7D8E9F0G">9月8日，AI 编程初创公司 Cognition AI 宣布已在 E 轮融资中筹集 20 亿美元，估值达 480 亿美元。本轮融资由新投资者 a16z 和 Accel 领投，现有投资者 Founders Fund、General Catalyst 和 Avenir 参投。Cognition AI 表示，自 5 月上一轮融资以来，其年化收入已从 4.92 亿美元增至近 9 亿美元。该公司核心产品 Devin 在与 GitHub Copilot、Cursor、Replit Agent 的代码 Agent 赛道正面竞争。</div>
+        <div class="news-source" data-page-node-id="H1I2J3K4L5M6N7O8P9Q0R"><span class="source-tag" data-page-node-id="S1T2U3V4W5X6Y7Z8A9B0C">财联社 / 网易订阅</span><a href="https://www.163.com/dy/article/L6CG0OFM05118I96.html" target="_blank" data-page-node-id="D1E2F3G4H5I6J7K8L9M0N">原文链接</a></div>
+      </li>
+    </ul>
+  </div>
+  <div class="subsection" id="sub-产品与平台" data-page-node-id="P0Q1R2S3T4U5V6W7X8Y9Z">
+    <div class="subsection-title" data-page-node-id="A0B1C2D3E4F5G6H7I8J9K">产品与平台</div>
+    <ul class="news-list" data-page-node-id="L0M1N2O3P4Q5R6S7T8U9V">
+      <li data-page-node-id="W0X1Y2Z3A4B5C6D7E8F9G">
+        <div class="news-item-head" data-page-node-id="H0I1J2K3L4M5N6O7P8Q9R"><span class="bullet" data-page-node-id="S0T1U2V3W4X5Y6Z7A8B9C">&#9642;</span><span class="news-title" data-page-node-id="D0E1F2G3H4I5J6K7L8M9N">字节开发实时空间视频生成"世界模型"，张一鸣亲自挂帅，最快 10 月推出对标 Google Genie 3</span></div>
+        <div class="news-body" data-page-node-id="O0P1Q2R3S4T5U6V7W8X9Y">据 Bloomberg 9 月 8 日报道，字节跳动正开发基于 Seedance 的实时空间视频生成"世界模型"，最快 10 月推出：可实现约 20 帧/秒、50 毫秒低延迟的实时可交互 3D 环境生成（随用户语音与动作实时变化），采用云端渲染降低终端硬件门槛，面向直播、互动短剧、游戏场景并计划适配 Pico VR 头显，直接对标 Google Genie 3。创始人张一鸣亲自跨部门协调模型研发、云基础设施、Pico 硬件与内容业务线资源并优先保障算力；世界模型已被列为字节 2026 年四大 AI 优先事项之首。</div>
+        <div class="news-source" data-page-node-id="Z0A1B2C3D4E5F6G7H8I9J"><span class="source-tag" data-page-node-id="K0L1M2N3O4P5Q6R7S8T9U">Tech in Asia / 澎湃新闻</span><a href="https://www.techinasia.com/news/bytedance-eyes-realtime-spatial-ai-model-launch-month" target="_blank" data-page-node-id="V0W1X2Y3Z4A5B6C7D8E9F">原文链接</a></div>
+      </li>
+      <li data-page-node-id="G0H1I2J3K4L5M6N7O8P9Q">
+        <div class="news-item-head" data-page-node-id="R0S1T2U3V4W5X6Y7Z8A9B"><span class="bullet" data-page-node-id="C0D1E2F3G4H5I6J7K8L9M">&#9642;</span><span class="news-title" data-page-node-id="N0O1P2Q3R4S5T6U7V8W9X">Meta 推出个人 AI 代理 Muse：基于 Muse Spark 1.3 模型，免费版每账号每周 100M tokens</span></div>
+        <div class="news-body" data-page-node-id="Y0Z1A2B3C4D5E6F7G8H9I">9月8日，Meta 正式推出个人 AI 代理 Muse：内置于 Meta 云端专属 VM、运行在最新 Muse Spark 1.3 模型之上，可自主执行邮件收发、旅行预订、把食谱 Reels 转成购物清单、代为下单（通过 Stripe Link）等任务。定价方面，免费版单账号每周可用 100M tokens，$20/月档位提供更高优先级、$100/月档位提供并发推理加速，初期仅美国可用，后续将支持 Meta AI 眼镜。Meta 在不到两周前刚达成 180 亿美元多州消费者保护和解金。</div>
+        <div class="news-source" data-page-node-id="J0K1L2M3N4O5P6Q7R8S9T"><span class="source-tag" data-page-node-id="U0V1W2X3Y4Z5A6B7C8D9E">Bloomberg / TechCrunch / Axios</span><a href="https://www.theaiwrap.com/" target="_blank" data-page-node-id="F0G1H2I3J4K5L6M7N8O9P">原文链接</a></div>
+      </li>
+    </ul>
+  </div>
+</section>
+
+<div class="report-footer" data-page-node-id="5yHGq0RB5rURMCOWF3tWcg">
+  数据来源：AI HOT / WebSearch / 公开报道<br data-page-node-id="8nIHBPHwJo5jJ81dBE7gkd">
+  本期日报共收录 15 条新闻，筛选自过去 24 小时内的公开报道<br data-page-node-id="BntWKHdubvBXM4fpcbXnH6">
+  生成时间：2026-09-09 10:03 CST（补生成）
+</div>
+
+</div>
+</body>
+</html>
