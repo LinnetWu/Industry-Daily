@@ -1,0 +1,512 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>行业日报（2026-10-14）</title>
+<style>
+  :root {
+    --bg: #fafaf8;
+    --text: #1a1a1a;
+    --text-secondary: #6b7280;
+    --text-muted: #9ca3af;
+    --border: #e0e3dc;
+    --accent: #2d5016;
+    --surface: #f4f6f1;
+    --tag-bg: #eaf0e4;
+    --tag-text: #3a6b1e;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.7;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .report-container {
+    max-width: 780px;
+    margin: 0 auto;
+    padding: 48px 24px 64px;
+  }
+
+  .report-main-title {
+    font-size: 28px;
+    font-weight: 800;
+    color: var(--accent);
+    text-align: center;
+    margin-bottom: 8px;
+    letter-spacing: 0.5px;
+  }
+
+  .report-meta {
+    text-align: center;
+    font-size: 13px;
+    color: var(--text-muted);
+    margin-bottom: 10px;
+  }
+
+  .top-anchor-nav {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    justify-content: center;
+    margin-bottom: 28px;
+  }
+
+  .top-anchor-chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 10px 20px;
+    border-radius: 24px;
+    background: #fff;
+    border: 1.5px solid var(--accent);
+    color: var(--accent);
+    font-size: 13px;
+    font-weight: 600;
+    transition: all 0.18s;
+    cursor: pointer;
+    white-space: nowrap;
+    text-decoration: none;
+  }
+
+  .top-anchor-chip:hover {
+    background: var(--accent);
+    color: #fff;
+    text-decoration: none;
+  }
+
+  .top-anchor-chip.primary {
+    background: var(--accent);
+    color: #fff;
+    font-weight: 700;
+  }
+
+  .top-anchor-chip .count {
+    font-weight: 700;
+    font-size: 14px;
+  }
+
+  .subsection-anchor-nav {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin: 10px 0 16px;
+  }
+
+  .subsection-anchor-chip {
+    display: inline-flex;
+    align-items: center;
+    padding: 6px 14px;
+    border-radius: 14px;
+    background: var(--tag-bg);
+    color: var(--tag-text);
+    font-size: 12px;
+    font-weight: 600;
+    transition: all 0.18s;
+    white-space: nowrap;
+    text-decoration: none;
+  }
+
+  .subsection-anchor-chip:hover {
+    background: var(--accent);
+    color: #fff;
+    text-decoration: none;
+  }
+
+  .report-intro {
+    background: var(--surface);
+    border-radius: 10px;
+    padding: 20px 24px;
+    margin-bottom: 36px;
+    font-size: 14.5px;
+    color: var(--text-secondary);
+    line-height: 1.8;
+    border: 1px solid var(--border);
+  }
+
+  .section {
+    margin-bottom: 40px;
+  }
+
+  .section-title {
+    font-size: 21px;
+    font-weight: 700;
+    color: var(--accent);
+    margin-bottom: 10px;
+    padding-bottom: 10px;
+    border-bottom: 2px solid var(--border);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .section-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 34px;
+    height: 34px;
+    border-radius: 8px;
+    font-size: 12px;
+    font-weight: 700;
+    color: #fff;
+    flex-shrink: 0;
+  }
+
+  .section-summary {
+    font-size: 14px;
+    color: var(--text-secondary);
+    margin-bottom: 20px;
+    padding-left: 4px;
+    line-height: 1.7;
+  }
+
+  .subsection {
+    margin-bottom: 22px;
+  }
+
+  .subsection-title {
+    font-size: 15px;
+    font-weight: 700;
+    color: var(--accent);
+    margin-bottom: 10px;
+    padding-bottom: 5px;
+    border-bottom: 1px dotted var(--border);
+  }
+
+  .news-list {
+    list-style: none;
+    padding: 0;
+  }
+
+  .news-list li {
+    margin-bottom: 14px;
+    padding: 12px 14px;
+    background: #fff;
+    border-radius: 8px;
+    border: 1px solid var(--border);
+  }
+
+  .news-item-head {
+    display: flex;
+    align-items: flex-start;
+    gap: 8px;
+    margin-bottom: 6px;
+  }
+
+  .bullet {
+    color: var(--accent);
+    font-size: 14px;
+    flex-shrink: 0;
+    margin-top: 1px;
+  }
+
+  .news-title {
+    font-size: 14.5px;
+    font-weight: 600;
+    color: var(--text);
+    line-height: 1.5;
+  }
+
+  .news-body {
+    font-size: 13.5px;
+    color: var(--text-secondary);
+    line-height: 1.7;
+    margin-bottom: 8px;
+    padding-left: 22px;
+  }
+
+  .news-source {
+    font-size: 12px;
+    padding-left: 22px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex-wrap: wrap;
+  }
+
+  .source-tag {
+    display: inline-block;
+    background: var(--tag-bg);
+    color: var(--tag-text);
+    font-size: 11px;
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-weight: 500;
+  }
+
+  .news-source a {
+    color: var(--accent);
+    text-decoration: none;
+    font-size: 12px;
+  }
+
+  .news-source a:hover {
+    text-decoration: underline;
+  }
+
+  .report-footer {
+    margin-top: 48px;
+    padding-top: 20px;
+    border-top: 1px solid var(--border);
+    font-size: 12px;
+    color: var(--text-muted);
+    text-align: center;
+    line-height: 1.8;
+  }
+</style>
+</head>
+<body>
+<div class="report-container">
+
+<h1 class="report-main-title">行业日报（2026-10-14）</h1>
+<div class="report-meta">2026年10月14日 · 星期三 · 数据来源：AI HOT / WebSearch / 公开报道</div>
+
+<div class="top-anchor-nav">
+  <span class="top-anchor-chip primary">当日总条数 <span class="count">28</span></span>
+  <a class="top-anchor-chip" href="#section-bags">箱包 <span class="count">2</span></a>
+  <a class="top-anchor-chip" href="#section-ec">电商 <span class="count">12</span></a>
+  <a class="top-anchor-chip" href="#section-ai">AI <span class="count">14</span></a>
+</div>
+
+<div class="report-intro">
+  过去 24 小时（10 月 13 日 10:00 至 10 月 14 日触发时刻 CST）三条主线清晰：AI 板块 Google 正式 GA 发布 Gemini 4 Argon（Artificial Analysis 智能指数追平 GPT-6 Astra、单任务成本仅为其 60%），Character.AI 申请 Chapter 11 破产并以 2000 万美元向 Disney 出售部分资产，OpenAI 办公室发现窃密录音装置、FBI 已逮捕涉事员工；电商板块跨境电商基础设施与合规监管双线推进——亚马逊全球集货仓落地天津东疆（京津冀首个）、TikTok 长租京东产发英国仓自建物流，法国启动暂停 Shein 运营程序、美国 CBP 拟推低价包裹 Type13 电子申报、英国拟让 Amazon/eBay/Temu 等平台代收卖家税款；箱包板块当日以新品为主：小米米家金属旅行箱上架有品即将众筹，爱尔威智能骑行行李箱亮相第 140 届广交会。本期共收录 28 条新闻。
+</div>
+
+<!-- ===== 箱包动态 ===== -->
+<section class="section" id="section-bags">
+  <h2 class="section-title"><span class="section-icon" style="background:#2d5016;">BG</span>箱包动态</h2>
+  <div class="subsection-anchor-nav">
+    <a class="subsection-anchor-chip" href="#sub-箱包品牌产品">品牌与产品</a>
+  </div>
+  <div class="section-summary">
+    过去 24 小时箱包板块有效新闻以国产新品为主：小米米家金属旅行箱上架、爱尔威智能骑行行李箱亮相广交会。当日搜索返回的其余箱包内容多为导购软文（唯尊天际系列、拉杆箱推荐榜单等）或活动启动日早于 24 小时窗口的旧闻（Coach Tabby 全球巡演 9 月 16 日已在纽约启动），均已按时效规则丢弃。
+  </div>
+  <div class="subsection" id="sub-箱包品牌产品">
+    <div class="subsection-title">品牌与产品</div>
+    <ul class="news-list">
+      <li>
+        <div class="news-item-head"><span class="bullet">&#9642;</span><span class="news-title">小米米家金属旅行箱上架有品：10 月 21 日开启众筹，到手价 1699 元，铝镁合金框体 + SGS 静音轮认证</span></div>
+        <div class="news-body">10 月 14 日消息，小米米家金属旅行箱已上架小米有品，将于 10 月 21 日开启众筹，众筹到手价 1699 元，提供银色与钛金色两种配色。箱体沿用米家行李箱横向条纹设计，由 6 系铝镁硅合金框体与 5 系铝镁合金箱壳组合、无铆钉框体工艺，整箱约 150 道工序；与 HINOMOTO 联合研发静音万向轮（SGS 认证，官方口径行走 72 公里轮皮磨损小于 2 毫米、噪音低于 43 分贝），拉杆通过 18000 次抽拉与 6 倍国标耐疲劳测试。容量约 37 升，配一键中控式 TSA 密码锁，定位 3-5 天中短途出行。</div>
+        <div class="news-source"><span class="source-tag">IT之家 / 新浪财经</span><a href="https://finance.sina.com.cn/stock/t/2026-10-14/doc-iniveefp7807790.shtml" target="_blank">原文链接</a></div>
+      </li>
+      <li>
+        <div class="news-item-head"><span class="bullet">&#9642;</span><span class="news-title">爱尔威 Airwheel 携 SE3SXD 全智能电动骑行行李箱亮相第 140 届广交会，拓展智慧出行与全球渠道</span></div>
+        <div class="news-body">10 月 14 日报道，智能出行品牌爱尔威 Airwheel 登陆第 140 届广交会，携旗舰 SE3SXD 全智能电动骑行行李箱及场景化智能骑行行李箱产品矩阵亮相，面向全球采购商、经销商与高端零售商展示"行李收纳 + 智能代步"双重功能融合的产品形态，推进国际化渠道布局。智能箱包作为"新材料 + 电驱 + 结构创新"的品类升级方向，正在借助广交会等窗口加速出海。</div>
+        <div class="news-source"><span class="source-tag">中华网科技</span><a href="https://tech.china.com/articles/20261014/202610141965273.html" target="_blank">原文链接</a></div>
+      </li>
+    </ul>
+  </div>
+</section>
+
+<!-- ===== 电商动态 ===== -->
+<section class="section" id="section-ec">
+  <h2 class="section-title"><span class="section-icon" style="background:#2d5016;">EC</span>电商动态</h2>
+  <div class="subsection-anchor-nav">
+    <a class="subsection-anchor-chip" href="#sub-平台与零售">平台与零售</a>
+    <a class="subsection-anchor-chip" href="#sub-跨境与出海">跨境与出海</a>
+    <a class="subsection-anchor-chip" href="#sub-政策与监管">政策与监管</a>
+  </div>
+  <div class="section-summary">
+    过去 24 小时电商板块呈"基础设施下沉 + 合规监管收紧"双线：亚马逊全球集货仓落地天津东疆（京津冀首个，打通北方产业带直发全球链路），TikTok 长租京东产发英国仓 10 年自建欧洲物流，1688 全面接入 AI 电商工作台 Accio；监管端法国启动暂停 Shein 运营程序（法院驳回 3 个月封站）、美国 CBP 拟推 2500 美元以内包裹 Type13 电子申报、英国拟让 Amazon/eBay/Temu 等平台为卖家代收税款（预计增收最高 10 亿英镑）。
+  </div>
+  <div class="subsection" id="sub-平台与零售">
+    <div class="subsection-title">平台与零售</div>
+    <ul class="news-list">
+      <li>
+        <div class="news-item-head"><span class="bullet">&#9642;</span><span class="news-title">1688 全面接入 AI 电商工作台 Accio：超 1 亿活跃买家、百万源头工厂可用，支持 128 国比价寻源</span></div>
+        <div class="news-body">10 月 14 日消息，1688 平台正式接入全球电商 AI 工作台 Accio。Accio 包含采购助手与电商管家两大核心能力：采购助手支持在 128 国范围内比价、寻源、发送询盘；电商管家打通淘宝、抖音、拼多多等多平台，一站式管理多家店铺。针对现货分销、定制代工、内外贸跨境三类商家提供差异化 AI 智能体能力，支持商品上架、询盘接待、店铺诊断、素材生成等操作，助力 B 端商家备战双 11。</div>
+        <div class="news-source"><span class="source-tag">甩手网早报</span><a href="https://www.shuaishou.com/news/85632.html" target="_blank">原文链接</a></div>
+      </li>
+      <li>
+        <div class="news-item-head"><span class="bullet">&#9642;</span><span class="news-title">千问办公电商版预计双 11 预售前夕上线：面向多平台商家的独立电商 Agent，设五大功能板块</span></div>
+        <div class="news-body">千问办公将推出面向多平台商家的电商专属版本，计划在双 11 预售前正式发布。该版本作为独立智能体，可与通用版本自由切换，首页设置双 11 专区、经营分析、商品管理、素材生产、营销推广五大功能板块，适配大促期间大量素材制作、店铺数据分析、营销策划等高频需求。同期阿里千问发布 AI 眼镜 N1/N1 Pro 与首款 AI 耳夹式耳机，落地眼动交互与虹膜支付能力，AI 硬件开始向线上线下零售场景延伸。</div>
+        <div class="news-source"><span class="source-tag">甩手网早报</span><a href="https://www.shuaishou.com/news/85632.html" target="_blank">原文链接</a></div>
+      </li>
+      <li>
+        <div class="news-item-head"><span class="bullet">&#9642;</span><span class="news-title">TikTok Shop 更新珠宝类商品准入要求：部分珠宝上架前须完成类目资质审核或提交商品审核材料</span></div>
+        <div class="news-body">TikTok Shop 10 月 13 日更新珠宝商品销售要求，明确部分珠宝产品上架前须完成类目资质审核或提交商品审核材料，具体要求因珠宝类型而异。卖家提交的商品图片、包装照片、检测报告及真实性证明须与实际商品信息一致，假冒、欺诈及低质量珠宝商品不得销售。</div>
+        <div class="news-source"><span class="source-tag">跨境电商日报 / 网易</span><a href="https://www.163.com/dy/article/L96HI82F0538BNYC.html" target="_blank">原文链接</a></div>
+      </li>
+      <li>
+        <div class="news-item-head"><span class="bullet">&#9642;</span><span class="news-title">京东搬家新增六城落地：覆盖成都、南京、苏州、武汉、青岛、西安，全国覆盖 12 座核心城市</span></div>
+        <div class="news-body">京东搬家业务再度扩容，新落地成都、南京、苏州、武汉、青岛、西安六大城市，至此已覆盖国内 12 个核心消费城市。依托自营团队与数字化履约流程，该业务提供标准化一站式搬家履约服务，是京东向本地生活履约赛道持续加码的最新动作。</div>
+        <div class="news-source"><span class="source-tag">甩手网早报</span><a href="https://www.shuaishou.com/news/85632.html" target="_blank">原文链接</a></div>
+      </li>
+      <li>
+        <div class="news-item-head"><span class="bullet">&#9642;</span><span class="news-title">美国超市 Albertsons 公布第二财季业绩：数字渠道销售同比增长 11%，同店销售下降 0.8%</span></div>
+        <div class="news-body">美国连锁超市 Albertsons 10 月 13 日公布第二财季业绩，数字渠道销售同比增长 11%，但同店销售下降 0.8%，季度营收 188.95 亿美元、同比微降 0.1%。受线上订单配送及处理成本上升影响，毛利率由 27% 降至 26.8%，反映传统零售线上化转型的履约成本压力仍在。</div>
+        <div class="news-source"><span class="source-tag">跨境电商日报 / 网易</span><a href="https://www.163.com/dy/article/L96HI82F0538BNYC.html" target="_blank">原文链接</a></div>
+      </li>
+    </ul>
+  </div>
+  <div class="subsection" id="sub-跨境与出海">
+    <div class="subsection-title">跨境与出海</div>
+    <ul class="news-list">
+      <li>
+        <div class="news-item-head"><span class="bullet">&#9642;</span><span class="news-title">亚马逊全球集货仓落地天津东疆：京津冀首个，打通"产业带工厂—集货仓—天津港—亚马逊物流网络"直发通道</span></div>
+        <div class="news-body">10 月 13 日，2026 天津·亚马逊跨境电商合作赋能大会宣布，亚马逊全球集货仓正式落地天津东疆综合保税区，为亚马逊在京津冀地区的首个全球集货仓。该仓为跨境卖家提供集货、质检、贴标等综合服务，自今年 7 月试运营以来货源地已覆盖天津、北京、河北、山西等华北腹地；京津冀出口货物可从天津港直接起运直达亚马逊海外物流仓网，北方制造无需绕行南方口岸。天津跨境电商进出口规模 2020-2025 年从 60 亿元跃升至 650 亿元，大会同步发布通关、税务、物流等一揽子支持政策。</div>
+        <div class="news-source"><span class="source-tag">人民网天津频道 / 21财经</span><a href="https://tj.people.com.cn/n2/2026/1014/c375366-41721152.html" target="_blank">原文链接</a></div>
+      </li>
+      <li>
+        <div class="news-item-head"><span class="bullet">&#9642;</span><span class="news-title">TikTok 长租京东产发英国仓库 10 年：25.1 万平方英尺 A+ 高标准仓，交由自营物流 Fulfilled by TikTok 运营</span></div>
+        <div class="news-body">TikTok 签订 10 年长租协议，租赁京东产发位于英国拉格比（Rugby）的 251 仓库。仓库面积 25.1 万平方英尺，临近高速干线，配备重型货车泊位，交由 TikTok 自营物流 Fulfilled by TikTok 运营，承担 TikTok Shop 仓储与发货履约。这是 TikTok 完善欧洲本土仓配网络的重要布局，依托本地仓提升订单履约时效、支撑欧洲站点大促订单。</div>
+        <div class="news-source"><span class="source-tag">甩手网早报</span><a href="https://www.shuaishou.com/news/85632.html" target="_blank">原文链接</a></div>
+      </li>
+      <li>
+        <div class="news-item-head"><span class="bullet">&#9642;</span><span class="news-title">TikTok Shop 菲律宾推出 SellerPlus 扶持计划：新卖家享 90 天佣金全免，目标 3 年推动直播卖家合规化</span></div>
+        <div class="news-body">TikTok Shop 菲律宾联合当地运营商与贸工部推出 SellerPlus 扶持计划，面向中小微商家与直播创业者开放：入驻新卖家享受 90 天佣金全免，完成平台尽职调查任务可领取优惠券奖励，配套专属客服、商业指导、安盛意外险等权益及月度主题活动流量补贴。菲律宾当前 230 万 TikTok 直播卖家中仅半数完成正规工商注册，该计划目标 3 年内推动绝大多数直播卖家纳入正规财税体系。</div>
+        <div class="news-source"><span class="source-tag">甩手网早报</span><a href="https://www.shuaishou.com/news/85632.html" target="_blank">原文链接</a></div>
+      </li>
+    </ul>
+  </div>
+  <div class="subsection" id="sub-政策与监管">
+    <div class="subsection-title">政策与监管</div>
+    <ul class="news-list">
+      <li>
+        <div class="news-item-head"><span class="bullet">&#9642;</span><span class="news-title">法国启动暂停 Shein 运营程序：巴黎法院驳回 3 个月封站申请，但要求涉色情品类上线年龄验证机制</span></div>
+        <div class="news-body">法国政府启动暂停 Shein 法国站点运营的流程，起因是平台第三方店铺在售儿童性玩偶、违禁武器等非法商品。Shein 事件后主动临时下架第三方商品、加强平台商家管控。巴黎法院驳回政府提出的 3 个月全面封站诉求，判定违规商品问题不足以采取全站关停这类过重处罚，但要求 Shein 在涉色情品类上线年龄验证机制，否则该品类持续关停。裁决后平台逐步恢复运营，成人相关品类全球范围仍暂停销售，跨境快时尚平台在欧洲合规压力持续加大。</div>
+        <div class="news-source"><span class="source-tag">甩手网早报</span><a href="https://www.shuaishou.com/news/85632.html" target="_blank">原文链接</a></div>
+      </li>
+      <li>
+        <div class="news-item-head"><span class="bullet">&#9642;</span><span class="news-title">美国 CBP 拟推 Type13 低价包裹电子申报：2500 美元以内包裹须提前申报，逾期 15 天视作弃件</span></div>
+        <div class="news-body">美国海关与边境保护局（CBP）发布低价值货物新规草案，针对 2500 美元以内进口包裹新增 Type13 电子申报体系：申报时须补充发件人信息与包裹追踪单号，申报时间提前至货物抵达前或抵达当日（旧规允许到港后 15 天申报）；包裹入境 15 天仍未完成申报将被认定弃件，海关可直接销毁或退回。中国跨境小包卖家需提前完善申报流程、把控清关时效，规避货物被没收退回的风险。</div>
+        <div class="news-source"><span class="source-tag">甩手网早报</span><a href="https://www.shuaishou.com/news/85632.html" target="_blank">原文链接</a></div>
+      </li>
+      <li>
+        <div class="news-item-head"><span class="bullet">&#9642;</span><span class="news-title">英国拟对在线市场平台动刀：Amazon、eBay、Temu 或须为平台卖家代收税款，预计为财政部增收最高 10 亿英镑</span></div>
+        <div class="news-body">据《泰晤士报》报道（路透 10 月 13 日转载），英国财政大臣 Healey 预计将宣布在线市场平台（如 Amazon、eBay、Temu）须负责代收平台内零售商欠缴税款，预计可为财政部带来最高 10 亿英镑（约 13.3 亿美元）收入。英国财政部拒绝置评，表示税收决定将由财政大臣在财政事项中公布；Amazon、eBay、Temu 均未立即回应。平台连带纳税责任若落地，将进一步抬高中小跨境卖家在英国市场的合规成本。</div>
+        <div class="news-source"><span class="source-tag">Reuters / CNA</span><a href="https://www.channelnewsasia.com/business/uk-finance-minister-healey-target-online-marketplaces-in-tax-crackdown-times-reports-6457271" target="_blank">原文链接</a></div>
+      </li>
+      <li>
+        <div class="news-item-head"><span class="bullet">&#9642;</span><span class="news-title">美国 ITC 裁定继续维持中国床垫反补贴税令：五年期日落复审肯定性裁决，七国反倾销税令同步保留</span></div>
+        <div class="news-body">美国国际贸易委员会 10 月 13 日在五年期日落复审中作出肯定性裁决，认定撤销中国床垫反补贴税令，以及柬埔寨、马来西亚、塞尔维亚、泰国、土耳其和越南床垫反倾销税令，可能导致美国国内产业损害继续或再次发生，相关现行贸易救济措施将继续保留，本次裁决未涉及新增税率。</div>
+        <div class="news-source"><span class="source-tag">跨境电商日报 / 网易</span><a href="https://www.163.com/dy/article/L96HI82F0538BNYC.html" target="_blank">原文链接</a></div>
+      </li>
+      <li>
+        <div class="news-item-head"><span class="bullet">&#9642;</span><span class="news-title">美国明确 USMCA 金属关税"美国产成分"计算规则：10 月 14 日正式刊登，25% 附加关税仅针对非美国产成分</span></div>
+        <div class="news-body">美国商务部工业与安全局 10 月 9 日预公开指导文件、定于 10 月 14 日正式刊登并适用：明确符合美加墨协定（USMCA）优惠待遇的加拿大、墨西哥相关金属制品，其"美国产成分"包括在美国生产或实质性转型的零部件，以及符合条件的美国冶炼、浇铸钢铝铜材料价值；相关产品 25% 的附加关税仅针对非美国产成分计算，但整件商品有效税率不得低于 15%。</div>
+        <div class="news-source"><span class="source-tag">跨境电商日报 / 网易</span><a href="https://www.163.com/dy/article/L96HI82F0538BNYC.html" target="_blank">原文链接</a></div>
+      </li>
+    </ul>
+  </div>
+</section>
+
+<!-- ===== AI动态 ===== -->
+<section class="section" id="section-ai">
+  <h2 class="section-title"><span class="section-icon" style="background:#2d5016;">AI</span>AI动态</h2>
+  <div class="subsection-anchor-nav">
+    <a class="subsection-anchor-chip" href="#sub-模型与技术更新">模型与技术更新</a>
+    <a class="subsection-anchor-chip" href="#sub-产品与平台">产品与平台</a>
+    <a class="subsection-anchor-chip" href="#sub-产业与资本">产业与资本</a>
+    <a class="subsection-anchor-chip" href="#sub-研究观点">研究与观点</a>
+  </div>
+  <div class="section-summary">
+    过去 24 小时 AI 板块头条是 Google Gemini 4 Argon 正式 GA（Artificial Analysis 智能指数追平 GPT-6 Astra、Cost per Task 仅为其 60%，定价输入 $2/M、输出 $10/M）；产业端 Character.AI 申请 Chapter 11 破产、2000 万美元向 Disney 出售部分资产，OpenAI 办公室发现窃密录音装置、FBI 逮捕涉事员工；产品端 Apple 发布 $299 智能音箱 HomeView、阿里千问 AI 眼镜 N1/N1 Pro 现货开售。
+  </div>
+  <div class="subsection" id="sub-模型与技术更新">
+    <div class="subsection-title">模型与技术更新</div>
+    <ul class="news-list">
+      <li>
+        <div class="news-item-head"><span class="bullet">&#9642;</span><span class="news-title">Google 正式 GA 发布 Gemini 4 Argon：智能指数追平 GPT-6 Astra、单任务成本仅 60%，同步上线 OpenRouter</span></div>
+        <div class="news-body">10 月 13 日（北京时间 13 日深夜至 14 日凌晨），Google 发布并全面开放 Gemini 4 Argon，面向开发者、企业与消费者，可经 Gemini API、AI Studio、Google Antigravity 使用；Pro 会员可在 Gemini App 使用，Antigravity 需 100 美元 Ultra 会员。Artificial Analysis 智能指数显示其与 GPT-6 Astra 排名持平、Cost per Task 仅为后者 60%；OpenRouter 数据显示 AutomationBench 51.3%、LVBench 91.7%、CWE-bench v1 以 68% 并列第一，introductory 定价输入 $2/M、输出 $10/M，并已上线 OpenRouter。</div>
+        <div class="news-source"><span class="source-tag">Google Blog / Artificial Analysis / OpenRouter（AI HOT 收录）</span><a href="https://blog.google/innovation-and-ai/models-and-research/gemini-models/introducing-gemini-4-argon/" target="_blank">原文链接</a></div>
+      </li>
+      <li>
+        <div class="news-item-head"><span class="bullet">&#9642;</span><span class="news-title">Liquid AI 发布开源权重端侧模型 LFM2.5-24B-A2B：总参数 24B、每 token 激活 2B，定位端侧快速智能体</span></div>
+        <div class="news-body">Liquid AI 发布开源权重模型 LFM2.5-24B-A2B，总参数 24B、每 token 仅激活 2B，定位端侧快速智能体场景，延续其液态神经网络路线在边缘设备上的低延迟优势，进一步充实端侧可部署的开源模型矩阵。</div>
+        <div class="news-source"><span class="source-tag">Liquid AI 官方博客（AI HOT 收录）</span><a href="https://www.liquid.ai/blog/lfm2-5-24b-a2b" target="_blank">原文链接</a></div>
+      </li>
+    </ul>
+  </div>
+  <div class="subsection" id="sub-产品与平台">
+    <div class="subsection-title">产品与平台</div>
+    <ul class="news-list">
+      <li>
+        <div class="news-item-head"><span class="bullet">&#9642;</span><span class="news-title">阿里千问发布 AI 眼镜 N1/N1 Pro 与首款 AI 耳夹式耳机：落地眼动交互与虹膜支付，现货开售</span></div>
+        <div class="news-body">10 月 13 日，千问 AI 硬件新品发布会推出三款硬件：AI 眼镜 N1、N1 Pro 与 AI 耳夹式耳机，当日在淘宝、天猫、京东、抖音等平台现货开售，眼镜到手价 2218 元起、耳机 1099 元起。新品搭载健康运动传感器，落地眼动交互与虹膜支付能力；千问事业部副总裁宋刚称 AI 穿戴设备是个人 AI 助理在物理世界的延伸，个人智能体将借硬件打通线上线下场景。</div>
+        <div class="news-source"><span class="source-tag">千问APP 官方公众号（AI HOT 收录）</span><a href="https://mp.weixin.qq.com/s?__biz=MzYzNDE5MDEwMQ%3D%3D&mid=2247489149&idx=1&sn=26d7fefe24bfb18efa4582467313b1eb" target="_blank">原文链接</a></div>
+      </li>
+      <li>
+        <div class="news-item-head"><span class="bullet">&#9642;</span><span class="news-title">Apple 发布 7 英寸智能音箱 HomeView：售价 299 美元、搭载 Siri AI，11 月 13 日起在美英加澳等市场发售</span></div>
+        <div class="news-body">10 月 13 日，Apple 发布配备 7 英寸 Liquid Retina 显示屏的 HomeView，集娱乐、FaceTime、家庭监控与语音自动化于一体，标准版与壁挂版均定价 299 美元，11 月 13 日起在美英加澳等市场发售。同日美股盘初苹果、微软股价齐创新高（苹果市值一度突破 5 万亿美元），苹果还发布了新一代 HomePod mini（149 美元、支持 Siri AI）。</div>
+        <div class="news-source"><span class="source-tag">Apple Newsroom / 中华网（AI HOT 收录）</span><a href="https://www.apple.com/newsroom/2026/10/meet-apple-homeview-a-new-way-to-enjoy-entertainment-and-manage-the-home/" target="_blank">原文链接</a></div>
+      </li>
+      <li>
+        <div class="news-item-head"><span class="bullet">&#9642;</span><span class="news-title">Visual Studio Copilot 与 SSMS 远程代码执行漏洞（CVE-2026-103572）披露：文件名末尾加点绕过路径校验</span></div>
+        <div class="news-body">安全研究员 Johann Rehberger 披露 Visual Studio Copilot 与 SQL Server Management Studio 中的远程代码执行漏洞 CVE-2026-103572：利用 Windows 路径规范化缺陷，在文件名末尾多加一个点绕过路径校验，写入 .mcp. 或 settings.VisualStudio. 等受保护配置文件，最终实现任意命令执行。该案例再次警示 AI 编程智能体与本地开发环境的安全边界问题。</div>
+        <div class="news-source"><span class="source-tag">Embrace The Red（AI HOT 收录）</span><a href="https://embracethered.com/blog/posts/2026/visual-studio-copilot-remote-code-execution/" target="_blank">原文链接</a></div>
+      </li>
+      <li>
+        <div class="news-item-head"><span class="bullet">&#9642;</span><span class="news-title">LangSmith 推出 AI Search 公测：用自然语言按行为搜索 agent 轨迹，覆盖 PII 泄露、用户受挫等开放式问题</span></div>
+        <div class="news-body">LangChain 在 LangSmith 中推出 AI Search 公测，允许开发者用自然语言描述行为来查询 agent 轨迹——例如"哪些会话发生了 PII 泄露"或"用户在何时受挫"等无法靠标签和全文检索回答的问题，补齐 LLM 可观测平台在语义级轨迹检索上的能力。同日 LangChain 还发布了 langchain-scaledown 集成，用 ScaleDown 约束解码模型管理长时智能体上下文成本。</div>
+        <div class="news-source"><span class="source-tag">LangChain Blog（AI HOT 收录）</span><a href="https://www.langchain.com/blog/agent-traces-ai-search-langsmith" target="_blank">原文链接</a></div>
+      </li>
+      <li>
+        <div class="news-item-head"><span class="bullet">&#9642;</span><span class="news-title">Anthropic 自研版本控制系统 Scion：五个月完成 monorepo 从 git 迁移，日均合并代码量半年增 12 倍</span></div>
+        <div class="news-body">Anthropic 发布工程复盘：因 Claude 使日均合并代码量从 2026 年 5 月约 2500 行增至 9 月超 30000 行，git 工作流成为瓶颈，团队在五个月内自研版本控制系统 Scion 并完全替代 git，同时推出代码评审工具 Antique。这是"AI 写代码改变开发基础设施形态"的标志性工程案例——版本控制系统本身因 AI 产能爆发而被重构。</div>
+        <div class="news-source"><span class="source-tag">Anthropic Engineering（AI HOT 收录）</span><a href="https://www.anthropic.com/engineering/redesigning-source-control" target="_blank">原文链接</a></div>
+      </li>
+      <li>
+        <div class="news-item-head"><span class="bullet">&#9642;</span><span class="news-title">Google 用 Gemini 4 Argon 无人值守优化 20 万行 Python 代码库 ADK：跑 11 小时，长会话准备时间降低约 40%</span></div>
+        <div class="news-body">Google 工程师用 Gemini 4 Argon 在 google/adk-python 上无人值守运行 11 小时，提出 6 项优化、审查后合并 2 项，使长会话内存会话准备时间降低约 40%、包导入加快 21%。官方将其作为"AI 自主完成生产级代码优化"的公开演示，与 Argon 发布同日推出。</div>
+        <div class="news-source"><span class="source-tag">Google Developers Blog（AI HOT 收录）</span><a href="https://developers.googleblog.com/optimizing-a-200000-line-python-codebase-overnight-with-gemini-4-argon/" target="_blank">原文链接</a></div>
+      </li>
+    </ul>
+  </div>
+  <div class="subsection" id="sub-产业与资本">
+    <div class="subsection-title">产业与资本</div>
+    <ul class="news-list">
+      <li>
+        <div class="news-item-head"><span class="bullet">&#9642;</span><span class="news-title">Character.AI 申请 Chapter 11 破产：资产 5000 万至 1 亿美元，同意以 2000 万美元向 Disney 出售部分资产及技术许可</span></div>
+        <div class="news-body">成立五年的 AI 陪伴平台 Character.AI 申请 Chapter 11 破产，法院文件显示其资产与负债在 5000 万至 1 亿美元之间，并同意以 2000 万美元向 Disney 出售部分资产及技术非独占永久许可，出售预计 11 月底或 12 月初完成，期间平台继续运营，但尚无竞购方，若无买家平台将关停。破产文件同时披露其商业模式难以支撑开支：月度 AI 算力支出 2024 年达 1380 万美元、2026 年 1-8 月合计 5610 万美元，而订阅收入峰值仅每月 280 万美元、含广告全部收入峰值 530 万美元，8 月时每月仍亏损约 800-900 万美元。此前公司已因未成年用户诉讼、德州调查等困境多次转型未果。</div>
+        <div class="news-source"><span class="source-tag">TechCrunch / 404 Media（AI HOT 收录）</span><a href="https://techcrunch.com/2026/10/13/just-5-years-in-interactive-chatbot-platform-character-ai-files-for-bankruptcy/" target="_blank">原文链接</a></div>
+      </li>
+      <li>
+        <div class="news-item-head"><span class="bullet">&#9642;</span><span class="news-title">OpenAI 办公室发现窃密录音装置：自家用模型分析溯源，涉事员工已被 FBI 逮捕并解雇</span></div>
+        <div class="news-body">OpenAI 宣布在办公室内发现一个隐蔽录音装置，并利用自家模型分析该设备及其来源，确认是一名员工几天前安放。OpenAI 已将此事移交 FBI，FBI 已逮捕相关人员，调查仍在进行。OpenAI 表示目前没有迹象显示该员工不当访问或外泄模型权重、源代码或客户数据，该员工已被解雇，并将此案视为"AI 协助应对复杂安全威胁"的实例。</div>
+        <div class="news-source"><span class="source-tag">OpenAI Newsroom（AI HOT 收录）</span><a href="https://x.com/OpenAINewsroom/status/2110095403198849132" target="_blank">原文链接</a></div>
+      </li>
+      <li>
+        <div class="news-item-head"><span class="bullet">&#9642;</span><span class="news-title">NVIDIA 官宣 RTX Spark 软件生态就绪：笔记本 10 月 16 日上市，最高 128GB 统一内存、1 petaflop AI 算力</span></div>
+        <div class="news-body">NVIDIA 介绍 RTX Spark 平台软件生态就绪情况，RTX Spark 笔记本将于 10 月 16 日（周五）上市，搭载最高 128GB 统一内存和 1 petaflop 本地 AI 算力，定位本地运行大模型与生成式 AI 工作流的端侧算力平台。</div>
+        <div class="news-source"><span class="source-tag">NVIDIA Blog（AI HOT 收录）</span><a href="https://blogs.nvidia.com/blog/local-ai-rtx-spark-laptops-software-updates/" target="_blank">原文链接</a></div>
+      </li>
+    </ul>
+  </div>
+  <div class="subsection" id="sub-研究观点">
+    <div class="subsection-title">研究与观点</div>
+    <ul class="news-list">
+      <li>
+        <div class="news-item-head"><span class="bullet">&#9642;</span><span class="news-title">博主实测 Gemini 4 Argon：知识工作强劲但体验糟糕，认为难以撼动 Claude Opus 5.5 与 GPT-6 Astra</span></div>
+        <div class="news-body">科技博主卡兹克于 10 月 14 日发布 Gemini 4 Argon 深度实测：知识类专业能力强，Vals Index 综合第一（68.9）且单次成本仅 15.68 美元，但 CUA-bench 仅 4.83% 排倒数第二；前端效果不及 GPT-6 Astra，额度消耗快、中文写作"味道重"，整体体验不佳，不建议为它订阅 Ultra。与 Artificial Analysis 的跑分结论（追平 Astra）形成有趣的认知差，可作为选型参考的多一重视角。</div>
+        <div class="news-source"><span class="source-tag">X：卡兹克 / 数字生命卡兹克（AI HOT 收录）</span><a href="https://x.com/Khazix0918/status/2110174495420064055" target="_blank">原文链接</a></div>
+      </li>
+      <li>
+        <div class="news-item-head"><span class="bullet">&#9642;</span><span class="news-title">Xbow 用 GPT-5.6 挖出 Chrome 三漏洞组成全沙箱逃逸链：六天花费约 4 万美元算力，获 Google 25 万美元全额奖励</span></div>
+        <div class="news-body">Xbow 工程师 Brendan Dolan-Gavitt 用 OpenAI 的 gpt-5.6-sol 分析 Chrome 源码，历时六天、花费约 4 万美元算力，找到三个独立漏洞组成漏洞链——使标签页内普通 JavaScript 代码穿越两个防护边界、逃出所有沙箱，获 Google 25 万美元全链漏洞奖励。这是 AI 辅助漏洞研究在真实浏览器攻击面上产出完整利用链的又一标志性案例。</div>
+        <div class="news-source"><span class="source-tag">X：Rohan Paul（AI HOT 收录）</span><a href="https://x.com/rohanpaul_ai/status/2110203596948353155" target="_blank">原文链接</a></div>
+      </li>
+      <li>
+        <div class="news-item-head"><span class="bullet">&#9642;</span><span class="news-title">Meta Muse Wonder (Max) 进入 Arena 榜单：WebDev 第 15 名（1651 分），与 Kimi K3 (Max) 仅差 4 分</span></div>
+        <div class="news-body">Arena 宣布 Meta 的 Muse Wonder (Max) 进入 Code Arena: WebDev 榜单第 15 名（1651 分），与 Kimi K3 (Max) 的 1655 分相差仅 4 分；同时在文本榜单排名第 2。Meta 开源系模型在代码生成方向持续逼近第一梯队。</div>
+        <div class="news-source"><span class="source-tag">X：Arena（AI HOT 收录）</span><a href="https://x.com/arena/status/2110120205464846828" target="_blank">原文链接</a></div>
+      </li>
+    </ul>
+  </div>
+</section>
+
+<div class="report-footer">
+  数据来源：AI HOT / WebSearch / 公开报道<br>
+  本期日报共收录 28 条新闻，筛选自过去 24 小时内的公开报道<br>
+  生成时间：2026-10-14 13:15 CST
+</div>
+
+</div>
+</body>
+</html>
